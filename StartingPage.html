@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Starting Page</title>
+</head>
+<body>
+<h1>All challenges</h1>
+
+<ul id="challenges">
+
+</ul>
+
+<script>
+
+
+
+    function getChallenges()
+    {
+        fetch("https://codecyprus.org/th/api/list")
+            .then(response => response.json()) //Parse JSON text to JavaScript object
+            .then(jsonObject => {
+                console.log(jsonObject);
+
+                let challengesList=document.getElementById("challenges"); //Obtain an object reference to your unordered list element using its ID.
+
+                let treasureHuntsArray=jsonObject.treasureHunts; //Obtain a reference to the treasureHunts array from the parsed object.
+
+                document.getElementById("challenges").style.fontSize = "x-large"; //change font size of links to x large
+
+                let getTeamsName=prompt("Please enter your Team's Name below","Enter IGN here"); //get teams name
+
+                for(let i=0; i<treasureHuntsArray.length; i++) //Create a loop that traverses the treasureHunts array
+                    //and  creates a new list element for each treasure hunt object:
+                {
+                    let listItem = document.createElement("li"); //Create a list element
+
+                    let uuid=treasureHuntsArray[i].uuid; //Obtain a reference to the treasureHunts array uuid
+
+                    let url1='https://codecyprus.org/th/api/start?player='+getTeamsName; //concatination of the string with teams name
+
+                    let url2='&app=pyravlosAPP&treasure-hunt-id='+uuid;//concatination of the string and the unique uuid
+
+                    let url=url1+url2; //produces the final url
+
+                    listItem.innerHTML = "  <a href='"+url+"' >     "+ treasureHuntsArray[i].name+"    </a>";
+
+                    challengesList.appendChild(listItem);
+                }
+            });
+
+    }
+
+    getChallenges();
+
+</script>
+</body>
+</html>
