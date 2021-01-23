@@ -2,14 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
     <title>Starting Page</title>
+
+
+    <link rel="stylesheet" href="stylesheet.css">
 </head>
 <body>
-<h1>All challenges</h1>
+<h1 class="ChallengesHD">All challenges</h1>
 
-<ul id="challenges">
+<p class="ViewChallenges">View available Treasure Hunts below:</p>
 
-</ul>
+<ol id="challenges">
+
+</ol>
 
 <script>
 
@@ -27,6 +33,7 @@
                 let treasureHuntsArray=jsonObject.treasureHunts; //Obtain a reference to the treasureHunts array from the parsed object.
 
                 document.getElementById("challenges").style.fontSize = "x-large"; //change font size of links to x large
+
 
                 let getTeamsName=prompt("Please enter your Team's Name below","Enter IGN here"); //get teams name
 
@@ -46,6 +53,7 @@
                     listItem.innerHTML = "  <a href='"+url+"' >     "+ treasureHuntsArray[i].name+"    </a>";
 
                     challengesList.appendChild(listItem);
+
                 }
             });
 

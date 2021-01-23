@@ -2,24 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>LandingPage</title>
+    <title>Landing Page</title>
+
+    <link rel="stylesheet" href="stylesheet.css">
+
 </head>
 <body>
 
 
-<h1>Team Members:</h1>
-<h3>-Nicolas Nouhi</h3>
-<h3>-Lev Isaev</h3>
-<h3>-Georgios Antoniou</h3>
+<h1 class="TeamHD">Team Members:</h1>
+
+<div class="Members">
+
+    <h3>-Nicolas Nouhi</h3>
+    <h3>-Lev Isaev</h3>
+    <h3>-Georgios Antoniou</h3>
+
+</div>
 
 
-<h1>Some information about us!</h1>
+<h1 class="InfoAbUs">Some information about us!</h1>
 
-<p>Information will go here.</p>
+<p class="Info">
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eget aliquam turpis. Praesent vitae leo facilisis, pellentesque dui vestibulum,
+    tincidunt leo. Nam ante leo, sollicitudin eu dui non,
+    semper ornare neque.
+
+</p>
 
 
 <form action="StartingPage.html">
-    <input type="submit" value="Get Started!" />
+    <input type="submit" value="Get Started!" class="GetStartedBtn" />
 </form>
 
 
@@ -27,10 +41,15 @@
 
 <!-- twitter section --->
 
-<a class="twitter-timeline" href="https://twitter.com/brainstorm_q1">Tweets by Nicolas_N</a>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8">
+<div class="twitterSection">
 
-</script>
+    <a class="twitter-timeline" href="https://twitter.com/brainstorm_q1"  id="Twitter">Tweets by BrainstormQ</a>
+
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8">
+
+    </script>
+
+</div>
 
 <!-- twitter section  ends--->
 </body>
