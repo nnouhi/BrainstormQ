@@ -7,60 +7,72 @@
 
 
     <link rel="stylesheet" href="stylesheet.css">
+
 </head>
 <body>
-<h1 class="ChallengesHD">All challenges</h1>
-
-<p class="ViewChallenges">View available Treasure Hunts below:</p>
-
-<ol id="challenges">
-
-</ol>
-
-<script>
 
 
 
-    function getChallenges()
-    {
-        fetch("https://codecyprus.org/th/api/list")
-            .then(response => response.json()) //Parse JSON text to JavaScript object
-            .then(jsonObject => {
-                console.log(jsonObject);
 
-                let challengesList=document.getElementById("challenges"); //Obtain an object reference to your unordered list element using its ID.
+<div class="topnav" id="topnav">
 
-                let treasureHuntsArray=jsonObject.treasureHunts; //Obtain a reference to the treasureHunts array from the parsed object.
+    <a href="javascript:getChallenges(this);" id="refresh" class="refresh">Refresh</a>
+    <p class="BrainstormHD" id="BrainstormHD">BrainstormQ</p>
+    <p class="score" id="score">Score: 0</p>
+    <button id="skip" class="skip" href="index.html" >SKIP</button>
 
-                document.getElementById("challenges").style.fontSize = "x-large"; //change font size of links to x large
+</div>
 
 
-                let getTeamsName=prompt("Please enter your Team's Name below","Enter IGN here"); //get teams name
 
-                for(let i=0; i<treasureHuntsArray.length; i++) //Create a loop that traverses the treasureHunts array
-                    //and  creates a new list element for each treasure hunt object:
-                {
-                    let listItem = document.createElement("li"); //Create a list element
 
-                    let uuid=treasureHuntsArray[i].uuid; //Obtain a reference to the treasureHunts array uuid
+<!-- Questions are displayed --->
+<div id="loader" class="loader" hidden>
 
-                    let url1='https://codecyprus.org/th/api/start?player='+getTeamsName; //concatination of the string with teams name
+</div>
 
-                    let url2='&app=pyravlosAPP&treasure-hunt-id='+uuid;//concatination of the string and the unique uuid
 
-                    let url=url1+url2; //produces the final url
+<p class="note" id="note">test</p>
 
-                    listItem.innerHTML = "  <a href='"+url+"' >     "+ treasureHuntsArray[i].name+"    </a>";
+<div id="answer" class="answer" >
 
-                    challengesList.appendChild(listItem);
+    <input type="number" id="intANS" class="intANS" step="1" hidden>
+    <button type="submit" id="intBtn" class="intBtn">Submit</button>
 
-                }
-            });
+    <button type="submit" id="trueBtn" class="trueBtn" value="true">TRUE</button>
+    <button type="submit" id="falseBtn" class="falseBtn" value="false">FALSE</button>
 
-    }
+    <input type="text" id="txtANS" class="txtANS" hidden>
 
-    getChallenges();
+</div>
 
-</script>
+
+
+
+
+
+
+
+<div id="hideAll">
+    <h1 class="ChallengesHD">All challenges</h1>
+
+    <div>
+
+    </div>
+
+
+
+
+    <p class="ViewChallenges">View available Treasure Hunts below:</p>
+
+    <div id="treasureHunts" >
+        Empty
+    </div>
+
+</div>
+
+
+<script src="th-api.js"></script>
+
 </body>
 </html>
