@@ -11,6 +11,10 @@ const TH_BASE_URL_SCORE="https://codecyprus.org/th/api/score?session="; // the t
 
 const TH_BASE_URL_SKIP="https://codecyprus.org/th/api/skip?session="; // the true API base url for score
 
+
+
+//REMINDER NEED TO ADD COOKIES AND GEOLOCATION//
+
 function getChallenges()
 {
     fetch(TH_BASE_URL+"list")
@@ -55,7 +59,7 @@ async function select(uuid) {
 
     hideappNavigation();
 
-    let tName=prompt("Please enter your team's name", "Team name");
+    let tName=prompt("Please enter your team's name", "Team name"); //needed only for now will delete later!
 
     let url1='https://codecyprus.org/th/api/start?player='+tName; //concatenation of the string with teams name
 
@@ -63,12 +67,12 @@ async function select(uuid) {
 
     let url=url1+url2; //produces the final url
 
-    console.log(url);
+    console.log(url); //needed for now must delete later
 
-    let spinner = document.getElementById("hideAll");
+    let spinner = document.getElementById("hideAll"); //hides all challenges
 
 
-    spinner.hidden = true;
+    spinner.hidden = true; //hides all challenges
 
     fetch(url)
         .then(response => response.json()) //Parse JSON text to JavaScript object
@@ -102,14 +106,37 @@ function loadQuestions(sessionObject){
 
     let questionIndex=1,finished=false, givePoints=false;
 
+        var intANS = document.getElementById("intANS");
+        var intBTN = document.getElementById("intBtn");
+
+        var trueBTN = document.getElementById("trueBtn");
+        var falseBTN = document.getElementById("falseBtn");
+
+        var note = document.getElementById('note');
+
+        var textANS = document.getElementById("textANS");
+        var textBTN = document.getElementById("textBtn");
 
 
-        fetch(TH_BASE_URL_QUESTION+sessionObject)
+
+
+
+    fetch(TH_BASE_URL_QUESTION+sessionObject)
             .then(response => response.json()) //Parse JSON text to JavaScript object
             .then(jsonObject => {
 
+                intBTN.style.visibility="hidden";
+                intANS.style.visibility="hidden";
+                intANS.value="";
 
-                let note=document.getElementById('note');
+
+                trueBTN.style.visibility="hidden";
+                falseBTN.style.visibility="hidden";
+
+                textBTN.style.visibility="hidden";
+                textANS.style.visibility="hidden";
+                textANS.value="";
+
 
                 let skipped=jsonObject.canBeSkipped;
 
@@ -128,10 +155,17 @@ function loadQuestions(sessionObject){
                     fetch(TH_BASE_URL_SKIP + sessionObject)
                         .then(response => response.json()) //Parse JSON text to JavaScript object
                         .then(jsonObject => {
-                            if(skipped===true){
-                                console.log("skipped");
-                                loadQuestions(sessionObject);
+                            if(jsonObject.status==="OK"){
 
+                                note.style.visibility="visible";
+                                note.style.color="green";
+                                note.innerText=jsonObject.message;
+                                loadQuestions(sessionObject);
+                            }
+                            else if(jsonObject.status==="ERROR"){
+                                note.style.visibility="visible";
+                                note.style.color="red";
+                                note.innerText=jsonObject.errorMessages;
                             }
 
                         });
@@ -140,18 +174,15 @@ function loadQuestions(sessionObject){
                 switch (qType) {
                     case "INTEGER":
 
-                        let spinnerINT = document.getElementById("intANS");
 
-                        spinnerINT.hidden = false;
+                        intANS.style.visibility="visible";
 
-                       let intBTN=document.getElementById("intBtn");
-
-                       intBTN.style.visibility="visible";
+                        intBTN.style.visibility="visible";
 
 
                         /*When sbmt button is pressed calls the answer api and checks if answer correct*/
 
-                        intBTN.addEventListener("click", function () {
+                        intBTN.addEventListener("click", function () { //PROBLEM HERE SEEMS LIKE ITS BUGGING
                             fetch(TH_BASE_URL_ANSWER + sessionObject + "&answer=" + document.getElementById("intANS").value)
                                 .then(response => response.json()) //Parse JSON text to JavaScript object
                                 .then(jsonObject => {
@@ -167,11 +198,9 @@ function loadQuestions(sessionObject){
                                         note.style.color="green";
                                         note.innerText=Message;
 
-                                        let elem = document.getElementById('intANS');
-
-                                        elem.parentNode.removeChild(elem); //removes input element
 
                                         intBTN.style.visibility="hidden";
+                                        intANS.style.visibility="hidden";
 
                                         loadQuestions(sessionObject); //calls function again to load next question
 
@@ -181,8 +210,7 @@ function loadQuestions(sessionObject){
                                         note.style.visibility="visible";
                                         note.style.color="red";
                                         note.innerText=Message;
-                                        let elem = document.getElementById('intANS');
-                                        elem.value="";
+                                        intANS.value="";
 
                                     }
                                 });
@@ -191,8 +219,6 @@ function loadQuestions(sessionObject){
                         break;
 
                     case "BOOLEAN":
-                        let trueBTN=document.getElementById("trueBtn");
-                        let falseBTN=document.getElementById("falseBtn");
 
                         trueBTN.style.visibility="visible";
                         falseBTN.style.visibility="visible";
@@ -254,6 +280,50 @@ function loadQuestions(sessionObject){
                         });
 
                         break;
+
+                    case "TEXT":
+                        textANS.style.visibility="visible";
+
+                        textBTN.style.visibility="visible";
+
+
+                        /*When sbmt button is pressed calls the answer api and checks if answer correct*/
+
+                        textBTN.addEventListener("click", function () {
+                            fetch(TH_BASE_URL_ANSWER + sessionObject + "&answer=" + document.getElementById("textANS").value)
+                                .then(response => response.json()) //Parse JSON text to JavaScript object
+                                .then(jsonObject => {
+
+                                    let answer = jsonObject.correct;
+                                    let Message=jsonObject.message;
+
+                                    console.log(answer);//dont forget to delete, used for testing the output only!
+
+                                    if (answer === true) {
+
+                                        note.style.visibility="visible";
+                                        note.style.color="green";
+                                        note.innerText=Message;
+
+
+                                        textBTN.style.visibility="hidden";
+                                        textANS.style.visibility="hidden";
+
+                                        loadQuestions(sessionObject); //calls function again to load next question
+
+                                    }
+                                    //if input is false reset the value inside the element
+                                    else{
+                                        note.style.visibility="visible";
+                                        note.style.color="red";
+                                        note.innerText=Message;
+                                        textANS.value="";
+                                    }
+                                });
+                        });
+
+                        break;
+
                 }
 
             });
