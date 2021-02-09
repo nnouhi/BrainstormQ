@@ -170,9 +170,9 @@
         text-decoration: none;
         display: inline-block;
         font-size: 50px;
-        left:530px;
+        left:550px;
         font-weight: bold;
-        top:480px;
+        top:470px;
     }
 
     .trueBtn{
@@ -220,7 +220,63 @@
         margin-left:500px;
         margin-top:0px;
     }
+    .mcqBtnA{
+        position:absolute;
+        visibility: hidden;
+        background-color: #D77B1A;
+        border: none;
+        padding: 20px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 50px;
+        left:5px;
+        font-weight: bold;
+        top:450px;
+    }
+    .mcqBtnB{
+        position:absolute;
+        visibility: hidden;
+        background-color: #D77B1A;
+        border: none;
+        padding: 20px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 50px;
+        left:200px;
+        font-weight: bold;
+        top:450px;
+    }
 
+    .mcqBtnC{
+        position:absolute;
+        visibility: hidden;
+        background-color: #D77B1A;
+        border: none;
+        padding: 20px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 50px;
+        left:395px;
+        font-weight: bold;
+        top:450px;
+    }
+    .mcqBtnD{
+        position:absolute;
+        visibility: hidden;
+        background-color: #D77B1A;
+        border: none;
+        padding: 20px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 50px;
+        left:600px;
+        font-weight: bold;
+        top:450px;
+    }
     /* Style the links inside the navigation bar */
     .refresh{
         float:right;
