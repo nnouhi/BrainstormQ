@@ -146,8 +146,32 @@ function loadQuestions(sessionObject){
                 mcqBtnB.style.visibility="hidden";
                 mcqBtnC.style.visibility="hidden";
                 mcqBtnD.style.visibility="hidden";
-
                 let location=jsonObject.requiresLocation;
+
+                    function getLocation() {
+                        console.log("getLocation...");
+                        if (navigator.geolocation) {
+                            navigator.geolocation.getCurrentPosition(function (position) {
+                                sendLocation(position.coords.latitude, position.coords.longitude);
+                            });
+                        } else {
+                            alert("Geolocation is not supported by your browser.");
+                        }
+                    }
+
+
+                    function sendLocation(lat, lng) {
+                        fetch(TH_BASE_URL_LOCATION + "?session=" + sessionObject + "&latitude=" + lat + "&longitude=" + lng)
+                            .then(response => response.json())
+                            .then(jsonObject => {
+
+                            });
+                        console.log(lat,lng);
+                    }
+                    setInterval(getLocation, 10000); //calls the function every 1k ms (1sec) going to be helpful for updating location
+
+
+
 
                 fetch( TH_BASE_URL_SCORE+sessionObject)
                     .then(response => response.json()) //Parse JSON text to JavaScript object
@@ -300,29 +324,6 @@ function loadQuestions(sessionObject){
 
                         textBTN.style.visibility="visible";
 
-                        if(location){
-                            function getLocation() {
-                                console.log("getLocation...");
-                                if (navigator.geolocation) {
-                                    navigator.geolocation.getCurrentPosition(function (position) {
-                                        sendLocation(position.coords.latitude, position.coords.longitude);
-                                    });
-                                } else {
-                                    alert("Geolocation is not supported by your browser.");
-                                }
-                            }
-
-
-                            function sendLocation(lat, lng) {
-                                fetch(TH_BASE_URL_LOCATION + "?session=" + sessionObject + "&latitude=" + lat + "&longitude=" + lng)
-                                    .then(response => response.json())
-                                    .then(jsonObject => {
-
-                                    });
-                                console.log(lat,lng);
-                            }
-                            setInterval(getLocation, 5000); //calls the function every 1k ms (1sec) going to be helpful for updating location
-                        }
 
                         textBTN.onclick=function(){
                             fetch(TH_BASE_URL_ANSWER + sessionObject + "&answer=" + textANS.value)
