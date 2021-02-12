@@ -83,23 +83,23 @@
 
     /*app page Styling*/
 
-
-    .BrainstormHD{
-        position:relative;
-        font-size: 50px;
-        margin-top:0px;
-        margin-left:0px;
-        color: black;
-        float:left;
-        font-weight: bold;
+    .displayChallenges{
+        display:none;
+        position:absolute;
+        top:300px;
     }
+
 
     .intANS{
         position:absolute;
         font-size:50px;
         visibility:hidden;
         top:750px;
+        width: 40%;
         margin-left:300px;
+        border-radius: 12px;
+        border: 10px solid #D77B1A;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     }
 
     .numericANS{
@@ -115,7 +115,12 @@
         font-size:50px;
         visibility:hidden;
         top:750px;
-        left:100px;
+        width: 40%;
+        left:5px;
+        border-radius: 12px;
+        border: 10px solid #D77B1A;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+
     }
 
 
@@ -124,7 +129,7 @@
         position:relative;
         padding: 3% 10%;
         width: 100%;
-        height: 50px;
+        height: 100px;
         background: #D77B1A;
         margin-bottom:120px;
         margin-left:0px;
@@ -134,50 +139,62 @@
     .questionIndexContainer{
         position:absolute;
         display:none;
-        font-size: 40px;
-        left:350px;
+        left:400px;
         top:500px;
+    }
+
+    .questionIndexP{
+        font-size: 50px;
+        font-weight: bold;
     }
 
     .answer{
         display:block;
     }
 
-    .note{
-        visibility:hidden;
+    .messagesContainer{
+        display:inline-block;
         position:absolute;
         font-size:50px;
         font-weight:bold;
         margin-top:900px;
-        margin-left:400px;
+        margin-left:200px;
     }
 
-    .score{
+    .specificMessage{
         position:absolute;
-        visibility:hidden;
+        display: none;
+        top:500px;
+        white-space: nowrap;
+    }
+
+    .scoreContainer{
+        position:absolute;
+        display:none;
         font-size: 50px;
         margin-top:0px;
-        margin-left:0px;
+        margin-left:240px;
         color: black;
         float:left;
         font-weight: bold;
-        font-size:50px;
-        font-weight: bold;
+
     }
 
     .intBtn{
         position:relative;
         visibility: hidden;
-        background-color: #D77B1A;
-        border: none;
-        padding: 15px 32px;
         text-align: center;
         text-decoration: none;
         display: inline-block;
         font-size: 50px;
         margin-left:700px;
         font-weight: bold;
-        top:770px;
+        top:730px;
+        border-radius: 12px;
+        padding: 15px 32px;
+        border: 10px solid #D77B1A;
+        background-color: #D77B1A;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     }
     .numericBtn{
         position:absolute;
@@ -199,22 +216,23 @@
         position:absolute;
         visibility: hidden;
         background-color: #D77B1A;
-        border: none;
         padding: 15px 32px;
         text-align: center;
         text-decoration: none;
         display: inline-block;
         font-size: 50px;
-        left:550px;
+        left:510px;
         font-weight: bold;
-        top:950px;
+        top:1015px;
+        border-radius: 12px;
+        border: 10px solid #D77B1A;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     }
 
     .trueBtn{
         position:absolute;
         visibility: hidden;
         background-color: #D77B1A;
-        border: none;
         padding: 15px 32px;
         text-align: center;
         text-decoration: none;
@@ -223,6 +241,9 @@
         left:50px;
         font-weight: bold;
         top:870px;
+        border-radius: 12px;
+        border: 10px solid #D77B1A;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 
     }
 
@@ -230,7 +251,6 @@
         position:absolute;
         visibility: hidden;
         background-color: #D77B1A;
-        border: none;
         padding: 15px 32px;
         text-align: center;
         text-decoration: none;
@@ -239,92 +259,157 @@
         left:450px;
         font-weight: bold;
         top:870px;
+        border-radius: 12px;
+        border: 10px solid #D77B1A;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     }
 
+
+
     .skip {
-        float:right;
         position:absolute;
         background: none!important;
         visibility: hidden;
-        border: none;
-        padding: 0!important;
         color: black;
         font-size:50px;
         text-decoration: none;
         font-weight:bold;
-        margin-left:500px;
-        margin-top:0px;
+        left:200px;
+        top:2100px;
+        width:40%;
+        padding: 40px 50px;
+        border-radius: 12px;
+        border: 10px solid #D77B1A;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+        background-color: #D77B1A;
     }
     .mcqBtnA{
         position:absolute;
         visibility: hidden;
         background-color: #D77B1A;
-        border: none;
         padding: 20px 20px;
         text-align: center;
         text-decoration: none;
         display: inline-block;
         font-size: 50px;
-        left:5px;
+        left:25px;
         font-weight: bold;
         top:950px;
+        border-radius: 12px;
+        border: 10px solid #D77B1A;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     }
     .mcqBtnB{
         position:absolute;
         visibility: hidden;
         background-color: #D77B1A;
-        border: none;
         padding: 20px 20px;
         text-align: center;
         text-decoration: none;
         display: inline-block;
         font-size: 50px;
-        left:200px;
+        left:225px;
         font-weight: bold;
         top:950px;
+        border-radius: 12px;
+        border: 10px solid #D77B1A;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     }
 
     .mcqBtnC{
         position:absolute;
         visibility: hidden;
         background-color: #D77B1A;
-        border: none;
         padding: 20px 20px;
         text-align: center;
         text-decoration: none;
         display: inline-block;
         font-size: 50px;
-        left:395px;
+        left:420px;
         font-weight: bold;
         top:950px;
+        border-radius: 12px;
+        border: 10px solid #D77B1A;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     }
     .mcqBtnD{
         position:absolute;
         visibility: hidden;
         background-color: #D77B1A;
-        border: none;
         padding: 20px 20px;
         text-align: center;
         text-decoration: none;
         display: inline-block;
         font-size: 50px;
-        left:600px;
+        left:625px;
         font-weight: bold;
         top:950px;
+        border-radius: 12px;
+        border: 10px solid #D77B1A;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     }
     /* Style the links inside the navigation bar */
     .refresh{
         float:right;
         color: black;
+        display:none;
         padding: 5px 16px;
         text-decoration: none;
-        font-size: 40px;
         font-weight: bold;
         font-size:50px;
     }
 
+    .homeBtn {
+        position:absolute;
+        display:inline-block;
+        background-color: #D77B1A;
+        border-radius: 12px;
+        border: 10px solid #D77B1A;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+        color: black;
+        padding: 15px 32px;
+        font-weight: bold;
+        font-size:50px;
+        margin: 4px 2px;
+        cursor: pointer;
+        left:0px;
+        top:20px;
 
+    }
 
+    .restartBtn {
+        position:absolute;
+        display:inline-block;
+        background-color: #D77B1A;
+        color: black;
+        padding: 15px 32px;
+        font-weight: bold;
+        font-size:50px;
+        margin: 4px 2px;
+        cursor: pointer;
+        left:250px;
+        top:20px;
+        border-radius: 12px;
+        border: 10px solid #D77B1A;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    }
+
+    .infoBtn{
+        position:absolute;
+        display:inline-block;
+        background-color: #D77B1A;
+        color: black;
+        padding: 15px 32px;
+        font-weight: bold;
+        font-size:50px;
+        margin: 4px 2px;
+        cursor: pointer;
+        left:950px;
+        top:20px;
+        border-radius: 12px;
+        border: 10px solid #D77B1A;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    }
 
 
     .ChallengesHD
@@ -351,7 +436,7 @@
 
     li{
         position:relative;
-        margin-left:260px;
+        left:200px;
         padding-bottom: 60px;
     }
 
@@ -388,12 +473,18 @@
         background-color: lightblue;
     }
 
-    .loader{
-        font-size:2.5rem;
+    .displayQuestions{
         position:absolute;
         display:none;
         margin-left:300px;
         margin-top:500px;
+    }
+    .questionMessage{
+        position:relative;
+        font-size: 50px;
+        font-weight: bold;
+        display:inline;
+        text-align: center;
     }
 
     .heading{
@@ -438,9 +529,110 @@
         margin-left:400px;
         margin-top:20px;
     }
+
+    .leaderboardTable {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        position:absolute;
+        left:40px;
+    }
+
+    .leaderboardTable td,  .leaderboardTable  th {
+        border: 1px solid #ddd;
+        padding: 25px;
+        font-size:40px;
+    }
+
+    .leaderboardTable  tr:nth-child(even){
+        background-color: #f2f2f2;
+    }
+    .leaderboardTable th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #D77B1A;
+        color: black;
+
+    }
+
+    .tableContainer{
+        display:none;
+    }
+
+    .loading{
+        font-size:70px;
+        margin-left:450px;
+    }
+
+    .loadingQuestionsM{
+        font-size:70px;
+        margin-left:100px;
+    }
+
+    /*register page styling stars*/
+    .Tname {
+        position:relative;
+        width: 80%;
+        border-radius: 12px;
+        margin-left:70px;
+        padding:20px;
+        font-size: 50px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        margin-top: 100px;
+        margin-bottom: 16px;
+        resize: vertical;
+    }
+
+    input[type=submit] {
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+
+    }
+
+    input[type=submit]:hover {
+        background-color: #45a049;
+    }
+
+    .container {
+        position:absolute;
+        display:block;
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+        margin-top:800px;
+        left:150px;
+    }
+    .nameBtn{
+        display:inline-block;
+        font-size:50px;
+        margin-left:250px;
+        font-weight: bold;
+        border-radius: 12px;
+        padding: 15px 32px;
+        border: 10px solid #D77B1A;
+        background-color: #D77B1A;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    }
+
+    .HD{
+        position:absolute;
+        top:1000px;
+        display:inline-block;
+        margin-left:200px;
+        font-size:70px;
+    }
+
 }
 
-/*Media q for tablets*/
+
+
+
+    /*Media q for tablets*/
 @media (min-width: 992px)
 {
 
