@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="stylesheet.css">
 
+
 </head>
 <body onload="setInterval(getLocation, 30000);">
 
@@ -16,24 +17,32 @@
 <div class="topnav" id="topnav">
 
     <a href="javascript:getChallenges(this);" id="refresh" class="refresh">Refresh</a>
-    <p class="BrainstormHD" id="BrainstormHD">BrainstormQ</p>
-    <p class="score" id="score">Score: 0</p>
-    <button id="skip" class="skip" href="index.html" >SKIP</button>
+    <button id="homeBtn" class="homeBtn" onclick="window.location.href='index.html'" >Home</button>
+    <button id="restartBtn" class="restartBtn" onclick="window.location.href='app.html'" >Restart</button>
+    <button id="infoBtn" class="infoBtn" >Info</button>
+
 
 </div>
 
 <div class="questionIndexContainer" id="questionIndexContainer">
+    <p class="questionIndexP" id="questionIndexP"></p>
+</div>
 
+<div class="scoreContainer" id="scoreContainer">
+    <h4 class=""></h4>
 </div>
 
 
 <!-- Questions are displayed --->
-<div id="loader" class="loader">
-
+<div id="displayQuestions" class="displayQuestions">
+    <p class="questionMessage" id="questionMessage"></p>
+    <h3 class="loadingQuestionsM" id="loadingQuestionsM"></h3>
 </div>
 
 
-<p class="note" id="note">test</p>
+<div class="messagesContainer" id="messagesContainer">
+    <h4 id="specificMessage" class="specificMessage"></h4>
+</div>
 
 <div id="answer" class="answer" >
 
@@ -53,16 +62,22 @@
 
     <input type="number" id="numericANS" class="numericANS" step="0.5" required >
     <button type="submit" id="numericBtn" class="numericBtn">Submit</button>
+
+    <button id="skip" class="skip" >SKIP</button>
+</div>
+
+<h3 class="HD" id="NameHD">Enter your name below:</h3>
+
+<div class="container" id="Namecontainer">
+    <form action="javascript:checkName(this);">
+        <input type="text" id="Tname" name="name" class="Tname" placeholder="Your name.. "required>
+        <button type="submit" class="nameBtn" id="nameBtn">Submit</button>
+    </form>
 </div>
 
 
 
-
-
-
-
-
-<div id="hideAll">
+<div id="displayChallenges" class="displayChallenges">
     <h1 class="ChallengesHD">All challenges</h1>
 
     <div>
@@ -75,11 +90,28 @@
     <p class="ViewChallenges">View available Treasure Hunts below:</p>
 
     <div id="treasureHunts" >
-        Empty
+
     </div>
 
 </div>
 
+<div class="leaderboardContainer" id="leaderboardContainer">
+    <h3 class="loading" id="loading"></h3>
+    <div class="tableContainer" id="tableContainer">
+        <table class="leaderboardTable" id="leaderboardTable">
+            <tr>
+                <th>Name</th>
+                <th>Score</th>
+                <th>Complition time</th>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+<script>
+
+</script>
 
 <script src="th-api.js"></script>
 
