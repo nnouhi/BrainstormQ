@@ -1,4 +1,3 @@
-
 const TH_BASE_URL = "https://codecyprus.org/th/api/"; // the true API base url
 
 const TH_TEST_URL = "https://codecyprus.org/th/test-api/"; // the test API base url
@@ -105,26 +104,26 @@ async function select(uuid,nameOfGame,playerName) {
             let statusObject=jsonObject.status;
             let sessionObject=jsonObject.session;
 
-           if(statusObject==="ERROR") //if status isnt ok display the error message needs work no finished
-           {
-               let errorMessage = confirm (jsonObject.errorMessages[0])
-               if (errorMessage)
-                   window.location.href="app.html?restart";
-           }
+            if(statusObject==="ERROR") //if status isnt ok display the error message needs work no finished
+            {
+                let errorMessage = confirm (jsonObject.errorMessages[0])
+                if (errorMessage)
+                    window.location.href="app.html?restart";
+            }
 
-           else if(statusObject=="OK"){
+            else if(statusObject=="OK"){
 
-               checkError=false;
+                checkError=false;
 
-               /* if everything is okay show the question*/
+                /* if everything is okay show the question*/
 
-               saveCookie("sessionID", jsonObject.session);
-               saveCookie("playerNameCookie", playerName);
-               saveCookie("gameSaved", "true");
-               saveCookie("nameOfGame", nameOfGame);
-               loadQuestions(getCookie("sessionID"));
+                saveCookie("sessionID", jsonObject.session);
+                saveCookie("playerNameCookie", playerName);
+                saveCookie("gameSaved", "true");
+                saveCookie("nameOfGame", nameOfGame);
+                loadQuestions(getCookie("sessionID"));
 
-           }
+            }
         });
 }
 
@@ -151,218 +150,218 @@ function loadQuestions(sessionObject){
     mcqBtnD.style.visibility = "hidden";
 
     fetch(TH_BASE_URL_QUESTION+sessionObject)
-            .then(response => response.json()) //Parse JSON text to JavaScript object
-            .then(jsonObject => {
+        .then(response => response.json()) //Parse JSON text to JavaScript object
+        .then(jsonObject => {
 
-                if (jsonObject.status === "ERROR") {
-                    document.getElementById("specificMessage").innerHTML = jsonObject.errorMessages[0] + "<br>" + "<a href='app.html'> Click this Link to Start again</a>";
-                }
-                else {
-                    document.getElementById("loadingQuestionsM").innerHTML = "";
+            if (jsonObject.status === "ERROR") {
+                document.getElementById("specificMessage").innerHTML = jsonObject.errorMessages[0] + "<br>" + "<a href='app.html'> Click this Link to Start again</a>";
+            }
+            else {
+                document.getElementById("loadingQuestionsM").innerHTML = "";
 
-                    let location = jsonObject.requiresLocation;
+                let location = jsonObject.requiresLocation;
 
-                    let questions = jsonObject.questionText;
+                let questions = jsonObject.questionText;
 
-                    let currentQIndex = jsonObject.currentQuestionIndex;
+                let currentQIndex = jsonObject.currentQuestionIndex;
 
-                    let totalQuestions = jsonObject.numOfQuestions;
+                let totalQuestions = jsonObject.numOfQuestions;
 
-                    let passSession = sessionObject;
+                let passSession = sessionObject;
 
-                    let completed = jsonObject.completed;
+                let completed = jsonObject.completed;
 
-                    let skipped=jsonObject.canBeSkipped;
-
-
-                    if (completed) {
-                        intANS.style.visibility = "hidden";
-                        intBTN.style.visibility = "hidden";
+                let skipped=jsonObject.canBeSkipped;
 
 
-                        numericANS.visibility = "hidden";
-                        numericBTN.style.visibility = "hidden";
+                if (completed) {
+                    intANS.style.visibility = "hidden";
+                    intBTN.style.visibility = "hidden";
 
 
-                        trueBTN.style.visibility = "hidden";
-                        falseBTN.style.visibility = "hidden";
-
-                        textBTN.style.visibility = "hidden";
-                        textANS.style.visibility = "hidden";
+                    numericANS.visibility = "hidden";
+                    numericBTN.style.visibility = "hidden";
 
 
-                        mcqBtnA.style.visibility = "hidden";
-                        mcqBtnB.style.visibility = "hidden";
-                        mcqBtnC.style.visibility = "hidden";
-                        mcqBtnD.style.visibility = "hidden";
+                    trueBTN.style.visibility = "hidden";
+                    falseBTN.style.visibility = "hidden";
 
-                        document.getElementById("specificMessage").style.display = "none";
+                    textBTN.style.visibility = "hidden";
+                    textANS.style.visibility = "hidden";
 
-                        document.getElementById("questionMessage").innerHTML = "QUIZ FINISHED";
-                        setTimeout(function () {
-                            loadLeaderboard(getCookie("sessionId")), 5000
-                        });
 
+                    mcqBtnA.style.visibility = "hidden";
+                    mcqBtnB.style.visibility = "hidden";
+                    mcqBtnC.style.visibility = "hidden";
+                    mcqBtnD.style.visibility = "hidden";
+
+                    document.getElementById("specificMessage").style.display = "none";
+
+                    document.getElementById("questionMessage").innerHTML = "QUIZ FINISHED";
+                    setTimeout(function () {
+                        loadLeaderboard(getCookie("sessionId")), 5000
+                    });
+
+                } else {
+
+                    document.getElementById("questionMessage").innerHTML = questions;
+
+
+                    document.getElementById("homeBtn").style.display = "inline-block";
+
+                    document.getElementById("restartBtn").style.display = "inline-block";
+
+                    document.getElementById("specificMessage").style.display = "inline-block";
+
+                    document.getElementById("questionIndexContainer").style.display = "block";
+
+                    document.getElementById("questionIndexP").innerHTML = "Question "+ (jsonObject.currentQuestionIndex+1) + " / " + jsonObject.numOfQuestions;
+
+                    document.getElementById("scoreContainer").style.display = "block";
+
+                    let qType = jsonObject.questionType;
+
+                    if (location) {
+                        getLocation();
+                    }
+
+                    //If question can be skipped hide the skip button
+                    if (skipped) {
+                        document.getElementById("skip").style.visibility = "visible";
                     } else {
+                        document.getElementById("skip").style.visibility = "hidden";
+                    }
 
-                        document.getElementById("questionMessage").innerHTML = questions;
+                    console.log(qType);
+                    switch (qType) {
+                        case "INTEGER":
 
+                            intANS.style.visibility = "visible";
+                            intBTN.style.visibility = "visible";
 
-                        document.getElementById("homeBtn").style.display = "inline-block";
+                            numericANS.visibility = "hidden";
+                            numericBTN.style.visibility = "hidden";
 
-                        document.getElementById("restartBtn").style.display = "inline-block";
+                            trueBTN.style.visibility = "hidden";
+                            falseBTN.style.visibility = "hidden";
 
-                        document.getElementById("specificMessage").style.display = "inline-block";
-
-                        document.getElementById("questionIndexContainer").style.display = "block";
-
-                        document.getElementById("questionIndexP").innerHTML = "Question "+ (jsonObject.currentQuestionIndex+1) + " / " + jsonObject.numOfQuestions;
-
-                        document.getElementById("scoreContainer").style.display = "block";
-
-                        let qType = jsonObject.questionType;
-
-                        if (location) {
-                            getLocation();
-                        }
-
-                        //If question can be skipped hide the skip button
-                        if (skipped) {
-                            document.getElementById("skip").style.visibility = "visible";
-                        } else {
-                            document.getElementById("skip").style.visibility = "hidden";
-                        }
-
-                        console.log(qType);
-                        switch (qType) {
-                            case "INTEGER":
-
-                                intANS.style.visibility = "visible";
-                                intBTN.style.visibility = "visible";
-
-                                numericANS.visibility = "hidden";
-                                numericBTN.style.visibility = "hidden";
-
-                                trueBTN.style.visibility = "hidden";
-                                falseBTN.style.visibility = "hidden";
-
-                                textBTN.style.visibility = "hidden";
-                                textANS.style.visibility = "hidden";
+                            textBTN.style.visibility = "hidden";
+                            textANS.style.visibility = "hidden";
 
 
-                                mcqBtnA.style.visibility = "hidden";
-                                mcqBtnB.style.visibility = "hidden";
-                                mcqBtnC.style.visibility = "hidden";
-                                mcqBtnD.style.visibility = "hidden";
+                            mcqBtnA.style.visibility = "hidden";
+                            mcqBtnB.style.visibility = "hidden";
+                            mcqBtnC.style.visibility = "hidden";
+                            mcqBtnD.style.visibility = "hidden";
 
-                                break;
+                            break;
 
-                            case "BOOLEAN":
-                                trueBTN.style.visibility = "visible";
-                                falseBTN.style.visibility = "visible";
+                        case "BOOLEAN":
+                            trueBTN.style.visibility = "visible";
+                            falseBTN.style.visibility = "visible";
 
-                                intANS.style.visibility = "hidden";
-                                intBTN.style.visibility = "hidden";
+                            intANS.style.visibility = "hidden";
+                            intBTN.style.visibility = "hidden";
 
-                                numericANS.visibility = "hidden";
-                                numericBTN.style.visibility = "hidden";
+                            numericANS.visibility = "hidden";
+                            numericBTN.style.visibility = "hidden";
 
-                                textBTN.style.visibility = "hidden";
-                                textANS.style.visibility = "hidden";
+                            textBTN.style.visibility = "hidden";
+                            textANS.style.visibility = "hidden";
 
-                                mcqBtnA.style.visibility = "hidden";
-                                mcqBtnB.style.visibility = "hidden";
-                                mcqBtnC.style.visibility = "hidden";
-                                mcqBtnD.style.visibility = "hidden";
+                            mcqBtnA.style.visibility = "hidden";
+                            mcqBtnB.style.visibility = "hidden";
+                            mcqBtnC.style.visibility = "hidden";
+                            mcqBtnD.style.visibility = "hidden";
 
-                                break;
+                            break;
 
-                            case "TEXT":
-                                textANS.style.visibility = "visible";
-                                textBTN.style.visibility = "visible";
+                        case "TEXT":
+                            textANS.style.visibility = "visible";
+                            textBTN.style.visibility = "visible";
 
-                                intANS.style.visibility = "hidden";
-                                intBTN.style.visibility = "hidden";
+                            intANS.style.visibility = "hidden";
+                            intBTN.style.visibility = "hidden";
 
-                                numericANS.visibility = "hidden";
-                                numericBTN.style.visibility = "hidden";
+                            numericANS.visibility = "hidden";
+                            numericBTN.style.visibility = "hidden";
 
-                                trueBTN.style.visibility = "hidden";
-                                falseBTN.style.visibility = "hidden";
+                            trueBTN.style.visibility = "hidden";
+                            falseBTN.style.visibility = "hidden";
 
-                                mcqBtnA.style.visibility = "hidden";
-                                mcqBtnB.style.visibility = "hidden";
-                                mcqBtnC.style.visibility = "hidden";
-                                mcqBtnD.style.visibility = "hidden";
+                            mcqBtnA.style.visibility = "hidden";
+                            mcqBtnB.style.visibility = "hidden";
+                            mcqBtnC.style.visibility = "hidden";
+                            mcqBtnD.style.visibility = "hidden";
 
-                                break;
+                            break;
 
-                            case "MCQ":
-                                mcqBtnA.style.visibility = "visible";
-                                mcqBtnB.style.visibility = "visible";
-                                mcqBtnC.style.visibility = "visible";
-                                mcqBtnD.style.visibility = "visible";
+                        case "MCQ":
+                            mcqBtnA.style.visibility = "visible";
+                            mcqBtnB.style.visibility = "visible";
+                            mcqBtnC.style.visibility = "visible";
+                            mcqBtnD.style.visibility = "visible";
 
-                                intANS.style.visibility = "hidden";
-                                intBTN.style.visibility = "hidden";
+                            intANS.style.visibility = "hidden";
+                            intBTN.style.visibility = "hidden";
 
-                                numericANS.visibility = "hidden";
-                                numericBTN.style.visibility = "hidden";
+                            numericANS.visibility = "hidden";
+                            numericBTN.style.visibility = "hidden";
 
-                                trueBTN.style.visibility = "hidden";
-                                falseBTN.style.visibility = "hidden";
+                            trueBTN.style.visibility = "hidden";
+                            falseBTN.style.visibility = "hidden";
 
-                                textBTN.style.visibility = "hidden";
-                                textANS.style.visibility = "hidden";
+                            textBTN.style.visibility = "hidden";
+                            textANS.style.visibility = "hidden";
 
-                                break;
+                            break;
 
-                            case "NUMERIC":
-                                numericANS.style.visibility = "visible";
-                                numericBTN.style.visibility = "visible";
+                        case "NUMERIC":
+                            numericANS.style.visibility = "visible";
+                            numericBTN.style.visibility = "visible";
 
-                                intANS.style.visibility = "hidden";
-                                intBTN.style.visibility = "hidden";
+                            intANS.style.visibility = "hidden";
+                            intBTN.style.visibility = "hidden";
 
-                                trueBTN.style.visibility = "hidden";
-                                falseBTN.style.visibility = "hidden";
+                            trueBTN.style.visibility = "hidden";
+                            falseBTN.style.visibility = "hidden";
 
-                                textBTN.style.visibility = "hidden";
-                                textANS.style.visibility = "hidden";
+                            textBTN.style.visibility = "hidden";
+                            textANS.style.visibility = "hidden";
 
-                                mcqBtnA.style.visibility = "hidden";
-                                mcqBtnB.style.visibility = "hidden";
-                                mcqBtnC.style.visibility = "hidden";
-                                mcqBtnD.style.visibility = "hidden";
+                            mcqBtnA.style.visibility = "hidden";
+                            mcqBtnB.style.visibility = "hidden";
+                            mcqBtnC.style.visibility = "hidden";
+                            mcqBtnD.style.visibility = "hidden";
 
-                                break;
+                            break;
 
-                            default:
-                                intANS.style.visibility = "hidden";
-                                intBTN.style.visibility = "hidden";
-                                intANS.value = "";
+                        default:
+                            intANS.style.visibility = "hidden";
+                            intBTN.style.visibility = "hidden";
+                            intANS.value = "";
 
-                                numericANS.visibility = "hidden";
-                                numericBTN.style.visibility = "hidden";
-                                numericANS.value = "";
+                            numericANS.visibility = "hidden";
+                            numericBTN.style.visibility = "hidden";
+                            numericANS.value = "";
 
-                                trueBTN.style.visibility = "hidden";
-                                falseBTN.style.visibility = "hidden";
+                            trueBTN.style.visibility = "hidden";
+                            falseBTN.style.visibility = "hidden";
 
-                                textBTN.style.visibility = "hidden";
-                                textANS.style.visibility = "hidden";
-                                textANS.value = "";
+                            textBTN.style.visibility = "hidden";
+                            textANS.style.visibility = "hidden";
+                            textANS.value = "";
 
-                                mcqBtnA.style.visibility = "hidden";
-                                mcqBtnB.style.visibility = "hidden";
-                                mcqBtnC.style.visibility = "hidden";
-                                mcqBtnD.style.visibility = "hidden";
-
-                        }
+                            mcqBtnA.style.visibility = "hidden";
+                            mcqBtnB.style.visibility = "hidden";
+                            mcqBtnC.style.visibility = "hidden";
+                            mcqBtnD.style.visibility = "hidden";
 
                     }
+
                 }
-            });
+            }
+        });
 
 }
 
@@ -373,12 +372,12 @@ function loadQuestions(sessionObject){
 function hideChallenges(){
 
 
-  /*Makes score visible*/
+    /*Makes score visible*/
     let score=document.getElementById("scoreContainer");
     score.style.display="block";
 
 
-  /*Makes refresh hidden*/
+    /*Makes refresh hidden*/
     let refresh=document.getElementById("refresh");
     refresh.style.visibility='hidden';
 
@@ -464,16 +463,16 @@ function loadLeaderboard(sessionObject){
             const leaderboardArray=jsonObject.leaderboard;
 
             for(let i=0; i<leaderboardArray.length;i++){
-              const entry = leaderboardArray[i];
-              const playerName=entry.player;
-              const score = entry.score;
-              const completionTime = entry.completionTime;
+                const entry = leaderboardArray[i];
+                const playerName=entry.player;
+                const score = entry.score;
+                const completionTime = entry.completionTime;
 
-              tableContents+=  "<tr>\n" +
-                               "    <td>" + playerName + "</td>" +
-                               "    <td>" + score + "</td>" +
-                               "    <td>" + completionTime + "</td>" +
-                               "</tr>";
+                tableContents+=  "<tr>\n" +
+                    "    <td>" + playerName + "</td>" +
+                    "    <td>" + score + "</td>" +
+                    "    <td>" + completionTime + "</td>" +
+                    "</tr>";
             }
             document.getElementById("leaderboardTable").innerHTML+=tableContents;
         });
@@ -497,8 +496,8 @@ function checkName() {
 
 function continueSession(){
     let continueGame = confirm ("It seems like you were playing " +getCookie("nameOfGame") +" with the name "+"'"+getCookie("playerNameCookie")
-    +"'"+"\nClick OK to continue where you left off or " +
-    "\nCancel to start a new session.")
+        +"'"+"\nClick OK to continue where you left off or " +
+        "\nCancel to start a new session.")
 
     if (continueGame) {
         //go to continued session
@@ -569,12 +568,4 @@ function checkSkipped(){
 
         });
 }
-
-
-
-
-
-
-
-
 
