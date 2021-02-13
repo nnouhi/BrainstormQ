@@ -131,43 +131,36 @@ async function select(uuid,nameOfGame,playerName) {
 
 function loadQuestions(sessionObject){
 
+    intANS.style.visibility = "hidden";
+    intBTN.style.visibility = "hidden";
+    intANS.value = "";
 
-    fetch(TH_BASE_URL_QUESTION+getCookie("sessionID"))
+    numericANS.visibility = "hidden";
+    numericBTN.style.visibility = "hidden";
+    numericANS.value = "";
+
+    trueBTN.style.visibility = "hidden";
+    falseBTN.style.visibility = "hidden";
+
+    textBTN.style.visibility = "hidden";
+    textANS.style.visibility = "hidden";
+
+    mcqBtnA.style.visibility = "hidden";
+    mcqBtnB.style.visibility = "hidden";
+    mcqBtnC.style.visibility = "hidden";
+    mcqBtnD.style.visibility = "hidden";
+
+    fetch(TH_BASE_URL_QUESTION+sessionObject)
             .then(response => response.json()) //Parse JSON text to JavaScript object
             .then(jsonObject => {
 
                 if (jsonObject.status === "ERROR") {
-                    document.getElementById("specificMessage").innerHTML = jsonObject.errorMessages[0] + "<br>" + "<a href='app.html?restart'> Click this Link to Start again</a>";
+                    document.getElementById("specificMessage").innerHTML = jsonObject.errorMessages[0] + "<br>" + "<a href='app.html'> Click this Link to Start again</a>";
                 }
                 else {
                     document.getElementById("loadingQuestionsM").innerHTML = "";
 
-                    intANS.style.visibility = "hidden";
-                    intBTN.style.visibility = "hidden";
-                    intANS.value = "";
-
-                    numericANS.visibility = "hidden";
-                    numericBTN.style.visibility = "hidden";
-                    numericANS.value = "";
-
-                    trueBTN.style.visibility = "hidden";
-                    falseBTN.style.visibility = "hidden";
-
-                    textBTN.style.visibility = "hidden";
-                    textANS.style.visibility = "hidden";
-                    textANS.value = "";
-
-                    mcqBtnA.style.visibility = "hidden";
-                    mcqBtnB.style.visibility = "hidden";
-                    mcqBtnC.style.visibility = "hidden";
-                    mcqBtnD.style.visibility = "hidden";
-
-
-
-
                     let location = jsonObject.requiresLocation;
-
-                    let skipped = jsonObject.canBeSkipped;
 
                     let questions = jsonObject.questionText;
 
@@ -179,11 +172,8 @@ function loadQuestions(sessionObject){
 
                     let completed = jsonObject.completed;
 
-                    let correctScore = jsonObject.correctScore;
+                    let skipped=jsonObject.canBeSkipped;
 
-                    let wrongScore = jsonObject.wrongScore;
-
-                    let skipScore = jsonObject.skipScore;
 
                     if (completed) {
                         intANS.style.visibility = "hidden";
@@ -230,26 +220,7 @@ function loadQuestions(sessionObject){
 
                         document.getElementById("scoreContainer").style.display = "block";
 
-                        skip.style.visibility='visible';
-
                         let qType = jsonObject.questionType;
-
-                        /* skips the current question if possible*/
-
-
-                        skip.onclick = function () {
-                            fetch(TH_BASE_URL_SKIP + getCookie("sessionID"))
-                                .then(response => response.json()) //Parse JSON text to JavaScript object
-                                .then(jsonObject => {
-                                    if (jsonObject.status === "OK") {
-
-                                        document.getElementById("specificMessage").style.display = "inline-block";
-                                        document.getElementById("specificMessage").innerText = jsonObject.message + " You Lost: " + skipScore;
-                                        updateScore(getCookie("sessionID"));
-                                        loadQuestions(sessionObject);
-                                    }
-                                });
-                        };
 
                         if (location) {
                             getLocation();
@@ -267,165 +238,63 @@ function loadQuestions(sessionObject){
                             case "INTEGER":
 
                                 intANS.style.visibility = "visible";
-
                                 intBTN.style.visibility = "visible";
 
-                                intBTN.onclick = function () {
-                                    fetch(TH_BASE_URL_ANSWER + getCookie("sessionID") + "&answer=" + intANS.value)
-                                        .then(response => response.json()) //Parse JSON text to JavaScript object
-                                        .then(jsonObject => {
+                                numericANS.visibility = "hidden";
+                                numericBTN.style.visibility = "hidden";
 
-                                            if (jsonObject.status === "ERROR") {
-                                                document.getElementById("specificMessage").innerHTML= jsonObject.errorMessages[0] + "<br>" + "<a href='index.html?restart'> Click this Link to Start again</a>";
+                                trueBTN.style.visibility = "hidden";
+                                falseBTN.style.visibility = "hidden";
 
-                                            }
-                                            else {
-                                                let answer = jsonObject.correct;
-                                                let Message = jsonObject.message;
-
-                                                console.log(answer);//dont forget to delete, used for testing the output only!
-
-                                                if (answer === true) {
-
-                                                    document.getElementById("specificMessage").style.display = "inline-block";
-                                                    document.getElementById("specificMessage").innerText = Message + ": You have gained " + correctScore + " points.";
+                                textBTN.style.visibility = "hidden";
+                                textANS.style.visibility = "hidden";
 
 
-                                                    intBTN.style.visibility = "hidden";
-                                                    intANS.style.visibility = "hidden";
-                                                    updateScore(getCookie("sessionID"));
-                                                    loadQuestions(sessionObject); //calls function again to load next question
+                                mcqBtnA.style.visibility = "hidden";
+                                mcqBtnB.style.visibility = "hidden";
+                                mcqBtnC.style.visibility = "hidden";
+                                mcqBtnD.style.visibility = "hidden";
 
-                                                }
-                                                //if input is false reset the value inside the element
-                                                else {
-                                                    document.getElementById("specificMessage").style.display = "inline-block";
-                                                    document.getElementById("specificMessage").innerText = Message + ": You lost " + wrongScore + " points.";
-                                                    intANS.value = "";
-                                                    updateScore(getCookie("sessionID"));
-                                                }
-                                            }
-                                        });
-
-
-                                }
                                 break;
 
                             case "BOOLEAN":
                                 trueBTN.style.visibility = "visible";
                                 falseBTN.style.visibility = "visible";
 
-                                trueBTN.onclick = function () {
-                                    fetch(TH_BASE_URL_ANSWER + getCookie("sessionID") + "&answer=" + trueBTN.value)
-                                        .then(response => response.json()) //Parse JSON text to JavaScript object
-                                        .then(jsonObject => {
+                                intANS.style.visibility = "hidden";
+                                intBTN.style.visibility = "hidden";
 
-                                            if (jsonObject.status === "ERROR") {
-                                                document.getElementById("specificMessage").innerHTML= jsonObject.errorMessages[0] + "<br>" + "<a href='index.html?restart'> Click this Link to Start again</a>";
+                                numericANS.visibility = "hidden";
+                                numericBTN.style.visibility = "hidden";
 
-                                            }
-                                            else {
-                                                let answer = jsonObject.correct;
-                                                let Message = jsonObject.message;
+                                textBTN.style.visibility = "hidden";
+                                textANS.style.visibility = "hidden";
 
-                                                console.log(answer);//dont forget to delete, used for testing the output only!
+                                mcqBtnA.style.visibility = "hidden";
+                                mcqBtnB.style.visibility = "hidden";
+                                mcqBtnC.style.visibility = "hidden";
+                                mcqBtnD.style.visibility = "hidden";
 
-                                                if (answer === true) {
-
-                                                    document.getElementById("specificMessage").style.display = "inline-block";
-                                                    document.getElementById("specificMessage").innerText = Message + ": You have gained " + correctScore + " points.";
-
-                                                    trueBTN.style.visibility = "hidden";
-                                                    falseBTN.style.visibility = "hidden";
-                                                    updateScore(getCookie("sessionID"));
-                                                    loadQuestions(sessionObject); //calls function again to load next question
-                                                } else {
-
-                                                    document.getElementById("specificMessage").style.display = "inline-block";
-                                                    document.getElementById("specificMessage").innerText = Message + ": You lost " + wrongScore + " points.";
-                                                    updateScore(getCookie("sessionID"));
-                                                }
-                                            }
-                                        });
-                                }
-
-                                falseBTN.onclick = function () {
-                                    fetch(TH_BASE_URL_ANSWER + getCookie("sessionID") + "&answer=" + falseBTN.value)
-                                        .then(response => response.json()) //Parse JSON text to JavaScript object
-                                        .then(jsonObject => {
-
-                                            if (jsonObject.status === "ERROR") {
-                                                document.getElementById("specificMessage").innerHTML= jsonObject.errorMessages[0] + "<br>" + "<a href='index.html?restart'> Click this Link to Start again</a>";
-
-                                            }
-                                            else {
-                                                let answer = jsonObject.correct;
-                                                let Message = jsonObject.message;
-
-                                                console.log(answer);//dont forget to delete, used for testing the output only!
-
-                                                if (answer === true) {
-
-                                                    document.getElementById("specificMessage").style.display = "inline-block";
-                                                    document.getElementById("specificMessage").innerText = Message + ": You have gained " + correctScore + " points.";
-
-                                                    trueBTN.style.visibility = "hidden";
-                                                    falseBTN.style.visibility = "hidden";
-                                                    updateScore(getCookie("sessionID"));
-                                                    loadQuestions(sessionObject); //calls function again to load next question
-                                                } else {
-
-                                                    document.getElementById("specificMessage").style.display = "inline-block";
-                                                    document.getElementById("specificMessage").innerText = Message + ": You lost " + wrongScore + " points.";
-                                                    updateScore(getCookie("sessionID"));
-                                                }
-                                            }
-                                        });
-                                }
                                 break;
 
                             case "TEXT":
                                 textANS.style.visibility = "visible";
-
                                 textBTN.style.visibility = "visible";
 
-                                textBTN.onclick = function () {
-                                    fetch(TH_BASE_URL_ANSWER + getCookie("sessionID") + "&answer=" + textANS.value)
-                                        .then(response => response.json()) //Parse JSON text to JavaScript object
-                                        .then(jsonObject => {
+                                intANS.style.visibility = "hidden";
+                                intBTN.style.visibility = "hidden";
 
-                                            if (jsonObject.status === "ERROR") {
-                                                document.getElementById("specificMessage").innerHTML= jsonObject.errorMessages[0] + "<br>" + "<a href='index.html?restart'> Click this Link to Start again</a>";
+                                numericANS.visibility = "hidden";
+                                numericBTN.style.visibility = "hidden";
 
-                                            }
-                                            else {
-                                                let answer = jsonObject.correct;
-                                                let Message = jsonObject.message;
+                                trueBTN.style.visibility = "hidden";
+                                falseBTN.style.visibility = "hidden";
 
+                                mcqBtnA.style.visibility = "hidden";
+                                mcqBtnB.style.visibility = "hidden";
+                                mcqBtnC.style.visibility = "hidden";
+                                mcqBtnD.style.visibility = "hidden";
 
-                                                if (answer === true) {
-
-                                                    document.getElementById("specificMessage").style.display = "inline-block";
-                                                    document.getElementById("specificMessage").innerText = Message + ": You have gained " + correctScore + " points.";
-
-
-                                                    textBTN.style.visibility = "hidden";
-                                                    textANS.style.visibility = "hidden";
-
-                                                    updateScore(getCookie("sessionID"));
-                                                    loadQuestions(sessionObject); //calls function again to load next question
-
-                                                }
-                                                //if input is false reset the value inside the element
-                                                else {
-                                                    document.getElementById("specificMessage").style.display = "inline-block";
-                                                    document.getElementById("specificMessage").innerText = Message + ": You lost " + wrongScore + " points.";
-                                                    textANS.value = "";
-                                                    updateScore(getCookie("sessionID"));
-                                                }
-                                            }
-                                        });
-                                }
                                 break;
 
                             case "MCQ":
@@ -434,189 +303,40 @@ function loadQuestions(sessionObject){
                                 mcqBtnC.style.visibility = "visible";
                                 mcqBtnD.style.visibility = "visible";
 
-                                mcqBtnA.onclick = function () {
-                                    fetch(TH_BASE_URL_ANSWER + getCookie("sessionID") + "&answer=" + mcqBtnA.value)
-                                        .then(response => response.json()) //Parse JSON text to JavaScript object
-                                        .then(jsonObject => {
+                                intANS.style.visibility = "hidden";
+                                intBTN.style.visibility = "hidden";
 
-                                            if (jsonObject.status === "ERROR") {
-                                                document.getElementById("specificMessage").innerHTML= jsonObject.errorMessages[0] + "<br>" + "<a href='index.html?restart'> Click this Link to Start again</a>";
+                                numericANS.visibility = "hidden";
+                                numericBTN.style.visibility = "hidden";
 
-                                            }
-                                            else {
-                                                let answer = jsonObject.correct;
-                                                let Message = jsonObject.message;
+                                trueBTN.style.visibility = "hidden";
+                                falseBTN.style.visibility = "hidden";
 
-                                                console.log(answer);//dont forget to delete, used for testing the output only!
-
-                                                if (answer === true) {
-
-                                                    document.getElementById("specificMessage").style.display = "inline-block";
-                                                    document.getElementById("specificMessage").innerText = Message + ": You have gained " + correctScore + " points.";
-
-
-                                                    mcqBtnA.style.visibility = "hidden";
-                                                    updateScore(getCookie("sessionID"));
-                                                    loadQuestions(getCookie("sessionID")); //calls function again to load next question
-
-                                                }
-                                                //if input is false reset the value inside the element
-                                                else {
-                                                    document.getElementById("specificMessage").style.display = "inline-block";
-                                                    document.getElementById("specificMessage").innerText = Message + ": You lost " + wrongScore + " points.";
-                                                    updateScore(getCookie("sessionID"));
-                                                }
-                                            }
-                                        });
-                                }
-
-                                mcqBtnB.onclick = function () {
-                                    fetch(TH_BASE_URL_ANSWER + getCookie("sessionID") + "&answer=" + mcqBtnB.value)
-                                        .then(response => response.json()) //Parse JSON text to JavaScript object
-                                        .then(jsonObject => {
-                                            if (jsonObject.status === "ERROR") {
-                                                document.getElementById("specificMessage").innerHTML= jsonObject.errorMessages[0] + "<br>" + "<a href='index.html?restart'> Click this Link to Start again</a>";
-
-                                            }
-                                            else {
-                                                let answer = jsonObject.correct;
-                                                let Message = jsonObject.message;
-
-                                                console.log(answer);//dont forget to delete, used for testing the output only!
-
-                                                if (answer === true) {
-
-                                                    document.getElementById("specificMessage").style.display = "inline-block";
-                                                    document.getElementById("specificMessage").innerText = Message + ": You have gained " + correctScore + " points.";
-
-
-                                                    mcqBtnB.style.visibility = "hidden";
-                                                    updateScore(getCookie("sessionID"));
-                                                    loadQuestions(getCookie("sessionID")); //calls function again to load next question
-
-                                                }
-                                                //if input is false reset the value inside the element
-                                                else {
-                                                    document.getElementById("specificMessage").style.display = "inline-block";
-                                                    document.getElementById("specificMessage").innerText = Message + ": You lost " + wrongScore + " points.";
-                                                    updateScore(getCookie("sessionID"));
-                                                }
-                                            }
-                                        });
-                                }
-
-                                mcqBtnC.onclick = function () {
-                                    fetch(TH_BASE_URL_ANSWER + sessionObject + "&answer=" + mcqBtnC.value)
-                                        .then(response => response.json()) //Parse JSON text to JavaScript object
-                                        .then(jsonObject => {
-                                            if (jsonObject.status === "ERROR") {
-                                                document.getElementById("specificMessage").innerHTML= jsonObject.errorMessages[0] + "<br>" + "<a href='index.html?restart'> Click this Link to Start again</a>";
-
-                                            }
-                                            else {
-                                                let answer = jsonObject.correct;
-                                                let Message = jsonObject.message;
-
-                                                console.log(answer);//dont forget to delete, used for testing the output only!
-
-                                                if (answer === true) {
-
-                                                    document.getElementById("specificMessage").style.display = "inline-block";
-                                                    document.getElementById("specificMessage").innerText = Message + ": You have gained " + correctScore + " points.";
-                                                    mcqBtnC.style.visibility = "hidden";
-                                                    updateScore(getCookie("sessionID"));
-                                                    loadQuestions(getCookie("sessionID")); //calls function again to load next question
-
-                                                }
-                                                //if input is false reset the value inside the element
-                                                else {
-                                                    document.getElementById("specificMessage").style.display = "inline-block";
-                                                    document.getElementById("specificMessage").innerText = Message + ": You lost " + wrongScore + " points.";
-                                                    updateScore(getCookie("sessionID"));
-                                                }
-                                            }
-                                        });
-                                }
-
-                                mcqBtnD.onclick = function () {
-                                    fetch(TH_BASE_URL_ANSWER + getCookie("sessionID") + "&answer=" + mcqBtnD.value)
-                                        .then(response => response.json()) //Parse JSON text to JavaScript object
-                                        .then(jsonObject => {
-                                            if (jsonObject.status === "ERROR") {
-                                                document.getElementById("specificMessage").innerHTML= jsonObject.errorMessages[0] + "<br>" + "<a href='index.html?restart'> Click this Link to Start again</a>";
-
-                                            }
-                                            else {
-                                                let answer = jsonObject.correct;
-                                                let Message = jsonObject.message;
-
-                                                console.log(answer);//dont forget to delete, used for testing the output only!
-
-                                                if (answer === true) {
-
-                                                    document.getElementById("specificMessage").style.display = "inline-block";
-                                                    document.getElementById("specificMessage").innerText = Message + ": You have gained " + correctScore + " points.";
-
-
-                                                    mcqBtnD.style.visibility = "hidden";
-                                                    updateScore(getCookie("sessionID"));
-                                                    loadQuestions(getCookie("sessionID")); //calls function again to load next question
-
-                                                }
-                                                //if input is false reset the value inside the element
-                                                else {
-                                                    document.getElementById("specificMessage").style.display = "inline-block";
-                                                    document.getElementById("specificMessage").innerText = Message + ": You lost " + wrongScore + " points.";
-                                                    updateScore(getCookie("sessionID"));
-                                                }
-                                            }
-                                        });
-                                }
+                                textBTN.style.visibility = "hidden";
+                                textANS.style.visibility = "hidden";
 
                                 break;
+
                             case "NUMERIC":
                                 numericANS.style.visibility = "visible";
-
                                 numericBTN.style.visibility = "visible";
 
-                                numericBTN.onclick = function () {
-                                    fetch(TH_BASE_URL_ANSWER + getCookie("sessionID") + "&answer=" + intANS.value)
-                                        .then(response => response.json()) //Parse JSON text to JavaScript object
-                                        .then(jsonObject => {
-                                            if (jsonObject.status === "ERROR") {
-                                                document.getElementById("specificMessage").innerHTML= jsonObject.errorMessages[0] + "<br>" + "<a href='index.html?restart'> Click this Link to Start again</a>";
+                                intANS.style.visibility = "hidden";
+                                intBTN.style.visibility = "hidden";
 
-                                            }
-                                            else {
+                                trueBTN.style.visibility = "hidden";
+                                falseBTN.style.visibility = "hidden";
 
-                                                let answer = jsonObject.correct;
-                                                let Message = jsonObject.message;
+                                textBTN.style.visibility = "hidden";
+                                textANS.style.visibility = "hidden";
 
-                                                console.log(answer);//dont forget to delete, used for testing the output only!
+                                mcqBtnA.style.visibility = "hidden";
+                                mcqBtnB.style.visibility = "hidden";
+                                mcqBtnC.style.visibility = "hidden";
+                                mcqBtnD.style.visibility = "hidden";
 
-                                                if (answer === true) {
-
-                                                    document.getElementById("specificMessage").style.display = "inline-block";
-                                                    document.getElementById("specificMessage").innerText = Message + ": You have gained " + correctScore + " points.";
-
-                                                    intBTN.style.visibility = "hidden";
-                                                    intANS.style.visibility = "hidden";
-                                                    updateScore(getCookie("sessionID"));
-                                                    loadQuestions(sessionObject); //calls function again to load next question
-
-                                                }
-                                                //if input is false reset the value inside the element
-                                                else {
-                                                    document.getElementById("specificMessage").style.display = "inline-block";
-                                                    document.getElementById("specificMessage").innerText = Message + ": You lost " + wrongScore + " points.";
-                                                    intANS.value = "";
-                                                    updateScore(getCookie("sessionID"));
-                                                }
-                                            }
-                                        });
-
-                                }
                                 break;
+
                             default:
                                 intANS.style.visibility = "hidden";
                                 intBTN.style.visibility = "hidden";
@@ -789,6 +509,65 @@ function continueSession(){
         document.cookie = "gameSaved=; expires=Thu, 02 April 2000 00:00:00 UTC;";
         window.location.href="app.html"
     }
+}
+
+function checkInt(){
+    let ans=document.getElementById("intANS").value;
+    console.log("Test1");
+    checkAnswers(ans);
+}
+
+function checkText(){
+    let ans=document.getElementById("textANS").value;
+
+    checkAnswers(ans);
+}
+
+function checkNum(){
+    let ans=document.getElementById("numericANS").value;
+    checkAnswers(ans);
+}
+
+function checkAnswers(ans){
+    intANS.value = "";
+    numericANS.value = "";
+    textANS.value = "";
+
+    fetch(TH_BASE_URL_ANSWER + getCookie("sessionID") + "&answer=" + ans)
+        .then(response => response.json()) //Parse JSON text to JavaScript object
+        .then(jsonObject => {
+            console.log("Test2");
+            if (jsonObject.status === "ERROR") {
+                document.getElementById("specificMessage").innerHTML = jsonObject.errorMessages[0] + "<br>" + "<a href='app.html'> Click this Link to Start again</a>";
+
+            }
+            else if(jsonObject.status==="OK" && jsonObject.correct === true){
+                document.getElementById("specificMessage").style.display = "inline-block";
+                document.getElementById("specificMessage").innerText = jsonObject.message + ": You have gained " + jsonObject.scoreAdjustment + " points.";
+                updateScore(getCookie("sessionID"));
+                loadQuestions(getCookie("sessionID"))
+            }
+            else if(jsonObject.status ==="OK" && jsonObject.correct  === false){
+                document.getElementById("specificMessage").style.display = "inline-block";
+                document.getElementById("specificMessage").innerText = jsonObject.message + ": You have lost " + jsonObject.scoreAdjustment + " points.";
+                updateScore(getCookie("sessionID"));
+            }
+        })
+}
+
+function checkSkipped(){
+    fetch(TH_BASE_URL_SKIP + getCookie("sessionID"))
+        .then(response => response.json()) //Parse JSON text to JavaScript object
+        .then(jsonObject => {
+            if (jsonObject.status === "OK") {
+
+                document.getElementById("specificMessage").style.display = "inline-block";
+                document.getElementById("specificMessage").innerText = jsonObject.message + " You Lost: " + jsonObject.scoreAdjustment;
+                updateScore(getCookie("sessionID"));
+                loadQuestions(getCookie("sessionID"))
+            }
+
+        });
 }
 
 
