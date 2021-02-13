@@ -416,10 +416,9 @@ function getCookie(cookieName) {
     return "";
 }
 
-function saveCookie(cookieName, cookieValue) {
+function saveCookie(cookieName, cookieValue,cookieLifespan) {
     let date = new Date();
-    var expireHours = 30;
-    date.setTime(date.getTime() + (expireHours * 60 * 60 * 1000));
+    date.setTime(date.getTime() + (cookieLifespan * 60 * 60 * 1000));
     let expires = "expires=" + date.toUTCString();
     document.cookie = cookieName + "=" + cookieValue + ";" + expires;
 }

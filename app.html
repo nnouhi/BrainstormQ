@@ -7,6 +7,11 @@
 
     <link rel="stylesheet" href="stylesheet.css">
 
+    <script src="th-api.js"></script>
+
+    <script defer src="instascan.min.js"></script>
+
+    <script defer src="extraFeatures.js"></script>
 
 </head>
 <body onload="setInterval(getLocation, 30000);">
@@ -19,8 +24,55 @@
     <a href="javascript:getChallenges(this);" id="refresh" class="refresh">Refresh</a>
     <button id="homeBtn" class="homeBtn" onclick="window.location.href='index.html'" >Home</button>
     <button id="restartBtn" class="restartBtn" onclick="window.location.href='app.html'" >Restart</button>
+    <!-- Trigger/Open The Modal -->
     <button id="infoBtn" class="infoBtn" >Info</button>
 
+</div>
+
+
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p style="color:darksalmon">Enter your name and get started with the questions!</p>
+        <ul class="pointsModal">
+
+            <li>If your answer is <span style="color: green">correct</span> you are rewarded with 10 points.</li>
+            <li>If your answer is <span style="color:red"> wrong </span>you lose  3 points.</li>
+            <li>If you <span style="color:red">skip</span> a question you lose 5 points.</li>
+
+        </ul>
+
+        <p style="color:darksalmon">When the quiz is over you will be directed to the leaderboards.</p>
+    </div>
+
+</div>
+
+<div style="display: none; text-align: center" id="tgCamera">
+
+    <!-- the camera view will be display here / have to add styling-->
+
+    <video id="preview" ></video>
+
+</div>
+
+<div id="qrContainer">
+
+    <div class="resultContainer">
+        <span style="font-size: 18px" id="content">Scan Result</span>
+    </div>
+
+    <div class="btnsContainer">
+        <button class="toggleCamera" onclick="activateCamera()" type="submit">Toggle</button>
+                            <!-- TODO add clickboard -->
+    </div>
+
+    <div class="switchCamera">
+        <button class="switchCamera" onclick="switchCamera()" type="submit">Switch Camera</button>
+    </div>
 
 </div>
 
@@ -109,11 +161,9 @@
 
 </div>
 
-<script>
 
-</script>
 
-<script src="th-api.js"></script>
+
 
 </body>
 </html>
