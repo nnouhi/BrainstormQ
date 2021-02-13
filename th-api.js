@@ -38,6 +38,7 @@ const skip=document.getElementById("skip");
 //REMINDER NEED TO ADD COOKIES AND GEOLOCATION//
 
 //display all the available hunts
+// -> /list api
 function getChallenges()
 {
     /*After the player inputs their name Hide the log in "container" and display the challenges */
@@ -63,7 +64,7 @@ function getChallenges()
                     "<li>" +
                     "<b>" + treasureHuntsArray[i].name + "</b><br/>" + // the treasure hunt name is shown in bold...
                     "<i>" + treasureHuntsArray[i].description + "</i><br/>" + // and the description in italics in the following line
-                    "<a href=\"javascript:select(\'" + treasureHuntsArray[i].uuid + " ','" +treasureHuntsArray[i].name +"','" + playerName + "')\">Start</a>" + // and the description in italics in the following line
+                    "<a href=\"javascript:select(\'" + treasureHuntsArray[i].uuid + " ','" +treasureHuntsArray[i].name +"','" + playerName + "','" +treasureHuntsArray[i].maxDuration+"')\">Start</a>" + // and the description in italics in the following line
                     "</li>";
             }
             listHtml += "</ul>";
@@ -74,14 +75,12 @@ function getChallenges()
 }
 
 
-async function select(uuid,nameOfGame,playerName) {
+async function select(uuid,nameOfGame,playerName,cookieLifeSpan) {
     // For now just print the selected treasure hunt's UUID. Normally, you're expected to guide the user in entering
     // their name etc. and proceed to calling the '/start' command of the API to start a new session.
 
-    let checkError=false;
 
     hideChallenges();
-
 
     let url1='https://codecyprus.org/th/api/start?player='+playerName; //concatenation of the string with teams name
 
@@ -95,7 +94,6 @@ async function select(uuid,nameOfGame,playerName) {
     document.getElementById("loadingQuestionsM").innerHTML="Loading..."
 
 
-
     fetch(url)
         .then(response => response.json()) //Parse JSON text to JavaScript object
         .then(jsonObject => {
@@ -104,31 +102,34 @@ async function select(uuid,nameOfGame,playerName) {
             let statusObject=jsonObject.status;
             let sessionObject=jsonObject.session;
 
-            if(statusObject==="ERROR") //if status isnt ok display the error message needs work no finished
-            {
-                let errorMessage = confirm (jsonObject.errorMessages[0])
-                if (errorMessage)
-                    window.location.href="app.html?restart";
+            if (((getCookie("saveGame") === "true") && (getCookie("playerNameCookie") === playerName))){
+                console.log("test"); //works
+                continueWhereLeftOff();
             }
+            else {
+                if (statusObject === "ERROR") //if status isnt ok display the error message needs work no finished
+                {
+                    let errorMessage = confirm(jsonObject.errorMessages[0])
+                    if (errorMessage)
+                        window.location.href = "app.html";
+                } else if (statusObject == "OK") {
 
-            else if(statusObject=="OK"){
+                    /* if everything is okay show the question*/
 
-                checkError=false;
+                    saveCookie("sessionID", jsonObject.session, cookieLifeSpan);
+                    saveCookie("playerNameCookie", playerName, cookieLifeSpan);
+                    saveCookie("saveGame", "true", cookieLifeSpan);
+                    saveCookie("nameOfGame", nameOfGame, cookieLifeSpan);
+                    loadQuestions(getCookie("sessionID"));
 
-                /* if everything is okay show the question*/
-
-                saveCookie("sessionID", jsonObject.session);
-                saveCookie("playerNameCookie", playerName);
-                saveCookie("gameSaved", "true");
-                saveCookie("nameOfGame", nameOfGame);
-                loadQuestions(getCookie("sessionID"));
-
+                }
             }
         });
 }
 
 
-function loadQuestions(sessionObject){
+function loadQuestions(sessionObject){ //starts the game
+
 
     intANS.style.visibility = "hidden";
     intBTN.style.visibility = "hidden";
@@ -149,7 +150,9 @@ function loadQuestions(sessionObject){
     mcqBtnC.style.visibility = "hidden";
     mcqBtnD.style.visibility = "hidden";
 
-    fetch(TH_BASE_URL_QUESTION+sessionObject)
+    console.log(getCookie("sessionID"));
+
+    fetch(TH_BASE_URL_QUESTION+getCookie("sessionID"))
         .then(response => response.json()) //Parse JSON text to JavaScript object
         .then(jsonObject => {
 
@@ -480,11 +483,12 @@ function loadLeaderboard(sessionObject){
 
 }
 
+/*Checks if the name that was provided has an unfinished session */
 function checkName() {
     let name = document.getElementById("Tname").value;
     document.getElementById("Namecontainer").style.display = "none";
     document.getElementById("NameHD").style.display = "none";
-    if ((getCookie("gameSaved") === "true") && (getCookie("playerNameCookie") === name)) {
+    if ((getCookie("saveGame") === "true") && (getCookie("playerNameCookie") === name)) {
         continueSession();
 
     }
@@ -494,6 +498,7 @@ function checkName() {
     }
 }
 
+/*Asks user if wants to continue with his unfinished session */
 function continueSession(){
     let continueGame = confirm ("It seems like you were playing " +getCookie("nameOfGame") +" with the name "+"'"+getCookie("playerNameCookie")
         +"'"+"\nClick OK to continue where you left off or " +
@@ -501,11 +506,12 @@ function continueSession(){
 
     if (continueGame) {
         //go to continued session
-        getChallenges(); //doesnt work properly must check tomorrow
+        document.getElementById("displayChallenges").style.display = "inline-block";
+        getChallenges();
     }
     else{
-        //delete cookies
-        document.cookie = "gameSaved=; expires=Thu, 02 April 2000 00:00:00 UTC;";
+        //delete cookies go back to log in
+        document.cookie = "saveGame=; expires=Thu, 02 April 2000 00:00:00 UTC;";
         window.location.href="app.html"
     }
 }
@@ -567,5 +573,16 @@ function checkSkipped(){
             }
 
         });
+}
+
+function continueWhereLeftOff(){
+
+    let continuedSession = getCookie("sessionID");
+
+    console.log(continuedSession); //works
+
+    let continueURL = TH_BASE_URL_QUESTION + continuedSession; // form url
+
+    setTimeout(loadQuestions(continueURL),1000);
 }
 
