@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="880e3f71-b811-409b-98a7-d91394677bc9" name="Default Changelist" comment="Playing with the toggle camera on off and switching cameras not finished at all">
+      <change afterPath="$PROJECT_DIR$/.idea/Landing-Page.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extraFeatures.js" beforeDir="false" afterPath="$PROJECT_DIR$/extraFeatures.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/app.html" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/th-api.js" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="ProjectId" id="1lkJcRsgxvgaogRfJl8WFsFBdYU" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="880e3f71-b811-409b-98a7-d91394677bc9" name="Default Changelist" comment="" />
+      <created>1608135234619</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1608135234619</updated>
+      <workItem from="1608135235739" duration="288000" />
+      <workItem from="1608317766600" duration="719000" />
+      <workItem from="1610201932868" duration="653000" />
+      <workItem from="1610271161233" duration="66000" />
+      <workItem from="1611394600285" duration="3167000" />
+      <workItem from="1611402263332" duration="117000" />
+      <workItem from="1611415480144" duration="5124000" />
+      <workItem from="1611584128768" duration="3357000" />
+      <workItem from="1611661682208" duration="19000" />
+      <workItem from="1611691208809" duration="3923000" />
+      <workItem from="1611756432556" duration="4424000" />
+      <workItem from="1611764136115" duration="3711000" />
+      <workItem from="1611768699992" duration="690000" />
+      <workItem from="1611820837724" duration="13990000" />
+      <workItem from="1611847631311" duration="2462000" />
+      <workItem from="1611850121946" duration="985000" />
+      <workItem from="1611996483818" duration="9063000" />
+      <workItem from="1612034340308" duration="12000" />
+      <workItem from="1612094536249" duration="11415000" />
+      <workItem from="1612172928650" duration="1332000" />
+      <workItem from="1612205818920" duration="4683000" />
+      <workItem from="1612280558458" duration="8410000" />
+      <workItem from="1612335733975" duration="1662000" />
+      <workItem from="1612767721209" duration="3000" />
+      <workItem from="1612769677253" duration="1000" />
+      <workItem from="1612786261702" duration="11118000" />
+      <workItem from="1612876102390" duration="7549000" />
+      <workItem from="1612888805819" duration="9718000" />
+      <workItem from="1612941619200" duration="36000" />
+      <workItem from="1612967370301" duration="3015000" />
+      <workItem from="1612971188166" duration="10000" />
+      <workItem from="1612976731006" duration="14537000" />
+      <workItem from="1613028175081" duration="12532000" />
+      <workItem from="1613048930830" duration="9923000" />
+      <workItem from="1613123631229" duration="18400000" />
+      <workItem from="1613203241716" duration="12573000" />
+      <workItem from="1613233761970" duration="9564000" />
+    </task>
+    <task id="LOCAL-00001" summary="Added the names of our team">
+      <created>1608135389920</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1608135389920</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Added the twitter section on the landing page">
+      <created>1608317865408</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1608317865408</updated>
+    </task>
+    <task id="LOCAL-00003" summary="1)Added some information in the Landing page and a button that takes us to the Treasure Hunt starting page&#10;2)In the starting page i've added the avaiable treasure hunts with a prompt that asks A team to provide its name">
+      <created>1611415890840</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1611415890840</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added a css and some basic styling for now.">
+      <created>1611419861389</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1611419861389</updated>
+    </task>
+    <task id="LOCAL-00005" summary="changed the name of the html file">
+      <created>1611584314183</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1611584314183</updated>
+    </task>
+    <task id="LOCAL-00006" summary="created a notes.html and documented what did so far.">
+      <created>1611584775970</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1611584775970</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Finished(for now) the landing page for 02/02 presentation day">
+      <created>1612210155303</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1612210155303</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Updated the notes html for now">
+      <created>1612210187968</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1612210187968</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Made some progress with tha app html">
+      <created>1612210314005</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1612210314005</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Made changes for tomorrow's presentation">
+      <created>1612292969396</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1612292969396</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Testing something">
+      <created>1612894178086</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1612894178086</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Testing something">
+      <created>1612895356994</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1612895356994</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Addes cookies, geolocation, and some other small stuff">
+      <created>1612991455258</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1612991455258</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Added geolocation,cookies(need to add more) and some small features.">
+      <created>1612991597331</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1612991597331</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Addes some basic btn styling, and some error handlers, was trying to continue session if player restarts with same name">
+      <created>1613160195512</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1613160195512</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Addes some basic btn styling, and some error handlers, was trying to continue session if player restarts with same name">
+      <created>1613160370031</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1613160370031</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Made the code more &quot;elegant&quot; and readable with the use of multiple functions. Need to finish with basic css &amp; make the player continue where he left off if he has same name">
+      <created>1613207433737</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1613207433737</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Made the code more &quot;elegant&quot; and readable with the use of multiple functions. Need to finish with basic css &amp; make the player continue where he left off if he has same name">
+      <created>1613207820177</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1613207820177</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Managed to make continue session work properly">
+      <created>1613213590120</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1613213590120</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Playing with the toggle camera on off and switching cameras not finished at all">
+      <created>1613245736567</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1613245736567</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Playing with the toggle camera on off and switching cameras not finished at all">
+      <created>1613246103045</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1613246103045</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added the names of our team" />
+    <MESSAGE value="Added the twitter section on the landing page" />
+    <MESSAGE value="1)Added some information in the Landing page and a button that takes us to the Treasure Hunt starting page&#10;2)In the starting page i've added the avaiable treasure hunts with a prompt that asks A team to provide its name" />
+    <MESSAGE value="Added a css and some basic styling for now." />
+    <MESSAGE value="changed the name of the html file" />
+    <MESSAGE value="created a notes.html and documented what did so far." />
+    <MESSAGE value="Finished(for now) the landing page for 02/02 presentation day" />
+    <MESSAGE value="Updated the notes html for now" />
+    <MESSAGE value="Made some progress with tha app html" />
+    <MESSAGE value="Made someprogress with the js" />
+    <MESSAGE value="Made changes for tomorrow's presentation" />
+    <MESSAGE value="Testing something" />
+    <MESSAGE value="Addes cookies, geolocation, and some other small stuff" />
+    <MESSAGE value="Added geolocation,cookies(need to add more) and some small features." />
+    <MESSAGE value="Added some basic btn styling, and some error handlers, was trying to continue session if player restarts with same name" />
+    <MESSAGE value="Addes some basic btn styling, and some error handlers, was trying to continue session if player restarts with same name" />
+    <MESSAGE value="Made the code more &quot;elegant&quot; and readable with the use of multiple functions. Need to finish with basic css &amp; make the player continue where he left off if he has same name" />
+    <MESSAGE value="Managed to make continue session work properly" />
+    <MESSAGE value="Playing with the toggle camera on off and switching cameras not finished at all" />
+    <option name="LAST_COMMIT_MESSAGE" value="Playing with the toggle camera on off and switching cameras not finished at all" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="585" y="107" key="CommitChangelistDialog2" timestamp="1613246224099">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="585" y="107" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1613246224099" />
+    <state x="184" y="86" width="1536" height="860" key="DiffContextDialog" timestamp="1613246209354">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="184" y="86" width="1536" height="860" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1613246209354" />
+    <state x="740" y="262" key="FileChooserDialogImpl" timestamp="1613227747523">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="262" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1613227747523" />
+    <state x="184" y="86" key="MergeDialog" timestamp="1613207551660">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="184" y="86" key="MergeDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1613207551660" />
+    <state x="598" y="281" key="MultipleFileMergeDialog" timestamp="1613207551664">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="598" y="281" key="MultipleFileMergeDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1613207551664" />
+    <state x="757" y="222" key="RollbackChangesDialog" timestamp="1613244143303">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="757" y="222" key="RollbackChangesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1613244143303" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1613246105444">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1613246105444" />
+    <state x="0" y="0" width="1599" height="1027" key="dock-window-1" timestamp="1613246243373">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="0" y="0" width="1599" height="1027" key="dock-window-1/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1613246243373" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1612984988701">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1612984988701" />
+  </component>
+</project>
