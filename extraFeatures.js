@@ -113,6 +113,7 @@ function switchCamera() {
     scanner.start(camera);
 }
 
+//copy to clickboard function
 function copyToClickboard(){
     const str = document.getElementById('content').innerText;
     const el = document.createElement('textarea');
@@ -126,3 +127,22 @@ function copyToClickboard(){
     document.body.removeChild(el); //we remove the textarea from the DOM with removeChild(el).
     alert(`Copied: `+str);
 }
+
+function convertMsToMinutes(maxDurationString){
+        maxDurationNum = Number(maxDurationString); //actually didnt need to convert
+        let m = Math.floor((maxDurationNum / 1000 / 60) << 0)
+        return m + " minutes";
+}
+
+function convertMsToDate(startsOnString){
+    let startsOnNum = Number(startsOnString); //actually didnt need to convert
+    let options = {
+        year: 'numeric', month: 'numeric', day: 'numeric',
+    };
+    let date = new Date(startsOnNum);
+    let result = date.toLocaleDateString('en', options); // month/day/year
+    return result;
+}
+
+
+

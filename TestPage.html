@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Testing TH API</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+<h1>Treasure Hunt API</h1>
+<p>A demo of using a harness to test the ‘/leaderboard’
+    JS function of the Treasure Hunt API</p>
+<hr/>
+<h1>Testing Leaderboard</h1>
+<!--add a <table> to hold the list of player, score, time-->
+
+<table id="test-results-table">
+    <tr>
+        <th>Name</th>
+        <th>Score</th>
+        <th>Time</th>
+    </tr>
+    <tr>
+        <td>Anna</td>
+        <td>30</td>
+        <td>1000</td>
+    </tr>
+    <tr>
+        <td>Bob</td>
+        <td>25</td>
+        <td>1100</td>
+    </tr>
+    <tr>
+        <td>Christina</td>
+        <td>21</td>
+        <td>1200</td>
+    </tr>
+</table>
+
+<script>
+    const TH_API_URL = "https://codecyprus.org/th/api/"; // the API base url
+    /**
+     * This is a function to access the /leaderboard at the specified URL
+     */
+    function getLeaderBoard(url) {
+// create and invoke the http request
+        fetch(url, { method: "GET" })
+            .then(response => response.json())
+            .then(json => handleLeaderboard(json));
+    }
+    // for now, hardcoded
+    let session = "ag9nfmNvZGVjeXBydXNvcmdyFAsSB1Nlc3Npb24YgICA4OnngggM";
+    let url = TH_API_URL + "leaderboard?sorted&session=" + session; // form url
+    getLeaderBoard(url);
+    F
+</script>
+</body>
+</html>

@@ -449,6 +449,10 @@
         box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     }
 
+    .qrContainer{
+        display:none;
+    }
+
     .toggleCamera{
         position:absolute;
         display:inline-block;
@@ -567,23 +571,24 @@
         left:150px;
     }
 
-    #challenges
-    {
-        list-style-type: upper-roman;
-    }
+
 
     li{
         position:relative;
         padding-bottom: 60px;
+        list-style-type: none;
     }
 
 
     a {
         font-weight: bolder;
-        font-size: 30px;
         color: black;
-        text-decoration: none;
         margin-left:10px;
+        border-left: 30px;
+        font-family: Lucidatypewriter, monospace;
+        font-size: 60px;
+        text-align: center;
+
 
     }
 
@@ -599,11 +604,13 @@
 
     .treasureHunts
     {
-        position:absolute;
+        font-family: Lucidatypewriter, monospace;
+        bottom: 0;
+        width: 100%;
+        display: inline;
+        list-style-type: none;
+        text-align: center;
         font-size: 50px;
-        top:400px;
-        left:20px;
-        white-space: nowrap;
     }
 
     #message
@@ -643,7 +650,6 @@
 
     /*app page Styling ENDS*/
 
-    /*note page Styling*/
 
     .notes
     {
@@ -673,7 +679,7 @@
         border-collapse: collapse;
         width: 100%;
         position:absolute;
-        left:40px;
+        left:80px;
     }
 
     .leaderboardTable td,  .leaderboardTable  th {
@@ -706,6 +712,17 @@
     .loadingQuestionsM{
         font-size:70px;
         margin-left:100px;
+    }
+
+    .hasPrizeContainer{
+        position:absolute;
+        display:none;
+        text-align: center;
+        font-size:50px;
+        top:250px;
+        left:50px;
+        font-family: Lucidatypewriter, monospace;
+        width: 100%;
     }
 
     /*register page styling stars*/
@@ -771,6 +788,11 @@
 
 
 
+/* TEST PAGE STYLING*/
+table { width: 100%; border: 1px solid blue; }
+th, td { border-bottom: 1px solid gray;
+    text-align: left; }
+
 
     /*Media q for tablets*/
 @media (min-width: 992px)
@@ -804,12 +826,13 @@
     }
 
 
+
     a {
         font-weight: bolder;
-        font-size: 50px;
         color: black;
         text-decoration: none;
         margin-left:10px;
+
 
     }
 

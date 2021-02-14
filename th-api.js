@@ -33,6 +33,8 @@ const mcqBtnD = document.getElementById("mcqBtnD");
 
 const skip=document.getElementById("skip");
 
+const QRContainer=document.getElementById("qrContainer");
+
 
 
 //REMINDER NEED TO ADD COOKIES AND GEOLOCATION//
@@ -60,12 +62,12 @@ function getChallenges()
             for(let i=0; i<treasureHuntsArray.length; i++) //Create a loop that traverses the treasureHunts array
                 //and  creates a new list element for each treasure hunt object:
             {
+
                 listHtml += // each treasure hunt item is shown with an individual DIV element
-                    "<li>" +
-                    "<b>" + treasureHuntsArray[i].name + "</b><br/>" + // the treasure hunt name is shown in bold...
-                    "<i>" + treasureHuntsArray[i].description + "</i><br/>" + // and the description in italics in the following line
-                    "<a href=\"javascript:select(\'" + treasureHuntsArray[i].uuid + " ','" +treasureHuntsArray[i].name +"','" + playerName + "','" +treasureHuntsArray[i].maxDuration+"')\">Start</a>" + // and the description in italics in the following line
-                    "</li>";
+                    "<li>" + "<b>" +"<a href=\"javascript:select(\'" + treasureHuntsArray[i].uuid + " ','" +treasureHuntsArray[i].name +"','" + playerName + "','" +treasureHuntsArray[i].maxDuration+"')\">" +treasureHuntsArray[i].name +"</a>" + "</b>" +"</li>"
+                    +"<li>" +"<b>" + "Description: " + "</b>" + treasureHuntsArray[i].description + "</li>"
+                    +"<li>" + "<b>" + "Starts on: " + "</b>" + convertMsToDate(treasureHuntsArray[i].startsOn) + "</li>"
+                    +"<li>" + "<b>" + "Duration: "+ "</b>" + convertMsToMinutes(treasureHuntsArray[i].maxDuration) + "</li>"
             }
             listHtml += "</ul>";
 
@@ -150,6 +152,7 @@ function loadQuestions(sessionObject){ //starts the game
     mcqBtnC.style.visibility = "hidden";
     mcqBtnD.style.visibility = "hidden";
 
+
     console.log(getCookie("sessionID"));
 
     fetch(TH_BASE_URL_QUESTION+getCookie("sessionID"))
@@ -221,6 +224,8 @@ function loadQuestions(sessionObject){ //starts the game
                     document.getElementById("questionIndexP").innerHTML = "Question "+ (jsonObject.currentQuestionIndex+1) + " / " + jsonObject.numOfQuestions;
 
                     document.getElementById("scoreContainer").style.display = "block";
+
+                    QRContainer.style.display="inline-block";
 
                     let qType = jsonObject.questionType;
 
@@ -391,11 +396,19 @@ function hideChallenges(){
 
 function updateScore(sessionObject){
 
-    fetch( TH_BASE_URL_SCORE+sessionObject)
+    fetch( TH_BASE_URL_SCORE+getCookie("sessionID"))
         .then(response => response.json()) //Parse JSON text to JavaScript object
         .then(jsonObject => {
+            if(jsonObject.status === "OK") {
+                if (jsonObject.completed === false && jsonObject.finished === false)
+                    document.getElementById("scoreContainer").innerText = "Your current score is: " + jsonObject.score + " points.";
+            }
+            else{
+                let errorMessage = confirm(jsonObject.errorMessages[0])
+                if (errorMessage)
+                    window.location.href = "app.html";
+            }
 
-            document.getElementById("scoreContainer").innerText="Your current score is: "+jsonObject.score +" points.";
 
         });
 }
@@ -452,31 +465,40 @@ function loadLeaderboard(sessionObject){
     document.getElementById("scoreContainer").style.display="none";
     document.getElementById("questionIndexContainer").style.display="none";
     document.getElementById("loading").innerText="Loading...";
+    QRContainer.style.display="none";
 
 
-    fetch(TH_BASE_URL_LEADERBOARDS + getCookie("sessionID") + "&sorted&limit=20")
+    fetch(TH_BASE_URL_LEADERBOARDS+getCookie("sessionID"))
         .then(response => response.json()) //Parse JSON text to JavaScript object
         .then(jsonObject => {
             document.getElementById("loading").innerText="";
             document.getElementById("tableContainer").style.display="block";
+            if(jsonObject.status==="OK") {
+                let tableContents = "";
+                if(jsonObject.hasPrize===true){
+                    document.getElementById("hasPrizeContainer").style.display="block";
+                }
+                const leaderboardArray = jsonObject.leaderboard;
 
-            let tableContents="";
+                for (let i = 0; i < leaderboardArray.length; i++) {
+                    const entry = leaderboardArray[i];
+                    const playerName = entry.player;
+                    const score = entry.score;
+                    const completionTime = entry.completionTime;
 
-            const leaderboardArray=jsonObject.leaderboard;
-
-            for(let i=0; i<leaderboardArray.length;i++){
-                const entry = leaderboardArray[i];
-                const playerName=entry.player;
-                const score = entry.score;
-                const completionTime = entry.completionTime;
-
-                tableContents+=  "<tr>\n" +
-                    "    <td>" + playerName + "</td>" +
-                    "    <td>" + score + "</td>" +
-                    "    <td>" + completionTime + "</td>" +
-                    "</tr>";
+                    tableContents += "<tr>\n" +
+                        "    <td>" + playerName + "</td>" +
+                        "    <td>" + score + "</td>" +
+                        "    <td>" + convertMsToDate(completionTime) + "</td>" +
+                        "</tr>";
+                }
+                document.getElementById("leaderboardTable").innerHTML += tableContents;
             }
-            document.getElementById("leaderboardTable").innerHTML+=tableContents;
+            else if(jsonObject.status==="ERROR"){
+                let errorMessage = confirm(jsonObject.errorMessages[0])
+                if (errorMessage)
+                    window.location.href = "app.html";
+            }
         });
 
 
@@ -499,7 +521,7 @@ function checkName() {
 
 /*Asks user if wants to continue with his unfinished session */
 function continueSession(){
-    let continueGame = confirm ("It seems like you were playing " +getCookie("nameOfGame") +" with the name "+"'"+getCookie("playerNameCookie")
+    let continueGame = confirm ("It seems like you were playing " +getCookie("nameOfGame") +" as "+"'"+getCookie("playerNameCookie")
         +"'"+"\nClick OK to continue where you left off or " +
         "\nCancel to start a new session.")
 

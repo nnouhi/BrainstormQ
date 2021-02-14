@@ -58,15 +58,15 @@
 
 </div>
 
-<div id="qrContainer">
+<div id="qrContainer" class="qrContainer">
 
-    <div class="resultContainer">
+    <div class="resultContainer" id="resultContainer">
         <div class="contentContainer">
             <span class="content" id="content">Scan Result</span>
         </div>
     </div>
 
-    <div class="btnsContainer">
+    <div class="btnsContainer" id="btnsContainer">
         <button class="toggleCamera" onclick="activateCamera()" type="submit">Toggle</button>
                             <!-- TODO add clickboard -->
         <button class="copyClickboard" id="copyClickboard" onclick="copyToClickboard()" type="submit">Copy</button>
@@ -144,13 +144,16 @@
 </div>
 
 <div class="leaderboardContainer" id="leaderboardContainer">
+    <div class="hasPrizeContainer" id="hasPrizeContainer">
+        <p>Congratulations you have won a <span>price</span></p>
+    </div>
     <h3 class="loading" id="loading"></h3>
     <div class="tableContainer" id="tableContainer">
         <table class="leaderboardTable" id="leaderboardTable">
             <tr>
                 <th>Name</th>
                 <th>Score</th>
-                <th>Complition time</th>
+                <th>Completion Date</th>
             </tr>
         </table>
     </div>
