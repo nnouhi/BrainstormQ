@@ -7,7 +7,6 @@
 
     <link rel="stylesheet" href="stylesheet.css">
 
-    <script src="th-api.js"></script>
 
     <script defer src="instascan.min.js"></script>
 
@@ -55,22 +54,23 @@
 
     <!-- the camera view will be display here / have to add styling-->
 
-    <video id="preview" ></video>
+    <video id="preview" class="preview"></video>
 
 </div>
 
 <div id="qrContainer">
 
     <div class="resultContainer">
-        <span style="font-size: 18px" id="content">Scan Result</span>
+        <span class="content" id="content">Scan Result</span>
     </div>
 
     <div class="btnsContainer">
         <button class="toggleCamera" onclick="activateCamera()" type="submit">Toggle</button>
                             <!-- TODO add clickboard -->
+        <button class="copyClickboard" onclick="" type="submit">Copy</button>
     </div>
 
-    <div class="switchCamera">
+    <div class="switchCameraContainer">
         <button class="switchCamera" onclick="switchCamera()" type="submit">Switch Camera</button>
     </div>
 
@@ -162,7 +162,7 @@
 </div>
 
 
-
+<script src="th-api.js"></script>
 
 
 </body>

@@ -19,13 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="880e3f71-b811-409b-98a7-d91394677bc9" name="Default Changelist" comment="Playing with the toggle camera on off and switching cameras not finished at all">
-      <change afterPath="$PROJECT_DIR$/.idea/Landing-Page.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="880e3f71-b811-409b-98a7-d91394677bc9" name="Default Changelist" comment="test">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.html" beforeDir="false" afterPath="$PROJECT_DIR$/app.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/extraFeatures.js" beforeDir="false" afterPath="$PROJECT_DIR$/extraFeatures.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/stylesheet.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +104,9 @@
       <workItem from="1613048930830" duration="9923000" />
       <workItem from="1613123631229" duration="18400000" />
       <workItem from="1613203241716" duration="12573000" />
-      <workItem from="1613233761970" duration="9564000" />
+      <workItem from="1613233761970" duration="9964000" />
+      <workItem from="1613246678051" duration="1316000" />
+      <workItem from="1613292841868" duration="1338000" />
     </task>
     <task id="LOCAL-00001" summary="Added the names of our team">
       <created>1608135389920</created>
@@ -255,7 +255,28 @@
       <option name="project" value="LOCAL" />
       <updated>1613246103045</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Playing with the toggle camera on off and switching cameras not finished at all">
+      <created>1613246257720</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1613246257720</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Playing with the toggle camera on off and switching cameras not finished at all">
+      <created>1613246371575</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1613246371575</updated>
+    </task>
+    <task id="LOCAL-00024" summary="test">
+      <created>1613246423569</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1613246423569</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -293,13 +314,14 @@
     <MESSAGE value="Made the code more &quot;elegant&quot; and readable with the use of multiple functions. Need to finish with basic css &amp; make the player continue where he left off if he has same name" />
     <MESSAGE value="Managed to make continue session work properly" />
     <MESSAGE value="Playing with the toggle camera on off and switching cameras not finished at all" />
-    <option name="LAST_COMMIT_MESSAGE" value="Playing with the toggle camera on off and switching cameras not finished at all" />
+    <MESSAGE value="test" />
+    <option name="LAST_COMMIT_MESSAGE" value="test" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="585" y="107" key="CommitChangelistDialog2" timestamp="1613246224099">
+    <state x="585" y="107" key="CommitChangelistDialog2" timestamp="1613246713944">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="585" y="107" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1613246224099" />
+    <state x="585" y="107" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1613246713944" />
     <state x="184" y="86" width="1536" height="860" key="DiffContextDialog" timestamp="1613246209354">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -320,10 +342,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="757" y="222" key="RollbackChangesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1613244143303" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1613246105444">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1613246447360">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1613246105444" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1613246447360" />
     <state x="0" y="0" width="1599" height="1027" key="dock-window-1" timestamp="1613246243373">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

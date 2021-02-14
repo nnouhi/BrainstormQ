@@ -82,7 +82,6 @@ Instascan.Camera.getCameras().then(function (cameras) {
 }).catch(function (e) {
     alert(e);
 });
-console.log("Teadfadf");
 
 
 //show the camera
