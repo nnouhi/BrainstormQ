@@ -86,7 +86,8 @@
     .displayChallenges{
         display:none;
         position:absolute;
-        top:300px;
+        top:800px;
+        left:70px;
     }
 
 
@@ -501,7 +502,7 @@
 
     .resultContainer{
         position:absolute;
-        display:inline-block;
+        display:inline;
         background-color: #D77B1A;
         color: black;
         padding: 15px 32px;
@@ -523,10 +524,12 @@
         width:320px;
         height:240px;
     }
-    .content{
+
+    .contentContainer{
         position:relative;
-        left:400px;
+        text-align: center;
     }
+
 
 
     .infoBtn{
@@ -594,12 +597,13 @@
         border: 2px solid black;
     }
 
-    #treasureHunts
+    .treasureHunts
     {
         position:absolute;
         font-size: 50px;
-        top:650px;
-        left:100px;
+        top:400px;
+        left:20px;
+        white-space: nowrap;
     }
 
     #message
@@ -709,7 +713,7 @@
         position:relative;
         width: 80%;
         border-radius: 12px;
-        margin-left:70px;
+        margin-left:100px;
         padding:20px;
         font-size: 50px;
         border: 1px solid #ccc;
@@ -738,13 +742,14 @@
         border-radius: 5px;
         background-color: #f2f2f2;
         padding: 20px;
-        margin-top:800px;
+        margin-top:600px;
         left:150px;
     }
     .nameBtn{
+        position:relative;
         display:inline-block;
         font-size:50px;
-        margin-left:250px;
+        left:55px;
         font-weight: bold;
         border-radius: 12px;
         padding: 15px 32px;
@@ -754,8 +759,9 @@
     }
 
     .HD{
+        white-space: nowrap;
         position:absolute;
-        top:1000px;
+        top:800px;
         display:inline-block;
         margin-left:200px;
         font-size:70px;

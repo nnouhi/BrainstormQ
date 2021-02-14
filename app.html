@@ -61,13 +61,15 @@
 <div id="qrContainer">
 
     <div class="resultContainer">
-        <span class="content" id="content">Scan Result</span>
+        <div class="contentContainer">
+            <span class="content" id="content">Scan Result</span>
+        </div>
     </div>
 
     <div class="btnsContainer">
         <button class="toggleCamera" onclick="activateCamera()" type="submit">Toggle</button>
                             <!-- TODO add clickboard -->
-        <button class="copyClickboard" onclick="" type="submit">Copy</button>
+        <button class="copyClickboard" id="copyClickboard" onclick="copyToClickboard()" type="submit">Copy</button>
     </div>
 
     <div class="switchCameraContainer">
@@ -132,18 +134,12 @@
 <div id="displayChallenges" class="displayChallenges">
     <h1 class="ChallengesHD">All challenges</h1>
 
-    <div>
-
-    </div>
-
-
-
 
     <p class="ViewChallenges">View available Treasure Hunts below:</p>
 
-    <div id="treasureHunts" >
+    <ul id="treasureHunts" class="treasureHunts">
 
-    </div>
+    </ul>
 
 </div>
 

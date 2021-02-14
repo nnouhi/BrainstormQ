@@ -25,6 +25,9 @@ window.onclick = function(event) {
     }
 }
 
+let copyBtn=document.getElementById("copyClickboard");
+copyBtn.addEventListener("click", copyToClickboard);
+
 let opts = {
     // Whether to scan continuously for QR codes. If false, use scanner.scan() to
     // manually scan. If true, the scanner emits the "scan" event when a QR code is
@@ -108,4 +111,18 @@ function switchCamera() {
     let camera = camerasArray[cameraIndex];
     //Start the new selected camera:
     scanner.start(camera);
+}
+
+function copyToClickboard(){
+    const str = document.getElementById('content').innerText;
+    const el = document.createElement('textarea');
+    el.value = str;
+    el.setAttribute('readonly', '');
+    el.style.position = 'absolute';
+    el.style.left = '-9999px'; //we set readonly, position absolute and left -9999px just to make our textarea invisible to the user
+    document.body.appendChild(el);//We then append the element to the DOM so that right after we do that, we can call select() onto it.
+    el.select();//we can use select() on textarea and input elements.
+    document.execCommand('copy');
+    document.body.removeChild(el); //we remove the textarea from the DOM with removeChild(el).
+    alert(`Copied: `+str);
 }
