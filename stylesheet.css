@@ -10,74 +10,73 @@
     body
     {
         background-color: darksalmon;
+
     }
 
     .TeamHD
     {
-        position: relative;
         font-size: 100px;
         letter-spacing: 0.06em;
-        left:250px;
+        text-align: center;
     }
 
     .Members
     {
-
         position:relative;
         font-size:60px;
         margin-bottom: 200px;
-        left:400px;
+        text-align: center;
+        height:50%;
+        background-color: white;
+        border-radius: 15px;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     }
 
-    .InfoAbUs
-    {
-        position: relative;
-        font-size: 100px;
-        letter-spacing: 0.06em;
-        left:250px;
-    }
 
-    .Info
-    {
+    .socialMedia{
+        height: 50%;
         position:relative;
-        margin-bottom: 50px;
+        display:block;
+        width:100%;
+        border-radius: 15px;
+        background-color: #f2f2f2;
         font-size: 60px;
-        text-align: justify;
-        left:250px;
+        text-align: center;
+        margin-bottom: 200px;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     }
+
+    .infoContainer{
+        position:relative;
+        font-size:60px;
+        margin-bottom: 200px;
+        text-align: center;
+        height:50%;
+        background-color: white;
+        border-radius: 15px;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    }
+
+
 
     .GetStartedBtn
     {
-        position:absolute;
-        font-size: 100px;
-        margin-top:1500px;
-        left:700px;
-        border-radius: 25em;
-        border: 2px solid black;
-    }
-
-    .NotesBtn
-    {
-        position:absolute;
-        font-size: 100px;
-        margin-top:1500px;
-        left:2px;
-        border-radius: 25em;
-        border: 2px solid black;
+        position:relative;
+        display:inline-block;
+        background-color: #D77B1A;
+        color: black;
+        padding: 15px 32px;
+        font-weight: bold;
+        font-size:80px;
+        cursor: pointer;
+        border-radius: 12px;
+        border: 10px solid #D77B1A;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     }
 
 
 
-    .twitterSection
-    {
-        position:absolute;
-        height:1000px;
-        width: 1000px;
-        margin-top:200px;
-        left:200px;
-        background:#707070;
 
-    }
 
     /* Landing page Styling ENDS*/
 
@@ -86,7 +85,7 @@
     .displayChallenges{
         display:none;
         position:absolute;
-        top:800px;
+        top:300px;
         left:70px;
     }
 
@@ -148,7 +147,7 @@
         position:absolute;
         font-size:50px;
         visibility:hidden;
-        top:750px;
+        top:1000px;
         width: 40%;
         margin-left:300px;
         border-radius: 12px;
@@ -170,7 +169,7 @@
         position:absolute;
         font-size:50px;
         visibility:hidden;
-        top:750px;
+        top:950px;
         width: 40%;
         left:5px;
         border-radius: 12px;
@@ -195,8 +194,8 @@
     .questionIndexContainer{
         position:absolute;
         display:none;
-        left:400px;
-        top:500px;
+        left:450px;
+        top:800px;
     }
 
     .questionIndexP{
@@ -213,22 +212,24 @@
         position:absolute;
         font-size:50px;
         font-weight:bold;
-        margin-top:900px;
-        margin-left:200px;
+        margin-top:800px;
     }
+
 
     .specificMessage{
         position:absolute;
         display: none;
-        top:500px;
+        top:350px;
         white-space: nowrap;
+        margin-left:150px;
+        text-align: center;
     }
 
     .scoreContainer{
         position:absolute;
         display:none;
         font-size: 50px;
-        margin-top:0px;
+        margin-top:1350px;
         margin-left:240px;
         color: black;
         float:left;
@@ -245,7 +246,7 @@
         font-size: 50px;
         margin-left:700px;
         font-weight: bold;
-        top:730px;
+        top:960px;
         border-radius: 12px;
         padding: 15px 32px;
         border: 10px solid #D77B1A;
@@ -279,7 +280,7 @@
         font-size: 50px;
         left:510px;
         font-weight: bold;
-        top:1015px;
+        top:1215px;
         border-radius: 12px;
         border: 10px solid #D77B1A;
         box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
@@ -294,9 +295,9 @@
         text-decoration: none;
         display: inline-block;
         font-size: 40px;
-        left:50px;
+        left:65px;
         font-weight: bold;
-        top:870px;
+        top:1300px;
         border-radius: 12px;
         border: 10px solid #D77B1A;
         box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
@@ -312,9 +313,9 @@
         text-decoration: none;
         display: inline-block;
         font-size: 40px;
-        left:450px;
+        left:465px;
         font-weight: bold;
-        top:870px;
+        top:1300px;
         border-radius: 12px;
         border: 10px solid #D77B1A;
         box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
@@ -331,7 +332,7 @@
         text-decoration: none;
         font-weight:bold;
         left:200px;
-        top:2100px;
+        top:1800px;
         width:40%;
         padding: 40px 50px;
         border-radius: 12px;
@@ -350,7 +351,7 @@
         font-size: 50px;
         left:25px;
         font-weight: bold;
-        top:1150px;
+        top:1300px;
         border-radius: 12px;
         border: 10px solid #D77B1A;
         box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
@@ -366,7 +367,7 @@
         font-size: 50px;
         left:225px;
         font-weight: bold;
-        top:1150px;
+        top:1300px;
         border-radius: 12px;
         border: 10px solid #D77B1A;
         box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
@@ -383,7 +384,7 @@
         font-size: 50px;
         left:420px;
         font-weight: bold;
-        top:1150px;
+        top:1300px;
         border-radius: 12px;
         border: 10px solid #D77B1A;
         box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
@@ -399,7 +400,7 @@
         font-size: 50px;
         left:625px;
         font-weight: bold;
-        top:1150px;
+        top:1300px;
         border-radius: 12px;
         border: 10px solid #D77B1A;
         box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
@@ -622,7 +623,7 @@
         position:absolute;
         display:none;
         margin-left:300px;
-        margin-top:500px;
+        margin-top:750px;
     }
     .questionMessage{
         position:relative;
@@ -784,6 +785,8 @@
         font-size:70px;
     }
 
+
+
 }
 
 
@@ -798,43 +801,7 @@ th, td { border-bottom: 1px solid gray;
 @media (min-width: 992px)
 {
 
-    .ChallengesHD
-    {
-        position: relative;
-        font-size: 100px;
-        letter-spacing: 0.06em;
-        left:300px;
-    }
 
-    .ViewChallenges
-    {
-        position:relative;
-        margin-bottom: 50px;
-        font-size:50px;
-        left:250px;
-    }
-
-    #challenges
-    {
-        list-style-type: upper-roman;
-    }
-
-    li{
-        position:relative;
-        margin-left:300px;
-        padding-bottom: 60px;
-    }
-
-
-
-    a {
-        font-weight: bolder;
-        color: black;
-        text-decoration: none;
-        margin-left:10px;
-
-
-    }
 
 
 }

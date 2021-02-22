@@ -468,7 +468,7 @@ function loadLeaderboard(sessionObject){
     QRContainer.style.display="none";
 
 
-    fetch(TH_BASE_URL_LEADERBOARDS+getCookie("sessionID"))
+    fetch(TH_BASE_URL_LEADERBOARDS+getCookie("sessionID")+"&sorted&limit=10")
         .then(response => response.json()) //Parse JSON text to JavaScript object
         .then(jsonObject => {
             document.getElementById("loading").innerText="";
@@ -538,9 +538,24 @@ function continueSession(){
 }
 
 function checkInt(){
+
     let ans=document.getElementById("intANS").value;
-    console.log("Test1");
-    checkAnswers(ans);
+
+    //check if integer proceed else alert//
+    if(ans%1===0) {
+        checkAnswers(ans);
+    }
+    else{
+        let wrongInput=confirm("You have inputed a NUMERIC value, Please provide an INTEGER.");
+        if(wrongInput){
+            let ans=document.getElementById("intANS").value="";
+        }
+        else{
+            let ans=document.getElementById("intANS").value="";
+        }
+
+    }
+
 }
 
 function checkText(){

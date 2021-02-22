@@ -20,10 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="880e3f71-b811-409b-98a7-d91394677bc9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/TestPage.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pictures/Screenshot_2.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.html" beforeDir="false" afterPath="$PROJECT_DIR$/app.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extraFeatures.js" beforeDir="false" afterPath="$PROJECT_DIR$/extraFeatures.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestPage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/stylesheet.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/th-api.js" beforeDir="false" afterPath="$PROJECT_DIR$/th-api.js" afterDir="false" />
     </list>
@@ -57,10 +57,15 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Pictures" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\The computing challenge\Landing-Page\Pictures" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -109,6 +114,10 @@
       <workItem from="1613233761970" duration="9964000" />
       <workItem from="1613246678051" duration="1316000" />
       <workItem from="1613292841868" duration="20574000" />
+      <workItem from="1613415951712" duration="2487000" />
+      <workItem from="1613648735408" duration="138000" />
+      <workItem from="1613746198160" duration="454000" />
+      <workItem from="1613981481187" duration="14531000" />
     </task>
     <task id="LOCAL-00001" summary="Added the names of our team">
       <created>1608135389920</created>
@@ -344,10 +353,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="184" y="86" width="1536" height="860" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1613246209354" />
-    <state x="740" y="262" key="FileChooserDialogImpl" timestamp="1613227747523">
+    <state x="740" y="262" key="FileChooserDialogImpl" timestamp="1613416183470">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="262" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1613227747523" />
+    <state x="740" y="262" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1613416183470" />
     <state x="184" y="86" key="MergeDialog" timestamp="1613207551660">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
