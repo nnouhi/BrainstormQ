@@ -1,4 +1,4 @@
-#BrainstormQ
+# BrainstormQ
 
 Team 1 Members:
 
@@ -19,7 +19,7 @@ Our roles:
 -Lev Isaev: Lev will style everything when the quiz app is finished using CSS and test the quiz app.
 -Georgios Antoniou: George will be testing the quiz app and be responsible for the landing page and marketing of our app.
 
-##Team Meetings:
+## Team Meetings:
 
 1st Meeting (Dec. 18th): On our first meeting we got to know each other and talked about what our roles will be and what we are good at.
 
