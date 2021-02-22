@@ -3,7 +3,9 @@
 Team 1 Members:
 
 -Nicolas Nouhi
+
 -Georgios Antoniou
+
 -Lev Isaev
 
 Our twitter page account:
