@@ -103,16 +103,16 @@
     <input type="number" id="intANS" class="intANS" step="1" min="1" required>
     <button type="submit" id="intBtn" class="intBtn" onclick="checkInt()">Submit</button>
 
-    <button type="submit" id="trueBtn" class="trueBtn" value="true" onclick="checkAnswers('True')">TRUE</button>
-    <button type="submit" id="falseBtn" class="falseBtn" value="false" onclick="checkAnswers('False')">FALSE</button>
+    <button type="submit" id="trueBtn" class="trueBtn" value="true" onclick="checkAnswers('True','trueBtn')">TRUE</button>
+    <button type="submit" id="falseBtn" class="falseBtn" value="false" onclick="checkAnswers('False','falseBtn')">FALSE</button>
 
     <input type="text" id="textANS" class="textANS" required>
     <button type="submit" id="textBtn" class="textBtn" onclick="javascript:checkText()">Submit</button>
 
-    <button type="submit" id="mcqBtnA" class="mcqBtnA" value="A" onclick="checkAnswers('A')">A</button>
-    <button type="submit" id="mcqBtnB" class="mcqBtnB" value="B" onclick="checkAnswers('B')">B</button>
-    <button type="submit" id="mcqBtnC" class="mcqBtnC" value="C" onclick="checkAnswers('C')">C</button>
-    <button type="submit" id="mcqBtnD" class="mcqBtnD" value="D" onclick="checkAnswers('D')">D</button>
+    <button type="submit" id="mcqBtnA" class="mcqBtnA" value="A" onclick="checkAnswers('A','mcqBtnA')">A</button>
+    <button type="submit" id="mcqBtnB" class="mcqBtnB" value="B" onclick="checkAnswers('B','mcqBtnB')">B</button>
+    <button type="submit" id="mcqBtnC" class="mcqBtnC" value="C" onclick="checkAnswers('C','mcqBtnC')">C</button>
+    <button type="submit" id="mcqBtnD" class="mcqBtnD" value="D" onclick="checkAnswers('D','mcqBtnD')">D</button>
 
     <input type="number" id="numericANS" class="numericANS" step="0.5" required >
     <button type="submit" id="numericBtn" class="numericBtn" onclick="checkNum()">Submit</button>
@@ -144,8 +144,12 @@
 </div>
 
 <div class="leaderboardContainer" id="leaderboardContainer">
+    <div class="leaderboardsHeader" id="leaderboardHeader">
+
+    </div>
+
     <div class="hasPrizeContainer" id="hasPrizeContainer">
-        <p>Congratulations you have won a <span>price</span></p>
+        <h3>Congratulations you have won a <span>prize</span></h3>
     </div>
     <h3 class="loading" id="loading"></h3>
     <div class="tableContainer" id="tableContainer">
@@ -156,6 +160,9 @@
                 <th>Completion Date</th>
             </tr>
         </table>
+    </div>
+    <div class="refreshBtnContainer" id="refreshBtnContainer">
+        <button type="submit" class="refreshBtn" id="refreshBtn" onclick="refreshLeaderboard()">Refresh</button>
     </div>
 
 </div>

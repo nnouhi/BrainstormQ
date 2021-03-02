@@ -681,6 +681,7 @@
         width: 100%;
         position:absolute;
         left:80px;
+        top:600px;
     }
 
     .leaderboardTable td,  .leaderboardTable  th {
@@ -714,16 +715,42 @@
         font-size:70px;
         margin-left:100px;
     }
-
+    .leaderboardsHeader{
+        position:absolute;
+        display:none;
+        text-align: center;
+        font-size:40px;
+        top:250px;
+        left:50px;
+        font-family: Lucidatypewriter, monospace;
+        width: 100%;
+    }
     .hasPrizeContainer{
         position:absolute;
         display:none;
         text-align: center;
         font-size:50px;
-        top:250px;
+        top:1500px;
         left:50px;
         font-family: Lucidatypewriter, monospace;
         width: 100%;
+    }
+
+    .refreshBtn{
+
+        font-size:50px;
+        font-weight: bold;
+        border-radius: 12px;
+        padding: 15px 32px;
+        border: 10px solid #D77B1A;
+        background-color: #D77B1A;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    }
+    .refreshBtnContainer{
+        display:none;
+        position:relative;
+        top:1200px;
+        left:200px;
     }
 
     /*register page styling stars*/

@@ -60,35 +60,36 @@ let opts = {
 
 
 
+
+
 let camerasArray;
 let cameraIndex=0; //0 is from 1 is back
-
 let scanner = new Instascan.Scanner(opts);
-//the scanned results
-scanner.addListener('scan', function (content) {
-    console.log(content);
-    document.getElementById("content").innerHTML = content;
-});
-
-
-
-Instascan.Camera.getCameras().then(function (cameras) {
-    camerasArray=cameras;
-    if (cameras.length > 0) {
-        console.log("test");
-        cameraIndex=0; //cameraIndex = fron camera
-        scanner.start(cameras[0]); //start with the front camera
-    } else {
-        console.error('No cameras found.');
-        alert("No cameras found.");
-    }
-}).catch(function (e) {
-    alert(e);
-});
-
 
 //show the camera
 function activateCamera(){
+
+
+//the scanned results
+    scanner.addListener('scan', function (content) {
+        console.log(content);
+        document.getElementById("content").innerHTML = content;
+    });
+
+
+    Instascan.Camera.getCameras().then(function (cameras) {
+        camerasArray=cameras;
+        if (cameras.length > 0) {
+            cameraIndex=0; //cameraIndex = from camera
+            scanner.start(cameras[0]); //start with the front camera
+        } else {
+            console.error('No cameras found.');
+            alert("No cameras found in your device");
+        }
+    }).catch(function (e) {
+        alert("No cameras found in your device");
+    });
+
     let videoContainer=document.getElementById("tgCamera");
 
     if(videoContainer.style.display==="none") videoContainer.style.display="block";
@@ -99,18 +100,22 @@ function activateCamera(){
 //switch from front-back camera
 function switchCamera() {
 
-    console.log("test");
-    //Cycle through the available cameras:
-    if (cameraIndex < camerasArray.length - 1) {
-        cameraIndex++;
+    /*Check if there are available cameras to use to avoid errors */
+    if (typeof camerasArray !== "undefined") {
+        //Cycle through the available cameras:
+        if (cameraIndex < camerasArray.length - 1) {
+            cameraIndex++;
+        } else {
+            cameraIndex = 0;
+        }
+        //Find the next camera to use:
+        let camera = camerasArray[cameraIndex];
+        //Start the new selected camera:
+        scanner.start(camera);
     }
-    else {
-        cameraIndex = 0;
+    else{
+        alert("No cameras found in your device");
     }
-    //Find the next camera to use:
-    let camera = camerasArray[cameraIndex];
-    //Start the new selected camera:
-    scanner.start(camera);
 }
 
 //copy to clickboard function
