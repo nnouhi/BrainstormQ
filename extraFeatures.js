@@ -58,10 +58,6 @@ let opts = {
 };
 
 
-
-
-
-
 let camerasArray;
 let cameraIndex=0; //0 is from 1 is back
 let scanner = new Instascan.Scanner(opts);

@@ -21,10 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="880e3f71-b811-409b-98a7-d91394677bc9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.html" beforeDir="false" afterPath="$PROJECT_DIR$/app.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/extraFeatures.js" beforeDir="false" afterPath="$PROJECT_DIR$/extraFeatures.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/stylesheet.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/th-api.js" beforeDir="false" afterPath="$PROJECT_DIR$/th-api.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +120,7 @@
       <workItem from="1614113716629" duration="632000" />
       <workItem from="1614151366450" duration="759000" />
       <workItem from="1614156099553" duration="337000" />
-      <workItem from="1614682598161" duration="10086000" />
+      <workItem from="1614682598161" duration="11380000" />
     </task>
     <task id="LOCAL-00001" summary="Added the names of our team">
       <created>1608135389920</created>
@@ -314,7 +311,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613998018539</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Made some small tweaks to the qrcode scanner so it doesnt display any alerts if not activated by the user, also if a camera is not available the user should not be able to use the feature. Added a ranking message at the end of the game, and made a better error handling for the empty fields because it was giving an unnecessary if an empty answer was submitted to the API">
+      <created>1614694054998</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1614694054998</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -356,13 +360,14 @@
     <MESSAGE value="playing with qr code styling" />
     <MESSAGE value="Finished with the qr added copyToClick board feature." />
     <MESSAGE value="testing something" />
-    <option name="LAST_COMMIT_MESSAGE" value="testing something" />
+    <MESSAGE value="Made some small tweaks to the qrcode scanner so it doesnt display any alerts if not activated by the user, also if a camera is not available the user should not be able to use the feature. Added a ranking message at the end of the game, and made a better error handling for the empty fields because it was giving an unnecessary if an empty answer was submitted to the API" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made some small tweaks to the qrcode scanner so it doesnt display any alerts if not activated by the user, also if a camera is not available the user should not be able to use the feature. Added a ranking message at the end of the game, and made a better error handling for the empty fields because it was giving an unnecessary if an empty answer was submitted to the API" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="585" y="107" key="CommitChangelistDialog2" timestamp="1613998017287">
+    <state x="585" y="107" key="CommitChangelistDialog2" timestamp="1614694053737">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="585" y="107" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1613998017287" />
+    <state x="585" y="107" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1614694053737" />
     <state x="184" y="86" width="1536" height="860" key="DiffContextDialog" timestamp="1613246209354">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -383,10 +388,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="757" y="222" key="RollbackChangesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1613244143303" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1613998074391">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1614694074709">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1613998074391" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1614694074709" />
     <state x="0" y="0" width="1599" height="1027" key="dock-window-1" timestamp="1613246243373">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

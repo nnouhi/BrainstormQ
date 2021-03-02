@@ -524,10 +524,10 @@
 
     .preview{
         position:absolute;
-        top:550px;
-        left:450px;
-        width:320px;
-        height:240px;
+        top:520px;
+        left:350px;
+        width:500px;
+        height:300px;
     }
 
     .contentContainer{
