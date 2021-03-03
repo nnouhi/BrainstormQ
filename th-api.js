@@ -35,54 +35,25 @@ const skip=document.getElementById("skip");
 
 const QRContainer=document.getElementById("qrContainer");
 
+const params = new URLSearchParams(location.search);
 
+let playerName = params.get("player");
+let uuid = params.get("treasure-hunt-id");
+let cookieLifeSpan = params.get("time");
+let nameOfGame =params.get("nameOfGame");
 
-//REMINDER NEED TO ADD COOKIES AND GEOLOCATION//
-
-//display all the available hunts
-// -> /list api
-function getChallenges()
-{
-    /*After the player inputs their name Hide the log in "container" and display the challenges */
-
-
-    playerName=document.getElementById("Tname").value;
-
-
-
-    fetch(TH_BASE_URL+"list")
-        .then(response => response.json()) //Parse JSON text to JavaScript object
-        .then(jsonObject => {
-
-
-            let treasureHuntsArray=jsonObject.treasureHunts; //Obtain a reference to the treasureHunts array from the parsed object.
-
-            let listHtml = "<ul>";
-
-            for(let i=0; i<treasureHuntsArray.length; i++) //Create a loop that traverses the treasureHunts array
-                //and  creates a new list element for each treasure hunt object:
-            {
-
-                listHtml += // each treasure hunt item is shown with an individual DIV element
-                    "<li>" + "<b>" +"<a href=\"javascript:select(\'" + treasureHuntsArray[i].uuid + " ','" +treasureHuntsArray[i].name +"','" + playerName + "','" +treasureHuntsArray[i].maxDuration+"')\">" +treasureHuntsArray[i].name +"</a>" + "</b>" +"</li>"
-                    +"<li>" +"<b>" + "Description: " + "</b>" + treasureHuntsArray[i].description + "</li>"
-                    +"<li>" + "<b>" + "Starts on: " + "</b>" + convertMsToDate(treasureHuntsArray[i].startsOn) + "</li>"
-                    +"<li>" + "<b>" + "Duration: "+ "</b>" + convertMsToMinutes(treasureHuntsArray[i].maxDuration) + "</li>"
-            }
-            listHtml += "</ul>";
-
-            document.getElementById("treasureHunts").innerHTML = listHtml;
-        });
+if(getCookie("saveGame") ==="true" && getCookie("playerNameCookie")===playerName){
+    continueWhereLeftOff();
+}
+else {
+    select();
 
 }
 
 
-async function select(uuid,nameOfGame,playerName,cookieLifeSpan) {
+async function select() {
     // For now just print the selected treasure hunt's UUID. Normally, you're expected to guide the user in entering
     // their name etc. and proceed to calling the '/start' command of the API to start a new session.
-
-
-    hideChallenges();
 
     let url1='https://codecyprus.org/th/api/start?player='+playerName; //concatenation of the string with teams name
 
@@ -104,28 +75,26 @@ async function select(uuid,nameOfGame,playerName,cookieLifeSpan) {
             let statusObject=jsonObject.status;
             let sessionObject=jsonObject.session;
 
-            if (((getCookie("saveGame") === "true") && (getCookie("playerNameCookie") === playerName))){
-                console.log("test"); //works
-                continueWhereLeftOff();
-            }
-            else {
-                if (statusObject === "ERROR") //if status isnt ok display the error message needs work no finished
-                {
-                    let errorMessage = confirm(jsonObject.errorMessages[0])
-                    if (errorMessage)
-                        window.location.href = "app.html";
-                } else if (statusObject == "OK") {
 
-                    /* if everything is okay show the question*/
 
-                    saveCookie("sessionID", jsonObject.session, cookieLifeSpan);
-                    saveCookie("playerNameCookie", playerName, cookieLifeSpan);
-                    saveCookie("saveGame", "true", cookieLifeSpan);
-                    saveCookie("nameOfGame", nameOfGame, cookieLifeSpan);
-                    loadQuestions(getCookie("sessionID"));
+             if (statusObject === "ERROR") //if status isnt ok display the error message needs work no finished
+             {
+                 let errorMessage = confirm(jsonObject.errorMessages[0])
+                 if (errorMessage)
+                     getChallenges();
 
-                }
-            }
+             } else if (statusObject == "OK") {
+
+                 /* if everything is okay show the question*/
+
+                 saveCookie("sessionID", jsonObject.session, cookieLifeSpan);
+                 saveCookie("playerNameCookie", playerName, cookieLifeSpan);
+                 saveCookie("saveGame", "true", cookieLifeSpan);
+                 saveCookie("nameOfGame", nameOfGame, cookieLifeSpan);
+                 loadQuestions(getCookie("sessionID"));
+
+             }
+
         });
 }
 
@@ -151,6 +120,9 @@ function loadQuestions(sessionObject){ //starts the game
     mcqBtnB.style.visibility = "hidden";
     mcqBtnC.style.visibility = "hidden";
     mcqBtnD.style.visibility = "hidden";
+
+    document.getElementById("displayQuestions").style.display="inline";
+    document.getElementById("loadingQuestionsM").innerHTML="Loading..."
 
 
     console.log(getCookie("sessionID"));
@@ -204,9 +176,7 @@ function loadQuestions(sessionObject){ //starts the game
                     document.getElementById("specificMessage").style.display = "none";
 
                     document.getElementById("questionMessage").innerHTML = "QUIZ FINISHED";
-                    setTimeout(function () {
-                        loadLeaderboard(getCookie("sessionId")), 5000
-                    });
+                    setTimeout(function () {window.location.href = "leaderboards.html", 5000});
 
                 } else {
 
@@ -374,25 +344,6 @@ function loadQuestions(sessionObject){ //starts the game
 }
 
 
-/*This function is used to hide the challenges navigation bar
-*        and displays the main game navigation bar*/
-
-function hideChallenges(){
-
-
-    /*Makes score visible*/
-    let score=document.getElementById("scoreContainer");
-    score.style.display="block";
-
-
-    /*Makes refresh hidden*/
-    let refresh=document.getElementById("refresh");
-    refresh.style.visibility='hidden';
-
-    document.getElementById("displayChallenges").style.display = "none";
-
-
-}
 
 function updateScore(sessionObject){
 
@@ -457,7 +408,7 @@ function sendLocation(lat, lng) {
         });
     console.log(lat,lng);
 }
-
+/*
 function loadLeaderboard(){
 
     document.getElementById("questionMessage").innerText="";
@@ -508,44 +459,16 @@ function loadLeaderboard(){
 
 }
 
-/*Refreshes the leaderboards */
+
+
+/*Refreshes the leaderboards
 function refreshLeaderboard(){
     document.getElementById("leaderboardTable").innerHTML="";
     document.getElementById("leaderboardHeader").innerHTML="";
     loadLeaderboard();
 }
+*/
 
-/*Checks if the name that was provided has an unfinished session */
-function checkName() {
-    let name = document.getElementById("Tname").value;
-    document.getElementById("Namecontainer").style.display = "none";
-    document.getElementById("NameHD").style.display = "none";
-    if ((getCookie("saveGame") === "true") && (getCookie("playerNameCookie") === name)) {
-        continueSession();
-    }
-    else {
-        getChallenges(this);
-        document.getElementById("displayChallenges").style.display = "inline-block";
-    }
-}
-
-/*Asks user if wants to continue with his unfinished session */
-function continueSession(){
-    let continueGame = confirm ("It seems like you were playing " +getCookie("nameOfGame") +" as "+"'"+getCookie("playerNameCookie")
-        +"'"+"\nClick OK to continue where you left off or " +
-        "\nCancel to start a new session.")
-
-    if (continueGame) {
-        //go to continued session
-        document.getElementById("displayChallenges").style.display = "inline-block";
-        getChallenges();
-    }
-    else{
-        //delete cookies go back to log in
-        document.cookie = "saveGame=; expires=Thu, 02 April 2000 00:00:00 UTC;";
-        window.location.href="app.html"
-    }
-}
 
 function checkInt(){
 
@@ -637,7 +560,7 @@ function continueWhereLeftOff(){
 
     setTimeout(loadQuestions(continueURL),1000);
 }
-
+/*
 function getRank(){
      rankCounter=0;
      let header;
@@ -662,4 +585,4 @@ function getRank(){
             }
         });
 }
-
+*/

@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
 
-    <title>Starting Page</title>
+    <title>BrainstormQ</title>
 
     <link rel="stylesheet" href="stylesheet.css">
-
 
     <script defer src="instascan.min.js"></script>
 
@@ -16,13 +15,11 @@
 <body onload="setInterval(getLocation, 30000);">
 
 
-
-
 <div class="topnav" id="topnav">
 
     <a href="javascript:getChallenges(this);" id="refresh" class="refresh">Refresh</a>
     <button id="homeBtn" class="homeBtn" onclick="window.location.href='index.html'" >Home</button>
-    <button id="restartBtn" class="restartBtn" onclick="window.location.href='app.html'" >Restart</button>
+    <button id="restartBtn" class="restartBtn" onclick="window.location.href='SignIn.html'" >Restart</button>
     <!-- Trigger/Open The Modal -->
     <button id="infoBtn" class="infoBtn" >Info</button>
 
@@ -118,53 +115,6 @@
     <button type="submit" id="numericBtn" class="numericBtn" onclick="checkNum()">Submit</button>
 
     <button id="skip" class="skip" onclick="checkSkipped()">SKIP</button>
-</div>
-
-<h3 class="HD" id="NameHD">Enter your name below:</h3>
-
-<div class="container" id="Namecontainer">
-    <form action="javascript:checkName(this);">
-        <input type="text" id="Tname" name="name" class="Tname" placeholder="Your name.. "required>
-        <button type="submit" class="nameBtn" id="nameBtn">Submit</button>
-    </form>
-</div>
-
-
-
-<div id="displayChallenges" class="displayChallenges">
-    <h1 class="ChallengesHD">All challenges</h1>
-
-
-    <p class="ViewChallenges">View available Treasure Hunts below:</p>
-
-    <ul id="treasureHunts" class="treasureHunts">
-
-    </ul>
-
-</div>
-
-<div class="leaderboardContainer" id="leaderboardContainer">
-    <div class="leaderboardsHeader" id="leaderboardHeader">
-
-    </div>
-
-    <div class="hasPrizeContainer" id="hasPrizeContainer">
-        <h3>Congratulations you have won a <span>prize</span></h3>
-    </div>
-    <h3 class="loading" id="loading"></h3>
-    <div class="tableContainer" id="tableContainer">
-        <table class="leaderboardTable" id="leaderboardTable">
-            <tr>
-                <th>Name</th>
-                <th>Score</th>
-                <th>Completion Date</th>
-            </tr>
-        </table>
-    </div>
-    <div class="refreshBtnContainer" id="refreshBtnContainer">
-        <button type="submit" class="refreshBtn" id="refreshBtn" onclick="refreshLeaderboard()">Refresh</button>
-    </div>
-
 </div>
 
 

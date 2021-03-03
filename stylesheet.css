@@ -704,6 +704,7 @@
 
     .tableContainer{
         display:none;
+        position:relative;
     }
 
     .loading{
@@ -720,7 +721,7 @@
         display:none;
         text-align: center;
         font-size:40px;
-        top:250px;
+        top:500px;
         left:50px;
         font-family: Lucidatypewriter, monospace;
         width: 100%;
@@ -737,7 +738,6 @@
     }
 
     .refreshBtn{
-
         font-size:50px;
         font-weight: bold;
         border-radius: 12px;
@@ -748,8 +748,7 @@
     }
     .refreshBtnContainer{
         display:none;
-        position:relative;
-        top:1200px;
+        position:absolute;
         left:200px;
     }
 
@@ -806,7 +805,7 @@
     .HD{
         white-space: nowrap;
         position:absolute;
-        top:800px;
+        top:400px;
         display:inline-block;
         margin-left:200px;
         font-size:70px;

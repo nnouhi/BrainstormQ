@@ -129,6 +129,7 @@ function copyToClickboard(){
     alert(`Copied: `+str);
 }
 
+
 function convertMsToMinutes(maxDurationString){
         maxDurationNum = Number(maxDurationString); //actually didnt need to convert
         let m = Math.floor((maxDurationNum / 1000 / 60) << 0)
