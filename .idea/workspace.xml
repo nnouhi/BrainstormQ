@@ -20,12 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="880e3f71-b811-409b-98a7-d91394677bc9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/SignIn.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/leaderboards.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestingPage.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/unitTest.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.html" beforeDir="false" afterPath="$PROJECT_DIR$/app.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extraFeatures.js" beforeDir="false" afterPath="$PROJECT_DIR$/extraFeatures.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaderboards.html" beforeDir="false" afterPath="$PROJECT_DIR$/leaderboards.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/stylesheet.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/th-api.js" beforeDir="false" afterPath="$PROJECT_DIR$/th-api.js" afterDir="false" />
     </list>
@@ -38,8 +36,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -127,7 +125,7 @@
       <workItem from="1614151366450" duration="759000" />
       <workItem from="1614156099553" duration="337000" />
       <workItem from="1614682598161" duration="18476000" />
-      <workItem from="1614768841394" duration="5960000" />
+      <workItem from="1614768841394" duration="17713000" />
     </task>
     <task id="LOCAL-00001" summary="Added the names of our team">
       <created>1608135389920</created>
@@ -332,7 +330,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614695329078</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Added leaderboards.html and SignIn.html and made some improvements about the returning user experience">
+      <created>1614775125429</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1614775125429</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -351,7 +356,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added the names of our team" />
     <MESSAGE value="Added the twitter section on the landing page" />
     <MESSAGE value="1)Added some information in the Landing page and a button that takes us to the Treasure Hunt starting page&#10;2)In the starting page i've added the avaiable treasure hunts with a prompt that asks A team to provide its name" />
     <MESSAGE value="Added a css and some basic styling for now." />
@@ -376,13 +380,14 @@
     <MESSAGE value="testing something" />
     <MESSAGE value="Made some small tweaks to the qrcode scanner so it doesnt display any alerts if not activated by the user, also if a camera is not available the user should not be able to use the feature. Added a ranking message at the end of the game, and made a better error handling for the empty fields because it was giving an unnecessary if an empty answer was submitted to the API" />
     <MESSAGE value="Made the qr camera bigger for phones" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made the qr camera bigger for phones" />
+    <MESSAGE value="Added leaderboards.html and SignIn.html and made some improvements about the returning user experience" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added leaderboards.html and SignIn.html and made some improvements about the returning user experience" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="0" y="107" key="CommitChangelistDialog2" timestamp="1614695328418">
+    <state x="626" y="115" key="CommitChangelistDialog2" timestamp="1614775124596">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="0" y="107" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1614695328418" />
+    <state x="626" y="115" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1614775124596" />
     <state x="184" y="86" width="1536" height="860" key="DiffContextDialog" timestamp="1613246209354">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -403,10 +408,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="757" y="222" key="RollbackChangesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1613244143303" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1614695330964">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1614775127306">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1614695330964" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1614775127306" />
     <state x="0" y="0" width="1599" height="1027" key="dock-window-1" timestamp="1613246243373">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

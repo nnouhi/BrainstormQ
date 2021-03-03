@@ -176,12 +176,11 @@ function loadQuestions(sessionObject){ //starts the game
                     document.getElementById("specificMessage").style.display = "none";
 
                     document.getElementById("questionMessage").innerHTML = "QUIZ FINISHED";
-                    setTimeout(function () {window.location.href = "leaderboards.html", 5000});
+                    setTimeout(function () {window.location.href = "leaderboards.html", 1000});
 
                 } else {
 
                     document.getElementById("questionMessage").innerHTML = questions;
-
 
                     document.getElementById("homeBtn").style.display = "inline-block";
 

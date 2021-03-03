@@ -676,12 +676,12 @@
     }
 
     .leaderboardTable {
+
         font-family: Arial, Helvetica, sans-serif;
         border-collapse: collapse;
         width: 100%;
         position:absolute;
         left:80px;
-        top:600px;
     }
 
     .leaderboardTable td,  .leaderboardTable  th {
@@ -717,21 +717,19 @@
         margin-left:100px;
     }
     .leaderboardsHeader{
-        position:absolute;
+        position:relative;
         display:none;
         text-align: center;
         font-size:40px;
-        top:500px;
         left:50px;
         font-family: Lucidatypewriter, monospace;
         width: 100%;
     }
     .hasPrizeContainer{
-        position:absolute;
+        position:relative;
         display:none;
         text-align: center;
         font-size:50px;
-        top:1500px;
         left:50px;
         font-family: Lucidatypewriter, monospace;
         width: 100%;
@@ -748,7 +746,7 @@
     }
     .refreshBtnContainer{
         display:none;
-        position:absolute;
+        position:relative;
         left:200px;
     }
 
@@ -815,12 +813,50 @@
 
 }
 
-
-
 /* TEST PAGE STYLING*/
-table { width: 100%; border: 1px solid blue; }
-th, td { border-bottom: 1px solid gray;
-    text-align: left; }
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+.unitTestHD{
+    text-align: center;
+}
+
+.ldboardsContainer{
+    text-align: center;
+}
+.LBTableContainer{
+    text-align: center;
+    position:relative;
+    display:none;
+}
+.checkboxes{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.submitLdboards{
+    position:relative;
+}
+.prizeP{
+    position:relative;
+    display:none;
+}
+.sortedP{
+    position:relative;
+    display:none;
+}
 
 
     /*Media q for tablets*/

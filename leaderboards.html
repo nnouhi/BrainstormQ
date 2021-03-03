@@ -7,7 +7,7 @@
     <script src="th-api.js"></script>
 
 </head>
-<body onload="loadLeaderboard()">
+<body onload="checkForTest()">
     <!-- top navigation menu -->
     <div class="topnav" id="topnav">
 
@@ -66,6 +66,9 @@
     </div>
 
     <script>
+
+        //const params = new URLSearchParams(location.search);
+
         // Get the modal
         let modal = document.getElementById("myModal");
 
@@ -93,6 +96,25 @@
         }
 
 
+        function checkForTest(){
+            if(testLB()){
+                let testPrize=params.has("hasPrize");
+                let testSorted=params.has("sorted");
+                let testNumOfPlayers=params.get("size");
+                let url=TH_TEST_URL+"leaderboard?"+"sorted="+testSorted+"&hasPrize="+testPrize+"&size="+testNumOfPlayers;
+                loadLeaderboard(url);
+            }
+            else{
+                let url=TH_BASE_URL_LEADERBOARDS+getCookie("sessionID")+"&sorted&limit=40";
+                 loadLeaderboard(url);
+            }
+        }
+
+        function testLB(){
+             let url = new URL(window.location.href);
+            return url.searchParams.get("testLB")!=null;
+        }
+
         function convertMsToDate(startsOnString){
             let startsOnNum = Number(startsOnString); //actually didnt need to convert
             let options = {
@@ -103,7 +125,7 @@
             return result;
         }
 
-        function loadLeaderboard(){
+        function loadLeaderboard(url){
 
            // document.getElementById("questionMessage").innerText="";
             //document.getElementById("skip").style.visibility="hidden";
@@ -113,20 +135,21 @@
            // QRContainer.style.display="none";
 
 
-            fetch(TH_BASE_URL_LEADERBOARDS+getCookie("sessionID")+"&sorted&limit=40")
+            fetch(url)
                 .then(response => response.json()) //Parse JSON text to JavaScript object
                 .then(jsonObject => {
                     document.getElementById("loading").innerText="";
                     document.getElementById("leaderboardHeader").style.display="block";
                     document.getElementById("tableContainer").style.display="block";
-                    document.getElementById("refreshBtnContainer").style.display="block";
                     if(jsonObject.status==="OK") {
                         let tableContents = "";
-                        getRank();//get ranking of player
-                        if(jsonObject.hasPrize===true){
-                            document.getElementById("hasPrizeContainer").style.display="block";
+                        if(!testLB()) {
+                            getRank();//get ranking of player
+                            document.getElementById("refreshBtnContainer").style.display="block";
                         }
-
+                        if (jsonObject.hasPrize === true) {
+                            document.getElementById("hasPrizeContainer").style.display = "block";
+                        }
                         const leaderboardArray = jsonObject.leaderboard;
 
                         for (let i = 0; i < leaderboardArray.length; i++) {
@@ -158,7 +181,7 @@
             document.getElementById("leaderboardTable").innerHTML="";
             document.getElementById("leaderboardHeader").innerHTML="";
             document.getElementById("refreshBtnContainer").style.display="none";
-            loadLeaderboard();
+            checkForTest()
         }
 
         function getRank(){
@@ -175,7 +198,7 @@
                         const score = entry.score;
                         const completionTime = entry.completionTime;
                         if(playerName===getCookie("playerNameCookie")){
-                            header="<h3>"+"Congratulations "+getCookie("playerNameCookie")+" you managed to finished the "+getCookie("nameOfGame")+ " and your rank is " + rankCounter+ "</h3>";
+                            header="<h3>"+"Congratulations "+getCookie("playerNameCookie")+ " your rank is " + rankCounter+ "</h3>";
                             document.getElementById("leaderboardHeader").innerHTML+=header;
                         }
                         else{

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Testing Page</title>
+    <script src="unitTest.js"></script>
+    <link rel="stylesheet" href="stylesheet.css">
+
+</head>
+<body>
+    <div>
+        <h1 class="unitTestHD">Unit testing efforts!</h1>
+    </div>
+
+    <div class="ldboardsContainer">
+        <div>
+            <h3>Unit test for Leaderboards</h3>
+            <div>
+                <div class="checkboxes">
+                    <input type="checkbox" id="sorted" onclick="checkBoxSorted()">
+                    <label for="sorted">Check for sorted leaderboards</label><br>
+
+                </div>
+
+                <div class="checkboxes">
+                    <input type="checkbox" id="prize" onclick="checkBoxPrize()">
+                    <label for="prize"> Check for has prize leaderboards</label><br>
+                </div>
+
+                <div>
+                    <label for="numberOfPlayers">Enter any number of players to be displayed</label><br><br>
+                    <input type="textbox" id="numberOfPlayers" placeholder="Enter number of players..." required>
+                    <br>
+                    <br>
+                </div>
+                <div class="checkboxesP">
+                    <p class="sortedP" id="sortedP">Leaderboards will be sorted</p>
+                    <p class="prizeP" id="prizeP">There will be a prize</p>
+                </div>
+                <div class="submitLdboards">
+                   <button type="submit" onclick="getNumPlayers()">Submit</button>
+                </div>
+                <br>
+                <br>
+                <div style="text-align: center">
+                    <button  type="submit" onclick="showTable()" >Hide/Reveal Testing Results <b><i>Leaderboards</i></b></button>
+                    <br>
+                    <br>
+                </div>
+                <div style="overflow-x:auto;" class="LBTableContainer" id="LBTableContainer">
+                    <table  class="LBTable">
+                        <tr>
+                            <th>Input/Sorted or not</th>
+                            <th>Result</th>
+                            <th>Expected</th>
+                            <th>Has Prize or not</th>
+                            <th>Has Prize or not result</th>
+                            <th>Passed</th>
+                            <th>observations</th>
+
+                        </tr>
+                        <tr>
+                            <td>-5/Sorted/Not</td>
+                            <td>42/Sorted/Not</td>
+                            <td>An Error</td>
+                            <td>True/False</td>
+                            <td>True/False</td>
+                            <td>No</td>
+                            <td>I was expecting an error regarding the number of players but got back a wrong information and no error, Has prize and Sorted work</td>
+                        </tr>
+                        <tr>
+                            <td>999999999/Sorted/Not</td>
+                            <td>42/Sorted/Not</td>
+                            <td>All completed entries</td>
+                            <td>True/False</td>
+                            <td>True/False</td>
+                            <td>No</td>
+                            <td>I was expecting all completed entries to show up but only 42 did, Has prize and Sorted work</td>
+                        </tr>
+                        <tr>
+                            <td>0/Sorted/Not</td>
+                            <td>0/Sorted/Not</td>
+                            <td>0</td>
+                            <td>True/False</td>
+                            <td>True/False</td>
+                            <td>Yes</td>
+                            <td>As i expected no entries appeared, Has prize works, sorted I don't know</td>
+                        </tr>
+                        <tr>
+                            <td>¬/Sorted/Not</td>
+                            <td>42/Sorted/Not</td>
+                            <td>Error</td>
+                            <td>True/False</td>
+                            <td>True/False</td>
+                            <td>No</td>
+                            <td>I was expecting an error because I submitted a symbol, but I got back wrong information and no error, Has prize and Sorted work</td>
+                        </tr>
+                        <tr>
+                            <td>B/Sorted/Not</td>
+                            <td>42/Sorted/Not</td>
+                            <td>Error</td>
+                            <td>True/False</td>
+                            <td>True/False</td>
+                            <td>No</td>
+                            <td>I was expecting an error because I submitted a character, but I got back wrong information and no error, Has prize and Sorted work</td>
+                        </tr>
+                        <tr>
+                            <td>6.8/Sorted/Not</td>
+                            <td>42/Sorted/Not</td>
+                            <td>Error</td>
+                            <td>True/False</td>
+                            <td>True/False</td>
+                            <td>No</td>
+                            <td>I was expecting an error because I submitted a float number, but I got back wrong information and no error, Has prize and Sorted work</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
