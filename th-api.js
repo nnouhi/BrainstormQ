@@ -356,7 +356,7 @@ function updateScore(sessionObject){
             else{
                 let errorMessage = confirm(jsonObject.errorMessages[0])
                 if (errorMessage)
-                    window.location.href = "app.html";
+                    window.location.href = "SignIn.html";
             }
 
 

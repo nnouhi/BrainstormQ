@@ -29,14 +29,14 @@
                 </div>
 
                 <div>
-                    <label for="numberOfPlayers">Enter any number of players to be displayed</label><br><br>
+                    <label for="numberOfPlayers"><b>Enter any number of players to be displayed:</b></label><br><br>
                     <input type="textbox" id="numberOfPlayers" placeholder="Enter number of players..." required>
                     <br>
                     <br>
                 </div>
                 <div class="checkboxesP">
-                    <p class="sortedP" id="sortedP">Leaderboards will be sorted</p>
-                    <p class="prizeP" id="prizeP">There will be a prize</p>
+                    <p class="sortedP" id="sortedP" style="color:red">Leaderboards will be sorted</p>
+                    <p class="prizeP" id="prizeP" style="color:red">There will be a prize</p>
                 </div>
                 <div class="submitLdboards">
                    <button type="submit" onclick="getNumPlayers()">Submit</button>
@@ -44,7 +44,7 @@
                 <br>
                 <br>
                 <div style="text-align: center">
-                    <button  type="submit" onclick="showTable()" >Hide/Reveal Testing Results <b><i>Leaderboards</i></b></button>
+                    <button  type="submit" onclick="showLBTable()" >Hide/Reveal Testing Results <b><i>Leaderboards</i></b></button>
                     <br>
                     <br>
                 </div>
@@ -116,6 +116,87 @@
                         </tr>
                     </table>
                 </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="testScore">
+            <h3>Unit test for Score</h3>
+            <div class="checkboxes">
+                <input type="checkbox" id="completedCheckBox"  onclick="checkBoxCompleted()">
+                <label for="sorted">Check for completed game</label><br>
+            </div>
+            <div>
+                <label for="score"><b>Enter the score you want to be displayed:</b></label><br><br>
+                <input type="textbox" id="score" placeholder="Score..." required>
+            </div>
+            <div class="checkboxesP">
+                <p class="sortedP" id="completedP" style="color: red">Game will be completed</p>
+            </div>
+            <br>
+            <div class="submitScore">
+                <button type="submit" onclick="getScore()">Submit</button>
+            </div>
+            <br>
+            <br>
+            <div style="text-align: center">
+                <button  type="submit" onclick="showScoreTable()" >Hide/Reveal Testing Results <b><i>Score</i></b></button>
+                <br>
+                <br>
+            </div>
+            <div style="overflow-x:auto;" class="ScoreTableContainer" id="ScoreTableContainer">
+                <table  class="ScoreTable">
+                    <tr>
+                        <th>Input/Completed or not</th>
+                        <th>Result</th>
+                        <th>Expected</th>
+                        <th>Passed</th>
+                        <th>observations</th>
+
+                    </tr>
+                    <tr>
+                        <td>-50000/Completed/Not</td>
+                        <td>-1000/Completed/Not</td>
+                        <td>An Error</td>
+                        <td>No</td>
+                        <td>I was expecting an Error, but I got back the score of -1000 (server max score?),Not/Completed Works</td>
+                    </tr>
+                    <tr>
+                        <td>99999999999/Completed/Not</td>
+                        <td>42/Completed/Not</td>
+                        <td>1000</td>
+                        <td>No</td>
+                        <td>I was expecting to get a score of 1000 because of the previous attempt I thought the max score was 1000,Not/Completed Works</td>
+                    </tr>
+                    <tr>
+                        <td>100/Completed/Not</td>
+                        <td>100/Completed/Not</td>
+                        <td>100</td>
+                        <td>Yes</td>
+                        <td>Works as expected,Not/Completed Works</td>
+                    </tr>
+                    <tr>
+                        <td>-100/Completed/Not</td>
+                        <td>-100/Completed/Not</td>
+                        <td>-100</td>
+                        <td>Yes</td>
+                        <td>Works as expected,Not/Completed Works</td>
+                    </tr>
+                    <tr>
+                        <td>B/Completed/Not</td>
+                        <td>42/Completed/Not</td>
+                        <td>Error</td>
+                        <td>No</td>
+                        <td>I was expecting an error because I submitted a character, but I got back wrong information and no error,Not/Completed Works</td>
+                    </tr>
+                    <tr>
+                        <td>6.8/Completed/Not</td>
+                        <td>42/Completed/Not</td>
+                        <td>Error</td>
+                        <td>No</td>
+                        <td>I was expecting an error because I submitted a float number, but I got back wrong information and no error,Not/Completed Works</td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>

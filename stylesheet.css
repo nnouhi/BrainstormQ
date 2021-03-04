@@ -703,7 +703,7 @@
     }
 
     .tableContainer{
-        display:none;
+        display:block;
         position:relative;
     }
 
@@ -716,12 +716,13 @@
         font-size:70px;
         margin-left:100px;
     }
-    .leaderboardsHeader{
+    .scoreDisplay{
         position:relative;
-        display:none;
+        display:block;
         text-align: center;
         font-size:40px;
         left:50px;
+        margin-top:20px;
         font-family: Lucidatypewriter, monospace;
         width: 100%;
     }
@@ -745,7 +746,7 @@
         box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     }
     .refreshBtnContainer{
-        display:none;
+        display:block;
         position:relative;
         left:200px;
     }
@@ -841,12 +842,18 @@ tr:nth-child(even){background-color: #f2f2f2}
     position:relative;
     display:none;
 }
+
+.ScoreTableContainer{
+    text-align: center;
+    position:relative;
+    display:none;
+}
 .checkboxes{
     margin-top: 20px;
     margin-bottom: 20px;
 }
 
-.submitLdboards{
+.submitLdboards .submitScore{
     position:relative;
 }
 .prizeP{

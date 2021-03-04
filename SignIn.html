@@ -107,6 +107,7 @@
 
         document.getElementById("displayChallenges").style.display = "block";
 
+
         fetch(TH_BASE_URL+"list")
             .then(response => response.json()) //Parse JSON text to JavaScript object
             .then(jsonObject => {
@@ -147,6 +148,7 @@
 
         /*Makes refresh hidden*/
         let refresh=document.getElementById("refresh");
+
         refresh.style.visibility='hidden';
 
         document.getElementById("displayChallenges").style.display = "none";

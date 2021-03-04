@@ -13,7 +13,7 @@
 
     <a href="javascript:getChallenges(this);" id="refresh" class="refresh">Refresh</a>
     <button id="homeBtn" class="homeBtn" onclick="window.location.href='index.html'" >Home</button>
-    <button id="restartBtn" class="restartBtn" onclick="window.location.href='app.html'" >Restart</button>
+    <button id="restartBtn" class="restartBtn" onclick="window.location.href='SignIn.html'" >Restart</button>
     <!-- Trigger/Open The Modal -->
     <button id="infoBtn" class="infoBtn" >Info</button>
 
@@ -45,12 +45,10 @@
             <button type="submit" class="refreshBtn" id="refreshBtn" onclick="refreshLeaderboard()">Refresh</button>
         </div>
 
-        <div class="leaderboardsHeader" id="leaderboardHeader">
-
-        </div>
+        <div class="scoreDisplay" id="scoreDisplay"></div>
 
         <div class="hasPrizeContainer" id="hasPrizeContainer">
-            <h3>Congratulations you have won a <span>prize</span></h3>
+            Congratulations you have won a prize
         </div>
         <h3 class="loading" id="loading"></h3>
         <div class="tableContainer" id="tableContainer">
@@ -96,8 +94,10 @@
         }
 
 
-        function checkForTest(){
+        function checkForTestLB(){
             if(testLB()){
+                document.getElementById("scoreDisplay").style.display="none";
+                document.getElementById("refreshBtnContainer").style.display="none";
                 let testPrize=params.has("hasPrize");
                 let testSorted=params.has("sorted");
                 let testNumOfPlayers=params.get("size");
@@ -110,9 +110,34 @@
             }
         }
 
+        function checkForTestScore(){
+            if(testSc()){
+                document.getElementById("leaderboardTable").style.display="none";
+                document.getElementById("refreshBtnContainer").style.display="none";
+                let testScore=params.get("score");
+                let testCompleted=params.has("completed")
+                let url=TH_TEST_URL+"score?"+"score="+testScore+"&completed="+testCompleted;
+                score(url);
+            }
+            else{
+                let url=TH_BASE_URL_SCORE+getCookie("sessionID");
+                score(url);
+            }
+        }
+
         function testLB(){
              let url = new URL(window.location.href);
             return url.searchParams.get("testLB")!=null;
+        }
+
+        function testSc(){
+            let url = new URL(window.location.href);
+            return url.searchParams.get("testSc")!=null;
+        }
+
+        function checkForTest(){
+            checkForTestLB();
+            checkForTestScore();
         }
 
         function convertMsToDate(startsOnString){
@@ -139,14 +164,10 @@
                 .then(response => response.json()) //Parse JSON text to JavaScript object
                 .then(jsonObject => {
                     document.getElementById("loading").innerText="";
-                    document.getElementById("leaderboardHeader").style.display="block";
-                    document.getElementById("tableContainer").style.display="block";
                     if(jsonObject.status==="OK") {
                         let tableContents = "";
-                        if(!testLB()) {
-                            getRank();//get ranking of player
-                            document.getElementById("refreshBtnContainer").style.display="block";
-                        }
+
+
                         if (jsonObject.hasPrize === true) {
                             document.getElementById("hasPrizeContainer").style.display = "block";
                         }
@@ -165,6 +186,9 @@
                                 "</tr>";
                         }
                         document.getElementById("leaderboardTable").innerHTML += tableContents;
+                        if(!testLB()){
+                            document.getElementById("refreshBtnContainer").style.display="block";
+                        }
                     }
                     else if(jsonObject.status==="ERROR"){
                         let errorMessage = confirm(jsonObject.errorMessages[0])
@@ -179,14 +203,15 @@
         /*Refreshes the leaderboards */
         function refreshLeaderboard(){
             document.getElementById("leaderboardTable").innerHTML="";
-            document.getElementById("leaderboardHeader").innerHTML="";
+            document.getElementById("scoreDisplay").innerHTML="";
             document.getElementById("refreshBtnContainer").style.display="none";
-            checkForTest()
+            checkForTestLB();
+            checkForTestScore();
         }
 
         function getRank(){
             let rankCounter=0;
-            let header;
+            let rankDisplay=document.getElementById("rankDisplay"); //test
             fetch( TH_BASE_URL_LEADERBOARDS+ getCookie("sessionID") + "&sorted&limit=2000")
                 .then(response => response.json())
                 .then(jsonObject => {
@@ -198,13 +223,37 @@
                         const score = entry.score;
                         const completionTime = entry.completionTime;
                         if(playerName===getCookie("playerNameCookie")){
-                            header="<h3>"+"Congratulations "+getCookie("playerNameCookie")+ " your rank is " + rankCounter+ "</h3>";
-                            document.getElementById("leaderboardHeader").innerHTML+=header;
+                            rankDisplay.innerHTML=" and your rank is "+rankCounter;
                         }
                         else{
                             rankCounter++;
                         }
 
+                    }
+                });
+        }
+
+        function score(url){
+            let completedLB="";
+            fetch(url)
+                .then(response => response.json())
+                .then(jsonObject => {
+                    if(jsonObject.status === "OK"){
+                        if((jsonObject.completed === false) && (jsonObject.finished === false)){
+                            completedLB="is not completed ";
+                            document.getElementById("scoreDisplay").innerHTML="The game "+completedLB + jsonObject.player+", and your score is "+jsonObject.score+" points."
+                        }
+                        else if(jsonObject.completed === true){
+                            completedLB="is completed ";
+                            document.getElementById("scoreDisplay").innerHTML="Congratulations the game "+completedLB + jsonObject.player+", and your score is "+jsonObject.score+
+                            "<span id='rankDisplay'></span>";
+                            getRank();
+                        }
+                    }
+                    else{
+                        let errorMessage = confirm(jsonObject.errorMessages[0]);
+                        if (errorMessage) window.location.href = "SignIn.html";
+                        else  window.location.href = "SignIn.html";
                     }
                 });
         }
