@@ -814,6 +814,20 @@
 
 }
 
+
+
+
+    /*Media q for tablets*/
+@media (min-width: 992px)
+{
+
+
+
+
+}
+
+
+
 /* TEST PAGE STYLING*/
 
 table {
@@ -834,7 +848,7 @@ tr:nth-child(even){background-color: #f2f2f2}
     text-align: center;
 }
 
-.ldboardsContainer{
+.unitTestContainer{
     text-align: center;
 }
 .LBTableContainer{
@@ -864,20 +878,23 @@ tr:nth-child(even){background-color: #f2f2f2}
     position:relative;
     display:none;
 }
-
-
-    /*Media q for tablets*/
-@media (min-width: 992px)
-{
-
-
-
-
+.completedQP{
+    position:relative;
+    display:none;
 }
-
-
-
-
+.skipP{
+    position:relative;
+    display:none;
+}
+.geolocationP{
+    position:relative;
+    display:none;
+}
+.qType{
+    position:relative;
+    font-size:16px;
+    font-weight: bold;
+}
 
 
 

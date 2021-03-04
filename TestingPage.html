@@ -13,19 +13,19 @@
         <h1 class="unitTestHD">Unit testing efforts!</h1>
     </div>
 
-    <div class="ldboardsContainer">
+    <div class="unitTestContainer">
         <div>
             <h3>Unit test for Leaderboards</h3>
             <div>
                 <div class="checkboxes">
                     <input type="checkbox" id="sorted" onclick="checkBoxSorted()">
-                    <label for="sorted">Check for sorted leaderboards</label><br>
+                    <label for="sorted">Check for <b>sorted</b> leaderboards</label><br>
 
                 </div>
 
                 <div class="checkboxes">
                     <input type="checkbox" id="prize" onclick="checkBoxPrize()">
-                    <label for="prize"> Check for has prize leaderboards</label><br>
+                    <label for="prize"> Check for <b>has prize</b> leaderboards</label><br>
                 </div>
 
                 <div>
@@ -124,7 +124,7 @@
             <h3>Unit test for Score</h3>
             <div class="checkboxes">
                 <input type="checkbox" id="completedCheckBox"  onclick="checkBoxCompleted()">
-                <label for="sorted">Check for completed game</label><br>
+                <label for="sorted">Check for <b>completed</b> game</label><br>
             </div>
             <div>
                 <label for="score"><b>Enter the score you want to be displayed:</b></label><br><br>
@@ -197,6 +197,34 @@
                         <td>I was expecting an error because I submitted a float number, but I got back wrong information and no error,Not/Completed Works</td>
                     </tr>
                 </table>
+            </div>
+        </div>
+        <div class="testQuestions">
+            <h3>Unit test for Questions</h3>
+            <label for="qType">Select a question type:</label>
+            <select name="qType" id="qType" class="qType">
+                <option value="Integer">Integer</option>
+                <option value="Boolean">Boolean</option>
+                <option value="Text">Text</option>
+                <option value="Numeric">Numeric</option>
+                <option value="Mcq">Mcq</option>
+            </select>
+            <div class="checkboxes">
+                <input type="checkbox" id="completedQCheckBox"  onclick="checkBoxCompletedQ()">
+                <label for="sorted">Check for <b>Completed</b> Questions</label><br>
+            </div>
+            <div class="checkboxes">
+                <input type="checkbox" id="GeolocationCheckBox"  onclick="checkBoxGeolocation()">
+                <label for="sorted">Check for questions that require <b>Geolocation</b></label><br>
+            </div>
+            <div class="checkboxes">
+                <input type="checkbox" id="SkipCheckBox"  onclick="checkBoxSkip()">
+                <label for="sorted">Check for questions that can be <b>Skipped</b></label><br>
+            </div>
+            <div class="checkboxesP">
+                <p class="completedQP" id="completedQP" style="color:red">Question will count as Completed</p>
+                <p class="geolocationP" id="geolocationP" style="color:red">Question will require Geolocation</p>
+                <p class="skipP" id="skipP" style="color:red">Question can be Skipped</p>
             </div>
         </div>
     </div>
