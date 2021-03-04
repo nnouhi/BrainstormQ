@@ -45,7 +45,7 @@ let nameOfGame =params.get("nameOfGame");
 if(getCookie("saveGame") ==="true" && getCookie("playerNameCookie")===playerName){
     continueWhereLeftOff();
 }
-else {
+else if(uuid!==null){
     select();
 
 }
