@@ -106,7 +106,7 @@
             }
             else{
                 let url=TH_BASE_URL_LEADERBOARDS+getCookie("sessionID")+"&sorted&limit=40";
-                 loadLeaderboard(url);
+                loadLeaderboard(url);
             }
         }
 
@@ -186,7 +186,7 @@
                                 "</tr>";
                         }
                         document.getElementById("leaderboardTable").innerHTML += tableContents;
-                        if(!testLB()){
+                        if(!testLB() && !testSc()){
                             document.getElementById("refreshBtnContainer").style.display="block";
                         }
                     }

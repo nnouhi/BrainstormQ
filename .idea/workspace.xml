@@ -19,14 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="880e3f71-b811-409b-98a7-d91394677bc9" name="Default Changelist" comment="Created a unit test page and did some testing regarding leaderboards, need to work on the leaderboard score testing tomorrow and questions..">
+    <list default="true" id="880e3f71-b811-409b-98a7-d91394677bc9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SignIn.html" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TestingPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/TestingPage.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/leaderboards.html" beforeDir="false" afterPath="$PROJECT_DIR$/leaderboards.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/stylesheet.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/th-api.js" beforeDir="false" afterPath="$PROJECT_DIR$/th-api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unitTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/unitTest.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +124,7 @@
       <workItem from="1614682598161" duration="18476000" />
       <workItem from="1614768841394" duration="18666000" />
       <workItem from="1614792942240" duration="1172000" />
-      <workItem from="1614856860807" duration="9016000" />
+      <workItem from="1614856860807" duration="9633000" />
     </task>
     <task id="LOCAL-00001" summary="Added the names of our team">
       <created>1608135389920</created>
@@ -347,7 +343,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614790839228</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Updated unit testing page with score test and updated the leaderboards.html, I will maybe finish questions today as well.. If not tomorrow">
+      <created>1614867107158</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1614867107158</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -366,7 +369,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="1)Added some information in the Landing page and a button that takes us to the Treasure Hunt starting page&#10;2)In the starting page i've added the avaiable treasure hunts with a prompt that asks A team to provide its name" />
     <MESSAGE value="Added a css and some basic styling for now." />
     <MESSAGE value="changed the name of the html file" />
     <MESSAGE value="created a notes.html and documented what did so far." />
@@ -391,13 +393,14 @@
     <MESSAGE value="Made the qr camera bigger for phones" />
     <MESSAGE value="Added leaderboards.html and SignIn.html and made some improvements about the returning user experience" />
     <MESSAGE value="Created a unit test page and did some testing regarding leaderboards, need to work on the leaderboard score testing tomorrow and questions.." />
-    <option name="LAST_COMMIT_MESSAGE" value="Created a unit test page and did some testing regarding leaderboards, need to work on the leaderboard score testing tomorrow and questions.." />
+    <MESSAGE value="Updated unit testing page with score test and updated the leaderboards.html, I will maybe finish questions today as well.. If not tomorrow" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated unit testing page with score test and updated the leaderboards.html, I will maybe finish questions today as well.. If not tomorrow" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="423" y="115" key="CommitChangelistDialog2" timestamp="1614790841974">
+    <state x="423" y="115" key="CommitChangelistDialog2" timestamp="1614867106262">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="423" y="115" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1614790841974" />
+    <state x="423" y="115" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1614867106262" />
     <state x="184" y="86" width="1536" height="860" key="DiffContextDialog" timestamp="1613246209354">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -418,10 +421,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="757" y="222" key="RollbackChangesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1613244143303" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1614790851890">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1614867108457">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1614790851890" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1614867108457" />
     <state x="0" y="0" width="1599" height="1027" key="dock-window-1" timestamp="1613246243373">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
