@@ -156,12 +156,16 @@
     }
 
     .numericANS{
-
         position:absolute;
+        left:0px;
         font-size:50px;
         visibility:hidden;
-        top:750px;
-        left:10px;
+        top:1000px;
+        width: 40%;
+        margin-left:300px;
+        border-radius: 12px;
+        border: 10px solid #D77B1A;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     }
 
     .textANS{
@@ -254,18 +258,20 @@
         box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     }
     .numericBtn{
-        position:absolute;
+        position:relative;
         visibility: hidden;
-        background-color: #D77B1A;
-        border: none;
-        padding: 15px 32px;
         text-align: center;
         text-decoration: none;
-        display: block;
+        display: inline-block;
         font-size: 50px;
+        margin-left:700px;
         font-weight: bold;
-        top:770px;
-        margin-left:670px;
+        top:820px;
+        border-radius: 12px;
+        padding: 15px 32px;
+        border: 10px solid #D77B1A;
+        background-color: #D77B1A;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 
     }
 
@@ -852,6 +858,18 @@ tr:nth-child(even){background-color: #f2f2f2}
     text-align: center;
 }
 .LBTableContainer{
+    text-align: center;
+    position:relative;
+    display:none;
+}
+
+.ScoreTableContainer{
+    text-align: center;
+    position:relative;
+    display:none;
+}
+
+.QuestionsTableContainer{
     text-align: center;
     position:relative;
     display:none;

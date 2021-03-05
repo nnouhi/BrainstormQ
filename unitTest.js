@@ -106,6 +106,15 @@ function getScore(){
     setTimeout(function(){ window.location.href="leaderboards.html?testSc"+completed+"&score="+score},1000)
 }
 
+/* Function that tests questions*/
+function getQType(){
+    let qTypeElement = document.getElementById( "qType" );
+    //https://stackoverflow.com/questions/3301688/how-do-you-get-the-currently-selected-option-in-a-select-via-javascript
+    let qType=qTypeElement.options[ qTypeElement.selectedIndex ].value;
+
+    setTimeout(function(){ window.location.href="app.html?testQ"+completedQ+skipped+geolocation+"&question-type="+qType},1000);
+}
+
 
 /* Function that shows and hides the leaderboards testing table */
 function showLBTable(){
@@ -121,6 +130,17 @@ function showLBTable(){
 /* Function that shows and hides the score testing table */
 function showScoreTable(){
     let table = document.getElementById("ScoreTableContainer");
+    if(table.style.display!=="block"){
+        table.style.display="block";
+    }
+    else{
+        table.style.display="none";
+    }
+}
+
+/* Function that shows and hides the questions testing table */
+function showQuestionsTable(){
+    let table = document.getElementById("QuestionsTableContainer");
     if(table.style.display!=="block"){
         table.style.display="block";
     }

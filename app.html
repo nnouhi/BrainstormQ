@@ -13,7 +13,7 @@
 
 
 </head>
-<body onload="setInterval(getLocation, 30000);">
+<body>
 
 
     <div class="topnav" id="topnav">
@@ -163,40 +163,51 @@
         let cookieLifeSpan = params.get("time");
         let nameOfGame =params.get("nameOfGame");
 
-        if(getCookie("saveGame") ==="true" && getCookie("playerNameCookie")===playerName){
-            continueWhereLeftOff();
-        }
-        else if(uuid!==null){
-            select();
 
+        //check if returning user or a test question
+        if(getCookie("saveGame") ==="true" && getCookie("playerNameCookie") ===playerName || testQ()){
+            checkTestQuestion();
         }
+        //else start session
+        else{
+            select();
+        }
+
+        function testQ(){
+            let url = new URL(window.location.href);
+            return url.searchParams.get("testQ")!=null;
+        }
+
+        function checkTestQuestion(){
+            if(testQ()){
+              let testCompleted=params.has("completed");
+              let testSkipped=params.has("can-be-skipped");
+              let testGeolocation=params.has("requires-location");
+              let testQType=params.get("question-type");
+              let url=TH_TEST_URL+"question?completed="+testCompleted+"&question-type="+testQType+"&can-be-skipped="+testSkipped+"&requires-location="+testGeolocation;
+              setTimeout(loadQuestions(url),100);
+            }
+            else{
+                continueWhereLeftOff();
+            }
+        }
+
 
 
         async function select() {
             // For now just print the selected treasure hunt's UUID. Normally, you're expected to guide the user in entering
             // their name etc. and proceed to calling the '/start' command of the API to start a new session.
 
-            let url1='https://codecyprus.org/th/api/start?player='+playerName; //concatenation of the string with teams name
-
-            let url2='&app=brainstormQ&treasure-hunt-id='+uuid;//concatenation of the string and the unique uuid
-
-            let url=url1+url2; //produces the final url
-
-            console.log(url); //needed for now must delete later
-
             document.getElementById("displayQuestions").style.display="inline";
             document.getElementById("loadingQuestionsM").innerHTML="Loading..."
 
 
-            fetch(url)
+            fetch(TH_BASE_URL+"start?player="+playerName+"&app=brainstormQ&treasure-hunt-id="+uuid)
                 .then(response => response.json()) //Parse JSON text to JavaScript object
                 .then(jsonObject => {
 
-
                     let statusObject=jsonObject.status;
                     let sessionObject=jsonObject.session;
-
-
 
                     if (statusObject === "ERROR") //if status isnt ok display the error message needs work no finished
                     {
@@ -206,22 +217,18 @@
 
                     } else if (statusObject == "OK") {
 
-                        /* if everything is okay show the question*/
-
                         saveCookie("sessionID", jsonObject.session, cookieLifeSpan);
                         saveCookie("playerNameCookie", playerName, cookieLifeSpan);
                         saveCookie("saveGame", "true", cookieLifeSpan);
                         saveCookie("nameOfGame", nameOfGame, cookieLifeSpan);
-                        loadQuestions(getCookie("sessionID"));
-
+                        loadQuestions(TH_BASE_URL+"question?&session="+getCookie("sessionID"));
                     }
 
                 });
         }
 
 
-        function loadQuestions(sessionObject){ //starts the game
-
+        function loadQuestions(url){ //starts the game
 
             intANS.style.visibility = "hidden";
             intBTN.style.visibility = "hidden";
@@ -246,10 +253,11 @@
             document.getElementById("loadingQuestionsM").innerHTML="Loading..."
 
 
-            fetch(TH_BASE_URL_QUESTION+getCookie("sessionID"))
+            fetch(url)
                 .then(response => response.json()) //Parse JSON text to JavaScript object
                 .then(jsonObject => {
 
+                    console.log(jsonObject);
                     if (jsonObject.status === "ERROR") {
                         document.getElementById("specificMessage").innerHTML = jsonObject.errorMessages[0] + "<br>" + "<a href='app.html'> Click this Link to Start again</a>";
                     }
@@ -263,8 +271,6 @@
                         let currentQIndex = jsonObject.currentQuestionIndex;
 
                         let totalQuestions = jsonObject.numOfQuestions;
-
-                        let passSession = sessionObject;
 
                         let completed = jsonObject.completed;
 
@@ -295,7 +301,19 @@
                             document.getElementById("specificMessage").style.display = "none";
 
                             document.getElementById("questionMessage").innerHTML = "QUIZ FINISHED";
-                            setTimeout(function () {window.location.href = "leaderboards.html", 1000});
+
+                            document.getElementById("skip").style.visibility="hidden";
+                            document.getElementById("scoreContainer").style.display="none";
+                            document.getElementById("questionIndexContainer").style.display="none";
+                            QRContainer.style.display="none";
+
+                            //https://www.sitepoint.com/javascript-settimeout-function-examples/
+                            //after questions are completed show a "QUIZ FINISHED" message
+                            const gameOver = function(){
+                                window.location.href = "leaderboards.html";
+                            };
+
+                            setTimeout(gameOver, 2000);
 
                         } else {
 
@@ -514,7 +532,6 @@
             }
         }
 
-
         function sendLocation(lat, lng) {
             fetch(TH_BASE_URL_LOCATION + getCookie("sessionID") + "&latitude="+lat+"&longitude="+lng)
                 .then(response => response.json())
@@ -576,7 +593,7 @@
                             document.getElementById("specificMessage").style.display = "inline-block";
                             document.getElementById("specificMessage").innerText = jsonObject.message + ": You have gained " + jsonObject.scoreAdjustment + " points.";
                             updateScore(getCookie("sessionID"));
-                            loadQuestions(getCookie("sessionID"))
+                            loadQuestions(TH_BASE_URL+"question?&session="+getCookie("sessionID"))
                         } else if (jsonObject.status === "OK" && jsonObject.correct === false) {
                             document.getElementById("specificMessage").style.display = "inline-block";
                             document.getElementById("specificMessage").innerText = jsonObject.message + ": You have lost " + jsonObject.scoreAdjustment + " points.";
@@ -589,7 +606,6 @@
             }
         }
 
-
         function checkSkipped(){
             fetch(TH_BASE_URL_SKIP + getCookie("sessionID"))
                 .then(response => response.json()) //Parse JSON text to JavaScript object
@@ -599,7 +615,7 @@
                         document.getElementById("specificMessage").style.display = "inline-block";
                         document.getElementById("specificMessage").innerText = jsonObject.message + " You Lost: " + jsonObject.scoreAdjustment;
                         updateScore(getCookie("sessionID"));
-                        loadQuestions(getCookie("sessionID"))
+                        loadQuestions(TH_BASE_URL+"question?&session="+getCookie("sessionID"))
                     }
 
                 });
@@ -613,7 +629,7 @@
 
             let continueURL = TH_BASE_URL_QUESTION + continuedSession; // form url
 
-            setTimeout(loadQuestions(continueURL),1000);
+            setTimeout(loadQuestions(TH_BASE_URL+"question?&session="+continuedSession),1000);
         }
 
 

@@ -226,6 +226,64 @@
                 <p class="geolocationP" id="geolocationP" style="color:red">Question will require Geolocation</p>
                 <p class="skipP" id="skipP" style="color:red">Question can be Skipped</p>
             </div>
+            <br>
+            <div class="submitQ">
+                <button type="submit" onclick="getQType()">Submit</button>
+            </div>
+            <br>
+            <br>
+            <div style="text-align: center">
+                <button  type="submit" onclick="showQuestionsTable()" >Hide/Reveal Testing Results <b><i>Questions</i></b></button>
+                <br>
+                <br>
+            </div>
+            <div style="overflow-x:auto;" class="QuestionsTableContainer" id="QuestionsTableContainer">
+                <table  class="ScoreTable">
+                    <tr>
+                        <th>Question Type</th>
+                        <th>Result</th>
+                        <th>Expected</th>
+                        <th>Passed</th>
+                        <th>observations</th>
+
+                    </tr>
+                    <tr>
+                        <td>Integer</td>
+                        <td>Integer</td>
+                        <td>Integer</td>
+                        <td>YES</td>
+                        <td>Works perfectly on geolocation and skipped, if completed is checked takes user to leaderboard</td>
+                    </tr>
+                    <tr>
+                        <td>Boolean</td>
+                        <td>Boolean</td>
+                        <td>Boolean</td>
+                        <td>YES</td>
+                        <td>Works perfectly on geolocation and skipped, if completed is checked takes user to leaderboard</td>
+                    </tr>
+                    <tr>
+                        <td>Numeric</td>
+                        <td>Numeric</td>
+                        <td>Numeric</td>
+                        <td>YES</td>
+                        <td>Works perfectly on geolocation and skipped, if completed is checked takes user to leaderboard</td>
+                    </tr>
+                    <tr>
+                        <td>Text</td>
+                        <td>Text</td>
+                        <td>Text</td>
+                        <td>YES</td>
+                        <td>Works perfectly on geolocation and skipped, if completed is checked takes user to leaderboard</td>
+                    </tr>
+                    <tr>
+                        <td>Mcq</td>
+                        <td>Mcq</td>
+                        <td>Mcq</td>
+                        <td>YES</td>
+                        <td>Works perfectly on geolocation and skipped, if completed is checked takes user to leaderboard</td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
 

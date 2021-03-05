@@ -152,15 +152,7 @@
         }
 
         function loadLeaderboard(url){
-
-           // document.getElementById("questionMessage").innerText="";
-            //document.getElementById("skip").style.visibility="hidden";
-           // document.getElementById("scoreContainer").style.display="none";
-           // document.getElementById("questionIndexContainer").style.display="none";
             document.getElementById("loading").innerText="Loading...";
-           // QRContainer.style.display="none";
-
-
             fetch(url)
                 .then(response => response.json()) //Parse JSON text to JavaScript object
                 .then(jsonObject => {
