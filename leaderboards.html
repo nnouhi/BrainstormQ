@@ -62,8 +62,11 @@
     </div>
 
     <script>
+        const params = new URLSearchParams(location.search);
+        const TH_TEST_URL = "https://codecyprus.org/th/test-api/"; // the test API base url
+        const TH_BASE_URL_LEADERBOARDS="https://codecyprus.org/th/api/leaderboard?session=";
+        const TH_BASE_URL_SCORE="https://codecyprus.org/th/api/score?session="; // the true API base url for score
 
-        //const params = new URLSearchParams(location.search);
 
         // Get the modal
         let modal = document.getElementById("myModal");
@@ -92,6 +95,11 @@
         }
 
 
+        function checkForTest(){
+            checkForTestLB();
+            checkForTestScore();
+        }
+
         function checkForTestLB(){
             if(testLB()){
                 document.getElementById("scoreDisplay").style.display="none";
@@ -102,7 +110,7 @@
                 let url=TH_TEST_URL+"leaderboard?"+"sorted="+testSorted+"&hasPrize="+testPrize+"&size="+testNumOfPlayers;
                 loadLeaderboard(url);
             }
-            else{
+            else if(!testLB() && !testSc()){
                 let url=TH_BASE_URL_LEADERBOARDS+getCookie("sessionID")+"&sorted&limit=40";
                 loadLeaderboard(url);
             }
@@ -113,13 +121,13 @@
                 document.getElementById("leaderboardTable").style.display="none";
                 document.getElementById("refreshBtnContainer").style.display="none";
                 let testScore=params.get("score");
-                let testCompleted=params.has("completed")
+                let testCompleted=params.has("completed");
                 let url=TH_TEST_URL+"score?"+"score="+testScore+"&completed="+testCompleted;
-                score(url);
+                setTimeout(score(url),2000);
             }
-            else{
+            else if(!testSc() && !testLB()){
                 let url=TH_BASE_URL_SCORE+getCookie("sessionID");
-                score(url);
+                setTimeout(score(url),2000);
             }
         }
 
@@ -131,11 +139,6 @@
         function testSc(){
             let url = new URL(window.location.href);
             return url.searchParams.get("testSc")!=null;
-        }
-
-        function checkForTest(){
-            checkForTestLB();
-            checkForTestScore();
         }
 
         function convertMsToDate(startsOnString){
@@ -165,7 +168,6 @@
                     if(jsonObject.status==="OK") {
                         let tableContents = "";
 
-
                         if (jsonObject.hasPrize === true) {
                             document.getElementById("hasPrizeContainer").style.display = "block";
                         }
@@ -189,7 +191,7 @@
                         }
                     }
                     else if(jsonObject.status==="ERROR"){
-                        let errorMessage = confirm(jsonObject.errorMessages[0])
+                        let errorMessage = confirm(jsonObject.errorMessages[0]);
                         if (errorMessage)
                             window.location.href = "app.html";
                     }
@@ -214,7 +216,7 @@
                 .then(response => response.json())
                 .then(jsonObject => {
                     let name = getCookie("playerNameCookie");
-                    const leaderboardArray = jsonObject.leaderboard;
+                    let leaderboardArray = jsonObject.leaderboard;
                     for (let i = 0; i < leaderboardArray.length; i++) {
                         const entry = leaderboardArray[i];
                         const playerName = entry.player;
@@ -255,9 +257,32 @@
                     }
                 });
         }
+
+        function getCookie(cookieName) {
+            let name = cookieName + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) === ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) === 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
+        function saveCookie(cookieName, cookieValue,cookieLifespan) {
+            let date = new Date();
+            date.setTime(date.getTime() + (cookieLifespan * 60 * 60 * 1000));
+            let expires = "expires=" + date.toUTCString();
+            document.cookie = cookieName + "=" + cookieValue + ";" + expires;
+        }
     </script>
 
-    <script src="th-api.js" defer></script>
+
 
 
 </body>

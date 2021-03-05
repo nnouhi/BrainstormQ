@@ -19,8 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="880e3f71-b811-409b-98a7-d91394677bc9" name="Default Changelist" comment="">
+    <list default="true" id="880e3f71-b811-409b-98a7-d91394677bc9" name="Default Changelist" comment="fixed an error that occurred with th-api.js and leaderboards.html">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestingPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/TestingPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.html" beforeDir="false" afterPath="$PROJECT_DIR$/app.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extraFeatures.js" beforeDir="false" afterPath="$PROJECT_DIR$/extraFeatures.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/leaderboards.html" beforeDir="false" afterPath="$PROJECT_DIR$/leaderboards.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/th-api.js" beforeDir="false" afterPath="$PROJECT_DIR$/th-api.js" afterDir="false" />
     </list>
@@ -124,7 +127,8 @@
       <workItem from="1614682598161" duration="18476000" />
       <workItem from="1614768841394" duration="18666000" />
       <workItem from="1614792942240" duration="1172000" />
-      <workItem from="1614856860807" duration="14642000" />
+      <workItem from="1614856860807" duration="14729000" />
+      <workItem from="1614940199694" duration="4289000" />
     </task>
     <task id="LOCAL-00001" summary="Added the names of our team">
       <created>1608135389920</created>
@@ -364,7 +368,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614871400765</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="fixed an error that occurred with th-api.js and leaderboards.html">
+      <created>1614879544454</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1614879544454</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -383,7 +394,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="created a notes.html and documented what did so far." />
     <MESSAGE value="Finished(for now) the landing page for 02/02 presentation day" />
     <MESSAGE value="Updated the notes html for now" />
     <MESSAGE value="Made some progress with tha app html" />
@@ -408,13 +418,14 @@
     <MESSAGE value="Updated unit testing page with score test and updated the leaderboards.html, I will maybe finish questions today as well.. If not tomorrow" />
     <MESSAGE value="Removed refresh btn from score test/leaderboards test" />
     <MESSAGE value="Added the container for the question's unit test and their function, tomorrow i will finish with the whole unit test page as well as the questions test" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added the container for the question's unit test and their function, tomorrow i will finish with the whole unit test page as well as the questions test" />
+    <MESSAGE value="fixed an error that occurred with th-api.js and leaderboards.html" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed an error that occurred with th-api.js and leaderboards.html" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="423" y="115" key="CommitChangelistDialog2" timestamp="1614871399853">
+    <state x="335" y="115" key="CommitChangelistDialog2" timestamp="1614879552711">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="423" y="115" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1614871399853" />
+    <state x="335" y="115" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1614879552711" />
     <state x="184" y="86" width="1536" height="860" key="DiffContextDialog" timestamp="1613246209354">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -435,10 +446,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="757" y="222" key="RollbackChangesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1613244143303" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1614871403180">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1614879554841">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1614871403180" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1614879554841" />
     <state x="0" y="0" width="1599" height="1027" key="dock-window-1" timestamp="1613246243373">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

@@ -1,587 +1,150 @@
-const TH_BASE_URL = "https://codecyprus.org/th/api/"; // the true API base url
 
-const TH_TEST_URL = "https://codecyprus.org/th/test-api/"; // the test API base url
+// Get the modal
+let modal = document.getElementById("myModal");
 
-const TH_BASE_URL_QUESTION = "https://codecyprus.org/th/api/question?session="; // the true API base url for question
+// Get the button that opens the modal
+let btn = document.getElementById("infoBtn");
 
-const TH_BASE_URL_ANSWER = "https://codecyprus.org/th/api/answer?session="; // the true API base url for answer
+// Get the <span> element that closes the modal
+let span = document.getElementsByClassName("close")[0];
 
-const TH_BASE_URL_SCORE="https://codecyprus.org/th/api/score?session="; // the true API base url for score
-
-const TH_BASE_URL_SKIP="https://codecyprus.org/th/api/skip?session="; // the true API base url for score
-
-const TH_BASE_URL_LOCATION="https://codecyprus.org/th/api/location?session=";
-
-const TH_BASE_URL_LEADERBOARDS="https://codecyprus.org/th/api/leaderboard?session=";
-
-const intANS = document.getElementById("intANS");
-const intBTN = document.getElementById("intBtn");
-
-const numericANS = document.getElementById("numericANS");
-const numericBTN = document.getElementById("numericBtn");
-
-const trueBTN = document.getElementById("trueBtn");
-const falseBTN = document.getElementById("falseBtn");
-
-const textANS = document.getElementById("textANS");
-const textBTN = document.getElementById("textBtn");
-
-const mcqBtnA = document.getElementById("mcqBtnA");
-const mcqBtnB = document.getElementById("mcqBtnB");
-const mcqBtnC = document.getElementById("mcqBtnC");
-const mcqBtnD = document.getElementById("mcqBtnD");
-
-const skip=document.getElementById("skip");
-
-const QRContainer=document.getElementById("qrContainer");
-
-const params = new URLSearchParams(location.search);
-
-let playerName = params.get("player");
-let uuid = params.get("treasure-hunt-id");
-let cookieLifeSpan = params.get("time");
-let nameOfGame =params.get("nameOfGame");
-
-if(getCookie("saveGame") ==="true" && getCookie("playerNameCookie")===playerName){
-    continueWhereLeftOff();
-}
-else if(uuid!==null){
-    select();
-
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+    modal.style.display = "block";
 }
 
-
-async function select() {
-    // For now just print the selected treasure hunt's UUID. Normally, you're expected to guide the user in entering
-    // their name etc. and proceed to calling the '/start' command of the API to start a new session.
-
-    let url1='https://codecyprus.org/th/api/start?player='+playerName; //concatenation of the string with teams name
-
-    let url2='&app=brainstormQ&treasure-hunt-id='+uuid;//concatenation of the string and the unique uuid
-
-    let url=url1+url2; //produces the final url
-
-    console.log(url); //needed for now must delete later
-
-    document.getElementById("displayQuestions").style.display="inline";
-    document.getElementById("loadingQuestionsM").innerHTML="Loading..."
-
-
-    fetch(url)
-        .then(response => response.json()) //Parse JSON text to JavaScript object
-        .then(jsonObject => {
-
-
-            let statusObject=jsonObject.status;
-            let sessionObject=jsonObject.session;
-
-
-
-             if (statusObject === "ERROR") //if status isnt ok display the error message needs work no finished
-             {
-                 let errorMessage = confirm(jsonObject.errorMessages[0])
-                 if (errorMessage)
-                     getChallenges();
-
-             } else if (statusObject == "OK") {
-
-                 /* if everything is okay show the question*/
-
-                 saveCookie("sessionID", jsonObject.session, cookieLifeSpan);
-                 saveCookie("playerNameCookie", playerName, cookieLifeSpan);
-                 saveCookie("saveGame", "true", cookieLifeSpan);
-                 saveCookie("nameOfGame", nameOfGame, cookieLifeSpan);
-                 loadQuestions(getCookie("sessionID"));
-
-             }
-
-        });
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
 }
 
-
-function loadQuestions(sessionObject){ //starts the game
-
-
-    intANS.style.visibility = "hidden";
-    intBTN.style.visibility = "hidden";
-    intANS.value = "";
-
-    numericANS.visibility = "hidden";
-    numericBTN.style.visibility = "hidden";
-    numericANS.value = "";
-
-    trueBTN.style.visibility = "hidden";
-    falseBTN.style.visibility = "hidden";
-
-    textBTN.style.visibility = "hidden";
-    textANS.style.visibility = "hidden";
-
-    mcqBtnA.style.visibility = "hidden";
-    mcqBtnB.style.visibility = "hidden";
-    mcqBtnC.style.visibility = "hidden";
-    mcqBtnD.style.visibility = "hidden";
-
-    document.getElementById("displayQuestions").style.display="inline";
-    document.getElementById("loadingQuestionsM").innerHTML="Loading..."
-
-
-    console.log(getCookie("sessionID"));
-
-    fetch(TH_BASE_URL_QUESTION+getCookie("sessionID"))
-        .then(response => response.json()) //Parse JSON text to JavaScript object
-        .then(jsonObject => {
-
-            if (jsonObject.status === "ERROR") {
-                document.getElementById("specificMessage").innerHTML = jsonObject.errorMessages[0] + "<br>" + "<a href='app.html'> Click this Link to Start again</a>";
-            }
-            else {
-                document.getElementById("loadingQuestionsM").innerHTML = "";
-
-                let location = jsonObject.requiresLocation;
-
-                let questions = jsonObject.questionText;
-
-                let currentQIndex = jsonObject.currentQuestionIndex;
-
-                let totalQuestions = jsonObject.numOfQuestions;
-
-                let passSession = sessionObject;
-
-                let completed = jsonObject.completed;
-
-                let skipped=jsonObject.canBeSkipped;
-
-
-                if (completed) {
-                    intANS.style.visibility = "hidden";
-                    intBTN.style.visibility = "hidden";
-
-
-                    numericANS.visibility = "hidden";
-                    numericBTN.style.visibility = "hidden";
-
-
-                    trueBTN.style.visibility = "hidden";
-                    falseBTN.style.visibility = "hidden";
-
-                    textBTN.style.visibility = "hidden";
-                    textANS.style.visibility = "hidden";
-
-
-                    mcqBtnA.style.visibility = "hidden";
-                    mcqBtnB.style.visibility = "hidden";
-                    mcqBtnC.style.visibility = "hidden";
-                    mcqBtnD.style.visibility = "hidden";
-
-                    document.getElementById("specificMessage").style.display = "none";
-
-                    document.getElementById("questionMessage").innerHTML = "QUIZ FINISHED";
-                    setTimeout(function () {window.location.href = "leaderboards.html", 1000});
-
-                } else {
-
-                    document.getElementById("questionMessage").innerHTML = questions;
-
-                    document.getElementById("homeBtn").style.display = "inline-block";
-
-                    document.getElementById("restartBtn").style.display = "inline-block";
-
-                    document.getElementById("specificMessage").style.display = "inline-block";
-
-                    document.getElementById("questionIndexContainer").style.display = "block";
-
-                    document.getElementById("questionIndexP").innerHTML = "Question "+ (jsonObject.currentQuestionIndex+1) + " / " + jsonObject.numOfQuestions;
-
-                    document.getElementById("scoreContainer").style.display = "block";
-
-                    QRContainer.style.display="inline-block";
-
-                    let qType = jsonObject.questionType;
-
-                    if (location) {
-                        getLocation();
-                    }
-
-                    //If question can be skipped hide the skip button
-                    if (skipped) {
-                        document.getElementById("skip").style.visibility = "visible";
-                    } else {
-                        document.getElementById("skip").style.visibility = "hidden";
-                    }
-
-                    console.log(qType);
-                    switch (qType) {
-                        case "INTEGER":
-
-                            intANS.style.visibility = "visible";
-                            intBTN.style.visibility = "visible";
-
-                            numericANS.visibility = "hidden";
-                            numericBTN.style.visibility = "hidden";
-
-                            trueBTN.style.visibility = "hidden";
-                            falseBTN.style.visibility = "hidden";
-
-                            textBTN.style.visibility = "hidden";
-                            textANS.style.visibility = "hidden";
-
-
-                            mcqBtnA.style.visibility = "hidden";
-                            mcqBtnB.style.visibility = "hidden";
-                            mcqBtnC.style.visibility = "hidden";
-                            mcqBtnD.style.visibility = "hidden";
-
-                            break;
-
-                        case "BOOLEAN":
-                            trueBTN.style.visibility = "visible";
-                            falseBTN.style.visibility = "visible";
-
-                            intANS.style.visibility = "hidden";
-                            intBTN.style.visibility = "hidden";
-
-                            numericANS.visibility = "hidden";
-                            numericBTN.style.visibility = "hidden";
-
-                            textBTN.style.visibility = "hidden";
-                            textANS.style.visibility = "hidden";
-
-                            mcqBtnA.style.visibility = "hidden";
-                            mcqBtnB.style.visibility = "hidden";
-                            mcqBtnC.style.visibility = "hidden";
-                            mcqBtnD.style.visibility = "hidden";
-
-                            break;
-
-                        case "TEXT":
-                            textANS.style.visibility = "visible";
-                            textBTN.style.visibility = "visible";
-
-                            intANS.style.visibility = "hidden";
-                            intBTN.style.visibility = "hidden";
-
-                            numericANS.visibility = "hidden";
-                            numericBTN.style.visibility = "hidden";
-
-                            trueBTN.style.visibility = "hidden";
-                            falseBTN.style.visibility = "hidden";
-
-                            mcqBtnA.style.visibility = "hidden";
-                            mcqBtnB.style.visibility = "hidden";
-                            mcqBtnC.style.visibility = "hidden";
-                            mcqBtnD.style.visibility = "hidden";
-
-                            break;
-
-                        case "MCQ":
-                            mcqBtnA.style.visibility = "visible";
-                            mcqBtnB.style.visibility = "visible";
-                            mcqBtnC.style.visibility = "visible";
-                            mcqBtnD.style.visibility = "visible";
-
-                            intANS.style.visibility = "hidden";
-                            intBTN.style.visibility = "hidden";
-
-                            numericANS.visibility = "hidden";
-                            numericBTN.style.visibility = "hidden";
-
-                            trueBTN.style.visibility = "hidden";
-                            falseBTN.style.visibility = "hidden";
-
-                            textBTN.style.visibility = "hidden";
-                            textANS.style.visibility = "hidden";
-
-                            break;
-
-                        case "NUMERIC":
-                            numericANS.style.visibility = "visible";
-                            numericBTN.style.visibility = "visible";
-
-                            intANS.style.visibility = "hidden";
-                            intBTN.style.visibility = "hidden";
-
-                            trueBTN.style.visibility = "hidden";
-                            falseBTN.style.visibility = "hidden";
-
-                            textBTN.style.visibility = "hidden";
-                            textANS.style.visibility = "hidden";
-
-                            mcqBtnA.style.visibility = "hidden";
-                            mcqBtnB.style.visibility = "hidden";
-                            mcqBtnC.style.visibility = "hidden";
-                            mcqBtnD.style.visibility = "hidden";
-
-                            break;
-
-                        default:
-                            intANS.style.visibility = "hidden";
-                            intBTN.style.visibility = "hidden";
-                            intANS.value = "";
-
-                            numericANS.visibility = "hidden";
-                            numericBTN.style.visibility = "hidden";
-                            numericANS.value = "";
-
-                            trueBTN.style.visibility = "hidden";
-                            falseBTN.style.visibility = "hidden";
-
-                            textBTN.style.visibility = "hidden";
-                            textANS.style.visibility = "hidden";
-                            textANS.value = "";
-
-                            mcqBtnA.style.visibility = "hidden";
-                            mcqBtnB.style.visibility = "hidden";
-                            mcqBtnC.style.visibility = "hidden";
-                            mcqBtnD.style.visibility = "hidden";
-
-                    }
-
-                }
-            }
-        });
-
-}
-
-
-
-function updateScore(sessionObject){
-
-    fetch( TH_BASE_URL_SCORE+getCookie("sessionID"))
-        .then(response => response.json()) //Parse JSON text to JavaScript object
-        .then(jsonObject => {
-            if(jsonObject.status === "OK") {
-                if (jsonObject.completed === false && jsonObject.finished === false)
-                    document.getElementById("scoreContainer").innerText = "Your current score is: " + jsonObject.score + " points.";
-            }
-            else{
-                let errorMessage = confirm(jsonObject.errorMessages[0])
-                if (errorMessage)
-                    window.location.href = "SignIn.html";
-            }
-
-
-        });
-}
-
-function getCookie(cookieName) {
-    let name = cookieName + "=";
-    let decodedCookie = decodeURIComponent(document.cookie);
-    let ca = decodedCookie.split(';');
-    for (let i = 0; i < ca.length; i++) {
-        let c = ca[i];
-        while (c.charAt(0) === ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) === 0) {
-            return c.substring(name.length, c.length);
-        }
-    }
-    return "";
-}
-
-function saveCookie(cookieName, cookieValue,cookieLifespan) {
-    let date = new Date();
-    date.setTime(date.getTime() + (cookieLifespan * 60 * 60 * 1000));
-    let expires = "expires=" + date.toUTCString();
-    document.cookie = cookieName + "=" + cookieValue + ";" + expires;
-}
-
-function getLocation() {
-    console.log("getLocation...");
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (position) {
-            sendLocation(position.coords.latitude, position.coords.longitude);
-        });
-    } else {
-        alert("Geolocation is not supported by your browser.");
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
     }
 }
 
+let copyBtn=document.getElementById("copyClickboard");
+copyBtn.addEventListener("click", copyToClickboard);
 
-function sendLocation(lat, lng) {
-    fetch(TH_BASE_URL_LOCATION + getCookie("sessionID") + "&latitude="+lat+"&longitude="+lng)
-        .then(response => response.json())
-        .then(jsonObject => {
-            let message=jsonObject.message;
-            console.log(message);
-        });
-    console.log(lat,lng);
+let opts = {
+    // Whether to scan continuously for QR codes. If false, use scanner.scan() to
+    // manually scan. If true, the scanner emits the "scan" event when a QR code is
+    // scanned. Default true.
+    continuous: true,
+    // The HTML element to use for the camera's video preview. Must be a <video>
+    // element. When the camera is active, this element will have the "active" CSS
+    // class, otherwise, it will have the "inactive" class. By default, an invisible
+    // element will be created to host the video.
+    video: document.getElementById('preview'),
+    // Whether to horizontally mirror the video preview. This is helpful when trying to
+    // scan a QR code with a user-facing camera. Default true.
+    mirror: true,
+    // Whether to include the scanned image data as part of the scan result. See the
+    // "scan" event for image format details. Default false.
+    captureImage: false,
+    // Only applies to continuous mode. Whether to actively scan when the tab is not
+    // active.
+    // When false, this reduces CPU usage when the tab is not active. Default true.
+    backgroundScan: true,
+    // Only applies to continuous mode. The period, in milliseconds, before the same QR
+    // code will be recognized in succession. Default 5000 (5 seconds).
+    refractoryPeriod: 5000,
+    // Only applies to continuous mode. The period, in rendered frames, between scans. A
+    // lower scan period increases CPU usage but makes scan response faster.
+    // Default 1 (i.e. analyze every frame).
+    scanPeriod: 1
+};
+
+
+let camerasArray;
+let cameraIndex=0; //0 is from 1 is back
+let scanner = new Instascan.Scanner(opts);
+
+//show the camera
+function activateCamera(){
+
+
+//the scanned results
+    scanner.addListener('scan', function (content) {
+        console.log(content);
+        document.getElementById("content").innerHTML = content;
+    });
+
+
+    Instascan.Camera.getCameras().then(function (cameras) {
+        camerasArray=cameras;
+        if (cameras.length > 0) {
+            cameraIndex=0; //cameraIndex = from camera
+            scanner.start(cameras[0]); //start with the front camera
+        } else {
+            console.error('No cameras found.');
+            alert("No cameras found in your device");
+        }
+    }).catch(function (e) {
+        alert("No cameras found in your device");
+    });
+
+    let videoContainer=document.getElementById("tgCamera");
+
+    if(videoContainer.style.display==="none") videoContainer.style.display="block";
+
+    else videoContainer.style.display="none";
 }
-/*
-function loadLeaderboard(){
 
-    document.getElementById("questionMessage").innerText="";
-    document.getElementById("skip").style.visibility="hidden";
-    document.getElementById("scoreContainer").style.display="none";
-    document.getElementById("questionIndexContainer").style.display="none";
-    document.getElementById("loading").innerText="Loading...";
-    QRContainer.style.display="none";
+//switch from front-back camera
+function switchCamera() {
 
-
-    fetch(TH_BASE_URL_LEADERBOARDS+getCookie("sessionID")+"&sorted&limit=10")
-        .then(response => response.json()) //Parse JSON text to JavaScript object
-        .then(jsonObject => {
-            document.getElementById("loading").innerText="";
-            document.getElementById("leaderboardHeader").style.display="block";
-            document.getElementById("tableContainer").style.display="block";
-            document.getElementById("refreshBtnContainer").style.display="block";
-            if(jsonObject.status==="OK") {
-                let tableContents = "";
-                getRank();//get ranking of player
-                if(jsonObject.hasPrize===true){
-                    document.getElementById("hasPrizeContainer").style.display="block";
-                }
-
-                const leaderboardArray = jsonObject.leaderboard;
-
-                for (let i = 0; i < leaderboardArray.length; i++) {
-                    const entry = leaderboardArray[i];
-                    const playerName = entry.player;
-                    const score = entry.score;
-                    const completionTime = entry.completionTime;
-
-                    tableContents += "<tr>\n" +
-                        "    <td>" + playerName + "</td>" +
-                        "    <td>" + score + "</td>" +
-                        "    <td>" + convertMsToDate(completionTime) + "</td>" +
-                        "</tr>";
-                }
-                document.getElementById("leaderboardTable").innerHTML += tableContents;
-            }
-            else if(jsonObject.status==="ERROR"){
-                let errorMessage = confirm(jsonObject.errorMessages[0])
-                if (errorMessage)
-                    window.location.href = "app.html";
-            }
-        });
-
-
-}
-
-
-
-/*Refreshes the leaderboards
-function refreshLeaderboard(){
-    document.getElementById("leaderboardTable").innerHTML="";
-    document.getElementById("leaderboardHeader").innerHTML="";
-    loadLeaderboard();
-}
-*/
-
-
-function checkInt(){
-
-    let ans=document.getElementById("intANS").value;
-    let field="intANS";
-    //check if integer proceed else alert//
-    if(ans%1===0) {
-        checkAnswers(ans,field);
+    /*Check if there are available cameras to use to avoid errors */
+    if (typeof camerasArray !== "undefined") {
+        //Cycle through the available cameras:
+        if (cameraIndex < camerasArray.length - 1) {
+            cameraIndex++;
+        } else {
+            cameraIndex = 0;
+        }
+        //Find the next camera to use:
+        let camera = camerasArray[cameraIndex];
+        //Start the new selected camera:
+        scanner.start(camera);
     }
     else{
-        let wrongInput=confirm("You have inputed a NUMERIC value, Please provide an INTEGER.");
-
-        if(wrongInput){
-            let ans=document.getElementById("intANS").value="";
-        }
-        else{
-            let ans=document.getElementById("intANS").value="";
-        }
-
-    }
-
-}
-
-function checkText(){
-    let ans=document.getElementById("textANS").value;
-    let field="textANS";
-    checkAnswers(ans,field);
-}
-
-function checkNum(){
-    let ans=document.getElementById("numericANS").value;
-    let field="numericANS";
-    checkAnswers(ans,field);
-}
-
-function checkAnswers(ans,field){
-
-    /*Checks if the input is empty so it doesnt sumbit the answer and get an error*/
-    if(document.getElementById(field).value!=="") {
-        intANS.value = "";
-        numericANS.value = "";
-        textANS.value = "";
-        fetch(TH_BASE_URL_ANSWER + getCookie("sessionID") + "&answer=" + ans)
-            .then(response => response.json()) //Parse JSON text to JavaScript object
-            .then(jsonObject => {
-                if (jsonObject.status === "ERROR") {
-                    document.getElementById("specificMessage").innerHTML = jsonObject.errorMessages[0] + "<br>" + "<a href='app.html'> Click this Link to Start again</a>";
-
-                } else if (jsonObject.status === "OK" && jsonObject.correct === true) {
-                    document.getElementById("specificMessage").style.display = "inline-block";
-                    document.getElementById("specificMessage").innerText = jsonObject.message + ": You have gained " + jsonObject.scoreAdjustment + " points.";
-                    updateScore(getCookie("sessionID"));
-                    loadQuestions(getCookie("sessionID"))
-                } else if (jsonObject.status === "OK" && jsonObject.correct === false) {
-                    document.getElementById("specificMessage").style.display = "inline-block";
-                    document.getElementById("specificMessage").innerText = jsonObject.message + ": You have lost " + jsonObject.scoreAdjustment + " points.";
-                    updateScore(getCookie("sessionID"));
-                }
-            })
-    }
-    else{
-        window.alert("Field is blank");
+        alert("No cameras found in your device");
     }
 }
 
-
-function checkSkipped(){
-    fetch(TH_BASE_URL_SKIP + getCookie("sessionID"))
-        .then(response => response.json()) //Parse JSON text to JavaScript object
-        .then(jsonObject => {
-            if (jsonObject.status === "OK") {
-
-                document.getElementById("specificMessage").style.display = "inline-block";
-                document.getElementById("specificMessage").innerText = jsonObject.message + " You Lost: " + jsonObject.scoreAdjustment;
-                updateScore(getCookie("sessionID"));
-                loadQuestions(getCookie("sessionID"))
-            }
-
-        });
+//copy to clickboard function
+function copyToClickboard(){
+    const str = document.getElementById('content').innerText;
+    const el = document.createElement('textarea');
+    el.value = str;
+    el.setAttribute('readonly', '');
+    el.style.position = 'absolute';
+    el.style.left = '-9999px'; //we set readonly, position absolute and left -9999px just to make our textarea invisible to the user
+    document.body.appendChild(el);//We then append the element to the DOM so that right after we do that, we can call select() onto it.
+    el.select();//we can use select() on textarea and input elements.
+    document.execCommand('copy');
+    document.body.removeChild(el); //we remove the textarea from the DOM with removeChild(el).
+    alert(`Copied: `+str);
 }
 
-function continueWhereLeftOff(){
 
-    let continuedSession = getCookie("sessionID");
-
-    console.log(continuedSession); //works
-
-    let continueURL = TH_BASE_URL_QUESTION + continuedSession; // form url
-
-    setTimeout(loadQuestions(continueURL),1000);
+function convertMsToMinutes(maxDurationString){
+    maxDurationNum = Number(maxDurationString); //actually didnt need to convert
+    let m = Math.floor((maxDurationNum / 1000 / 60) << 0)
+    return m + " minutes";
 }
-/*
-function getRank(){
-     rankCounter=0;
-     let header;
-    fetch( TH_BASE_URL_LEADERBOARDS+ getCookie("sessionID") + "&sorted&limit=2000")
-        .then(response => response.json())
-        .then(jsonObject => {
-            let name = getCookie("playerNameCookie");
-            const leaderboardArray = jsonObject.leaderboard;
-            for (let i = 0; i < leaderboardArray.length; i++) {
-                const entry = leaderboardArray[i];
-                const playerName = entry.player;
-                const score = entry.score;
-                const completionTime = entry.completionTime;
-                if(playerName===getCookie("playerNameCookie")){
-                    header="<h3>"+"Congratulations "+getCookie("playerNameCookie")+" you managed to finished the "+getCookie("nameOfGame")+ " and your rank is " + rankCounter+ "</h3>";
-                    document.getElementById("leaderboardHeader").innerHTML+=header;
-                }
-                else{
-                    rankCounter++;
-                }
 
-            }
-        });
+function convertMsToDate(startsOnString){
+    let startsOnNum = Number(startsOnString); //actually didnt need to convert
+    let options = {
+        year: 'numeric', month: 'numeric', day: 'numeric',
+    };
+    let date = new Date(startsOnNum);
+    let result = date.toLocaleDateString('en', options); // month/day/year
+    return result;
 }
-*/
+
+
+

@@ -9,117 +9,615 @@
 
     <script defer src="instascan.min.js"></script>
 
-    <script defer src="extraFeatures.js"></script>
+    <script defer src="th-api.js"></script>
+
 
 </head>
 <body onload="setInterval(getLocation, 30000);">
 
 
-<div class="topnav" id="topnav">
+    <div class="topnav" id="topnav">
 
-    <a href="javascript:getChallenges(this);" id="refresh" class="refresh">Refresh</a>
-    <button id="homeBtn" class="homeBtn" onclick="window.location.href='index.html'" >Home</button>
-    <button id="restartBtn" class="restartBtn" onclick="window.location.href='SignIn.html'" >Restart</button>
-    <!-- Trigger/Open The Modal -->
-    <button id="infoBtn" class="infoBtn" >Info</button>
+        <a href="javascript:getChallenges(this);" id="refresh" class="refresh">Refresh</a>
+        <button id="homeBtn" class="homeBtn" onclick="window.location.href='index.html'" >Home</button>
+        <button id="restartBtn" class="restartBtn" onclick="window.location.href='SignIn.html'" >Restart</button>
+        <!-- Trigger/Open The Modal -->
+        <button id="infoBtn" class="infoBtn" >Info</button>
 
-</div>
-
-
-
-<!-- The Modal -->
-<div id="myModal" class="modal">
-
-    <!-- Modal content -->
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <p style="color:darksalmon">Enter your name and get started with the questions!</p>
-        <ul class="pointsModal">
-
-            <li>If your answer is <span style="color: green">correct</span> you are rewarded with 10 points.</li>
-            <li>If your answer is <span style="color:red"> wrong </span>you lose  3 points.</li>
-            <li>If you <span style="color:red">skip</span> a question you lose 5 points.</li>
-
-        </ul>
-
-        <p style="color:darksalmon">When the quiz is over you will be directed to the leaderboards.</p>
     </div>
 
-</div>
 
-<div style="display: none; text-align: center" id="tgCamera">
 
-    <!-- the camera view will be display here / have to add styling-->
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
 
-    <video id="preview" class="preview"></video>
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p style="color:darksalmon">Enter your name and get started with the questions!</p>
+            <ul class="pointsModal">
 
-</div>
+                <li>If your answer is <span style="color: green">correct</span> you are rewarded with 10 points.</li>
+                <li>If your answer is <span style="color:red"> wrong </span>you lose  3 points.</li>
+                <li>If you <span style="color:red">skip</span> a question you lose 5 points.</li>
 
-<div id="qrContainer" class="qrContainer">
+            </ul>
 
-    <div class="resultContainer" id="resultContainer">
-        <div class="contentContainer">
-            <span class="content" id="content">Scan Result</span>
+            <p style="color:darksalmon">When the quiz is over you will be directed to the leaderboards.</p>
         </div>
+
     </div>
 
-    <div class="btnsContainer" id="btnsContainer">
-        <button class="toggleCamera" onclick="activateCamera()" type="submit">Toggle</button>
-                            <!-- TODO add clickboard -->
-        <button class="copyClickboard" id="copyClickboard" onclick="copyToClickboard()" type="submit">Copy</button>
+    <div style="display: none; text-align: center" id="tgCamera">
+
+        <!-- the camera view will be display here / have to add styling-->
+
+        <video id="preview" class="preview"></video>
+
     </div>
 
-    <div class="switchCameraContainer">
-        <button class="switchCamera" onclick="switchCamera()" type="submit">Switch Camera</button>
+    <div id="qrContainer" class="qrContainer">
+
+        <div class="resultContainer" id="resultContainer">
+            <div class="contentContainer">
+                <span class="content" id="content">Scan Result</span>
+            </div>
+        </div>
+
+        <div class="btnsContainer" id="btnsContainer">
+            <button class="toggleCamera" onclick="activateCamera()" type="submit">Toggle</button>
+                                <!-- TODO add clickboard -->
+            <button class="copyClickboard" id="copyClickboard" onclick="copyToClickboard()" type="submit">Copy</button>
+        </div>
+
+        <div class="switchCameraContainer">
+            <button class="switchCamera" onclick="switchCamera()" type="submit">Switch Camera</button>
+        </div>
+
     </div>
 
-</div>
+    <div class="questionIndexContainer" id="questionIndexContainer">
+        <p class="questionIndexP" id="questionIndexP"></p>
+    </div>
 
-<div class="questionIndexContainer" id="questionIndexContainer">
-    <p class="questionIndexP" id="questionIndexP"></p>
-</div>
-
-<div class="scoreContainer" id="scoreContainer">
-    <h4 class=""></h4>
-</div>
+    <div class="scoreContainer" id="scoreContainer">
+        <h4 class=""></h4>
+    </div>
 
 
-<!-- Questions are displayed --->
-<div id="displayQuestions" class="displayQuestions">
-    <p class="questionMessage" id="questionMessage"></p>
-    <h3 class="loadingQuestionsM" id="loadingQuestionsM"></h3>
-</div>
+    <!-- Questions are displayed --->
+    <div id="displayQuestions" class="displayQuestions">
+        <p class="questionMessage" id="questionMessage"></p>
+        <h3 class="loadingQuestionsM" id="loadingQuestionsM"></h3>
+    </div>
 
 
-<div class="messagesContainer" id="messagesContainer">
-    <h4 id="specificMessage" class="specificMessage"></h4>
-</div>
+    <div class="messagesContainer" id="messagesContainer">
+        <h4 id="specificMessage" class="specificMessage"></h4>
+    </div>
 
-<div id="answer" class="answer" >
+    <div id="answer" class="answer" >
 
-    <input type="number" id="intANS" class="intANS" step="1" min="1" required>
-    <button type="submit" id="intBtn" class="intBtn" onclick="checkInt()">Submit</button>
+        <input type="number" id="intANS" class="intANS" step="1" min="1" required>
+        <button type="submit" id="intBtn" class="intBtn" onclick="checkInt()">Submit</button>
 
-    <button type="submit" id="trueBtn" class="trueBtn" value="true" onclick="checkAnswers('True','trueBtn')">TRUE</button>
-    <button type="submit" id="falseBtn" class="falseBtn" value="false" onclick="checkAnswers('False','falseBtn')">FALSE</button>
+        <button type="submit" id="trueBtn" class="trueBtn" value="true" onclick="checkAnswers('True','trueBtn')">TRUE</button>
+        <button type="submit" id="falseBtn" class="falseBtn" value="false" onclick="checkAnswers('False','falseBtn')">FALSE</button>
 
-    <input type="text" id="textANS" class="textANS" required>
-    <button type="submit" id="textBtn" class="textBtn" onclick="javascript:checkText()">Submit</button>
+        <input type="text" id="textANS" class="textANS" required>
+        <button type="submit" id="textBtn" class="textBtn" onclick="javascript:checkText()">Submit</button>
 
-    <button type="submit" id="mcqBtnA" class="mcqBtnA" value="A" onclick="checkAnswers('A','mcqBtnA')">A</button>
-    <button type="submit" id="mcqBtnB" class="mcqBtnB" value="B" onclick="checkAnswers('B','mcqBtnB')">B</button>
-    <button type="submit" id="mcqBtnC" class="mcqBtnC" value="C" onclick="checkAnswers('C','mcqBtnC')">C</button>
-    <button type="submit" id="mcqBtnD" class="mcqBtnD" value="D" onclick="checkAnswers('D','mcqBtnD')">D</button>
+        <button type="submit" id="mcqBtnA" class="mcqBtnA" value="A" onclick="checkAnswers('A','mcqBtnA')">A</button>
+        <button type="submit" id="mcqBtnB" class="mcqBtnB" value="B" onclick="checkAnswers('B','mcqBtnB')">B</button>
+        <button type="submit" id="mcqBtnC" class="mcqBtnC" value="C" onclick="checkAnswers('C','mcqBtnC')">C</button>
+        <button type="submit" id="mcqBtnD" class="mcqBtnD" value="D" onclick="checkAnswers('D','mcqBtnD')">D</button>
 
-    <input type="number" id="numericANS" class="numericANS" step="0.5" required >
-    <button type="submit" id="numericBtn" class="numericBtn" onclick="checkNum()">Submit</button>
+        <input type="number" id="numericANS" class="numericANS" step="0.5" required >
+        <button type="submit" id="numericBtn" class="numericBtn" onclick="checkNum()">Submit</button>
 
-    <button id="skip" class="skip" onclick="checkSkipped()">SKIP</button>
-</div>
+        <button id="skip" class="skip" onclick="checkSkipped()">SKIP</button>
+    </div>
+
+    <script>
+        const TH_BASE_URL = "https://codecyprus.org/th/api/"; // the true API base url
+
+        const TH_TEST_URL = "https://codecyprus.org/th/test-api/"; // the test API base url
+
+        const TH_BASE_URL_QUESTION = "https://codecyprus.org/th/api/question?session="; // the true API base url for question
+
+        const TH_BASE_URL_ANSWER = "https://codecyprus.org/th/api/answer?session="; // the true API base url for answer
+
+        const TH_BASE_URL_SCORE="https://codecyprus.org/th/api/score?session="; // the true API base url for score
+
+        const TH_BASE_URL_SKIP="https://codecyprus.org/th/api/skip?session="; // the true API base url for score
+
+        const TH_BASE_URL_LOCATION="https://codecyprus.org/th/api/location?session=";
+
+        const TH_BASE_URL_LEADERBOARDS="https://codecyprus.org/th/api/leaderboard?session=";
+
+        const intANS = document.getElementById("intANS");
+        const intBTN = document.getElementById("intBtn");
+
+        const numericANS = document.getElementById("numericANS");
+        const numericBTN = document.getElementById("numericBtn");
+
+        const trueBTN = document.getElementById("trueBtn");
+        const falseBTN = document.getElementById("falseBtn");
+
+        const textANS = document.getElementById("textANS");
+        const textBTN = document.getElementById("textBtn");
+
+        const mcqBtnA = document.getElementById("mcqBtnA");
+        const mcqBtnB = document.getElementById("mcqBtnB");
+        const mcqBtnC = document.getElementById("mcqBtnC");
+        const mcqBtnD = document.getElementById("mcqBtnD");
+
+        const skip=document.getElementById("skip");
+
+        const QRContainer=document.getElementById("qrContainer");
+
+        const params = new URLSearchParams(location.search);
+
+        let playerName = params.get("player");
+        let uuid = params.get("treasure-hunt-id");
+        let cookieLifeSpan = params.get("time");
+        let nameOfGame =params.get("nameOfGame");
+
+        if(getCookie("saveGame") ==="true" && getCookie("playerNameCookie")===playerName){
+            continueWhereLeftOff();
+        }
+        else if(uuid!==null){
+            select();
+
+        }
 
 
-<script src="th-api.js"></script>
+        async function select() {
+            // For now just print the selected treasure hunt's UUID. Normally, you're expected to guide the user in entering
+            // their name etc. and proceed to calling the '/start' command of the API to start a new session.
 
+            let url1='https://codecyprus.org/th/api/start?player='+playerName; //concatenation of the string with teams name
+
+            let url2='&app=brainstormQ&treasure-hunt-id='+uuid;//concatenation of the string and the unique uuid
+
+            let url=url1+url2; //produces the final url
+
+            console.log(url); //needed for now must delete later
+
+            document.getElementById("displayQuestions").style.display="inline";
+            document.getElementById("loadingQuestionsM").innerHTML="Loading..."
+
+
+            fetch(url)
+                .then(response => response.json()) //Parse JSON text to JavaScript object
+                .then(jsonObject => {
+
+
+                    let statusObject=jsonObject.status;
+                    let sessionObject=jsonObject.session;
+
+
+
+                    if (statusObject === "ERROR") //if status isnt ok display the error message needs work no finished
+                    {
+                        let errorMessage = confirm(jsonObject.errorMessages[0])
+                        if (errorMessage)
+                            getChallenges();
+
+                    } else if (statusObject == "OK") {
+
+                        /* if everything is okay show the question*/
+
+                        saveCookie("sessionID", jsonObject.session, cookieLifeSpan);
+                        saveCookie("playerNameCookie", playerName, cookieLifeSpan);
+                        saveCookie("saveGame", "true", cookieLifeSpan);
+                        saveCookie("nameOfGame", nameOfGame, cookieLifeSpan);
+                        loadQuestions(getCookie("sessionID"));
+
+                    }
+
+                });
+        }
+
+
+        function loadQuestions(sessionObject){ //starts the game
+
+
+            intANS.style.visibility = "hidden";
+            intBTN.style.visibility = "hidden";
+            intANS.value = "";
+
+            numericANS.visibility = "hidden";
+            numericBTN.style.visibility = "hidden";
+            numericANS.value = "";
+
+            trueBTN.style.visibility = "hidden";
+            falseBTN.style.visibility = "hidden";
+
+            textBTN.style.visibility = "hidden";
+            textANS.style.visibility = "hidden";
+
+            mcqBtnA.style.visibility = "hidden";
+            mcqBtnB.style.visibility = "hidden";
+            mcqBtnC.style.visibility = "hidden";
+            mcqBtnD.style.visibility = "hidden";
+
+            document.getElementById("displayQuestions").style.display="inline";
+            document.getElementById("loadingQuestionsM").innerHTML="Loading..."
+
+
+            fetch(TH_BASE_URL_QUESTION+getCookie("sessionID"))
+                .then(response => response.json()) //Parse JSON text to JavaScript object
+                .then(jsonObject => {
+
+                    if (jsonObject.status === "ERROR") {
+                        document.getElementById("specificMessage").innerHTML = jsonObject.errorMessages[0] + "<br>" + "<a href='app.html'> Click this Link to Start again</a>";
+                    }
+                    else {
+                        document.getElementById("loadingQuestionsM").innerHTML = "";
+
+                        let location = jsonObject.requiresLocation;
+
+                        let questions = jsonObject.questionText;
+
+                        let currentQIndex = jsonObject.currentQuestionIndex;
+
+                        let totalQuestions = jsonObject.numOfQuestions;
+
+                        let passSession = sessionObject;
+
+                        let completed = jsonObject.completed;
+
+                        let skipped=jsonObject.canBeSkipped;
+
+
+                        if (completed) {
+                            intANS.style.visibility = "hidden";
+                            intBTN.style.visibility = "hidden";
+
+
+                            numericANS.visibility = "hidden";
+                            numericBTN.style.visibility = "hidden";
+
+
+                            trueBTN.style.visibility = "hidden";
+                            falseBTN.style.visibility = "hidden";
+
+                            textBTN.style.visibility = "hidden";
+                            textANS.style.visibility = "hidden";
+
+
+                            mcqBtnA.style.visibility = "hidden";
+                            mcqBtnB.style.visibility = "hidden";
+                            mcqBtnC.style.visibility = "hidden";
+                            mcqBtnD.style.visibility = "hidden";
+
+                            document.getElementById("specificMessage").style.display = "none";
+
+                            document.getElementById("questionMessage").innerHTML = "QUIZ FINISHED";
+                            setTimeout(function () {window.location.href = "leaderboards.html", 1000});
+
+                        } else {
+
+                            document.getElementById("questionMessage").innerHTML = questions;
+
+                            document.getElementById("homeBtn").style.display = "inline-block";
+
+                            document.getElementById("restartBtn").style.display = "inline-block";
+
+                            document.getElementById("specificMessage").style.display = "inline-block";
+
+                            document.getElementById("questionIndexContainer").style.display = "block";
+
+                            document.getElementById("questionIndexP").innerHTML = "Question "+ (jsonObject.currentQuestionIndex+1) + " / " + jsonObject.numOfQuestions;
+
+                            document.getElementById("scoreContainer").style.display = "block";
+
+                            QRContainer.style.display="inline-block";
+
+                            let qType = jsonObject.questionType;
+
+                            if (location) {
+                                getLocation();
+                            }
+
+                            //If question can be skipped hide the skip button
+                            if (skipped) {
+                                document.getElementById("skip").style.visibility = "visible";
+                            } else {
+                                document.getElementById("skip").style.visibility = "hidden";
+                            }
+
+                            console.log(qType);
+                            switch (qType) {
+                                case "INTEGER":
+
+                                    intANS.style.visibility = "visible";
+                                    intBTN.style.visibility = "visible";
+
+                                    numericANS.visibility = "hidden";
+                                    numericBTN.style.visibility = "hidden";
+
+                                    trueBTN.style.visibility = "hidden";
+                                    falseBTN.style.visibility = "hidden";
+
+                                    textBTN.style.visibility = "hidden";
+                                    textANS.style.visibility = "hidden";
+
+
+                                    mcqBtnA.style.visibility = "hidden";
+                                    mcqBtnB.style.visibility = "hidden";
+                                    mcqBtnC.style.visibility = "hidden";
+                                    mcqBtnD.style.visibility = "hidden";
+
+                                    break;
+
+                                case "BOOLEAN":
+                                    trueBTN.style.visibility = "visible";
+                                    falseBTN.style.visibility = "visible";
+
+                                    intANS.style.visibility = "hidden";
+                                    intBTN.style.visibility = "hidden";
+
+                                    numericANS.visibility = "hidden";
+                                    numericBTN.style.visibility = "hidden";
+
+                                    textBTN.style.visibility = "hidden";
+                                    textANS.style.visibility = "hidden";
+
+                                    mcqBtnA.style.visibility = "hidden";
+                                    mcqBtnB.style.visibility = "hidden";
+                                    mcqBtnC.style.visibility = "hidden";
+                                    mcqBtnD.style.visibility = "hidden";
+
+                                    break;
+
+                                case "TEXT":
+                                    textANS.style.visibility = "visible";
+                                    textBTN.style.visibility = "visible";
+
+                                    intANS.style.visibility = "hidden";
+                                    intBTN.style.visibility = "hidden";
+
+                                    numericANS.visibility = "hidden";
+                                    numericBTN.style.visibility = "hidden";
+
+                                    trueBTN.style.visibility = "hidden";
+                                    falseBTN.style.visibility = "hidden";
+
+                                    mcqBtnA.style.visibility = "hidden";
+                                    mcqBtnB.style.visibility = "hidden";
+                                    mcqBtnC.style.visibility = "hidden";
+                                    mcqBtnD.style.visibility = "hidden";
+
+                                    break;
+
+                                case "MCQ":
+                                    mcqBtnA.style.visibility = "visible";
+                                    mcqBtnB.style.visibility = "visible";
+                                    mcqBtnC.style.visibility = "visible";
+                                    mcqBtnD.style.visibility = "visible";
+
+                                    intANS.style.visibility = "hidden";
+                                    intBTN.style.visibility = "hidden";
+
+                                    numericANS.visibility = "hidden";
+                                    numericBTN.style.visibility = "hidden";
+
+                                    trueBTN.style.visibility = "hidden";
+                                    falseBTN.style.visibility = "hidden";
+
+                                    textBTN.style.visibility = "hidden";
+                                    textANS.style.visibility = "hidden";
+
+                                    break;
+
+                                case "NUMERIC":
+                                    numericANS.style.visibility = "visible";
+                                    numericBTN.style.visibility = "visible";
+
+                                    intANS.style.visibility = "hidden";
+                                    intBTN.style.visibility = "hidden";
+
+                                    trueBTN.style.visibility = "hidden";
+                                    falseBTN.style.visibility = "hidden";
+
+                                    textBTN.style.visibility = "hidden";
+                                    textANS.style.visibility = "hidden";
+
+                                    mcqBtnA.style.visibility = "hidden";
+                                    mcqBtnB.style.visibility = "hidden";
+                                    mcqBtnC.style.visibility = "hidden";
+                                    mcqBtnD.style.visibility = "hidden";
+
+                                    break;
+
+                                default:
+                                    intANS.style.visibility = "hidden";
+                                    intBTN.style.visibility = "hidden";
+                                    intANS.value = "";
+
+                                    numericANS.visibility = "hidden";
+                                    numericBTN.style.visibility = "hidden";
+                                    numericANS.value = "";
+
+                                    trueBTN.style.visibility = "hidden";
+                                    falseBTN.style.visibility = "hidden";
+
+                                    textBTN.style.visibility = "hidden";
+                                    textANS.style.visibility = "hidden";
+                                    textANS.value = "";
+
+                                    mcqBtnA.style.visibility = "hidden";
+                                    mcqBtnB.style.visibility = "hidden";
+                                    mcqBtnC.style.visibility = "hidden";
+                                    mcqBtnD.style.visibility = "hidden";
+
+                            }
+
+                        }
+                    }
+                });
+
+        }
+
+
+
+        function updateScore(sessionObject){
+
+            fetch( TH_BASE_URL_SCORE+getCookie("sessionID"))
+                .then(response => response.json()) //Parse JSON text to JavaScript object
+                .then(jsonObject => {
+                    if(jsonObject.status === "OK") {
+                        if (jsonObject.completed === false && jsonObject.finished === false)
+                            document.getElementById("scoreContainer").innerText = "Your current score is: " + jsonObject.score + " points.";
+                    }
+                    else{
+                        let errorMessage = confirm(jsonObject.errorMessages[0])
+                        if (errorMessage)
+                            window.location.href = "SignIn.html";
+                    }
+                });
+        }
+
+        function getCookie(cookieName) {
+            let name = cookieName + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) === ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) === 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
+        function saveCookie(cookieName, cookieValue,cookieLifespan) {
+            let date = new Date();
+            date.setTime(date.getTime() + (cookieLifespan * 60 * 60 * 1000));
+            let expires = "expires=" + date.toUTCString();
+            document.cookie = cookieName + "=" + cookieValue + ";" + expires;
+        }
+
+        function getLocation() {
+            console.log("getLocation...");
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    sendLocation(position.coords.latitude, position.coords.longitude);
+                });
+            } else {
+                alert("Geolocation is not supported by your browser.");
+            }
+        }
+
+
+        function sendLocation(lat, lng) {
+            fetch(TH_BASE_URL_LOCATION + getCookie("sessionID") + "&latitude="+lat+"&longitude="+lng)
+                .then(response => response.json())
+                .then(jsonObject => {
+                    let message=jsonObject.message;
+                    console.log(message);
+                });
+            console.log(lat,lng);
+        }
+
+        function checkInt(){
+
+            let ans=document.getElementById("intANS").value;
+            let field="intANS";
+            //check if integer proceed else alert//
+            if(ans%1===0) {
+                checkAnswers(ans,field);
+            }
+            else{
+                let wrongInput=confirm("You have inputed a NUMERIC value, Please provide an INTEGER.");
+
+                if(wrongInput){
+                    let ans=document.getElementById("intANS").value="";
+                }
+                else{
+                    let ans=document.getElementById("intANS").value="";
+                }
+
+            }
+
+        }
+
+        function checkText(){
+            let ans=document.getElementById("textANS").value;
+            let field="textANS";
+            checkAnswers(ans,field);
+        }
+
+        function checkNum(){
+            let ans=document.getElementById("numericANS").value;
+            let field="numericANS";
+            checkAnswers(ans,field);
+        }
+
+        function checkAnswers(ans,field){
+
+            /*Checks if the input is empty so it doesnt sumbit the answer and get an error*/
+            if(document.getElementById(field).value!=="") {
+                intANS.value = "";
+                numericANS.value = "";
+                textANS.value = "";
+                fetch(TH_BASE_URL_ANSWER + getCookie("sessionID") + "&answer=" + ans)
+                    .then(response => response.json()) //Parse JSON text to JavaScript object
+                    .then(jsonObject => {
+                        if (jsonObject.status === "ERROR") {
+                            document.getElementById("specificMessage").innerHTML = jsonObject.errorMessages[0] + "<br>" + "<a href='app.html'> Click this Link to Start again</a>";
+
+                        } else if (jsonObject.status === "OK" && jsonObject.correct === true) {
+                            document.getElementById("specificMessage").style.display = "inline-block";
+                            document.getElementById("specificMessage").innerText = jsonObject.message + ": You have gained " + jsonObject.scoreAdjustment + " points.";
+                            updateScore(getCookie("sessionID"));
+                            loadQuestions(getCookie("sessionID"))
+                        } else if (jsonObject.status === "OK" && jsonObject.correct === false) {
+                            document.getElementById("specificMessage").style.display = "inline-block";
+                            document.getElementById("specificMessage").innerText = jsonObject.message + ": You have lost " + jsonObject.scoreAdjustment + " points.";
+                            updateScore(getCookie("sessionID"));
+                        }
+                    })
+            }
+            else{
+                window.alert("Field is blank");
+            }
+        }
+
+
+        function checkSkipped(){
+            fetch(TH_BASE_URL_SKIP + getCookie("sessionID"))
+                .then(response => response.json()) //Parse JSON text to JavaScript object
+                .then(jsonObject => {
+                    if (jsonObject.status === "OK") {
+
+                        document.getElementById("specificMessage").style.display = "inline-block";
+                        document.getElementById("specificMessage").innerText = jsonObject.message + " You Lost: " + jsonObject.scoreAdjustment;
+                        updateScore(getCookie("sessionID"));
+                        loadQuestions(getCookie("sessionID"))
+                    }
+
+                });
+        }
+
+        function continueWhereLeftOff(){
+
+            let continuedSession = getCookie("sessionID");
+
+            console.log(continuedSession); //works
+
+            let continueURL = TH_BASE_URL_QUESTION + continuedSession; // form url
+
+            setTimeout(loadQuestions(continueURL),1000);
+        }
+
+
+    </script>
 
 </body>
 </html>
