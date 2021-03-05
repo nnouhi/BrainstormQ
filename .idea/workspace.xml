@@ -21,7 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="880e3f71-b811-409b-98a7-d91394677bc9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.html" beforeDir="false" afterPath="$PROJECT_DIR$/app.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaderboards.html" beforeDir="false" afterPath="$PROJECT_DIR$/leaderboards.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +129,7 @@
       <workItem from="1614792942240" duration="1172000" />
       <workItem from="1614856860807" duration="14729000" />
       <workItem from="1614940199694" duration="18724000" />
-      <workItem from="1614962969359" duration="5008000" />
+      <workItem from="1614962969359" duration="6478000" />
     </task>
     <task id="LOCAL-00001" summary="Added the names of our team">
       <created>1608135389920</created>
@@ -390,7 +390,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614960803870</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Added to check location on submit only, not sure if it works">
+      <created>1614971069330</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1614971069330</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -409,7 +416,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Made some progress with tha app html" />
     <MESSAGE value="Made someprogress with the js" />
     <MESSAGE value="Made changes for tomorrow's presentation" />
     <MESSAGE value="Testing something" />
@@ -434,13 +440,14 @@
     <MESSAGE value="fixed an error that occurred with th-api.js and leaderboards.html" />
     <MESSAGE value="Fixed an error" />
     <MESSAGE value="Added question unit test, Lev needs to work on the apps responsiveness because nothing is responsive atm, also George o UAT" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added question unit test, Lev needs to work on the apps responsiveness because nothing is responsive atm, also George o UAT" />
+    <MESSAGE value="Added to check location on submit only, not sure if it works" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added to check location on submit only, not sure if it works" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="335" y="115" key="CommitChangelistDialog2" timestamp="1614960803155">
+    <state x="335" y="115" key="CommitChangelistDialog2" timestamp="1614971068591">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="335" y="115" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1614960803155" />
+    <state x="335" y="115" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1614971068591" />
     <state x="184" y="86" width="1536" height="860" key="DiffContextDialog" timestamp="1613246209354">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -465,10 +472,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="165" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1614962957374" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1614960805596">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1614971073385">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1614960805596" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1614971073385" />
     <state x="0" y="0" width="1599" height="1027" key="dock-window-1" timestamp="1613246243373">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

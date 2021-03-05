@@ -215,7 +215,7 @@
                     {
                         let errorMessage = confirm(jsonObject.errorMessages[0])
                         if (errorMessage)
-                            getChallenges();
+                           setTimeout(function(){window.location.href="SignIn.html"})
 
                     } else if (statusObject == "OK") {
 
