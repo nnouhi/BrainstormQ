@@ -163,6 +163,8 @@
         let cookieLifeSpan = params.get("time");
         let nameOfGame =params.get("nameOfGame");
 
+        let requiresLocationBool;
+
 
         //check if returning user or a test question
         if(getCookie("saveGame") ==="true" && getCookie("playerNameCookie") ===playerName || testQ()){
@@ -257,14 +259,13 @@
                 .then(response => response.json()) //Parse JSON text to JavaScript object
                 .then(jsonObject => {
 
-                    console.log(jsonObject);
                     if (jsonObject.status === "ERROR") {
                         document.getElementById("specificMessage").innerHTML = jsonObject.errorMessages[0] + "<br>" + "<a href='app.html'> Click this Link to Start again</a>";
                     }
                     else {
                         document.getElementById("loadingQuestionsM").innerHTML = "";
 
-                        let location = jsonObject.requiresLocation;
+                         requiresLocationBool = jsonObject.requiresLocation;
 
                         let questions = jsonObject.questionText;
 
@@ -335,9 +336,9 @@
 
                             let qType = jsonObject.questionType;
 
-                            if (location) {
+                            /*if (location) {
                                 getLocation();
-                            }
+                            }*/
 
                             //If question can be skipped hide the skip button
                             if (skipped) {
@@ -578,32 +579,68 @@
 
         function checkAnswers(ans,field){
 
-            /*Checks if the input is empty so it doesnt sumbit the answer and get an error*/
-            if(document.getElementById(field).value!=="") {
-                intANS.value = "";
-                numericANS.value = "";
-                textANS.value = "";
-                fetch(TH_BASE_URL_ANSWER + getCookie("sessionID") + "&answer=" + ans)
-                    .then(response => response.json()) //Parse JSON text to JavaScript object
-                    .then(jsonObject => {
-                        if (jsonObject.status === "ERROR") {
-                            document.getElementById("specificMessage").innerHTML = jsonObject.errorMessages[0] + "<br>" + "<a href='app.html'> Click this Link to Start again</a>";
+            if(requiresLocationBool){
+                getLocation();
+                setTimeout(function(){
+                    if(document.getElementById(field).value!=="") {
+                        intANS.value = "";
+                        numericANS.value = "";
+                        textANS.value = "";
+                        fetch(TH_BASE_URL_ANSWER + getCookie("sessionID") + "&answer=" + ans)
+                            .then(response => response.json()) //Parse JSON text to JavaScript object
+                            .then(jsonObject => {
+                                if (jsonObject.status === "ERROR") {
+                                    document.getElementById("specificMessage").innerHTML = jsonObject.errorMessages[0] + "<br>" + "<a href='app.html'> Click this Link to Start again</a>";
 
-                        } else if (jsonObject.status === "OK" && jsonObject.correct === true) {
-                            document.getElementById("specificMessage").style.display = "inline-block";
-                            document.getElementById("specificMessage").innerText = jsonObject.message + ": You have gained " + jsonObject.scoreAdjustment + " points.";
-                            updateScore(getCookie("sessionID"));
-                            loadQuestions(TH_BASE_URL+"question?&session="+getCookie("sessionID"))
-                        } else if (jsonObject.status === "OK" && jsonObject.correct === false) {
-                            document.getElementById("specificMessage").style.display = "inline-block";
-                            document.getElementById("specificMessage").innerText = jsonObject.message + ": You have lost " + jsonObject.scoreAdjustment + " points.";
-                            updateScore(getCookie("sessionID"));
-                        }
-                    })
+                                } else if (jsonObject.status === "OK" && jsonObject.correct === true) {
+                                    document.getElementById("specificMessage").style.display = "inline-block";
+                                    document.getElementById("specificMessage").innerText = jsonObject.message + ": You have gained " + jsonObject.scoreAdjustment + " points.";
+                                    updateScore(getCookie("sessionID"));
+                                    loadQuestions(TH_BASE_URL + "question?&session=" + getCookie("sessionID"))
+                                } else if (jsonObject.status === "OK" && jsonObject.correct === false) {
+                                    document.getElementById("specificMessage").style.display = "inline-block";
+                                    document.getElementById("specificMessage").innerText = jsonObject.message + ": You have lost " + jsonObject.scoreAdjustment + " points.";
+                                    updateScore(getCookie("sessionID"));
+                                }
+                            })
+                    }
+                    /*Checks if the input is empty so it doesnt sumbit the answer and get an error*/
+                    else{
+                        window.alert("Field is blank");
+                    }
+                }, 50);
             }
             else{
-                window.alert("Field is blank");
+                if(document.getElementById(field).value!=="") {
+                    intANS.value = "";
+                    numericANS.value = "";
+                    textANS.value = "";
+                    fetch(TH_BASE_URL_ANSWER + getCookie("sessionID") + "&answer=" + ans)
+                        .then(response => response.json()) //Parse JSON text to JavaScript object
+                        .then(jsonObject => {
+                            if (jsonObject.status === "ERROR") {
+                                document.getElementById("specificMessage").innerHTML = jsonObject.errorMessages[0] + "<br>" + "<a href='app.html'> Click this Link to Start again</a>";
+
+                            } else if (jsonObject.status === "OK" && jsonObject.correct === true) {
+                                document.getElementById("specificMessage").style.display = "inline-block";
+                                document.getElementById("specificMessage").innerText = jsonObject.message + ": You have gained " + jsonObject.scoreAdjustment + " points.";
+                                updateScore(getCookie("sessionID"));
+                                loadQuestions(TH_BASE_URL + "question?&session=" + getCookie("sessionID"))
+                            } else if (jsonObject.status === "OK" && jsonObject.correct === false) {
+                                document.getElementById("specificMessage").style.display = "inline-block";
+                                document.getElementById("specificMessage").innerText = jsonObject.message + ": You have lost " + jsonObject.scoreAdjustment + " points.";
+                                updateScore(getCookie("sessionID"));
+                            }
+                        })
+                }
+                /*Checks if the input is empty so it doesnt sumbit the answer and get an error*/
+                else{
+                    window.alert("Field is blank");
+                }
             }
+
+
+
         }
 
         function checkSkipped(){
@@ -631,6 +668,7 @@
 
             setTimeout(loadQuestions(TH_BASE_URL+"question?&session="+continuedSession),1000);
         }
+
 
 
     </script>
