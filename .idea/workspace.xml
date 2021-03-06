@@ -21,7 +21,9 @@
   <component name="ChangeListManager">
     <list default="true" id="880e3f71-b811-409b-98a7-d91394677bc9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.html" beforeDir="false" afterPath="$PROJECT_DIR$/app.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/leaderboards.html" beforeDir="false" afterPath="$PROJECT_DIR$/leaderboards.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/stylesheet.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +48,12 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/app.html" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/th-api.js" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
   </component>
   <component name="ProjectId" id="1lkJcRsgxvgaogRfJl8WFsFBdYU" />
   <component name="ProjectViewState">
@@ -129,7 +137,13 @@
       <workItem from="1614792942240" duration="1172000" />
       <workItem from="1614856860807" duration="14729000" />
       <workItem from="1614940199694" duration="18724000" />
-      <workItem from="1614962969359" duration="6478000" />
+      <workItem from="1614962969359" duration="6816000" />
+      <workItem from="1614973335490" duration="173000" />
+      <workItem from="1615023859468" duration="25000" />
+      <workItem from="1615023902034" duration="239000" />
+      <workItem from="1615024151077" duration="98000" />
+      <workItem from="1615024260615" duration="710000" />
+      <workItem from="1615024983789" duration="3014000" />
     </task>
     <task id="LOCAL-00001" summary="Added the names of our team">
       <created>1608135389920</created>
@@ -397,7 +411,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614971069330</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Added cookie deletion after 2 sec of leaderboards load so the player enters the same name again he is not re-directed to leaderboards">
+      <created>1614972762524</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1614972762524</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -416,7 +437,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Made someprogress with the js" />
     <MESSAGE value="Made changes for tomorrow's presentation" />
     <MESSAGE value="Testing something" />
     <MESSAGE value="Addes cookies, geolocation, and some other small stuff" />
@@ -441,13 +461,14 @@
     <MESSAGE value="Fixed an error" />
     <MESSAGE value="Added question unit test, Lev needs to work on the apps responsiveness because nothing is responsive atm, also George o UAT" />
     <MESSAGE value="Added to check location on submit only, not sure if it works" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added to check location on submit only, not sure if it works" />
+    <MESSAGE value="Added cookie deletion after 2 sec of leaderboards load so the player enters the same name again he is not re-directed to leaderboards" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added cookie deletion after 2 sec of leaderboards load so the player enters the same name again he is not re-directed to leaderboards" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="335" y="115" key="CommitChangelistDialog2" timestamp="1614971068591">
+    <state x="335" y="115" key="CommitChangelistDialog2" timestamp="1614972761536">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="335" y="115" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1614971068591" />
+    <state x="335" y="115" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1614972761536" />
     <state x="184" y="86" width="1536" height="860" key="DiffContextDialog" timestamp="1613246209354">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -468,14 +489,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="757" y="222" key="RollbackChangesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1613244143303" />
-    <state x="461" y="165" key="SettingsEditor" timestamp="1614962957374">
+    <state x="626" y="168" key="SettingsEditor" timestamp="1615024974460">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1614962957374" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1614971073385">
+    <state x="626" y="168" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615024974460" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1614972810256">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1614971073385" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1614972810256" />
     <state x="0" y="0" width="1599" height="1027" key="dock-window-1" timestamp="1613246243373">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

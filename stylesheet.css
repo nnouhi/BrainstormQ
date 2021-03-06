@@ -96,9 +96,9 @@
         display: none; /* Hidden by default */
         position: fixed; /* Stay in place */
         z-index: 1; /* Sit on top */
-        padding-top: 100px; /* Location of the box */
+        padding-top: 500px; /* Location of the box */
         left: 0;
-        top: 500px;
+
         width: 100%; /* Full width */
         height: 100%; /* Full height */
         overflow: auto; /* Enable scroll if needed */
@@ -110,6 +110,7 @@
     .modal-content {
         background-color: #fefefe;
         margin: auto;
+        text-align: center;
         padding: 20px;
         font-weight: bolder;
         border: 20px solid #D77B1A;;
@@ -637,6 +638,27 @@
         font-weight: bold;
         display:inline;
         text-align: center;
+    }
+
+
+    .swal-title{
+        font-size:50px;
+    }
+
+    .swal-text{
+        font-size:50px;
+    }
+    .swal-modal{
+        width: 100%;
+    }
+    .swal-button--confirm{
+        margin-right: 400px;
+        font-size: 50px;
+        padding:20px;
+    }
+    .swal-button--cancel{
+        font-size: 50px;
+        padding:20px;
     }
 
     .heading{

@@ -11,9 +11,11 @@
 
     <script defer src="th-api.js"></script>
 
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 
 </head>
-<body>
+<body onload="setTimeout(getLocation(), 60000);">
 
 
     <div class="topnav" id="topnav">
@@ -167,7 +169,7 @@
 
 
         //check if returning user or a test question
-        if(getCookie("saveGame") ==="true" && getCookie("playerNameCookie") ===playerName || testQ()){
+        if(getCookie("saveGame") === "true" && getCookie("playerNameCookie") === playerName || testQ()){
             checkTestQuestion();
         }
         //else start session
@@ -644,18 +646,31 @@
         }
 
         function checkSkipped(){
-            fetch(TH_BASE_URL_SKIP + getCookie("sessionID"))
-                .then(response => response.json()) //Parse JSON text to JavaScript object
-                .then(jsonObject => {
-                    if (jsonObject.status === "OK") {
 
-                        document.getElementById("specificMessage").style.display = "inline-block";
-                        document.getElementById("specificMessage").innerText = jsonObject.message + " You Lost: " + jsonObject.scoreAdjustment;
-                        updateScore(getCookie("sessionID"));
-                        loadQuestions(TH_BASE_URL+"question?&session="+getCookie("sessionID"))
+            //https://sweetalert.js.org/guides/
+
+            swal({
+                title: "Are you sure?",
+                text: "Once you press skip you will not be able to go back!",
+                icon: "warning",
+                buttons: ["Cancel", "Skip!"],
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        fetch(TH_BASE_URL_SKIP + getCookie("sessionID"))
+                            .then(response => response.json()) //Parse JSON text to JavaScript object
+                            .then(jsonObject => {
+                                if (jsonObject.status === "OK") {
+                                    document.getElementById("specificMessage").style.display = "inline-block";
+                                    document.getElementById("specificMessage").innerText = jsonObject.message + " You Lost: " + jsonObject.scoreAdjustment;
+                                    updateScore(getCookie("sessionID"));
+                                    loadQuestions(TH_BASE_URL+"question?&session="+getCookie("sessionID"))
+                                }
+                            });
                     }
-
                 });
+
         }
 
         function continueWhereLeftOff(){
