@@ -52,6 +52,7 @@
         <div class="tableContainer" id="tableContainer">
             <table class="leaderboardTable" id="leaderboardTable">
                 <tr>
+                    <th>Rank</th>
                     <th>Name</th>
                     <th>Score</th>
                     <th>Completion Date</th>
@@ -155,6 +156,7 @@
         }
 
         function loadLeaderboard(url){
+            let rankingIndex=1;
             document.getElementById("loading").innerText="Loading...";
             fetch(url)
                 .then(response => response.json()) //Parse JSON text to JavaScript object
@@ -162,7 +164,6 @@
                     document.getElementById("loading").innerText="";
                     if(jsonObject.status === "OK") {
                         let tableContents = "";
-
                         if (jsonObject.hasPrize === true) {
                             document.getElementById("hasPrizeContainer").style.display = "block";
                         }
@@ -170,15 +171,18 @@
 
                         for (let i = 0; i < leaderboardArray.length; i++) {
                             const entry = leaderboardArray[i];
+                            const ranking = rankingIndex;
                             const playerName = entry.player;
                             const score = entry.score;
                             const completionTime = entry.completionTime;
 
                             tableContents += "<tr>\n" +
+                                "    <td>" + ranking + "</td>" +
                                 "    <td>" + playerName + "</td>" +
                                 "    <td>" + score + "</td>" +
                                 "    <td>" + convertMsToDate(completionTime) + "</td>" +
                                 "</tr>";
+                            rankingIndex++;
                         }
                         document.getElementById("leaderboardTable").innerHTML += tableContents;
                         if(!testLB() && !testSc()){
