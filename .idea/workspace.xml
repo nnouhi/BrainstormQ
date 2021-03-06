@@ -21,6 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="880e3f71-b811-409b-98a7-d91394677bc9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignIn.html" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.html" beforeDir="false" afterPath="$PROJECT_DIR$/app.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/leaderboards.html" beforeDir="false" afterPath="$PROJECT_DIR$/leaderboards.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/stylesheet.css" afterDir="false" />
@@ -67,7 +68,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="MTConfigurable" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -143,7 +144,7 @@
       <workItem from="1615023902034" duration="239000" />
       <workItem from="1615024151077" duration="98000" />
       <workItem from="1615024260615" duration="710000" />
-      <workItem from="1615024983789" duration="3014000" />
+      <workItem from="1615024983789" duration="13441000" />
     </task>
     <task id="LOCAL-00001" summary="Added the names of our team">
       <created>1608135389920</created>
@@ -418,7 +419,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614972762524</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="Added-&gt; When a user press skip pop up shows up to ask the user if wants to actually skip (maybe it was a missclick)">
+      <created>1615028697785</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1615028697785</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -437,7 +445,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Made changes for tomorrow's presentation" />
     <MESSAGE value="Testing something" />
     <MESSAGE value="Addes cookies, geolocation, and some other small stuff" />
     <MESSAGE value="Added geolocation,cookies(need to add more) and some small features." />
@@ -462,13 +469,14 @@
     <MESSAGE value="Added question unit test, Lev needs to work on the apps responsiveness because nothing is responsive atm, also George o UAT" />
     <MESSAGE value="Added to check location on submit only, not sure if it works" />
     <MESSAGE value="Added cookie deletion after 2 sec of leaderboards load so the player enters the same name again he is not re-directed to leaderboards" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added cookie deletion after 2 sec of leaderboards load so the player enters the same name again he is not re-directed to leaderboards" />
+    <MESSAGE value="Added-&gt; When a user press skip pop up shows up to ask the user if wants to actually skip (maybe it was a missclick)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added-&gt; When a user press skip pop up shows up to ask the user if wants to actually skip (maybe it was a missclick)" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="335" y="115" key="CommitChangelistDialog2" timestamp="1614972761536">
+    <state x="335" y="3" key="CommitChangelistDialog2" timestamp="1615042925311">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="335" y="115" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1614972761536" />
+    <state x="335" y="3" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615042925311" />
     <state x="184" y="86" width="1536" height="860" key="DiffContextDialog" timestamp="1613246209354">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -489,14 +497,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="757" y="222" key="RollbackChangesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1613244143303" />
-    <state x="626" y="168" key="SettingsEditor" timestamp="1615024974460">
+    <state x="626" y="168" key="SettingsEditor" timestamp="1615042862095">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="626" y="168" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615024974460" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1614972810256">
+    <state x="626" y="168" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615042862095" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1615042933877">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1614972810256" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615042933877" />
     <state x="0" y="0" width="1599" height="1027" key="dock-window-1" timestamp="1613246243373">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

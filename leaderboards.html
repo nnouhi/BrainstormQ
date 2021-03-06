@@ -62,6 +62,7 @@
     </div>
 
     <script>
+
         const params = new URLSearchParams(location.search);
         const TH_TEST_URL = "https://codecyprus.org/th/test-api/"; // the test API base url
         const TH_BASE_URL_LEADERBOARDS="https://codecyprus.org/th/api/leaderboard?session=";
@@ -111,7 +112,8 @@
                 loadLeaderboard(url);
             }
             else if(!testLB() && !testSc()){
-                let url=TH_BASE_URL_LEADERBOARDS+getCookie("sessionID")+"&sorted&limit=40";
+                let sessionID=getCookie("sessionID");
+                let url=TH_BASE_URL_LEADERBOARDS+sessionID+"&sorted&limit=20";
                 loadLeaderboard(url);
             }
         }
@@ -126,7 +128,8 @@
                 setTimeout(score(url),2000);
             }
             else if(!testSc() && !testLB()){
-                let url=TH_BASE_URL_SCORE+getCookie("sessionID");
+                let sessionID=getCookie("sessionID");
+                let url=TH_BASE_URL_SCORE+sessionID;
                 setTimeout(score(url),2000);
             }
         }
@@ -185,7 +188,7 @@
                     else if(jsonObject.status==="ERROR"){
                         let errorMessage = confirm(jsonObject.errorMessages[0]);
                         if (errorMessage)
-                            window.location.href = "app.html";
+                            window.location.href = "SignIn.html";
                     }
                 });
             const deleteCookies = function(){
@@ -222,7 +225,8 @@
         function getRank(){
             let rankCounter=0;
             let rankDisplay=document.getElementById("rankDisplay"); //test
-            fetch( TH_BASE_URL_LEADERBOARDS+ getCookie("sessionID") + "&sorted&limit=2000")
+            let sessionID=getCookie("sessionID");
+            fetch( TH_BASE_URL_LEADERBOARDS+ sessionID+ "&sorted&limit=2000")
                 .then(response => response.json())
                 .then(jsonObject => {
                     let name = getCookie("playerNameCookie");
@@ -245,6 +249,7 @@
 
         function score(url){
             let completedLB="";
+
             fetch(url)
                 .then(response => response.json())
                 .then(jsonObject => {

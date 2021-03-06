@@ -59,10 +59,8 @@
 
 <div id="displayChallenges" class="displayChallenges">
     <h1 class="ChallengesHD">All challenges</h1>
-
-
     <p class="ViewChallenges">View available Treasure Hunts below:</p>
-
+    <h3 class="challengesLoading" id="challengesLoading">Loading...</h3>
     <ul id="treasureHunts" class="treasureHunts">
 
     </ul>
@@ -112,6 +110,7 @@
             .then(response => response.json()) //Parse JSON text to JavaScript object
             .then(jsonObject => {
 
+                document.getElementById("challengesLoading").style.display="none";
 
                 let treasureHuntsArray=jsonObject.treasureHunts; //Obtain a reference to the treasureHunts array from the parsed object.
 
@@ -140,11 +139,9 @@
 
     function hideChallenges(){
 
-
         /*Makes score visible*/
         let score=document.getElementById("scoreContainer");
         score.style.display="block";
-
 
         /*Makes refresh hidden*/
         let refresh=document.getElementById("refresh");
@@ -221,9 +218,6 @@
 
 
 </script>
-
-
-
 
 </body>
 </html>

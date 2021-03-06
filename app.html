@@ -86,7 +86,6 @@
         <h4 class=""></h4>
     </div>
 
-
     <!-- Questions are displayed --->
     <div id="displayQuestions" class="displayQuestions">
         <p class="questionMessage" id="questionMessage"></p>
@@ -100,13 +99,13 @@
 
     <div id="answer" class="answer" >
 
-        <input type="number" id="intANS" class="intANS" step="1" min="1" required>
+        <input type="number" id="intANS" class="intANS" step="1" min="1" required placeholder="Answer here..">
         <button type="submit" id="intBtn" class="intBtn" onclick="checkInt()">Submit</button>
 
         <button type="submit" id="trueBtn" class="trueBtn" value="true" onclick="checkAnswers('True','trueBtn')">TRUE</button>
         <button type="submit" id="falseBtn" class="falseBtn" value="false" onclick="checkAnswers('False','falseBtn')">FALSE</button>
 
-        <input type="text" id="textANS" class="textANS" required>
+        <input type="text" id="textANS" class="textANS" required placeholder="Answer here..">
         <button type="submit" id="textBtn" class="textBtn" onclick="javascript:checkText()">Submit</button>
 
         <button type="submit" id="mcqBtnA" class="mcqBtnA" value="A" onclick="checkAnswers('A','mcqBtnA')">A</button>
@@ -114,7 +113,7 @@
         <button type="submit" id="mcqBtnC" class="mcqBtnC" value="C" onclick="checkAnswers('C','mcqBtnC')">C</button>
         <button type="submit" id="mcqBtnD" class="mcqBtnD" value="D" onclick="checkAnswers('D','mcqBtnD')">D</button>
 
-        <input type="number" id="numericANS" class="numericANS" step="0.5" required >
+        <input type="number" id="numericANS" class="numericANS" step="0.5" required placeholder="Answer here..">
         <button type="submit" id="numericBtn" class="numericBtn" onclick="checkNum()">Submit</button>
 
         <button id="skip" class="skip" onclick="checkSkipped()">SKIP</button>
@@ -176,7 +175,6 @@
         else{
             select();
         }
-
         function testQ(){
             let url = new URL(window.location.href);
             return url.searchParams.get("testQ")!=null;
@@ -195,8 +193,6 @@
                 continueWhereLeftOff();
             }
         }
-
-
 
         async function select() {
             // For now just print the selected treasure hunt's UUID. Normally, you're expected to guide the user in entering
@@ -262,7 +258,9 @@
                 .then(jsonObject => {
 
                     if (jsonObject.status === "ERROR") {
-                        document.getElementById("specificMessage").innerHTML = jsonObject.errorMessages[0] + "<br>" + "<a href='app.html'> Click this Link to Start again</a>";
+                        let errorMessage = confirm(jsonObject.errorMessages[0]);
+                        if (errorMessage)
+                            setTimeout(function(){window.location.href="SignIn.html"},50)
                     }
                     else {
                         document.getElementById("loadingQuestionsM").innerHTML = "";
@@ -313,7 +311,7 @@
                             //https://www.sitepoint.com/javascript-settimeout-function-examples/
                             //after questions are completed show a "QUIZ FINISHED" message
                             const gameOver = function(){
-                                window.location.href = "leaderboards.html";
+                                window.location.href = "leaderboards.html?session=" + getCookie("sessionID") + "&sorted&limit=20";
                             };
 
                             setTimeout(gameOver, 2000);
@@ -486,19 +484,20 @@
 
         function updateScore(sessionObject){
 
-            fetch( TH_BASE_URL_SCORE+getCookie("sessionID"))
-                .then(response => response.json()) //Parse JSON text to JavaScript object
-                .then(jsonObject => {
-                    if(jsonObject.status === "OK") {
-                        if (jsonObject.completed === false && jsonObject.finished === false)
-                            document.getElementById("scoreContainer").innerText = "Your current score is: " + jsonObject.score + " points.";
-                    }
-                    else{
-                        let errorMessage = confirm(jsonObject.errorMessages[0])
-                        if (errorMessage)
-                            window.location.href = "SignIn.html";
-                    }
-                });
+            if(!testQ()) {
+                fetch(TH_BASE_URL_SCORE + getCookie("sessionID"))
+                    .then(response => response.json()) //Parse JSON text to JavaScript object
+                    .then(jsonObject => {
+                        if (jsonObject.status === "OK") {
+                            if (jsonObject.completed === false && jsonObject.finished === false)
+                                document.getElementById("scoreContainer").innerText = "Your current score is: " + jsonObject.score + " points.";
+                        } else {
+                            let errorMessage = confirm(jsonObject.errorMessages[0])
+                            if (errorMessage)
+                                window.location.href = "SignIn.html";
+                        }
+                    });
+            }
         }
 
         function getCookie(cookieName) {
@@ -546,7 +545,6 @@
         }
 
         function checkInt(){
-
             let ans=document.getElementById("intANS").value;
             let field="intANS";
             //check if integer proceed else alert//
