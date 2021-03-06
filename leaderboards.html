@@ -114,7 +114,7 @@
             }
             else if(!testLB() && !testSc()){
                 let sessionID=getCookie("sessionID");
-                let url=TH_BASE_URL_LEADERBOARDS+sessionID+"&sorted&limit=20";
+                let url=TH_BASE_URL_LEADERBOARDS+sessionID+"&sorted&limit=100";
                 loadLeaderboard(url);
             }
         }
@@ -157,6 +157,7 @@
 
         function loadLeaderboard(url){
             let rankingIndex=1;
+            let name=getCookie("playerNameCookie");
             document.getElementById("loading").innerText="Loading...";
             fetch(url)
                 .then(response => response.json()) //Parse JSON text to JavaScript object
@@ -168,7 +169,7 @@
                             document.getElementById("hasPrizeContainer").style.display = "block";
                         }
                         const leaderboardArray = jsonObject.leaderboard;
-
+                        let name = getCookie("playerNameCookie");
                         for (let i = 0; i < leaderboardArray.length; i++) {
                             const entry = leaderboardArray[i];
                             const ranking = rankingIndex;
@@ -185,6 +186,16 @@
                             rankingIndex++;
                         }
                         document.getElementById("leaderboardTable").innerHTML += tableContents;
+
+                        //checks for the entry of the player and changes the color//
+                        var tableCells=document.getElementById("leaderboardTable");
+                        var rows = tableCells.getElementsByTagName("tr") ;
+                        for (var i=0; i<rows.length; i++) {
+                            const entry = leaderboardArray[i];
+                            if(entry.player === name)
+                            rows[i].style.backgroundColor = "#FFFFC7";
+                        }
+
                         if(!testLB() && !testSc()){
                             document.getElementById("refreshBtnContainer").style.display="block";
                         }
