@@ -190,7 +190,7 @@
                         //checks for the entry of the player and changes the color//
                         var tableCells=document.getElementById("leaderboardTable");
                         var rows = tableCells.getElementsByTagName("tr") ;
-                        for (var i=0; i<rows.length; i++) {
+                        for (var i=0; i<100; i++) {
                             const entry = leaderboardArray[i];
                             if(entry.player === name)
                             rows[i].style.backgroundColor = "#FFFFC7";

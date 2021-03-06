@@ -20,7 +20,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="880e3f71-b811-409b-98a7-d91394677bc9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/leaderboards.html" beforeDir="false" afterPath="$PROJECT_DIR$/leaderboards.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -141,7 +140,7 @@
       <workItem from="1615023902034" duration="239000" />
       <workItem from="1615024151077" duration="98000" />
       <workItem from="1615024260615" duration="710000" />
-      <workItem from="1615024983789" duration="17801000" />
+      <workItem from="1615024983789" duration="18169000" />
     </task>
     <task id="LOCAL-00001" summary="Added the names of our team">
       <created>1608135389920</created>
@@ -444,7 +443,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615058531626</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Added ranking to lb and changes the row color for the specific entry">
+      <created>1615060301709</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1615060301709</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -463,7 +469,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added geolocation,cookies(need to add more) and some small features." />
     <MESSAGE value="Added some basic btn styling, and some error handlers, was trying to continue session if player restarts with same name" />
     <MESSAGE value="Addes some basic btn styling, and some error handlers, was trying to continue session if player restarts with same name" />
     <MESSAGE value="Made the code more &quot;elegant&quot; and readable with the use of multiple functions. Need to finish with basic css &amp; make the player continue where he left off if he has same name" />
@@ -488,13 +493,14 @@
     <MESSAGE value="Added-&gt; When a user press skip pop up shows up to ask the user if wants to actually skip (maybe it was a missclick)" />
     <MESSAGE value="testing something, unit test for completed questions gives me an error on leaderboards.html" />
     <MESSAGE value="fixed the bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed the bug" />
+    <MESSAGE value="Added ranking to lb and changes the row color for the specific entry" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added ranking to lb and changes the row color for the specific entry" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="335" y="3" key="CommitChangelistDialog2" timestamp="1615058530960">
+    <state x="335" y="3" key="CommitChangelistDialog2" timestamp="1615060300752">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="335" y="3" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615058530960" />
+    <state x="335" y="3" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615060300752" />
     <state x="184" y="86" width="1536" height="860" key="DiffContextDialog" timestamp="1613246209354">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -519,10 +525,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="626" y="168" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615042862095" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1615058533507">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1615060302953">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615058533507" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615060302953" />
     <state x="0" y="0" width="1599" height="1027" key="dock-window-1" timestamp="1613246243373">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
