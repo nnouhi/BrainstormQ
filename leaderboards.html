@@ -160,7 +160,7 @@
                 .then(response => response.json()) //Parse JSON text to JavaScript object
                 .then(jsonObject => {
                     document.getElementById("loading").innerText="";
-                    if(jsonObject.status==="OK") {
+                    if(jsonObject.status === "OK") {
                         let tableContents = "";
 
                         if (jsonObject.hasPrize === true) {
@@ -185,7 +185,7 @@
                             document.getElementById("refreshBtnContainer").style.display="block";
                         }
                     }
-                    else if(jsonObject.status==="ERROR"){
+                    else if(jsonObject.status === "ERROR"){
                         let errorMessage = confirm(jsonObject.errorMessages[0]);
                         if (errorMessage)
                             window.location.href = "SignIn.html";
@@ -249,18 +249,17 @@
 
         function score(url){
             let completedLB="";
-
             fetch(url)
                 .then(response => response.json())
                 .then(jsonObject => {
                     if(jsonObject.status === "OK"){
                         if((jsonObject.completed === false) && (jsonObject.finished === false)){
                             completedLB="is not completed ";
-                            document.getElementById("scoreDisplay").innerHTML="The game "+completedLB + jsonObject.player+", and your score is "+jsonObject.score+" points."
+                            document.getElementById("scoreDisplay").innerHTML="The game "+ completedLB + jsonObject.player+", and your score is "+jsonObject.score+" points."
                         }
                         else if(jsonObject.completed === true){
                             completedLB="is completed ";
-                            document.getElementById("scoreDisplay").innerHTML="Congratulations the game "+completedLB + jsonObject.player+", and your score is "+jsonObject.score+
+                            document.getElementById("scoreDisplay").innerHTML="Congratulations the game "+ completedLB + jsonObject.player+", and your score is "+jsonObject.score+
                             "<span id='rankDisplay'></span>";
                             getRank();
                         }

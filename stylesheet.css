@@ -6,7 +6,6 @@
     body
     {
         background-color: darksalmon;
-
     }
 
     .TeamHD
@@ -701,7 +700,8 @@
         border-collapse: collapse;
         width: 100%;
         position:absolute;
-        margin: 0 auto;
+        top: 50%;
+        left: 10%;
     }
 
     .leaderboardTable td,  .leaderboardTable  th {
