@@ -15,7 +15,7 @@
 
 
 </head>
-<body onload="setTimeout(getLocation(), 60000);">
+<body onload="setTimeout(getLocation(), 30000);">
 
 
     <div class="topnav" id="topnav">
@@ -69,7 +69,7 @@
         <div class="btnsContainer" id="btnsContainer">
             <button class="toggleCamera" onclick="activateCamera()" type="submit">Toggle</button>
                                 <!-- TODO add clickboard -->
-            <button class="copyClickboard" id="copyClickboard" onclick="copyToClickboard()" type="submit">Copy</button>
+            <button class="copyClipboard" id="copyClipboard" onclick="copyToClipboard" type="submit">Copy</button>
         </div>
 
         <div class="switchCameraContainer">
@@ -78,46 +78,49 @@
 
     </div>
 
-    <div class="questionIndexContainer" id="questionIndexContainer">
-        <p class="questionIndexP" id="questionIndexP"></p>
+    <div class="containerQ">
+        <div class="questionIndexContainer" id="questionIndexContainer">
+            <p class="questionIndexP" id="questionIndexP"></p>
+        </div>
+
+        <div class="scoreContainer" id="scoreContainer">
+            <h4 class=""></h4>
+        </div>
+
+        <!-- Questions are displayed --->
+        <div id="displayQuestions" class="displayQuestions">
+            <p class="questionMessage" id="questionMessage"></p>
+            <h3 class="loadingQuestionsM" id="loadingQuestionsM"></h3>
+        </div>
+
+
+        <div class="messagesContainer" id="messagesContainer">
+            <h4 id="specificMessage" class="specificMessage"></h4>
+        </div>
+
+        <div id="answer" class="answer" >
+
+            <input type="number" id="intANS" class="intANS" step="1" min="1" required placeholder="Answer here..">
+            <button type="submit" id="intBtn" class="intBtn" onclick="checkInt()">Submit</button>
+
+            <button type="submit" id="trueBtn" class="trueBtn" value="true" onclick="checkAnswers('True','trueBtn')">TRUE</button>
+            <button type="submit" id="falseBtn" class="falseBtn" value="false" onclick="checkAnswers('False','falseBtn')">FALSE</button>
+
+            <input type="text" id="textANS" class="textANS" required placeholder="Answer here..">
+            <button type="submit" id="textBtn" class="textBtn" onclick="javascript:checkText()">Submit</button>
+
+            <button type="submit" id="mcqBtnA" class="mcqBtnA" value="A" onclick="checkAnswers('A','mcqBtnA')">A</button>
+            <button type="submit" id="mcqBtnB" class="mcqBtnB" value="B" onclick="checkAnswers('B','mcqBtnB')">B</button>
+            <button type="submit" id="mcqBtnC" class="mcqBtnC" value="C" onclick="checkAnswers('C','mcqBtnC')">C</button>
+            <button type="submit" id="mcqBtnD" class="mcqBtnD" value="D" onclick="checkAnswers('D','mcqBtnD')">D</button>
+
+            <input type="number" id="numericANS" class="numericANS" step="0.5" required placeholder="Answer here..">
+            <button type="submit" id="numericBtn" class="numericBtn" onclick="checkNum()">Submit</button>
+
+            <button id="skip" class="skip" onclick="checkSkipped()">SKIP</button>
+        </div>
     </div>
 
-    <div class="scoreContainer" id="scoreContainer">
-        <h4 class=""></h4>
-    </div>
-
-    <!-- Questions are displayed --->
-    <div id="displayQuestions" class="displayQuestions">
-        <p class="questionMessage" id="questionMessage"></p>
-        <h3 class="loadingQuestionsM" id="loadingQuestionsM"></h3>
-    </div>
-
-
-    <div class="messagesContainer" id="messagesContainer">
-        <h4 id="specificMessage" class="specificMessage"></h4>
-    </div>
-
-    <div id="answer" class="answer" >
-
-        <input type="number" id="intANS" class="intANS" step="1" min="1" required placeholder="Answer here..">
-        <button type="submit" id="intBtn" class="intBtn" onclick="checkInt()">Submit</button>
-
-        <button type="submit" id="trueBtn" class="trueBtn" value="true" onclick="checkAnswers('True','trueBtn')">TRUE</button>
-        <button type="submit" id="falseBtn" class="falseBtn" value="false" onclick="checkAnswers('False','falseBtn')">FALSE</button>
-
-        <input type="text" id="textANS" class="textANS" required placeholder="Answer here..">
-        <button type="submit" id="textBtn" class="textBtn" onclick="javascript:checkText()">Submit</button>
-
-        <button type="submit" id="mcqBtnA" class="mcqBtnA" value="A" onclick="checkAnswers('A','mcqBtnA')">A</button>
-        <button type="submit" id="mcqBtnB" class="mcqBtnB" value="B" onclick="checkAnswers('B','mcqBtnB')">B</button>
-        <button type="submit" id="mcqBtnC" class="mcqBtnC" value="C" onclick="checkAnswers('C','mcqBtnC')">C</button>
-        <button type="submit" id="mcqBtnD" class="mcqBtnD" value="D" onclick="checkAnswers('D','mcqBtnD')">D</button>
-
-        <input type="number" id="numericANS" class="numericANS" step="0.5" required placeholder="Answer here..">
-        <button type="submit" id="numericBtn" class="numericBtn" onclick="checkNum()">Submit</button>
-
-        <button id="skip" class="skip" onclick="checkSkipped()">SKIP</button>
-    </div>
 
     <script>
         const TH_BASE_URL = "https://codecyprus.org/th/api/"; // the true API base url
@@ -175,6 +178,7 @@
         else{
             select();
         }
+
         function testQ(){
             let url = new URL(window.location.href);
             return url.searchParams.get("testQ")!=null;
@@ -596,7 +600,7 @@
                                     document.getElementById("specificMessage").style.display = "inline-block";
                                     document.getElementById("specificMessage").innerText = jsonObject.message + ": You have gained " + jsonObject.scoreAdjustment + " points.";
                                     updateScore(getCookie("sessionID"));
-                                    loadQuestions(TH_BASE_URL + "question?&session=" + getCookie("sessionID"))
+                                    loadQuestions(TH_BASE_URL + "question?&session=" + getCookie("sessionID"));
                                 } else if (jsonObject.status === "OK" && jsonObject.correct === false) {
                                     document.getElementById("specificMessage").style.display = "inline-block";
                                     document.getElementById("specificMessage").innerText = jsonObject.message + ": You have lost " + jsonObject.scoreAdjustment + " points.";
@@ -608,7 +612,7 @@
                     else{
                         window.alert("Field is blank");
                     }
-                }, 50);
+                }, 2000);
             }
             else{
                 if(document.getElementById(field).value!=="") {

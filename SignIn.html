@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="stylesheet.css">
 
 </head>
-<body>
+<body onload="checkRestart()">
 
 
 <div class="topnav" id="topnav">
@@ -50,7 +50,7 @@
 
 <div class="container" id="Namecontainer">
     <form action="javascript:checkName(this);">
-        <input type="text" id="Tname" name="name" class="Tname" placeholder="Your name.. "required>
+        <input type="text" id="Tname" name="name" class="Tname" placeholder="Your name.. " required>
         <button type="submit" class="nameBtn" id="nameBtn">Submit</button>
     </form>
 </div>
@@ -60,11 +60,11 @@
 <div id="displayChallenges" class="displayChallenges">
     <h1 class="ChallengesHD">All challenges</h1>
     <p class="ViewChallenges">View available Treasure Hunts below:</p>
-    <h3 class="challengesLoading" id="challengesLoading">Loading...</h3>
     <ul id="treasureHunts" class="treasureHunts">
-
     </ul>
-
+</div>
+<div class="loadingMessageContainer" id="loadingMessageContainer">
+    <h3 class="challengesLoading" id="challengesLoading">Loading...</h3>
 </div>
 
 <script>
@@ -96,21 +96,42 @@
             modal.style.display = "none";
         }
     }
+    const params = new URLSearchParams(location.search);
+
+
+    function checkRestart(){
+        if(params.has("restart")){
+            document.getElementById("NameHD").style.display="none";
+            document.getElementById("Namecontainer").style.display="none";
+            setTimeout(function(){getChallenges(this);},100);
+        }
+    }
+
+
+
 
     function getChallenges() {
         /*After the player inputs their name Hide the log in "container" and display the challenges */
+        let playerName;
 
+        if(params.has("restart")){
+            console.log("test1");
+            playerName=getCookie("playerNameCookie");
+        }
+        else{
+            playerName=document.getElementById("Tname").value;
+        }
 
-        let playerName=document.getElementById("Tname").value;
-
-        document.getElementById("displayChallenges").style.display = "block";
+        document.getElementById("loadingMessageContainer").style.display="inline-block";
 
 
         fetch(TH_BASE_URL+"list")
             .then(response => response.json()) //Parse JSON text to JavaScript object
             .then(jsonObject => {
 
-                document.getElementById("challengesLoading").style.display="none";
+                document.getElementById("displayChallenges").style.display = "block";
+
+                document.getElementById("loadingMessageContainer").style.display="none";
 
                 let treasureHuntsArray=jsonObject.treasureHunts; //Obtain a reference to the treasureHunts array from the parsed object.
 
@@ -179,8 +200,26 @@
         }
         else{
             //delete cookies go back to log in
-            document.cookie = "saveGame=; expires=Thu, 02 April 2000 00:00:00 UTC;";
-            window.location.href="SignIn.html"
+            const deleteCookies = function(){
+                //https://stackoverflow.com/questions/179355/clearing-all-cookies-with-javascript
+                let cookies = document.cookie.split("; ");
+                for (let c = 0; c < cookies.length; c++) {
+                    let d = window.location.hostname.split(".");
+                    while (d.length > 0) {
+                        let cookieBase = encodeURIComponent(cookies[c].split(";")[0].split("=")[0]) + '=; expires=Thu, 01-Jan-1970 00:00:01 GMT; domain=' + d.join('.') + ' ;path=';
+                        let p = location.pathname.split('/');
+                        document.cookie = cookieBase + '/';
+                        while (p.length > 0) {
+                            document.cookie = cookieBase + p.join('/');
+                            p.pop();
+                        }
+                        d.shift();
+                    }
+                }
+            };
+            setTimeout(deleteCookies, 10);
+
+            setTimeout(function(){window.location.href="SignIn.html";},500);
         }
     }
 

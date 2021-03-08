@@ -10,8 +10,10 @@
     <div class="topnav" id="topnav">
 
     <a href="javascript:getChallenges(this);" id="refresh" class="refresh">Refresh</a>
-    <button id="homeBtn" class="homeBtn" onclick="window.location.href='index.html'" >Home</button>
-    <button id="restartBtn" class="restartBtn" onclick="window.location.href='SignIn.html'" >Restart</button>
+    <button id="homeBtn" class="homeBtn" onclick="goToIndex()" >Home</button>
+    <button id="restartBtn" class="restartBtn" onclick="goToTH()">Restart</button>
+    <button id="startNewBtn" class="startNewBtn" onclick="goToSignIn()">Start New</button>
+
     <!-- Trigger/Open The Modal -->
     <button id="infoBtn" class="infoBtn" >Info</button>
 
@@ -23,16 +25,14 @@
         <!-- Modal content -->
         <div class="modal-content">
             <span class="close">&times;</span>
-            <p style="color:darksalmon">Enter your name and get started with the questions!</p>
+            <p style="color:darksalmon">Button Descriptions</p>
             <ul class="pointsModal">
 
-                <li>If your answer is <span style="color: green">correct</span> you are rewarded with 10 points.</li>
-                <li>If your answer is <span style="color:red"> wrong </span>you lose  3 points.</li>
-                <li>If you <span style="color:red">skip</span> a question you lose 5 points.</li>
+                <li> <span style="color: darksalmon">Home Button:</span> Takes you back to the Landing Page. </li>
+                <li> <span style="color: darksalmon">Restart Button:</span> Choose another TH with the same username. </li>
+                <li> <span style="color: darksalmon">Start New Button:</span> Go back to the Sign in page. </li>
 
             </ul>
-
-            <p style="color:darksalmon">When the quiz is over you will be directed to the leaderboards.</p>
         </div>
 
     </div>
@@ -69,6 +69,7 @@
         const TH_BASE_URL_LEADERBOARDS="https://codecyprus.org/th/api/leaderboard?session=";
         const TH_BASE_URL_SCORE="https://codecyprus.org/th/api/score?session="; // the true API base url for score
 
+        document.getElementById("startNewBtn").style.display = "inline-block";
 
         // Get the modal
         let modal = document.getElementById("myModal");
@@ -114,7 +115,7 @@
             }
             else if(!testLB() && !testSc()){
                 let sessionID=getCookie("sessionID");
-                let url=TH_BASE_URL_LEADERBOARDS+sessionID+"&sorted&limit=100";
+                let url=TH_BASE_URL_LEADERBOARDS+sessionID+"&sorted&limit=20";
                 loadLeaderboard(url);
             }
         }
@@ -188,12 +189,12 @@
                         document.getElementById("leaderboardTable").innerHTML += tableContents;
 
                         //checks for the entry of the player and changes the color//
-                        var tableCells=document.getElementById("leaderboardTable");
-                        var rows = tableCells.getElementsByTagName("tr") ;
-                        for (var i=0; i<100; i++) {
+                        let tableCells=document.getElementById("leaderboardTable");
+                        let rows = tableCells.getElementsByTagName("tr") ;
+                        for (let i=0; i<100; i++) {
                             const entry = leaderboardArray[i];
                             if(entry.player === name)
-                            rows[i].style.backgroundColor = "#FFFFC7";
+                            rows[i+1].style.backgroundColor = "#FFFFC7";
                         }
 
                         if(!testLB() && !testSc()){
@@ -205,27 +206,8 @@
                         if (errorMessage)
                             window.location.href = "SignIn.html";
                     }
-                });
-            const deleteCookies = function(){
-
-                //https://stackoverflow.com/questions/179355/clearing-all-cookies-with-javascript
-                var cookies = document.cookie.split("; ");
-                for (var c = 0; c < cookies.length; c++) {
-                    var d = window.location.hostname.split(".");
-                    while (d.length > 0) {
-                        var cookieBase = encodeURIComponent(cookies[c].split(";")[0].split("=")[0]) + '=; expires=Thu, 01-Jan-1970 00:00:01 GMT; domain=' + d.join('.') + ' ;path=';
-                        var p = location.pathname.split('/');
-                        document.cookie = cookieBase + '/';
-                        while (p.length > 0) {
-                            document.cookie = cookieBase + p.join('/');
-                            p.pop();
-                        };
-                        d.shift();
-                    }
                 }
-            };
-            setTimeout(deleteCookies, 2000);
-
+            )
         }
 
         /*Refreshes the leaderboards */
@@ -238,20 +220,19 @@
         }
 
         function getRank(){
-            let rankCounter=0;
+            let rankCounter=1;
             let rankDisplay=document.getElementById("rankDisplay"); //test
-            let sessionID=getCookie("sessionID");
-            fetch( TH_BASE_URL_LEADERBOARDS+ sessionID+ "&sorted&limit=2000")
+            fetch( TH_BASE_URL_LEADERBOARDS+  getCookie("sessionID")+ "&sorted&limit=2000")
                 .then(response => response.json())
                 .then(jsonObject => {
                     let name = getCookie("playerNameCookie");
                     let leaderboardArray = jsonObject.leaderboard;
-                    for (let i = 0; i < leaderboardArray.length; i++) {
+                    for (let i = 0; i < leaderboardArray.length-1; i++) {
                         const entry = leaderboardArray[i];
                         const playerName = entry.player;
                         const score = entry.score;
                         const completionTime = entry.completionTime;
-                        if(playerName===getCookie("playerNameCookie")){
+                        if(playerName===name){
                             rankDisplay.innerHTML=" and your rank is "+rankCounter;
                         }
                         else{
@@ -308,6 +289,59 @@
             date.setTime(date.getTime() + (cookieLifespan * 60 * 60 * 1000));
             let expires = "expires=" + date.toUTCString();
             document.cookie = cookieName + "=" + cookieValue + ";" + expires;
+        }
+
+        function goToIndex(){
+            const deleteCookies = function(){
+                //https://stackoverflow.com/questions/179355/clearing-all-cookies-with-javascript
+                let cookies = document.cookie.split("; ");
+                for (let c = 0; c < cookies.length; c++) {
+                    let d = window.location.hostname.split(".");
+                    while (d.length > 0) {
+                        let cookieBase = encodeURIComponent(cookies[c].split(";")[0].split("=")[0]) + '=; expires=Thu, 01-Jan-1970 00:00:01 GMT; domain=' + d.join('.') + ' ;path=';
+                        let p = location.pathname.split('/');
+                        document.cookie = cookieBase + '/';
+                        while (p.length > 0) {
+                            document.cookie = cookieBase + p.join('/');
+                            p.pop();
+                        }
+                        d.shift();
+                    }
+                }
+            };
+            setTimeout(deleteCookies, 10);
+
+            setTimeout(function(){window.location.href="index.html";},500);
+        }
+
+        function goToSignIn(){
+            const deleteCookies = function(){
+                //https://stackoverflow.com/questions/179355/clearing-all-cookies-with-javascript
+                let cookies = document.cookie.split("; ");
+                for (let c = 0; c < cookies.length; c++) {
+                    let d = window.location.hostname.split(".");
+                    while (d.length > 0) {
+                        let cookieBase = encodeURIComponent(cookies[c].split(";")[0].split("=")[0]) + '=; expires=Thu, 01-Jan-1970 00:00:01 GMT; domain=' + d.join('.') + ' ;path=';
+                        let p = location.pathname.split('/');
+                        document.cookie = cookieBase + '/';
+                        while (p.length > 0) {
+                            document.cookie = cookieBase + p.join('/');
+                            p.pop();
+                        }
+                        d.shift();
+                    }
+                }
+            };
+            setTimeout(deleteCookies, 10);
+
+            setTimeout(function(){window.location.href="SignIn.html";},500);
+        }
+
+        function goToTH(){
+            document.cookie = "saveGame=; expires=Thu, 02 April 2000 00:00:00 UTC;";
+            document.cookie = "nameOfGame=; expires=Thu, 02 April 2000 00:00:00 UTC;";
+            document.cookie = "sessionID=; expires=Thu, 02 April 2000 00:00:00 UTC;";
+            setTimeout(function(){window.location.href="SignIn.html?restart";},500);
         }
 
     </script>

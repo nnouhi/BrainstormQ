@@ -20,7 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="880e3f71-b811-409b-98a7-d91394677bc9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignIn.html" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.html" beforeDir="false" afterPath="$PROJECT_DIR$/app.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/leaderboards.html" beforeDir="false" afterPath="$PROJECT_DIR$/leaderboards.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/stylesheet.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/th-api.js" beforeDir="false" afterPath="$PROJECT_DIR$/th-api.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,8 +37,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -44,6 +50,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/app.html" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/test.html" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/th-api.js" root0="SKIP_INSPECTION" />
   </component>
   <component name="JsFlowSettings">
@@ -140,7 +147,11 @@
       <workItem from="1615023902034" duration="239000" />
       <workItem from="1615024151077" duration="98000" />
       <workItem from="1615024260615" duration="710000" />
-      <workItem from="1615024983789" duration="18169000" />
+      <workItem from="1615024983789" duration="18242000" />
+      <workItem from="1615111597221" duration="5194000" />
+      <workItem from="1615128115583" duration="2724000" />
+      <workItem from="1615132727264" duration="5181000" />
+      <workItem from="1615191920760" duration="17915000" />
     </task>
     <task id="LOCAL-00001" summary="Added the names of our team">
       <created>1608135389920</created>
@@ -450,7 +461,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615060301709</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Fixed an error that occurred with the colouring of the specific entry">
+      <created>1615060596188</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1615060596188</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -469,7 +487,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added some basic btn styling, and some error handlers, was trying to continue session if player restarts with same name" />
     <MESSAGE value="Addes some basic btn styling, and some error handlers, was trying to continue session if player restarts with same name" />
     <MESSAGE value="Made the code more &quot;elegant&quot; and readable with the use of multiple functions. Need to finish with basic css &amp; make the player continue where he left off if he has same name" />
     <MESSAGE value="Managed to make continue session work properly" />
@@ -494,13 +511,14 @@
     <MESSAGE value="testing something, unit test for completed questions gives me an error on leaderboards.html" />
     <MESSAGE value="fixed the bug" />
     <MESSAGE value="Added ranking to lb and changes the row color for the specific entry" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added ranking to lb and changes the row color for the specific entry" />
+    <MESSAGE value="Fixed an error that occurred with the colouring of the specific entry" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed an error that occurred with the colouring of the specific entry" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="335" y="3" key="CommitChangelistDialog2" timestamp="1615060300752">
+    <state x="335" y="3" key="CommitChangelistDialog2" timestamp="1615060595323">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="335" y="3" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615060300752" />
+    <state x="335" y="3" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615060595323" />
     <state x="184" y="86" width="1536" height="860" key="DiffContextDialog" timestamp="1613246209354">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -525,10 +543,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="626" y="168" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615042862095" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1615060302953">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1615060597416">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615060302953" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615060597416" />
     <state x="0" y="0" width="1599" height="1027" key="dock-window-1" timestamp="1613246243373">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

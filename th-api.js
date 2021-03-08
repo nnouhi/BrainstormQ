@@ -25,8 +25,8 @@ window.onclick = function(event) {
     }
 }
 
-let copyBtn=document.getElementById("copyClickboard");
-copyBtn.addEventListener("click", copyToClickboard);
+let copyBtn=document.getElementById("copyClipboard");
+copyBtn.addEventListener("click", copyToClipboard);
 
 let opts = {
     // Whether to scan continuously for QR codes. If false, use scanner.scan() to
@@ -115,7 +115,7 @@ function switchCamera() {
 }
 
 //copy to clickboard function
-function copyToClickboard(){
+function copyToClipboard(){
     const str = document.getElementById('content').innerText;
     const el = document.createElement('textarea');
     el.value = str;
