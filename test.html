@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size: 62.5%">
+<head>
+
+    <meta charset="UTF-8">
+    <title>UAT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="stylesheet.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+<body>
+    <button onclick="topFunction()" id="myBtn" title="Go to top">
+        <i class="material-icons">arrow_upward</i>
+    </button>
+
+    <div class="topNavBtns">
+        <button class="navBtn"  style="float: left" type="submit" onclick="goToHome()">Home</button>
+        <button class="navBtn" style="float: right" type="submit" onclick="goToUnitTest()">Unit Test</button>
+    </div>
+
+    <h2 class="UATHD">Nielsen's Heuristics Compliance Assessment</h2>
+
+    <div class="UATContainer">
+        <ol type="1">
+            <li style="font-weight: bold">
+                Visibility of system status
+            </li>
+            <br>
+            <ol type="A">
+                <li>
+                    Headings on top of every page so that the user knows what page he/she currently is.
+                </li>
+                <br>
+                <li>
+                    Every page has the same navigation buttons to help the user navigate through all available pages.
+                </li>
+                <br>
+                <li>
+                    Buttons change colour when they are being pressed or hovered.
+                </li>
+                <br>
+                <li>
+                    Loading message is displayed where is needed to let the user know that the page is still running.
+                </li>
+                <br>
+                <li>
+                    If a session is not finished alert messages ask the user if he/she wants to continue the unfinished session.
+                </li>
+                <br>
+            </ol>
+            <li style="font-weight: bold">
+                Match between system and the real world
+            </li>
+            <br>
+            <ol type="A">
+                <li>
+                    All pop ups/alerts use words, phrases, and concepts familiar to the user; avoided using programming/technical language.
+                </li>
+                <br>
+                <li>
+                    Most of the buttons have an icon that describes their usage.
+                </li>
+            </ol>
+            <br>
+            <li style="font-weight: bold">
+                User control and freedom
+            </li>
+            <br>
+            <ol type="A">
+                <li>
+                    Returning user can start a new game or continue where he left off.
+                </li>
+                <br>
+                <li>
+                    If the question allows it, a user can skip an unwanted question and move the next one.
+                </li>
+                <br>
+                <li>
+                    When pressing the skip button a pop up appears to ask the user if he/she wants to actually skip the question (Avoid unwanted actions)
+                </li>
+                <br>
+                <li>
+                    User can activate the QR code scanner and then change to his camera of choice (front/back)
+                </li>
+                <br>
+                <li>
+                    User can copy the scanned message with a copy to clipboard button
+                </li>
+                <br>
+            </ol>
+            <li style="font-weight: bold">
+               Consistency and standards
+            </li>
+            <br>
+            <ol type="A">
+                <li>
+                    All pages follow the same design template.
+                </li>
+                <br>
+                <li>
+                    All pages follow the same structure template.
+                </li>
+            </ol>
+            <br>
+            <li style="font-weight: bold">
+                Error prevention
+            </li>
+            <br>
+            <ol type="A">
+                <li>
+                    If an answer requires an Integer value and the user submits a float an alert message appears and prompts the user to enter an Integer.
+                </li>
+                <br>
+                <li>
+                    A message appears when the user submits an 'empty' answer.
+                </li>
+                <br>
+                <li>
+                    A message is displayed to alert user if user device lacks a feature needed in the app. (No cameras available for QR Scanner ft).
+                <br>
+                <li>
+                    A message is displayed to alert user if user wants to play with a username that was used before.
+                </li>
+            </ol>
+            <br>
+            <li style="font-weight: bold">
+                Recognition rather than recall
+            </li>
+            <br>
+            <ol type="A">
+                <li>
+                   All pages follow the same template; user gets familiar with the app (no recall).
+                </li>
+                <br>
+                <li>
+                   Button's use is clear; user doesn't need to guess what does what (no recall).
+                </li>
+                <br>
+                <li>
+                    Minamalist UI and app design ; user doesn't need to guess what does what (no recall).
+                 <br>
+            </ol>
+            <br>
+            <li style="font-weight: bold">
+                Flexibility and efficiency of use
+            </li>
+            <br>
+            <ol type="A">
+                <li>
+                   App can be used by an experienced and also by an inexperienced user.
+                </li>
+            </ol>
+            <br>
+            <li style="font-weight: bold">
+               Aesthetic and minimalist design
+            </li>
+            <br>
+            <ol type="A">
+                <li>
+                    All pages follow an aesthetic and minimalist design.
+                </li>
+                <br>
+                <li>
+                    Interfaces do not contain information which is irrelevant or rarely needed.
+                </li>
+                <br>
+                <li>
+                    Minamalist UI and app design ; user doesn't need to guess what does what (no recall).
+                </li>
+                <br>
+                <li>
+                     Button icons used to avoid any recall and avoid unnecessary information.
+                </li>
+                <br>
+            </ol>
+            <li style="font-weight: bold">
+               Help users recognize, diagnose, and recover from errors
+            </li>
+            <br>
+            <ol type="A">
+                <li>
+                   A message appears every time that an error occurs; User can restart the session any time an error occurs.
+                </li>
+                <br>
+                <li>
+                    All error messages use every day language so that the user can understand what error occured; avoided using programming/technical language.
+                </li>
+            </ol>
+            <br>
+            <li style="font-weight: bold">
+                Help and documentation
+            </li>
+            <br>
+            <ol type="A">
+                <li>
+                    All error messages use every day language so that the user can understand what error occured; avoided using programming/technical language.
+                </li>
+                <br>
+                <li>
+                    All pages include an 'info' button at the top that gives a brief explanation on how to play the game.
+                </li>
+                <br>
+            </ol>
+        </ol>
+    </div>
+
+    <h2 class="UATHD">User Acceptance Test</h2>
+
+    <div class="UATContainer">
+        <ol type="1">
+            <li>The app will be tested mostly by <b>George Antoniou</b>, <b>family members</b> and by some of our <b>friends</b>.</li>
+            <br>
+            <li>All test made will be documented by <b>Lev Isaev</b>.</li>
+            <br>
+            <li>The testing will begin when the functional part of the app is finished and only the styling needs to be done and the app is <b>close to being relased</b>.</li>
+            <br>
+            <li><b>Every functional part</b> of the app that was implemented will be thoroughly tested.</li>
+            <br>
+            <li>All testing results are going to be documented in the <b>User Acceptance Test page (linked from landing page)</b>.</li>
+            <br>
+            <li>Discovered bugs within the app will be reported to <b>Lev Isaev</b> and then reported to <b>Nicolas Nouhi</b>, <b>Nicolas Nouhi</b> then will try to come up with the appropriate fix.</li>
+            <br>
+            <li><b>The app will be test twice</b>. Once when app's functionality is implemented, and twice when the bugs of the first testing are fixed.</li>
+        </ol>
+    </div>
+    <h2 class="UATHD">User Acceptance Test cases</h2>
+
+    <div style="overflow-x:auto;" class="UATTableContainer">
+        <table  class="LBTable">
+            <tr>
+                <th>Test</th>
+                <th>Test Type</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Alpha & Beta Testing</td>
+                <td><b>Buttons (Submit)</b> -> When user clicks on any button move to the next section.</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Alpha & Beta Testing</td>
+                <td><b> Username (player name) </b> -> When user provides a new name user must be able to view available challenges. If username was used to play any treasure hunt before, alert the user that the name was used. If a user
+                    was playing an unfinished session alert the user if user wants to restart with a new name or continue the session.</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Alpha & Beta Testing</td>
+                <td><b>Skip Button</b> -> Skip button should be visible only if the question can be skipped. Also when button is clicked; A pop should ask the user if user wants to confirm the skip action.</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Alpha & Beta Testing</td>
+                <td><b>TH Challenges</b> User should be able to play any TH Challenge that is available at the given time. If a TH Challenge is not available at the moment display a message to the user.</td>
+
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Alpha & Beta Testing</td>
+                <td><b>QR Code reader (Switch Camera / Toggle Camera ) buttons</b> -> User should be able to toggle camera on/off whenever user wants, user should also be
+                    able to choose whatever device camera he/she prefers. If device cameras are not found user will receive an error message</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>Alpha & Beta Testing</td>
+                <td><b>QR Code decoded message</b> -> User should be able to view the decoded message</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>Alpha & Beta Testing</td>
+                <td><b>Copy to clipboard button</b> -> User should be able to copy the decoded message by pressing the copy to clipboard button; When message is copied display an alert that informs the user of the action</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>Alpha & Beta Testing</td>
+                <td><b>Current question message</b> -> User should be able to view the current question and how many are left</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>Alpha & Beta Testing</td>
+                <td><b>Current player score</b> -> User should be able to view the current score</td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>Alpha & Beta Testing</td>
+                <td><b>Points gained / lost after answering a question</b> -> User should be able to view how many points user won or lost after asnwering a question</td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>Alpha & Beta Testing</td>
+                <td><b>Answering mechanism</b> -> User's answers should be saved and compared with the correct answers; detract points if answer is wrong , add points if answer is correct</td>
+            </tr>
+            <tr>
+                <td>12</td>
+                <td>Alpha & Beta Testing</td>
+                <td><b>Location</b> -> Update location periodically every i.e. 30 seconds regardless of the user answering questions. Update the location when receiving the question,
+                    but right before the answer is submitted.</td>
+            </tr>
+            <tr>
+                <td>13</td>
+                <td>Alpha & Beta Testing</td>
+                <td><b>Leaderboards</b> -> After all questions are anwered display a message that informs the user that the session is over, Load leaderboards and display the user's score and also user's ranking relative to
+                    other players who played before. If player is in top ranking highlight users row within the leaderboard.</td>
+            </tr>
+            <tr>
+                <td>14</td>
+                <td>Alpha & Beta Testing</td>
+                <td><b>Responsive design</b> -> All pages must be responsive to all devices.</td>
+            </tr>
+
+        </table>
+    </div>
+    <h2 class="UATHD">User Acceptance Test Documentation</h2>
+
+    <div style="overflow-x:auto;" class="UATTableContainer">
+        <table  class="LBTable">
+            <tr>
+                <th>Test</th>
+                <th>Test no.</th>
+                <th>Tested by</th>
+                <th>Role</th>
+                <th>Date</th>
+                <th>Result</th>
+                <th>Notes</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>1</td>
+                <td>George Ant.</td>
+                <td>Tester</td>
+                <td>06/03/2021</td>
+                <td>Pass</td>
+                <td>Everything works as expected.</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>1</td>
+                <td>George Ant.</td>
+                <td>Tester</td>
+                <td>06/03/2021</td>
+                <td>Pass</td>
+                <td>Everything works as expected.</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>1</td>
+                <td>George Ant.</td>
+                <td>Tester</td>
+                <td>06/03/2021</td>
+                <td>Pass</td>
+                <td>Everything works as expected.</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>1</td>
+                <td>George Ant.</td>
+                <td>Tester</td>
+                <td>06/03/2021</td>
+                <td>Pass</td>
+                <td>Everything works as expected.</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>1</td>
+                <td>George Ant.</td>
+                <td>Tester</td>
+                <td>06/03/2021</td>
+                <td>Pass</td>
+                <td>Everything works as expected.</td>
+            <tr>
+                <td>6</td>
+                <td>1</td>
+                <td>George Ant.</td>
+                <td>Tester</td>
+                <td>06/03/2021</td>
+                <td>Pass</td>
+                <td>Everything works as expected.</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>1</td>
+                <td>George Ant.</td>
+                <td>Tester</td>
+                <td>06/03/2021</td>
+                <td>Pass</td>
+                <td>Everything works as expected.</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>1</td>
+                <td>George Ant.</td>
+                <td>Tester</td>
+                <td>06/03/2021</td>
+                <td>Pass</td>
+                <td>Everything works as expected.</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>1</td>
+                <td>George Ant.</td>
+                <td>Tester</td>
+                <td>06/03/2021</td>
+                <td>Pass</td>
+                <td>Everything works as expected.</td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>1</td>
+                <td>George Ant.</td>
+                <td>Tester</td>
+                <td>06/03/2021</td>
+                <td>Pass</td>
+                <td>Everything works as expected.</td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>1</td>
+                <td>George Ant.</td>
+                <td>Tester</td>
+                <td>06/03/2021</td>
+                <td>Pass</td>
+                <td>Everything works as expected.</td>
+            </tr>
+            <tr>
+                <td>12</td>
+                <td>1</td>
+                <td>George Ant.</td>
+                <td>Tester</td>
+                <td>06/03/2021</td>
+                <td>Failed</td>
+                <td>Updates every 60 seconds instead of 30 also, on phones is not working at the moment.</td>
+            </tr>
+            <tr>
+                <td>13</td>
+                <td>1</td>
+                <td>George Ant.</td>
+                <td>Tester</td>
+                <td>06/03/2021</td>
+                <td>Failed</td>
+                <td>Ranking is not working properly. Ranking messages shows that the user is position one rank below his actual rank i.e (if finished rank 34 messages says rank 35)</td>
+            </tr>
+            <tr>
+                <td>14</td>
+                <td>1</td>
+                <td>George Ant.</td>
+                <td>Tester</td>
+                <td>06/03/2021</td>
+                <td>Failed</td>
+                <td>Pages are not responsive at the moment.</td>
+            </tr>
+
+        </table>
+    </div>
+
+    <script>
+
+        /*Navigation buttons */
+        function goToHome(){
+            setTimeout(function(){window.location.href="index.html";},1000);
+        }
+
+        function goToUnitTest(){
+            setTimeout(function(){window.location.href="TestingPage.html";},1000);
+        }
+
+        let mybutton = document.getElementById("myBtn");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        //https://www.w3schools.com/howto/howto_js_scroll_to_top.asp
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+</body>
+</html>
