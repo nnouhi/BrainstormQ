@@ -527,22 +527,23 @@
             document.cookie = cookieName + "=" + cookieValue + ";" + expires;
         }
 
-        function getLocation(ans) {
+        function getLocation(ans, field) {
             console.log("getLocation...");
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (position) {
-                    sendLocation(position.coords.latitude, position.coords.longitude, ans);
+                    sendLocation(position.coords.latitude, position.coords.longitude, ans, field);
                 });
             } else {
                 alert("Geolocation is not supported by your browser.");
             }
         }
 
-        function sendLocation(lat, lng, ans) {
+        function sendLocation(lat, lng, ans, field) {
             fetch(TH_BASE_URL_LOCATION + getCookie("sessionID") + "&latitude="+lat+"&longitude="+lng)
                 .then(response => response.json())
                 .then(jsonObject => {
                         if(jsonObject.status === "OK"){
+                            if(document.getElementById(field).value!=="") {
                                 intANS.value = "";
                                 numericANS.value = "";
                                 textANS.value = "";
@@ -563,6 +564,11 @@
                                             updateScore(getCookie("sessionID"));
                                         }
                                     })
+                            }
+                            /*Checks if the input is empty so it doesnt sumbit the answer and get an error*/
+                            else{
+                                window.alert("Field is blank");
+                            }
                         }
                 });
 
@@ -604,7 +610,7 @@
         function checkAnswers(ans,field){
 
             if(requiresLocationBool){
-                getLocation(ans);
+                getLocation(ans,field);
             }
             else{
                 if(document.getElementById(field).value!=="") {
