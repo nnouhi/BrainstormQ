@@ -65,7 +65,7 @@ Our roles:
 
 -Lev Isaev: Lev started working on the landing page styling.
 
--Georgios Antoniou: Goerge was not needed for that meeting.
+-Georgios Antoniou: George was not needed for that meeting.
 
 
 
