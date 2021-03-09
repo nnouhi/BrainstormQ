@@ -527,25 +527,45 @@
             document.cookie = cookieName + "=" + cookieValue + ";" + expires;
         }
 
-        function getLocation() {
+        function getLocation(ans) {
             console.log("getLocation...");
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (position) {
-                    sendLocation(position.coords.latitude, position.coords.longitude);
+                    sendLocation(position.coords.latitude, position.coords.longitude, ans);
                 });
             } else {
                 alert("Geolocation is not supported by your browser.");
             }
         }
 
-        function sendLocation(lat, lng) {
+        function sendLocation(lat, lng, ans) {
             fetch(TH_BASE_URL_LOCATION + getCookie("sessionID") + "&latitude="+lat+"&longitude="+lng)
                 .then(response => response.json())
                 .then(jsonObject => {
-                    let message=jsonObject.message;
-                    console.log(message);
+                        if(jsonObject.status === "OK"){
+                                intANS.value = "";
+                                numericANS.value = "";
+                                textANS.value = "";
+                                fetch(TH_BASE_URL_ANSWER + getCookie("sessionID") + "&answer=" + ans)
+                                    .then(response => response.json()) //Parse JSON text to JavaScript object
+                                    .then(jsonObject => {
+                                        if (jsonObject.status === "ERROR") {
+                                            document.getElementById("specificMessage").innerHTML = jsonObject.errorMessages[0] + "<br>" + "<a href='app.html'> Click this Link to Start again</a>";
+
+                                        } else if (jsonObject.status === "OK" && jsonObject.correct === true) {
+                                            document.getElementById("specificMessage").style.display = "inline-block";
+                                            document.getElementById("specificMessage").innerText = jsonObject.message + ": You have gained " + jsonObject.scoreAdjustment + " points.";
+                                            updateScore(getCookie("sessionID"));
+                                            loadQuestions(TH_BASE_URL + "question?&session=" + getCookie("sessionID"));
+                                        } else if (jsonObject.status === "OK" && jsonObject.correct === false) {
+                                            document.getElementById("specificMessage").style.display = "inline-block";
+                                            document.getElementById("specificMessage").innerText = jsonObject.message + ": You have lost " + jsonObject.scoreAdjustment + " points.";
+                                            updateScore(getCookie("sessionID"));
+                                        }
+                                    })
+                        }
                 });
-            console.log(lat,lng);
+
         }
 
         function checkInt(){
@@ -584,35 +604,7 @@
         function checkAnswers(ans,field){
 
             if(requiresLocationBool){
-                getLocation();
-                setTimeout(function(){
-                    if(document.getElementById(field).value!=="") {
-                        intANS.value = "";
-                        numericANS.value = "";
-                        textANS.value = "";
-                        fetch(TH_BASE_URL_ANSWER + getCookie("sessionID") + "&answer=" + ans)
-                            .then(response => response.json()) //Parse JSON text to JavaScript object
-                            .then(jsonObject => {
-                                if (jsonObject.status === "ERROR") {
-                                    document.getElementById("specificMessage").innerHTML = jsonObject.errorMessages[0] + "<br>" + "<a href='app.html'> Click this Link to Start again</a>";
-
-                                } else if (jsonObject.status === "OK" && jsonObject.correct === true) {
-                                    document.getElementById("specificMessage").style.display = "inline-block";
-                                    document.getElementById("specificMessage").innerText = jsonObject.message + ": You have gained " + jsonObject.scoreAdjustment + " points.";
-                                    updateScore(getCookie("sessionID"));
-                                    loadQuestions(TH_BASE_URL + "question?&session=" + getCookie("sessionID"));
-                                } else if (jsonObject.status === "OK" && jsonObject.correct === false) {
-                                    document.getElementById("specificMessage").style.display = "inline-block";
-                                    document.getElementById("specificMessage").innerText = jsonObject.message + ": You have lost " + jsonObject.scoreAdjustment + " points.";
-                                    updateScore(getCookie("sessionID"));
-                                }
-                            })
-                    }
-                    /*Checks if the input is empty so it doesnt sumbit the answer and get an error*/
-                    else{
-                        window.alert("Field is blank");
-                    }
-                }, 500);
+                getLocation(ans);
             }
             else{
                 if(document.getElementById(field).value!=="") {
