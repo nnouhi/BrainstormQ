@@ -21,8 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="880e3f71-b811-409b-98a7-d91394677bc9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.html" beforeDir="false" afterPath="$PROJECT_DIR$/app.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,14 +146,7 @@
       <workItem from="1615128115583" duration="2724000" />
       <workItem from="1615132727264" duration="5181000" />
       <workItem from="1615191920760" duration="18176000" />
-      <workItem from="1615282331181" duration="9640000" />
-    </task>
-    <task id="LOCAL-00001" summary="Added the names of our team">
-      <created>1608135389920</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1608135389920</updated>
+      <workItem from="1615282331181" duration="10654000" />
     </task>
     <task id="LOCAL-00002" summary="Added the twitter section on the landing page">
       <created>1608317865408</created>
@@ -486,7 +477,21 @@
       <option name="project" value="LOCAL" />
       <updated>1615293628982</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Added &quot;description&quot; meta tag and breadcrumbs">
+      <created>1615296359382</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1615296359382</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Fixed geolocation to work on phones with force updating">
+      <created>1615296385762</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1615296385762</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -505,8 +510,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Playing with the toggle camera on off and switching cameras not finished at all" />
-    <MESSAGE value="test" />
     <MESSAGE value="playing with qr code styling" />
     <MESSAGE value="Finished with the qr added copyToClick board feature." />
     <MESSAGE value="testing something" />
@@ -530,13 +533,15 @@
     <MESSAGE value="Added some features for leaderboards.html (user can now play again with a different name or with the same name but a different session, also updated modal information on leaderboards.html) also for tomorrow will have to get ready for the presantion and fix elements display on leaderboards.html" />
     <MESSAGE value="Fixed cookie deletion, Testing geolocation on my phone" />
     <MESSAGE value="Last geolocation testing failed, trying to test it again on my phone" />
-    <option name="LAST_COMMIT_MESSAGE" value="Last geolocation testing failed, trying to test it again on my phone" />
+    <MESSAGE value="Added &quot;description&quot; meta tag and breadcrumbs" />
+    <MESSAGE value="Fixed geolocation to work on phones with force updating" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed geolocation to work on phones with force updating" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="636" y="0" width="745" height="946" key="CommitChangelistDialog2" timestamp="1615293628063">
+    <state x="636" y="0" width="745" height="946" key="CommitChangelistDialog2" timestamp="1615296385201">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="636" y="0" width="745" height="946" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615293628063" />
+    <state x="636" y="0" width="745" height="946" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615296385201" />
     <state x="184" y="86" width="1536" height="860" key="DiffContextDialog" timestamp="1613246209354">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -561,10 +566,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="626" y="168" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615042862095" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1615293630609">
+    <state x="836" y="288" key="Vcs.Push.Dialog.v2" timestamp="1615296387397">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615293630609" />
+    <state x="836" y="288" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615296387397" />
     <state x="0" y="0" width="1599" height="1027" key="dock-window-1" timestamp="1613246243373">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
