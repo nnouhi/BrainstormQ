@@ -115,8 +115,7 @@
         let playerName;
 
         if(params.has("restart")){
-            console.log("test1");
-            playerName=getCookie("playerNameCookie");
+            playerName=params.get("playerName");
         }
         else{
             playerName=document.getElementById("Tname").value;

@@ -107,6 +107,7 @@
             if(testLB()){
                 document.getElementById("scoreDisplay").style.display="none";
                 document.getElementById("refreshBtnContainer").style.display="none";
+                document.getElementById("tableContainer").style.display="block";
                 let testPrize=params.has("hasPrize");
                 let testSorted=params.has("sorted");
                 let testNumOfPlayers=params.get("size");
@@ -114,7 +115,7 @@
                 loadLeaderboard(url);
             }
             else if(!testLB() && !testSc()){
-                let sessionID=getCookie("sessionID");
+                let sessionID=params.get("session");
                 let url=TH_BASE_URL_LEADERBOARDS+sessionID+"&sorted&limit=20";
                 loadLeaderboard(url);
             }
@@ -124,13 +125,14 @@
             if(testSc()){
                 document.getElementById("leaderboardTable").style.display="none";
                 document.getElementById("refreshBtnContainer").style.display="none";
+                document.getElementById("scoreDisplay").style.display="block";
                 let testScore=params.get("score");
                 let testCompleted=params.has("completed");
                 let url=TH_TEST_URL+"score?"+"score="+testScore+"&completed="+testCompleted;
                 setTimeout(score(url),2000);
             }
             else if(!testSc() && !testLB()){
-                let sessionID=getCookie("sessionID");
+                let sessionID=params.get("session");
                 let url=TH_BASE_URL_SCORE+sessionID;
                 setTimeout(score(url),2000);
             }
@@ -158,7 +160,7 @@
 
         function loadLeaderboard(url){
             let rankingIndex=1;
-            let name=getCookie("playerNameCookie");
+            let name=params.get("playerName");
             document.getElementById("loading").innerText="Loading...";
             fetch(url)
                 .then(response => response.json()) //Parse JSON text to JavaScript object
@@ -170,7 +172,6 @@
                             document.getElementById("hasPrizeContainer").style.display = "block";
                         }
                         const leaderboardArray = jsonObject.leaderboard;
-                        let name = getCookie("playerNameCookie");
                         for (let i = 0; i < leaderboardArray.length; i++) {
                             const entry = leaderboardArray[i];
                             const ranking = rankingIndex;
@@ -187,7 +188,6 @@
                             rankingIndex++;
                         }
                         document.getElementById("leaderboardTable").innerHTML += tableContents;
-
                         //checks for the entry of the player and changes the color//
                         let tableCells=document.getElementById("leaderboardTable");
                         let rows = tableCells.getElementsByTagName("tr") ;
@@ -197,9 +197,6 @@
                             rows[i+1].style.backgroundColor = "#FFFFC7";
                         }
 
-                        if(!testLB() && !testSc()){
-                            document.getElementById("refreshBtnContainer").style.display="block";
-                        }
                     }
                     else if(jsonObject.status === "ERROR"){
                         let errorMessage = confirm(jsonObject.errorMessages[0]);
@@ -212,8 +209,8 @@
 
         /*Refreshes the leaderboards */
         function refreshLeaderboard(){
-            document.getElementById("leaderboardTable").innerHTML="";
-            document.getElementById("scoreDisplay").innerHTML="";
+            document.getElementById("tableContainer").style.display="none";
+            document.getElementById("scoreDisplay").style.display="none";
             document.getElementById("refreshBtnContainer").style.display="none";
             checkForTestLB();
             checkForTestScore();
@@ -221,24 +218,29 @@
 
         function getRank(){
             let rankCounter=1;
+            let sessionID= params.get("session")
             let rankDisplay=document.getElementById("rankDisplay"); //test
-            fetch( TH_BASE_URL_LEADERBOARDS+  getCookie("sessionID")+ "&sorted&limit=2000")
+            fetch( TH_BASE_URL_LEADERBOARDS+  sessionID+ "&sorted&limit=2000")
                 .then(response => response.json())
                 .then(jsonObject => {
-                    let name = getCookie("playerNameCookie");
+                    let name = params.get("playerName");
                     let leaderboardArray = jsonObject.leaderboard;
                     for (let i = 0; i < leaderboardArray.length-1; i++) {
                         const entry = leaderboardArray[i];
                         const playerName = entry.player;
                         const score = entry.score;
                         const completionTime = entry.completionTime;
-                        if(playerName===name){
-                            rankDisplay.innerHTML=" and your rank is "+rankCounter;
+                        if(!testSc()) {
+                            if (playerName === name) {
+                                rankDisplay.innerHTML = " and your rank is " + rankCounter;
+                                document.getElementById("scoreDisplay").style.display = "block";
+                                document.getElementById("refreshBtnContainer").style.display = "block";
+                                document.getElementById("tableContainer").style.display = "block";
+                                setTimeout(deleteCookies, 10);
+                            } else {
+                                rankCounter++;
+                            }
                         }
-                        else{
-                            rankCounter++;
-                        }
-
                     }
                 });
         }
@@ -292,56 +294,34 @@
         }
 
         function goToIndex(){
-            const deleteCookies = function(){
-                //https://stackoverflow.com/questions/179355/clearing-all-cookies-with-javascript
-                let cookies = document.cookie.split("; ");
-                for (let c = 0; c < cookies.length; c++) {
-                    let d = window.location.hostname.split(".");
-                    while (d.length > 0) {
-                        let cookieBase = encodeURIComponent(cookies[c].split(";")[0].split("=")[0]) + '=; expires=Thu, 01-Jan-1970 00:00:01 GMT; domain=' + d.join('.') + ' ;path=';
-                        let p = location.pathname.split('/');
-                        document.cookie = cookieBase + '/';
-                        while (p.length > 0) {
-                            document.cookie = cookieBase + p.join('/');
-                            p.pop();
-                        }
-                        d.shift();
-                    }
-                }
-            };
-            setTimeout(deleteCookies, 10);
-
             setTimeout(function(){window.location.href="index.html";},500);
         }
 
         function goToSignIn(){
-            const deleteCookies = function(){
-                //https://stackoverflow.com/questions/179355/clearing-all-cookies-with-javascript
-                let cookies = document.cookie.split("; ");
-                for (let c = 0; c < cookies.length; c++) {
-                    let d = window.location.hostname.split(".");
-                    while (d.length > 0) {
-                        let cookieBase = encodeURIComponent(cookies[c].split(";")[0].split("=")[0]) + '=; expires=Thu, 01-Jan-1970 00:00:01 GMT; domain=' + d.join('.') + ' ;path=';
-                        let p = location.pathname.split('/');
-                        document.cookie = cookieBase + '/';
-                        while (p.length > 0) {
-                            document.cookie = cookieBase + p.join('/');
-                            p.pop();
-                        }
-                        d.shift();
-                    }
-                }
-            };
-            setTimeout(deleteCookies, 10);
-
             setTimeout(function(){window.location.href="SignIn.html";},500);
         }
 
         function goToTH(){
-            document.cookie = "saveGame=; expires=Thu, 02 April 2000 00:00:00 UTC;";
-            document.cookie = "nameOfGame=; expires=Thu, 02 April 2000 00:00:00 UTC;";
-            document.cookie = "sessionID=; expires=Thu, 02 April 2000 00:00:00 UTC;";
-            setTimeout(function(){window.location.href="SignIn.html?restart";},500);
+            let name=params.get("playerName");
+            setTimeout(function(){window.location.href="SignIn.html?restart&playerName="+name;},500);
+        }
+
+        function deleteCookies(){
+            //https://stackoverflow.com/questions/179355/clearing-all-cookies-with-javascript
+            let cookies = document.cookie.split("; ");
+            for (let c = 0; c < cookies.length; c++) {
+                let d = window.location.hostname.split(".");
+                while (d.length > 0) {
+                    let cookieBase = encodeURIComponent(cookies[c].split(";")[0].split("=")[0]) + '=; expires=Thu, 01-Jan-1970 00:00:01 GMT; domain=' + d.join('.') + ' ;path=';
+                    let p = location.pathname.split('/');
+                    document.cookie = cookieBase + '/';
+                    while (p.length > 0) {
+                        document.cookie = cookieBase + p.join('/');
+                        p.pop();
+                    }
+                    d.shift();
+                }
+            }
         }
 
     </script>

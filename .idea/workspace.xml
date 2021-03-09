@@ -26,7 +26,6 @@
       <change beforePath="$PROJECT_DIR$/app.html" beforeDir="false" afterPath="$PROJECT_DIR$/app.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/leaderboards.html" beforeDir="false" afterPath="$PROJECT_DIR$/leaderboards.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/stylesheet.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/th-api.js" beforeDir="false" afterPath="$PROJECT_DIR$/th-api.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,7 +150,8 @@
       <workItem from="1615111597221" duration="5194000" />
       <workItem from="1615128115583" duration="2724000" />
       <workItem from="1615132727264" duration="5181000" />
-      <workItem from="1615191920760" duration="17915000" />
+      <workItem from="1615191920760" duration="18176000" />
+      <workItem from="1615282331181" duration="4220000" />
     </task>
     <task id="LOCAL-00001" summary="Added the names of our team">
       <created>1608135389920</created>
@@ -468,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615060596188</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Added some features for leaderboards.html (user can now play again with a different name or with the same name but a different session, also updated modal information on leaderboards.html) also for tomorrow will have to get ready for the presantion and fix elements display on leaderboards.html">
+      <created>1615216650051</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1615216650051</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -487,7 +494,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Addes some basic btn styling, and some error handlers, was trying to continue session if player restarts with same name" />
     <MESSAGE value="Made the code more &quot;elegant&quot; and readable with the use of multiple functions. Need to finish with basic css &amp; make the player continue where he left off if he has same name" />
     <MESSAGE value="Managed to make continue session work properly" />
     <MESSAGE value="Playing with the toggle camera on off and switching cameras not finished at all" />
@@ -512,13 +518,14 @@
     <MESSAGE value="fixed the bug" />
     <MESSAGE value="Added ranking to lb and changes the row color for the specific entry" />
     <MESSAGE value="Fixed an error that occurred with the colouring of the specific entry" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed an error that occurred with the colouring of the specific entry" />
+    <MESSAGE value="Added some features for leaderboards.html (user can now play again with a different name or with the same name but a different session, also updated modal information on leaderboards.html) also for tomorrow will have to get ready for the presantion and fix elements display on leaderboards.html" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added some features for leaderboards.html (user can now play again with a different name or with the same name but a different session, also updated modal information on leaderboards.html) also for tomorrow will have to get ready for the presantion and fix elements display on leaderboards.html" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="335" y="3" key="CommitChangelistDialog2" timestamp="1615060595323">
+    <state x="335" y="3" key="CommitChangelistDialog2" timestamp="1615216648869">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="335" y="3" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615060595323" />
+    <state x="335" y="3" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615216648869" />
     <state x="184" y="86" width="1536" height="860" key="DiffContextDialog" timestamp="1613246209354">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -543,10 +550,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="626" y="168" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615042862095" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1615060597416">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1615216652362">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615060597416" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615216652362" />
     <state x="0" y="0" width="1599" height="1027" key="dock-window-1" timestamp="1613246243373">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

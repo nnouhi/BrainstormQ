@@ -15,7 +15,7 @@
 
 
 </head>
-<body onload="setTimeout(getLocation(), 30000);">
+<body> <!--onload="setTimeout(getLocation(), 60000);"-->
 
 
     <div class="topnav" id="topnav">
@@ -315,7 +315,7 @@
                             //https://www.sitepoint.com/javascript-settimeout-function-examples/
                             //after questions are completed show a "QUIZ FINISHED" message
                             const gameOver = function(){
-                                window.location.href = "leaderboards.html?session=" + getCookie("sessionID") + "&sorted&limit=20";
+                                window.location.href = "leaderboards.html?session=" + getCookie("sessionID") + "&sorted&limit=20&playerName=" + getCookie("playerNameCookie");
                             };
 
                             setTimeout(gameOver, 2000);
@@ -612,7 +612,7 @@
                     else{
                         window.alert("Field is blank");
                     }
-                }, 2000);
+                }, 500);
             }
             else{
                 if(document.getElementById(field).value!=="") {
