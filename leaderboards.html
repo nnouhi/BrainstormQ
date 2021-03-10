@@ -55,7 +55,7 @@
                     <th>Rank</th>
                     <th>Name</th>
                     <th>Score</th>
-                    <th>Completion Date</th>
+                    <th>Completion Time (s)</th>
                 </tr>
             </table>
         </div>
@@ -116,7 +116,7 @@
             }
             else if(!testLB() && !testSc()){
                 let sessionID=params.get("session");
-                let url=TH_BASE_URL_LEADERBOARDS+sessionID+"&sorted&limit=20";
+                let url=TH_BASE_URL_LEADERBOARDS+sessionID+"&sorted&limit=100";
                 loadLeaderboard(url);
             }
         }
@@ -148,14 +148,12 @@
             return url.searchParams.get("testSc")!=null;
         }
 
-        function convertMsToDate(startsOnString){
-            let startsOnNum = Number(startsOnString); //actually didnt need to convert
-            let options = {
-                year: 'numeric', month: 'numeric', day: 'numeric',
-            };
-            let date = new Date(startsOnNum);
-            let result = date.toLocaleDateString('en', options); // month/day/year
-            return result;
+        function convertMsToSec(startsOnString){
+
+            let startsOnNum = Number(startsOnString),
+            sec = Math.floor((startsOnNum/1000) % 60);
+            console.log(sec);
+            return sec;
         }
 
         function loadLeaderboard(url){
@@ -182,8 +180,8 @@
                             tableContents += "<tr>\n" +
                                 "    <td>" + ranking + "</td>" +
                                 "    <td>" + playerName + "</td>" +
-                                "    <td>" + score + "</td>" +
-                                "    <td>" + convertMsToDate(completionTime) + "</td>" +
+                                "    <td>" + score + " pts"+ "</td>" +
+                                "    <td>" + convertMsToSec(completionTime) + "(s)" + "</td>" +
                                 "</tr>";
                             rankingIndex++;
                         }

@@ -19,10 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="880e3f71-b811-409b-98a7-d91394677bc9" name="Default Changelist" comment="test">
+    <list default="true" id="880e3f71-b811-409b-98a7-d91394677bc9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SignIn.html" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.html" beforeDir="false" afterPath="$PROJECT_DIR$/app.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaderboards.html" beforeDir="false" afterPath="$PROJECT_DIR$/leaderboards.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,13 +149,7 @@
       <workItem from="1615191920760" duration="18176000" />
       <workItem from="1615282331181" duration="15980000" />
       <workItem from="1615306855168" duration="610000" />
-    </task>
-    <task id="LOCAL-00004" summary="Added a css and some basic styling for now.">
-      <created>1611419861389</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1611419861389</updated>
+      <workItem from="1615358789170" duration="3555000" />
     </task>
     <task id="LOCAL-00005" summary="changed the name of the html file">
       <created>1611584314183</created>
@@ -494,7 +487,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615299364702</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="fixing something">
+      <created>1615358827027</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1615358827027</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -513,7 +513,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="testing something" />
     <MESSAGE value="Made some small tweaks to the qrcode scanner so it doesnt display any alerts if not activated by the user, also if a camera is not available the user should not be able to use the feature. Added a ranking message at the end of the game, and made a better error handling for the empty fields because it was giving an unnecessary if an empty answer was submitted to the API" />
     <MESSAGE value="Made the qr camera bigger for phones" />
     <MESSAGE value="Added leaderboards.html and SignIn.html and made some improvements about the returning user experience" />
@@ -538,13 +537,14 @@
     <MESSAGE value="Fixed geolocation to work on phones with force updating" />
     <MESSAGE value="test" />
     <MESSAGE value="testing sitemaps" />
-    <option name="LAST_COMMIT_MESSAGE" value="testing sitemaps" />
+    <MESSAGE value="fixing something" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixing something" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="636" y="0" width="745" height="946" key="CommitChangelistDialog2" timestamp="1615299364096">
+    <state x="636" y="0" width="745" height="946" key="CommitChangelistDialog2" timestamp="1615358826067">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="636" y="0" width="745" height="946" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615299364096" />
+    <state x="636" y="0" width="745" height="946" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615358826067" />
     <state x="184" y="86" width="1536" height="860" key="DiffContextDialog" timestamp="1615299308816">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -569,10 +569,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="626" y="168" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615042862095" />
-    <state x="836" y="288" key="Vcs.Push.Dialog.v2" timestamp="1615299368043">
+    <state x="836" y="288" key="Vcs.Push.Dialog.v2" timestamp="1615358828610">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="836" y="288" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615299368043" />
+    <state x="836" y="288" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615358828610" />
     <state x="777" y="430" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1615299345899">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
