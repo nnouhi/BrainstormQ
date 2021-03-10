@@ -715,9 +715,9 @@
         font-family: Arial, Helvetica, sans-serif;
         border-collapse: collapse;
         width: 100%;
-        position:absolute;
-        top: 50%;
+        position:relative;
         left: 6%;
+        margin-bottom: 15%;
     }
 
     .leaderboardTable td,  .leaderboardTable  th {
@@ -738,10 +738,12 @@
         text-align: center;
     }
 
-    .tableContainer{
+    .tableWrapper{
         display:none;
-        position:relative;
+        flex-direction: column;
     }
+
+
 
     .loading{
         position: absolute;

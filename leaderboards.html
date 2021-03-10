@@ -49,15 +49,27 @@
             Congratulations you have won a prize
         </div>
         <h3 class="loading" id="loading"></h3>
-        <div class="tableContainer" id="tableContainer">
-            <table class="leaderboardTable" id="leaderboardTable">
-                <tr>
-                    <th>Rank</th>
-                    <th>Name</th>
-                    <th>Score</th>
-                    <th>Completion Time (s)</th>
-                </tr>
-            </table>
+        <div class="tableWrapper" id="tableWrapper">
+            <div class="tableContainer">
+                <table class="leaderboardTable" id="leaderboardTable">
+                    <tr>
+                        <th>Rank</th>
+                        <th>Name</th>
+                        <th>Score</th>
+                        <th>Completion Time (s)</th>
+                    </tr>
+                </table>
+            </div>
+            <div class="tableContainerEntry" id="tableContainerEntry">
+                <table class="leaderboardTable" id="leaderboardTableEntry">
+                    <tr>
+                        <th>Rank</th>
+                        <th>Name</th>
+                        <th>Score</th>
+                        <th>Completion Time (s)</th>
+                    </tr>
+                </table>
+            </div>
         </div>
 
     </div>
@@ -186,15 +198,6 @@
                             rankingIndex++;
                         }
                         document.getElementById("leaderboardTable").innerHTML += tableContents;
-                        //checks for the entry of the player and changes the color//
-                        let tableCells=document.getElementById("leaderboardTable");
-                        let rows = tableCells.getElementsByTagName("tr") ;
-                        for (let i=0; i<100; i++) {
-                            const entry = leaderboardArray[i];
-                            if(entry.player === name)
-                            rows[i+1].style.backgroundColor = "#FFFFC7";
-                        }
-
                     }
                     else if(jsonObject.status === "ERROR"){
                         let errorMessage = confirm(jsonObject.errorMessages[0]);
@@ -207,11 +210,16 @@
 
         /*Refreshes the leaderboards */
         function refreshLeaderboard(){
-            document.getElementById("tableContainer").style.display="none";
+            let sessionID=params.get("session");
+            let playerName=params.get("playerName");
+            document.getElementById("tableWrapper").style.display="none";
             document.getElementById("scoreDisplay").style.display="none";
             document.getElementById("refreshBtnContainer").style.display="none";
-            checkForTestLB();
-            checkForTestScore();
+            const gameOver = function(){
+                window.location.href = "leaderboards.html?session=" + sessionID + "&sorted&limit=20&playerName=" + playerName;
+            };
+
+            setTimeout(gameOver, 50);
         }
 
         function getRank(){
@@ -223,6 +231,7 @@
                 .then(jsonObject => {
                     let name = params.get("playerName");
                     let leaderboardArray = jsonObject.leaderboard;
+                    let tableEntry="";
                     for (let i = 0; i < leaderboardArray.length-1; i++) {
                         const entry = leaderboardArray[i];
                         const playerName = entry.player;
@@ -230,16 +239,27 @@
                         const completionTime = entry.completionTime;
                         if(!testSc()) {
                             if (playerName === name) {
+                                tableEntry += "<tr>\n" +
+                                    "    <td>" + rankCounter + "</td>" +
+                                    "    <td>" + playerName + "</td>" +
+                                    "    <td>" + score + " pts"+ "</td>" +
+                                    "    <td>" + convertMsToSec(completionTime) + "(s)" + "</td>" +
+                                    "</tr>";
+                                document.getElementById("leaderboardTableEntry").innerHTML += tableEntry;
                                 rankDisplay.innerHTML = " and your rank is " + rankCounter;
                                 document.getElementById("scoreDisplay").style.display = "block";
                                 document.getElementById("refreshBtnContainer").style.display = "block";
-                                document.getElementById("tableContainer").style.display = "block";
+                                document.getElementById("tableWrapper").style.display = "flex";
                                 setTimeout(deleteCookies, 10);
                             } else {
                                 rankCounter++;
                             }
                         }
                     }
+                    //change color of the Single entry box//
+                    let tableCells=document.getElementById("leaderboardTableEntry");
+                    let rows = tableCells.getElementsByTagName("tr") ;
+                    rows[1].style.backgroundColor = "#FFFFC7";
                 });
         }
 
