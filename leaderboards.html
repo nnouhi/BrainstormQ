@@ -116,7 +116,7 @@
             }
             else if(!testLB() && !testSc()){
                 let sessionID=params.get("session");
-                let url=TH_BASE_URL_LEADERBOARDS+sessionID+"&sorted&limit=100";
+                let url=TH_BASE_URL_LEADERBOARDS+sessionID+"&sorted&limit=20";
                 loadLeaderboard(url);
             }
         }
