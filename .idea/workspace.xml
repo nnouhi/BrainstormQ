@@ -19,8 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="880e3f71-b811-409b-98a7-d91394677bc9" name="Default Changelist" comment="">
+    <list default="true" id="880e3f71-b811-409b-98a7-d91394677bc9" name="Default Changelist" comment="test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignIn.html" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.html" beforeDir="false" afterPath="$PROJECT_DIR$/app.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,21 +148,8 @@
       <workItem from="1615128115583" duration="2724000" />
       <workItem from="1615132727264" duration="5181000" />
       <workItem from="1615191920760" duration="18176000" />
-      <workItem from="1615282331181" duration="10654000" />
-    </task>
-    <task id="LOCAL-00002" summary="Added the twitter section on the landing page">
-      <created>1608317865408</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1608317865408</updated>
-    </task>
-    <task id="LOCAL-00003" summary="1)Added some information in the Landing page and a button that takes us to the Treasure Hunt starting page&#10;2)In the starting page i've added the avaiable treasure hunts with a prompt that asks A team to provide its name">
-      <created>1611415890840</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1611415890840</updated>
+      <workItem from="1615282331181" duration="15980000" />
+      <workItem from="1615306855168" duration="610000" />
     </task>
     <task id="LOCAL-00004" summary="Added a css and some basic styling for now.">
       <created>1611419861389</created>
@@ -491,7 +480,21 @@
       <option name="project" value="LOCAL" />
       <updated>1615296385762</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="test">
+      <created>1615299144113</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1615299144113</updated>
+    </task>
+    <task id="LOCAL-00052" summary="testing sitemaps">
+      <created>1615299364702</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1615299364702</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -510,8 +513,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="playing with qr code styling" />
-    <MESSAGE value="Finished with the qr added copyToClick board feature." />
     <MESSAGE value="testing something" />
     <MESSAGE value="Made some small tweaks to the qrcode scanner so it doesnt display any alerts if not activated by the user, also if a camera is not available the user should not be able to use the feature. Added a ranking message at the end of the game, and made a better error handling for the empty fields because it was giving an unnecessary if an empty answer was submitted to the API" />
     <MESSAGE value="Made the qr camera bigger for phones" />
@@ -535,17 +536,19 @@
     <MESSAGE value="Last geolocation testing failed, trying to test it again on my phone" />
     <MESSAGE value="Added &quot;description&quot; meta tag and breadcrumbs" />
     <MESSAGE value="Fixed geolocation to work on phones with force updating" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed geolocation to work on phones with force updating" />
+    <MESSAGE value="test" />
+    <MESSAGE value="testing sitemaps" />
+    <option name="LAST_COMMIT_MESSAGE" value="testing sitemaps" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="636" y="0" width="745" height="946" key="CommitChangelistDialog2" timestamp="1615296385201">
+    <state x="636" y="0" width="745" height="946" key="CommitChangelistDialog2" timestamp="1615299364096">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="636" y="0" width="745" height="946" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615296385201" />
-    <state x="184" y="86" width="1536" height="860" key="DiffContextDialog" timestamp="1613246209354">
+    <state x="636" y="0" width="745" height="946" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615299364096" />
+    <state x="184" y="86" width="1536" height="860" key="DiffContextDialog" timestamp="1615299308816">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="184" y="86" width="1536" height="860" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1613246209354" />
+    <state x="184" y="86" width="1536" height="860" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615299308816" />
     <state x="740" y="262" key="FileChooserDialogImpl" timestamp="1613416183470">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -566,10 +569,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="626" y="168" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615042862095" />
-    <state x="836" y="288" key="Vcs.Push.Dialog.v2" timestamp="1615296387397">
+    <state x="836" y="288" key="Vcs.Push.Dialog.v2" timestamp="1615299368043">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="836" y="288" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615296387397" />
+    <state x="836" y="288" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615299368043" />
+    <state x="777" y="430" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1615299345899">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="777" y="430" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615299345899" />
     <state x="0" y="0" width="1599" height="1027" key="dock-window-1" timestamp="1613246243373">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

@@ -217,7 +217,7 @@
                     {
                         let errorMessage = confirm(jsonObject.errorMessages[0])
                         if (errorMessage)
-                           setTimeout(function(){window.location.href="SignIn.html"})
+                           setTimeout(function(){window.location.href="SignIn.html";},50);
 
                     } else if (statusObject == "OK") {
 
@@ -351,7 +351,6 @@
                                 document.getElementById("skip").style.visibility = "hidden";
                             }
 
-                            console.log(qType);
                             switch (qType) {
                                 case "INTEGER":
 
