@@ -12,7 +12,7 @@ Our twitter page account:
 https://twitter.com/BrainstormQ2
 
 Our landing page:
-https://nnouhi.github.io/CO1111/index.html
+https://nnouhi.github.io/BrainstormQ/
 
 In total our team had 3 meetings till now.
 
