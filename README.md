@@ -11,6 +11,9 @@ Team 1 Members:
 Our twitter page account:
 https://twitter.com/BrainstormQ2
 
+Our instagram account:
+https://www.instagram.com/brainstorm_q1/
+
 Our landing page:
 https://nnouhi.github.io/BrainstormQ/
 
@@ -95,4 +98,26 @@ Our roles:
 -Nicolas Nouhi: Got feedback about the bugs that were reproted in the UAT page from George.
 
 -Georgios Antoniou: Tested the app.
+
+
+
+8th Meeting(March 13th): We discussed about the styling of our app, and we decided that we don't have time to go with the design
+that Lev wanted to go with, and we've decided to go with the original design.
+
+-Nicolas Nouhi: Styled all the pages for phones with the help of Lev, also created a view answers and questions page.
+
+-Lev Isaev: After the page was styled for phones, Lev made different media queries for (tablet and computer screens)
+
+-Georgios Antoniou: Updated the UAT page and added logo to the landing page and 2 that take the user to the Testing pages, also created the logo and made some posts on our twitter page
+
+9th Meeting(March 15th): We tested all the pages to see that everything works as expected, Leaderboards page was having an issue with the table styling that was causing an overflow and we fixed it
+
+-Nicolas Nouhi: Finalized view questions/answers page, also tested it.
+
+-Lev Isaev: Fixed the leaderboard overflow and uploaded the css to our repo
+
+
+
+
+
 
