@@ -125,7 +125,7 @@
 
                     listHtml += // each treasure hunt item is shown with an individual DIV element
                         "<li>" + "<b>" +"<a id='TH' href='app.html?player=" + playerName + "&app=BrainstormQ&treasure-hunt-id=" + treasureHuntsArray[i].uuid
-                        + '&time='+ treasureHuntsArray[i].maxDuration + '&nameOfGame='+ treasureHuntsArray[i].name+"'>" + i +". "+" " +treasureHuntsArray[i].name +"</a>" + "</b>" +"</li>"
+                        + '&time='+ treasureHuntsArray[i].maxDuration + '&nameOfGame='+ treasureHuntsArray[i].name+"'>" + (i+1) +". "+" " +treasureHuntsArray[i].name +"</a>" + "</b>" +"</li>"
                         +"<li>" + "<b>" + "Starts on: " + "</b>" + convertMsToDate(treasureHuntsArray[i].startsOn) + "</li>"
                         +"<li>" + "<b>" + "Duration: "+ "</b>" + convertMsToMinutes(treasureHuntsArray[i].maxDuration) + "</li>"
                 }
