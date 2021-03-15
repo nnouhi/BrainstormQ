@@ -99,7 +99,6 @@ function getNumPlayers(){
     setTimeout(function(){ window.location.href="leaderboards.html?testLB"+sorted+hasPrize+"&size="+numberOfPlayers;},1000)
 }
 
-
 /* Function that tests the player score*/
 function getScore(){
     let score=document.getElementById("score").value;
@@ -114,7 +113,6 @@ function getQType(){
 
     setTimeout(function(){ window.location.href="app.html?testQ"+completedQ+skipped+geolocation+"&question-type="+qType},1000);
 }
-
 
 /* Function that shows and hides the leaderboards testing table */
 function showLBTable(){

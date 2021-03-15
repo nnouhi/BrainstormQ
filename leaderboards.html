@@ -3,21 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>BrainstormQ</title>
+    <meta name="viewport" content="width=device-width" >
     <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="description" content="BrainstormQ Treasure hunt web app">
 </head>
 <body onload="checkForTest()">
     <!-- top navigation menu -->
     <div class="topnav" id="topnav">
+        <button id="homeBtn" class="appBtns" onclick="goToIndex()"> <i class="fa fa-home"></i>Home</button>
+        <button id="restartBtn" class="appBtns" onclick="goToTH()"><i class="fa fa-list"></i>Restart</button>
+        <button id="infoBtn" class="infoBtn"><i class="fa fa-question-circle-o"></i>Info</button>
+        <button id="startNewBtn" class="appBtns" onclick="goToSignIn()"><i class="fa fa-rotate-left"></i>Start New</button>
 
-    <a href="javascript:getChallenges(this);" id="refresh" class="refresh">Refresh</a>
-    <button id="homeBtn" class="homeBtn" onclick="goToIndex()" >Home</button>
-    <button id="restartBtn" class="restartBtn" onclick="goToTH()">Restart</button>
-    <button id="startNewBtn" class="startNewBtn" onclick="goToSignIn()">Start New</button>
-
-    <!-- Trigger/Open The Modal -->
-    <button id="infoBtn" class="infoBtn" >Info</button>
-
-</div>
+    </div>
 
     <!-- The Modal -->
     <div id="myModal" class="modal">
@@ -28,40 +27,34 @@
             <p style="color:darksalmon">Button Descriptions</p>
             <ul class="pointsModal">
 
-                <li> <span style="color: darksalmon">Home Button:</span> Takes you back to the Landing Page. </li>
-                <li> <span style="color: darksalmon">Restart Button:</span> Choose another TH with the same username. </li>
-                <li> <span style="color: darksalmon">Start New Button:</span> Go back to the Sign in page. </li>
-
+                <li style="color:black"> <span style="color: darksalmon">Home Button:</span> Takes you back to the Landing Page. </li>
+                <li style="color:black"> <span style="color: darksalmon">Restart Button:</span> Choose another TH with the same username. </li>
+                <li style="color:black"> <span style="color: darksalmon">Start New Button:</span> Go back to the Sign in page. </li>
+                <li style="color:black"> <span style="color: darksalmon">View Answers Button:</span>You can view all the questions and your answers. </li>
             </ul>
         </div>
 
     </div>
 
-    <!-- Leaderboard section -->
-    <div class="leaderboardContainer" id="leaderboardContainer">
-        <div class="refreshBtnContainer" id="refreshBtnContainer">
-            <button type="submit" class="refreshBtn" id="refreshBtn" onclick="refreshLeaderboard()">Refresh</button>
+    <!--The leaderboards Container-->
+    <div class="LBContainer" id="LBContainer">
+        <h1 class="LBHD">Leaderboards</h1>
+        <div class="refreshContainer">
+            <button id="refreshBtn" class="refreshBtn" onclick="refreshLeaderboard()"><i class="fa fa-rotate-left"></i>Refresh</button>
+            <button id="viewAnswersBtn" class="refreshBtn" onclick="goToViewPage()"><i class="fa fa-eye"></i>View Answers</button>
         </div>
-
-        <div class="scoreDisplay" id="scoreDisplay"></div>
-
-        <div class="hasPrizeContainer" id="hasPrizeContainer">
-            Congratulations you have won a prize
+        <div id="scoreContainer" style=" overflow-wrap: anywhere;"><!--Used to not allow the text to get out of the container-->
+                <h4 id="scoreDisplay">Score Test</h4>
         </div>
-        <h3 class="loading" id="loading"></h3>
+        <div id="hidePrize">
+                <h4 id="prizeDisplay"></h4>
+        </div>
+        <div class="viewRank">
+            <a id="viewRank" href="#leaderboardTableEntry">View your rank!</a>
+        </div>
         <div class="tableWrapper" id="tableWrapper">
             <div class="tableContainer">
-                <table class="leaderboardTable" id="leaderboardTable">
-                    <tr>
-                        <th>Rank</th>
-                        <th>Name</th>
-                        <th>Score</th>
-                        <th>Completion Time (s)</th>
-                    </tr>
-                </table>
-            </div>
-            <div class="tableContainerEntry" id="tableContainerEntry">
-                <table class="leaderboardTable" id="leaderboardTableEntry">
+                <table id="leaderboardTable" class="LB">
                     <tr>
                         <th>Rank</th>
                         <th>Name</th>
@@ -71,8 +64,28 @@
                 </table>
             </div>
         </div>
-
     </div>
+
+    <!--Users table found below the leaderboards-->
+    <div class="tableContainerEntry" id="tableContainerEntry">
+        <table id="leaderboardTableEntry" class="LBEntry" style="margin-top: 20px">
+            <tr>
+                <th>Rank</th>
+                <th>Name</th>
+                <th>Score</th>
+                <th>Completion Time (s)</th>
+            </tr>
+        </table>
+    </div>
+
+
+    <!-- Loading message -->
+    <div class="centered">
+        <h2 id="loadingLB" style="color: black">
+            Loading..
+        </h2>
+    </div>
+
 
     <script>
 
@@ -80,7 +93,7 @@
         const TH_TEST_URL = "https://codecyprus.org/th/test-api/"; // the test API base url
         const TH_BASE_URL_LEADERBOARDS="https://codecyprus.org/th/api/leaderboard?session=";
         const TH_BASE_URL_SCORE="https://codecyprus.org/th/api/score?session="; // the true API base url for score
-
+        let indexQ=params.get("indexQ");
         document.getElementById("startNewBtn").style.display = "inline-block";
 
         // Get the modal
@@ -109,7 +122,7 @@
             }
         }
 
-
+        /*Check if its a test attempt or a real user*/
         function checkForTest(){
             checkForTestLB();
             checkForTestScore();
@@ -117,17 +130,25 @@
 
         function checkForTestLB(){
             if(testLB()){
-                document.getElementById("scoreDisplay").style.display="none";
-                document.getElementById("refreshBtnContainer").style.display="none";
-                document.getElementById("tableContainer").style.display="block";
                 let testPrize=params.has("hasPrize");
                 let testSorted=params.has("sorted");
                 let testNumOfPlayers=params.get("size");
+                /*form test url with test parameters*/
                 let url=TH_TEST_URL+"leaderboard?"+"sorted="+testSorted+"&hasPrize="+testPrize+"&size="+testNumOfPlayers;
+                /* hide unwanted elements for testing*/
+                document.getElementById("refreshBtn").style.display="none";
+                document.getElementById("viewAnswersBtn").style.display="none";
+                document.getElementById("scoreDisplay").style.display="none";
+                document.getElementById("viewRank").style.display="none";
+                document.getElementById("tableContainerEntry").style.display="none";
+                document.getElementById("loadingLB").innerText="";
                 loadLeaderboard(url);
             }
             else if(!testLB() && !testSc()){
                 let sessionID=params.get("session");
+                document.getElementById("LBContainer").style.display="none";
+                document.getElementById("tableContainerEntry").style.display="none";
+                /*Form actual url*/
                 let url=TH_BASE_URL_LEADERBOARDS+sessionID+"&sorted&limit=20";
                 loadLeaderboard(url);
             }
@@ -135,16 +156,22 @@
 
         function checkForTestScore(){
             if(testSc()){
-                document.getElementById("leaderboardTable").style.display="none";
-                document.getElementById("refreshBtnContainer").style.display="none";
-                document.getElementById("scoreDisplay").style.display="block";
                 let testScore=params.get("score");
                 let testCompleted=params.has("completed");
+                /*form test url with test parameters*/
                 let url=TH_TEST_URL+"score?"+"score="+testScore+"&completed="+testCompleted;
+                /* hide unwanted elements for testing*/
+                document.getElementById("refreshBtn").style.display="none";
+                document.getElementById("viewRank").style.display="none";
+                document.getElementById("viewAnswersBtn").style.display="none";
+                document.getElementById("tableContainerEntry").style.display="none";
+                document.getElementById("leaderboardTable").style.display="none";
+                document.getElementById("loadingLB").innerText="";
                 setTimeout(score(url),2000);
             }
             else if(!testSc() && !testLB()){
                 let sessionID=params.get("session");
+                /*Form actual url*/
                 let url=TH_BASE_URL_SCORE+sessionID;
                 setTimeout(score(url),2000);
             }
@@ -160,26 +187,17 @@
             return url.searchParams.get("testSc")!=null;
         }
 
-        function convertMsToSec(startsOnString){
-
-            let startsOnNum = Number(startsOnString),
-            sec = Math.floor((startsOnNum/1000) % 60);
-            console.log(sec);
-            return sec;
-        }
 
         function loadLeaderboard(url){
             let rankingIndex=1;
             let name=params.get("playerName");
-            document.getElementById("loading").innerText="Loading...";
             fetch(url)
                 .then(response => response.json()) //Parse JSON text to JavaScript object
                 .then(jsonObject => {
-                    document.getElementById("loading").innerText="";
                     if(jsonObject.status === "OK") {
                         let tableContents = "";
                         if (jsonObject.hasPrize === true) {
-                            document.getElementById("hasPrizeContainer").style.display = "block";
+                            document.getElementById("prizeDisplay").innerHTML = "Congratulations, You've won a " + "<b style='color: darksalmon'>" + "prize!" + "</b>";
                         }
                         const leaderboardArray = jsonObject.leaderboard;
                         for (let i = 0; i < leaderboardArray.length; i++) {
@@ -201,8 +219,15 @@
                     }
                     else if(jsonObject.status === "ERROR"){
                         let errorMessage = confirm(jsonObject.errorMessages[0]);
-                        if (errorMessage)
-                            window.location.href = "SignIn.html";
+                        if (errorMessage){
+                            setTimeout(deleteAllCookies, 50);
+                            setTimeout(function(){window.location.href = "SignIn.html";},500);
+                        }
+
+                        else {
+                            setTimeout(deleteAllCookies, 50);
+                            setTimeout(function(){window.location.href = "SignIn.html";},500);
+                        }
                     }
                 }
             )
@@ -212,21 +237,19 @@
         function refreshLeaderboard(){
             let sessionID=params.get("session");
             let playerName=params.get("playerName");
-            document.getElementById("tableWrapper").style.display="none";
-            document.getElementById("scoreDisplay").style.display="none";
-            document.getElementById("refreshBtnContainer").style.display="none";
             const gameOver = function(){
-                window.location.href = "leaderboards.html?session=" + sessionID + "&sorted&limit=20&playerName=" + playerName;
+                window.location.href = "leaderboards.html?session=" + sessionID + "&sorted&limit=20&playerName=" + playerName+"&indexQ=" +indexQ;
             };
 
             setTimeout(gameOver, 50);
         }
 
+        /*Function that gets users rank and after, it displays the whole content of the page*/
         function getRank(){
             let rankCounter=1;
             let sessionID= params.get("session")
             let rankDisplay=document.getElementById("rankDisplay"); //test
-            fetch( TH_BASE_URL_LEADERBOARDS+  sessionID+ "&sorted&limit=2000")
+            fetch( TH_BASE_URL_LEADERBOARDS+  sessionID+ "&sorted&limit=3000")
                 .then(response => response.json())
                 .then(jsonObject => {
                     let name = params.get("playerName");
@@ -237,19 +260,24 @@
                         const playerName = entry.player;
                         const score = entry.score;
                         const completionTime = entry.completionTime;
+                        /*We have this 'if' statement to avoid errors when
+                        * testing the leaderboards*/
                         if(!testSc()) {
                             if (playerName === name) {
                                 tableEntry += "<tr>\n" +
                                     "    <td>" + rankCounter + "</td>" +
-                                    "    <td>" + playerName + "</td>" +
+                                    "    <td style=\"overflow-wrap: anywhere;\">" + playerName + "</td>" + /*style="overflow-wrap: anywhere;" ->If a user provides
+                                           a really big name;avoid overflow of the container on small screen sizes*/
                                     "    <td>" + score + " pts"+ "</td>" +
                                     "    <td>" + convertMsToSec(completionTime) + "(s)" + "</td>" +
                                     "</tr>";
+                                    /*Wait all the information to be fetched and constructed and then display every element at the same time*/
                                 document.getElementById("leaderboardTableEntry").innerHTML += tableEntry;
-                                rankDisplay.innerHTML = " and your rank is " + rankCounter;
+                                rankDisplay.innerHTML = ". Your rank is " + "<b style='color: darksalmon'>" + rankCounter + "</b>";
+                                document.getElementById("loadingLB").innerText="";
                                 document.getElementById("scoreDisplay").style.display = "block";
-                                document.getElementById("refreshBtnContainer").style.display = "block";
-                                document.getElementById("tableWrapper").style.display = "flex";
+                                document.getElementById("LBContainer").style.display="block";
+                                document.getElementById("tableContainerEntry").style.display="block";
                                 setTimeout(deleteCookies, 10);
                             } else {
                                 rankCounter++;
@@ -264,26 +292,42 @@
         }
 
         function score(url){
+            //used for testing -> ignore
+            if(!testSc()){
+                document.getElementById("scoreDisplay").style.display = "none";
+            }
+            else{
+                document.getElementById("scoreDisplay").style.display = "block";
+            }
             let completedLB="";
+
             fetch(url)
                 .then(response => response.json())
                 .then(jsonObject => {
                     if(jsonObject.status === "OK"){
+                        /*Score message*/
                         if((jsonObject.completed === false) && (jsonObject.finished === false)){
                             completedLB="is not completed ";
-                            document.getElementById("scoreDisplay").innerHTML="The game "+ completedLB + jsonObject.player+", and your score is "+jsonObject.score+" points."
+                            document.getElementById("scoreDisplay").innerHTML="The game "+ completedLB + "<b style='color: darksalmon'>"+ jsonObject.player + "</b>" + " and your score is "+ "<b style='color: darksalmon'>" + jsonObject.score  + " points" +"</b>"
                         }
                         else if(jsonObject.completed === true){
                             completedLB="is completed ";
-                            document.getElementById("scoreDisplay").innerHTML="Congratulations the game "+ completedLB + jsonObject.player+", and your score is "+jsonObject.score+
+                            document.getElementById("scoreDisplay").innerHTML="Congratulations the game "+ completedLB +"<b style='color: darksalmon'>"+ jsonObject.player + "</b>" + "  and your score is "+ "<b style='color: darksalmon'>" + jsonObject.score + " points" + "</b>"  +
                             "<span id='rankDisplay'></span>";
                             getRank();
                         }
                     }
                     else{
                         let errorMessage = confirm(jsonObject.errorMessages[0]);
-                        if (errorMessage) window.location.href = "SignIn.html";
-                        else  window.location.href = "SignIn.html";
+                        if (errorMessage){
+                            setTimeout(deleteAllCookies, 50);
+                            setTimeout(function(){window.location.href = "SignIn.html";},500);
+                        }
+
+                        else {
+                            setTimeout(deleteAllCookies, 50);
+                            setTimeout(function(){window.location.href = "SignIn.html";},500);
+                        }
                     }
                 });
         }
@@ -304,32 +348,64 @@
             return "";
         }
 
-        function saveCookie(cookieName, cookieValue,cookieLifespan) {
-            let date = new Date();
-            date.setTime(date.getTime() + (cookieLifespan * 60 * 60 * 1000));
-            let expires = "expires=" + date.toUTCString();
-            document.cookie = cookieName + "=" + cookieValue + ";" + expires;
+        function convertMsToSec(startsOnString){
+            let startsOnNum = Number(startsOnString),
+                sec = Math.floor((startsOnNum/1000) % 60);
+            return sec;
         }
 
+     /*   /!*https://www.w3schools.com/js/js_cookies.asp*!/
+        function saveCookie(cookieName, cookieValue,cookieLifespan) {
+            let date = new Date();
+            date.setTime(date.getTime() + (cookieLifespan * 60 * 1000));
+            let expires = "expires=" + date.toUTCString();
+            document.cookie = cookieName + "=" + cookieValue + ";" + expires;
+        }*/
+
+        /*Function that takes user to Landing page*/
         function goToIndex(){
+            setTimeout(deleteAllCookies, 50);
             setTimeout(function(){window.location.href="index.html";},500);
         }
 
+        /*Function that takes user to SignIn page (play with a different username)*/
         function goToSignIn(){
+            setTimeout(deleteAllCookies, 50);
             setTimeout(function(){window.location.href="SignIn.html";},500);
         }
 
+        /*Function that takes user to SignIn page (to play another TH with the same username)*/
         function goToTH(){
+            setTimeout(deleteAllCookies, 50);
             let name=params.get("playerName");
             setTimeout(function(){window.location.href="SignIn.html?restart&playerName="+name;},500);
         }
+        /*Function that takes user to ViewAnswers page*/
+        function goToViewPage(){
+            let session=params.get("session");
+            let name=params.get("playerName");
+            setTimeout(function(){window.location.href="ViewAnswers.html?&indexQ=" +indexQ+"&session="+session+"&playerName="+name;},500);
+        }
 
+        /*Function that deleted cookies as soon as the leaderboards is displayed (Doesn't delete user's answers and TH questions)*/
         function deleteCookies(){
             document.cookie = 'saveGame=' + '=; expires=Thu, 01-Jan-70 00:00:01 GMT;';
             document.cookie = 'nameOfGame=' + '=; expires=Thu, 01-Jan-70 00:00:01 GMT;';
             document.cookie = 'sessionID=' + '=; expires=Thu, 01-Jan-70 00:00:01 GMT;';
             document.cookie = 'playerNameCookie=' + '=; expires=Thu, 01-Jan-70 00:00:01 GMT;';
+
         }
+
+        function deleteAllCookies() {
+            var cookies = document.cookie.split(";");
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i];
+                var eqPos = cookie.indexOf("=");
+                var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+                document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+            }
+        }
+
 
     </script>
 

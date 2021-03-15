@@ -77,20 +77,23 @@ function activateCamera(){
         camerasArray=cameras;
         if (cameras.length > 0) {
             cameraIndex=0; //cameraIndex = from camera
-            scanner.start(cameras[0]); //start with the front camera
-        } else {
-            console.error('No cameras found.');
+            scanner.start(cameras[0]); //start with the first camera
+
+            let videoContainer=document.getElementById("tgCamera");
+
+            if(videoContainer.style.display==="none") videoContainer.style.display="block";
+
+            else videoContainer.style.display="none";
+
+        }
+        else {
+            /*console.error('No cameras found.');*/
             alert("No cameras found in your device");
         }
     }).catch(function (e) {
-        alert("No cameras found in your device");
+        alert("No cameras found in your device"); /*Delete later*/
     });
 
-    let videoContainer=document.getElementById("tgCamera");
-
-    if(videoContainer.style.display==="none") videoContainer.style.display="block";
-
-    else videoContainer.style.display="none";
 }
 
 //switch from front-back camera
@@ -128,7 +131,6 @@ function copyToClipboard(){
     document.body.removeChild(el); //we remove the textarea from the DOM with removeChild(el).
     alert(`Copied: `+str);
 }
-
 
 function convertMsToMinutes(maxDurationString){
     maxDurationNum = Number(maxDurationString); //actually didnt need to convert

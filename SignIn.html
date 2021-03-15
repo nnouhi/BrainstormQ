@@ -4,70 +4,57 @@
     <meta charset="UTF-8">
 
     <title>BrainstormQ</title>
-
+    <meta name="viewport" content="width=device-width" >
     <link rel="stylesheet" href="stylesheet.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="description" content="BrainstormQ Treasure hunt web app">
 </head>
 <body onload="checkRestart()">
 
+<!--Navigation buttons found on every page-->
+<div class="topnav" id="topnav" style="margin-bottom:20%">
 
-<div class="topnav" id="topnav">
+    <button id="homeBtn" class="appBtns" onclick="window.location.href='index.html'"> <i class="fa fa-home"></i>Home</button>
+    <button id="restartBtn" class="appBtns" onclick="window.location.href='SignIn.html'"><i class="fa fa-rotate-left"></i>Restart</button>
+    <button id="infoBtn" class="infoBtn"><i class="fa fa-question-circle-o"></i>Info</button>
 
-    <a href="javascript:getChallenges(this);" id="refresh" class="refresh">Refresh</a>
-    <button id="homeBtn" class="homeBtn" onclick="window.location.href='index.html'" >Home</button>
-    <button id="restartBtn" class="restartBtn" onclick="window.location.href='SignIn.html'" >Restart</button>
-    <!-- Trigger/Open The Modal -->
-    <button id="infoBtn" class="infoBtn" >Info</button>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
 
-</div>
+        <!-- Modal content -->
+        <div class="modal-content">
 
+            <span class="close">&times;</span>
+            <p style="color:black">Enter your name and get directed to our available <span style="color: darksalmon"> Treasure Hunt Challenges!</span> </p>
+        </div>
 
-
-<!-- The Modal -->
-<div id="myModal" class="modal">
-
-    <!-- Modal content -->
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <p style="color:darksalmon">Enter your name and get started with the questions!</p>
-        <ul class="pointsModal">
-
-            <li>If your answer is <span style="color: green">correct</span> you are rewarded with 10 points.</li>
-            <li>If your answer is <span style="color:red"> wrong </span>you lose  3 points.</li>
-            <li>If you <span style="color:red">skip</span> a question you lose 5 points.</li>
-
-        </ul>
-
-        <p style="color:darksalmon">When the quiz is over you will be directed to the leaderboards.</p>
     </div>
 
 </div>
 
-
-
-
-<h3 class="HD" id="NameHD">Enter your name below:</h3>
-
-<div class="container" id="Namecontainer">
+<div class="IndexContainer" id="IndexContainer">
+    <h3 class="HD">Enter Your Username</h3>
     <form action="javascript:checkName(this);">
-        <input type="text" id="Tname" name="name" class="Tname" placeholder="Your name.. " required>
-        <button type="submit" class="nameBtn" id="nameBtn">Submit</button>
+        <input type="text" id="Tname" name="name" placeholder="Your name.. " required>
+        <button type="submit" class="appBtns" id="nameBtn">Submit</button>
     </form>
 </div>
 
-
-
-<div id="displayChallenges" class="displayChallenges">
-    <h1 class="ChallengesHD">All challenges</h1>
-    <p class="ViewChallenges">View available Treasure Hunts below:</p>
-    <ul id="treasureHunts" class="treasureHunts">
-    </ul>
-</div>
 <div class="loadingMessageContainer" id="loadingMessageContainer">
-    <h3 class="challengesLoading" id="challengesLoading">Loading...</h3>
+    <h2 class="challengesLoading" id="challengesLoading" style="color: black">Loading...</h2>
+</div>
+
+<div class="wrapper">
+    <div id="displayChallenges" class="IndexContainer3">
+        <h1>All Treasure Hunts</h1>
+        <p>Click one of the Treasure Hunts and start <b><span style="color:darksalmon">brain-storming!</span></b></p>
+        <ul id="treasureHunts">
+        </ul>
+    </div>
 </div>
 
 <script>
+
 
     const TH_BASE_URL = "https://codecyprus.org/th/api/"; // the true API base url
 
@@ -98,18 +85,17 @@
     }
     const params = new URLSearchParams(location.search);
 
-
+    /*Function that checks if "restart" is inside the query string to navigate
+    * the user on the available TH instead of signing in again with a different username*/
     function checkRestart(){
         if(params.has("restart")){
-            document.getElementById("NameHD").style.display="none";
-            document.getElementById("Namecontainer").style.display="none";
-            setTimeout(function(){getChallenges(this);},100);
+            document.getElementById("IndexContainer").style.display="none";
+            setTimeout(function(){getChallenges(this);},50);
         }
     }
 
 
-
-
+    /*Function that displays the available THs*/
     function getChallenges() {
         /*After the player inputs their name Hide the log in "container" and display the challenges */
         let playerName;
@@ -120,9 +106,6 @@
         else{
             playerName=document.getElementById("Tname").value;
         }
-
-        document.getElementById("loadingMessageContainer").style.display="inline-block";
-
 
         fetch(TH_BASE_URL+"list")
             .then(response => response.json()) //Parse JSON text to JavaScript object
@@ -141,64 +124,45 @@
                 {
 
                     listHtml += // each treasure hunt item is shown with an individual DIV element
-                        "<li>" + "<b>" +"<a  href='app.html?player=" + playerName + "&app=BrainstormQ&treasure-hunt-id=" + treasureHuntsArray[i].uuid
-                        + '&time='+ treasureHuntsArray[i].maxDuration + '&nameOfGame='+ treasureHuntsArray[i].name+"'>" +treasureHuntsArray[i].name +"</a>" + "</b>" +"</li>"
-                        +"<li>" +"<b>" + "Description: " + "</b>" + treasureHuntsArray[i].description + "</li>"
+                        "<li>" + "<b>" +"<a id='TH' href='app.html?player=" + playerName + "&app=BrainstormQ&treasure-hunt-id=" + treasureHuntsArray[i].uuid
+                        + '&time='+ treasureHuntsArray[i].maxDuration + '&nameOfGame='+ treasureHuntsArray[i].name+"'>" + i +". "+" " +treasureHuntsArray[i].name +"</a>" + "</b>" +"</li>"
                         +"<li>" + "<b>" + "Starts on: " + "</b>" + convertMsToDate(treasureHuntsArray[i].startsOn) + "</li>"
                         +"<li>" + "<b>" + "Duration: "+ "</b>" + convertMsToMinutes(treasureHuntsArray[i].maxDuration) + "</li>"
                 }
                 listHtml += "</ul>";
-
+                document.getElementById("displayChallenges").style.display = "inline-block";
                 document.getElementById("treasureHunts").innerHTML = listHtml;
             });
 
     }
 
-    /*This function is used to hide the challenges navigation bar
-*        and displays the main game navigation bar*/
-
-    function hideChallenges(){
-
-        /*Makes score visible*/
-        let score=document.getElementById("scoreContainer");
-        score.style.display="block";
-
-        /*Makes refresh hidden*/
-        let refresh=document.getElementById("refresh");
-
-        refresh.style.visibility='hidden';
-
-        document.getElementById("displayChallenges").style.display = "none";
-
-
-    }
-
-    /*Checks if the name that was provided has an unfinished session */
+    /*Checks if the name that was provided has an was playing an unfinished session */
     function checkName() {
         let playerName = document.getElementById("Tname").value;
-        document.getElementById("Namecontainer").style.display = "none";
-        document.getElementById("NameHD").style.display = "none";
+        document.getElementById("IndexContainer").style.display = "none";
         if ((getCookie("saveGame") === "true") && (getCookie("playerNameCookie") === playerName)) {
             continueSession();
         }
         else {
+            /*if not display the THs*/
             getChallenges(this);
-            document.getElementById("displayChallenges").style.display = "inline-block";
+            document.getElementById("loadingMessageContainer").style.display="inline-block";
+
         }
     }
 
-    /*Asks user if wants to continue with his unfinished session */
+    /*Asks user if wants to continue with the unfinished session */
     function continueSession(){
         let continueGame = confirm ("It seems like you were playing " +getCookie("nameOfGame") +" as "+"'"+getCookie("playerNameCookie")
             +"'"+"\nClick OK to continue where you left off or " +
             "\nCancel to start a new session.")
 
         if (continueGame) {
-            //go to continued session
+            //go to unfinished session
             window.location.href="app.html?player="+getCookie("playerNameCookie");
         }
         else{
-            //delete cookies go back to log in
+            //delete cookies go back to sign in
             const deleteCookies = function(){
                     document.cookie = 'saveGame=' + '=; expires=Thu, 01-Jan-70 00:00:01 GMT;';
                     document.cookie = 'nameOfGame=' + '=; expires=Thu, 01-Jan-70 00:00:01 GMT;';
@@ -211,13 +175,14 @@
         }
     }
 
+    /*Functions found on stack overflow*/
     function convertMsToMinutes(maxDurationString){
-        maxDurationNum = Number(maxDurationString); //actually didnt need to convert
+        let  maxDurationNum = Number(maxDurationString);
         let m = Math.floor((maxDurationNum / 1000 / 60) << 0)
         return m + " minutes";
     }
     function convertMsToDate(startsOnString){
-        let startsOnNum = Number(startsOnString); //actually didnt need to convert
+        let startsOnNum = Number(startsOnString);
         let options = {
             year: 'numeric', month: 'numeric', day: 'numeric',
         };

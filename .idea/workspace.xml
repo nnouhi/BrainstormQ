@@ -19,10 +19,20 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="880e3f71-b811-409b-98a7-d91394677bc9" name="Default Changelist" comment="">
+    <list default="true" id="880e3f71-b811-409b-98a7-d91394677bc9" name="Default Changelist" comment="Fixed refresh btn (was populating all the table rows when was pressed) also added separate section for the users entry below the leaderboards">
+      <change afterPath="$PROJECT_DIR$/ViewAnswers.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignIn.html" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestingPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/TestingPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.html" beforeDir="false" afterPath="$PROJECT_DIR$/app.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extraFeatures.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/leaderboards.html" beforeDir="false" afterPath="$PROJECT_DIR$/leaderboards.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/stylesheet.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/th-api.js" beforeDir="false" afterPath="$PROJECT_DIR$/th-api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unitTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/unitTest.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,13 +74,16 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../co" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="MTConfigurable" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\The computing challenge\Landing-Page\Pictures" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\The computing challenge\Landing-Page\Pictures" />
     </key>
@@ -150,14 +163,15 @@
       <workItem from="1615191920760" duration="18176000" />
       <workItem from="1615282331181" duration="15980000" />
       <workItem from="1615306855168" duration="610000" />
-      <workItem from="1615358789170" duration="9792000" />
-    </task>
-    <task id="LOCAL-00009" summary="Made some progress with tha app html">
-      <created>1612210314005</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1612210314005</updated>
+      <workItem from="1615358789170" duration="14507000" />
+      <workItem from="1615387311430" duration="11432000" />
+      <workItem from="1615402994630" duration="4918000" />
+      <workItem from="1615451462572" duration="24377000" />
+      <workItem from="1615539679574" duration="21340000" />
+      <workItem from="1615632671746" duration="5615000" />
+      <workItem from="1615638473123" duration="5151000" />
+      <workItem from="1615746018999" duration="6496000" />
+      <workItem from="1615806929694" duration="1196000" />
     </task>
     <task id="LOCAL-00010" summary="Made changes for tomorrow's presentation">
       <created>1612292969396</created>
@@ -495,7 +509,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615369909726</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="Fixed refresh btn (was populating all the table rows when was pressed) also added separate section for the users entry below the leaderboards">
+      <created>1615375830914</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1615375830914</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -514,7 +535,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Updated unit testing page with score test and updated the leaderboards.html, I will maybe finish questions today as well.. If not tomorrow" />
     <MESSAGE value="Removed refresh btn from score test/leaderboards test" />
     <MESSAGE value="Added the container for the question's unit test and their function, tomorrow i will finish with the whole unit test page as well as the questions test" />
     <MESSAGE value="fixed an error that occurred with th-api.js and leaderboards.html" />
@@ -539,21 +559,22 @@
     <MESSAGE value="quick fix" />
     <MESSAGE value="Testing cookie deletion" />
     <MESSAGE value="Fixed the problem that occurred with cookies and github" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed the problem that occurred with cookies and github" />
+    <MESSAGE value="Fixed refresh btn (was populating all the table rows when was pressed) also added separate section for the users entry below the leaderboards" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed refresh btn (was populating all the table rows when was pressed) also added separate section for the users entry below the leaderboards" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="636" y="0" width="745" height="946" key="CommitChangelistDialog2" timestamp="1615369909032">
+    <state x="636" y="0" width="745" height="946" key="CommitChangelistDialog2" timestamp="1615748889222">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="636" y="0" width="745" height="946" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615369909032" />
+    <state x="636" y="0" width="745" height="946" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615748889222" />
     <state x="184" y="86" width="1536" height="860" key="DiffContextDialog" timestamp="1615299308816">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="184" y="86" width="1536" height="860" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615299308816" />
-    <state x="740" y="262" key="FileChooserDialogImpl" timestamp="1613416183470">
+    <state x="740" y="262" key="FileChooserDialogImpl" timestamp="1615750837148">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="262" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1613416183470" />
+    <state x="740" y="262" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615750837148" />
     <state x="184" y="86" key="MergeDialog" timestamp="1613207551660">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -570,10 +591,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="626" y="168" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615042862095" />
-    <state x="836" y="288" key="Vcs.Push.Dialog.v2" timestamp="1615369912505">
+    <state x="836" y="288" key="Vcs.Push.Dialog.v2" timestamp="1615375831990">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="836" y="288" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615369912505" />
+    <state x="836" y="288" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615375831990" />
     <state x="777" y="430" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1615299345899">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -586,5 +607,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1612984988701" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1615465300093">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615465300093" />
   </component>
 </project>

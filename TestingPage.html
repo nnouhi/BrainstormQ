@@ -8,7 +8,11 @@
     <link rel="stylesheet" href="stylesheet.css">
 
 </head>
-<body>
+<body class="UnitTestBody">
+
+    <button onclick="setTimeout(function(){window.location.href='index.html';},50)">Home Page</button>
+    <button style="float:right" onclick="setTimeout(function(){window.location.href='test.html';},50)">UAT Page</button>
+
     <div>
         <h1 class="unitTestHD">Unit testing efforts!</h1>
     </div>
@@ -67,7 +71,7 @@
                             <td>True/False</td>
                             <td>True/False</td>
                             <td>No</td>
-                            <td>I was expecting an error regarding the number of players but got back a wrong information and no error, Has prize and Sorted work</td>
+                            <td>Was expecting an error regarding the number of players but got back a wrong information and no error, Has prize and Sorted work</td>
                         </tr>
                         <tr>
                             <td>999999999/Sorted/Not</td>
@@ -76,7 +80,7 @@
                             <td>True/False</td>
                             <td>True/False</td>
                             <td>No</td>
-                            <td>I was expecting all completed entries to show up but only 42 did, Has prize and Sorted work</td>
+                            <td>Was expecting all completed entries to show up but only 42 did, Has prize and Sorted work</td>
                         </tr>
                         <tr>
                             <td>0/Sorted/Not</td>
@@ -85,7 +89,7 @@
                             <td>True/False</td>
                             <td>True/False</td>
                             <td>Yes</td>
-                            <td>As i expected no entries appeared, Has prize works, sorted I don't know</td>
+                            <td>As expected no entries appeared, Has prize works, sorted we don't know</td>
                         </tr>
                         <tr>
                             <td>¬/Sorted/Not</td>
@@ -94,7 +98,7 @@
                             <td>True/False</td>
                             <td>True/False</td>
                             <td>No</td>
-                            <td>I was expecting an error because I submitted a symbol, but I got back wrong information and no error, Has prize and Sorted work</td>
+                            <td>Was expecting an error because we submitted a symbol, but we got back wrong information and no error, Has prize and Sorted work</td>
                         </tr>
                         <tr>
                             <td>B/Sorted/Not</td>
@@ -103,7 +107,7 @@
                             <td>True/False</td>
                             <td>True/False</td>
                             <td>No</td>
-                            <td>I was expecting an error because I submitted a character, but I got back wrong information and no error, Has prize and Sorted work</td>
+                            <td>Was expecting an error because we submitted a character, but we got back wrong information and no error, Has prize and Sorted work</td>
                         </tr>
                         <tr>
                             <td>6.8/Sorted/Not</td>
@@ -112,7 +116,7 @@
                             <td>True/False</td>
                             <td>True/False</td>
                             <td>No</td>
-                            <td>I was expecting an error because I submitted a float number, but I got back wrong information and no error, Has prize and Sorted work</td>
+                            <td>Was expecting an error because we submitted a float number, but we got back wrong information and no error, Has prize and Sorted work</td>
                         </tr>
                     </table>
                 </div>
@@ -159,14 +163,14 @@
                         <td>-1000/Completed/Not</td>
                         <td>Error</td>
                         <td>No</td>
-                        <td>I was expecting an Error, but I got back the score of -1000 (server max score?),Not/Completed Works</td>
+                        <td>Was expecting an Error, but got back the score of -1000 (server max score?),Not/Completed Works</td>
                     </tr>
                     <tr>
                         <td>99999999999/Completed/Not</td>
                         <td>42/Completed/Not</td>
                         <td>1000</td>
                         <td>No</td>
-                        <td>I was expecting to get a score of 1000 because of the previous attempt I thought the max score was 1000,Not/Completed Works</td>
+                        <td>Was expecting to get a score of 1000 because of the previous attempt we thought the max score was 1000,Not/Completed Works</td>
                     </tr>
                     <tr>
                         <td>100/Completed/Not</td>
@@ -187,14 +191,14 @@
                         <td>42/Completed/Not</td>
                         <td>Error</td>
                         <td>No</td>
-                        <td>I was expecting an error because I submitted a character, but I got back wrong information and no error,Not/Completed Works</td>
+                        <td>Was expecting an error because we submitted a character, but  got back wrong information and no error,Not/Completed Works</td>
                     </tr>
                     <tr>
                         <td>6.8/Completed/Not</td>
                         <td>42/Completed/Not</td>
                         <td>Error</td>
                         <td>No</td>
-                        <td>I was expecting an error because I submitted a float number, but I got back wrong information and no error,Not/Completed Works</td>
+                        <td>Was expecting an error because we submitted a float number, but  got back wrong information and no error,Not/Completed Works</td>
                     </tr>
                 </table>
             </div>

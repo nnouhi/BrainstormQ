@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BrainstormQ</title>
+    <meta name="viewport" content="width=device-width" >
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="description" content="BrainstormQ Treasure hunt web app">
+</head>
+<body>
+    <div class="topnav" id="topnav">
+
+        <!--<button id="homeBtn" class="appBtns" onclick="goToIndex()"> <i class="fa fa-home"></i>Home</button>-->
+        <button id="infoBtn" class="infoBtn"><i class="fa fa-question-circle-o"></i>Info</button>
+        <!--<button id="startNewBtn" class="appBtns" onclick="goToSignIn()"><i class="fa fa-rotate-left"></i>Start New</button>-->
+        <button id="backToLb" class="appBtns" onclick="backToLb()"><i class="fa fa-arrow-left"></i>Back to Leaderboards</button>
+
+    </div>
+
+<!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p style="color:darksalmon">Button Descriptions</p>
+            <ul class="pointsModal">
+
+               <!-- <li style="color:black"> <span style="color: darksalmon">Home Button:</span> Takes you back to the Landing Page. </li>
+                <li style="color:black"> <span style="color: darksalmon">Restart Button:</span> Choose another TH with the same username. </li>
+                <li style="color:black"> <span style="color: darksalmon">Start New Button:</span> Go back to the Sign in page. </li>-->
+                <li style="color:black"> <span style="color: darksalmon">Back to Leaderboards Button:</span>Takes you back to the Leaderboards. </li>
+
+            </ul>
+        </div>
+
+    </div>
+    <h2 style="color:black">The Questions</h2>
+    <div class="IndexContainer">
+        <table id="leaderboardTable" class="LB">
+            <tr>
+                <th>Question No.</th>
+                <th>Question</th>
+            </tr>
+        </table>
+    </div>
+
+    <h2 style="color:black">Your Answers</h2>
+
+    <div class="IndexContainer">
+        <table id="leaderboardTable2" class="LB">
+            <tr>
+                <th>Question No.</th>
+                <th>Correct </th>
+                <th>Wrong </th>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(location.search);
+        const TH_TEST_URL = "https://codecyprus.org/th/test-api/"; // the test API base url
+        const TH_BASE_URL_LEADERBOARDS="https://codecyprus.org/th/api/leaderboard?session=";
+        const TH_BASE_URL_SCORE="https://codecyprus.org/th/api/score?session="; // the true API base url for score
+        let indexQ=params.get("indexQ");
+
+        // Get the modal
+        let modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        let btn = document.getElementById("infoBtn");
+
+        // Get the <span> element that closes the modal
+        let span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks the button, open the modal
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        let tableContents="";
+        /*0<5 (ignore last i=6 because its not a question)*/
+        for (let i = 0; i < indexQ; i++) {
+            tableContents += "<tr>\n" +
+                "<td>" + (i+1) + "</td>"
+             + " <td>" + getCookie("question"+i) + "</td>"
+             + "</tr>";
+        }
+        document.getElementById("leaderboardTable").innerHTML += tableContents;
+
+        let tableContentsAnswers="";
+        /*0<5 (ignore last i=6 because its not a question)*/
+        for (let i = 0; i < indexQ; i++) {
+            tableContentsAnswers += "<tr>\n" +
+                "<td>" + (i+1) + "</td>"
+                + " <td>" + getCookie("answer"+i) + "</td>"+
+                "    <td>" +  getCookie("answerWrong"+i) + "</td>" +
+                "</tr>";
+
+        }
+        document.getElementById("leaderboardTable2").innerHTML += tableContentsAnswers;
+
+
+        function getCookie(cookieName) {
+            let name = cookieName + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) === ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) === 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
+        function deleteAllCookies() {
+            var cookies = document.cookie.split(";");
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i];
+                var eqPos = cookie.indexOf("=");
+                var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+                document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+            }
+        }
+
+        function goToIndex(){
+            setTimeout(deleteAllCookies, 10);
+            setTimeout(function(){window.location.href="index.html";},500);
+        }
+
+        function goToSignIn(){
+            setTimeout(deleteAllCookies, 10);
+            setTimeout(function(){window.location.href="SignIn.html";},500);
+        }
+
+        function backToLb(){
+            setTimeout(function(){window.location.href="leaderboards.html?session=" +params.get("session")+ "&sorted&limit=20&playerName=" + params.get("playerName") +"&indexQ=" +indexQ;},500);
+        }
+
+    </script>
+</body>
+</html>

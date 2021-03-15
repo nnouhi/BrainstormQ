@@ -5,69 +5,71 @@
     <meta charset="UTF-8">
     <title>BrainstormQ</title>
     <link rel="stylesheet" href="stylesheet.css">
+    <meta name="viewport" content="width=device-width" >
     <meta name="description" content="BrainstormQ Treasure hunt web app">
 </head>
 <body>
 
-
-
-
-<div class="Members">
-    <h1 class="TeamHD">Team Members</h1>
-    <h3>*Nicolas Nouhi </h3>
-    <p>(Will work on the javascript/html part)</p>
-
-    <h3>*Lev Isaev </h3>
-    <p>(Will style the Quiz app when everything is finished)</p>
-
-    <h3>*Georgios Antoniou</h3>
-    <p>(Responsible for the media marketing)</p>
-
-
-</div>
-
-<div class="infoContainer">
-    <h1 class="InfoAbUs">Team's Purpose</h1>
-
-    <p class="Info">
-        Our purpose is to build an interactive web application which will be used to play
-        the treasure hunt challenge. The treasure hunt challenge is an online quiz game in
-        which players answer questions by looking for clues in a real-life environment using
-        an existing API that enables them to communicate with a server which stores the questions
-        and answers.
-    </p>
-
-
-
-</div>
-
-<!-- twitter section --->
-
-<div class="socialMedia">
-
-    <h1>Follow us on Social Media!</h1>
-
-    <div class="twitterSection">
-
-        <a class="twitter-timeline" href="https://twitter.com/BrainstormQ2"  id="Twitter">Tweets by BrainstormQ</a>
-
-        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8">
-
-        </script>
-
+    <div class="IndexTitle">
+        <img class="logo" border="0" alt="Brainstorm Logo" src="Pictures/logo.png">
+        <h1>BrainstormQ</h1>
     </div>
 
-    <div class="instagramSection">
+
+    <div class="IndexContainer">
+        <h2>Team's Purpose:</h2>
+
+        <p>
+            Our purpose is to build an interactive web application which will be used to play
+            the treasure hunt challenge. The treasure hunt challenge is an online quiz game in
+            which players answer questions by looking for clues in a real-life environment using
+            an existing API that enables them to communicate with a server which stores the questions
+            and answers.
+        </p>
+
+        <h2>Start Playing!</h2>
+
+        <form method="get" action="SignIn.html">
+            <button  class="GetStartedBtn"> Get Started</button>
+        </form>
+
+        <br>
+
+        <div style="text-align: center">
+            <h2>Visit our testing pages:</h2>
+
+            <button class="appBtns" onclick="setTimeout(function(){window.location.href='test.html';},50)">User Acceptance</button>
+
+            <button class="appBtns" onclick="setTimeout(function(){window.location.href='TestingPage.html';},50)">Unit Test</button>
+        </div>
+
+        <br>
+
+        <br>
+
+       <h2>Meet The Team:</h2>
+
+        <ul>
+            <li>Nicolas Nouhi -> HTML/JS/Unit Test</li>
+
+            <li>George Antoniou -> Marketing/Tester</li>
+
+            <li>Lev Isaev -> CSS/UAT Documentation</li>
+        </ul>
+    </div>
+
+
+    <div class="IndexContainer2">
+        <h1>Follow us on social media!</h1>
         <a href="https://www.instagram.com/brainstorm_q1/">
-        <img border="0" alt="instagramLogo" src="Pictures/Screenshot_2.png" width="500" height="250"></a>
+            <img border="0" alt="instagramLogo" src="Pictures/Screenshot_2.png">
+        </a>
+         <a class="twitter-timeline" href="https://twitter.com/BrainstormQ2"  id="Twitter">Tweets by BrainstormQ</a>
+         <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </div>
-</div>
 
-<form method="get" action="SignIn.html">
-    <button  class="GetStartedBtn"> Get Started</button>
-</form>
 
-<script type="application/ld+json">
+    <script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "Web App",
