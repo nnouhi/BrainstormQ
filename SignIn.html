@@ -126,17 +126,19 @@
                 {
                     let thDate=new Date(treasureHuntsArray[i].startsOn);
 
-                    if(today > thDate){
-                        // True if thdate is after today
+                    if(today >= thDate){
+                        // True if thdate is before today
                         console.log("is after today");
+
                         listHtml += // each treasure hunt item is shown with an individual DIV element
                             "<li>" + "<b>" +"<a id='TH' href='app.html?player=" + playerName + "&app=BrainstormQ&treasure-hunt-id=" + treasureHuntsArray[i].uuid
                             + '&time='+ treasureHuntsArray[i].maxDuration + '&nameOfGame='+ treasureHuntsArray[i].name+"'>" + (i+1) +". "+" " +treasureHuntsArray[i].name +"</a>" + "</b>" +"</li>"
                             +"<li>" + "<b>" + "Starts on: " + "</b>" + convertMsToDate(treasureHuntsArray[i].startsOn) + "</li>"
                             +"<li>" + "<b>" + "Duration: "+ "</b>" + convertMsToMinutes(treasureHuntsArray[i].maxDuration) + "</li>"
                     }else{
-                        // Today is before today
+                        // true if today is before thdate
                         console.log("is before today");
+
                         listHtml += // each treasure hunt item is shown with an individual DIV element
                             "<li>" + "<b>" +"<a style='opacity: 0.25; pointer-events: none;' id='TH' href='app.html?player=" + playerName + "&app=BrainstormQ&treasure-hunt-id=" + treasureHuntsArray[i].uuid
                             + '&time='+ treasureHuntsArray[i].maxDuration + '&nameOfGame='+ treasureHuntsArray[i].name+"'>" + (i+1) +". "+" " +treasureHuntsArray[i].name +"</a>" + "</b>" +"</li>"
