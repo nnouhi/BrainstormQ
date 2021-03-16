@@ -1,4 +1,6 @@
-/*Contains functions used for the geolocation feature*/
+/*geoLocation.js script
+* Description: Includes functions for periodic
+*  update and force location update*/
 
 /*Global variables*/
 let lat;
@@ -14,7 +16,7 @@ function updateLocation_Period() {
         alert("Geolocation is not supported by your browser.");
     }
 
-    setTimeout(updateLocation_Period,5000);
+    setTimeout(updateLocation_Period,5000); /*-> maybe will have to update every 25 seconds*/
 }
 /*Updates global variables lat, long*/
 function updateLatLong(position){
@@ -25,7 +27,7 @@ function updateLatLong(position){
 
 /*Updates user location periodically every 30 secs*/
 function updateUsersLocation(){
-    console.log("Update users location");
+    console.log("Update users location, 30 secs");
     fetch(TH_BASE_URL_LOCATION + getCookie("sessionID") + "&latitude=" + lat + "&longitude=" + lng)
         .then(response => response.json())
         .then(jsonObject => {});
@@ -37,7 +39,7 @@ function updateUsersLocation(){
 
 /*Force update users location*/
 function updateLocation_Force() {
-    console.log("force location update");
+    console.log("force location update test 1");
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(updateUsersLocation_Force);
     } else {
@@ -46,7 +48,7 @@ function updateLocation_Force() {
 }
 /*Force update users location with the current lng and lat*/
 function updateUsersLocation_Force(position){
-    console.log("force location update2");
+    console.log("force location update test 2");
     lat=position.coords.latitude;
     lng=position.coords.longitude;
     fetch(TH_BASE_URL_LOCATION + getCookie("sessionID") + "&latitude=" + lat + "&longitude=" + lng)

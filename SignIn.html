@@ -111,6 +111,8 @@
             .then(response => response.json()) //Parse JSON text to JavaScript object
             .then(jsonObject => {
 
+                let today = new Date();
+
                 document.getElementById("displayChallenges").style.display = "block";
 
                 document.getElementById("loadingMessageContainer").style.display="none";
@@ -122,16 +124,33 @@
                 for(let i=0; i<treasureHuntsArray.length; i++) //Create a loop that traverses the treasureHunts array
                     //and  creates a new list element for each treasure hunt object:
                 {
+                    let thDate=new Date(treasureHuntsArray[i].startsOn);
 
-                    listHtml += // each treasure hunt item is shown with an individual DIV element
-                        "<li>" + "<b>" +"<a id='TH' href='app.html?player=" + playerName + "&app=BrainstormQ&treasure-hunt-id=" + treasureHuntsArray[i].uuid
-                        + '&time='+ treasureHuntsArray[i].maxDuration + '&nameOfGame='+ treasureHuntsArray[i].name+"'>" + (i+1) +". "+" " +treasureHuntsArray[i].name +"</a>" + "</b>" +"</li>"
-                        +"<li>" + "<b>" + "Starts on: " + "</b>" + convertMsToDate(treasureHuntsArray[i].startsOn) + "</li>"
-                        +"<li>" + "<b>" + "Duration: "+ "</b>" + convertMsToMinutes(treasureHuntsArray[i].maxDuration) + "</li>"
+                    if(today >= thDate){
+                        // True if thdate is after today
+                        console.log("is after today");
+                        listHtml += // each treasure hunt item is shown with an individual DIV element
+                            "<li>" + "<b>" +"<a id='TH' href='app.html?player=" + playerName + "&app=BrainstormQ&treasure-hunt-id=" + treasureHuntsArray[i].uuid
+                            + '&time='+ treasureHuntsArray[i].maxDuration + '&nameOfGame='+ treasureHuntsArray[i].name+"'>" + (i+1) +". "+" " +treasureHuntsArray[i].name +"</a>" + "</b>" +"</li>"
+                            +"<li>" + "<b>" + "Starts on: " + "</b>" + convertMsToDate(treasureHuntsArray[i].startsOn) + "</li>"
+                            +"<li>" + "<b>" + "Duration: "+ "</b>" + convertMsToMinutes(treasureHuntsArray[i].maxDuration) + "</li>"
+                    }else{
+                        // Today is before today
+                        console.log("is before today");
+                        listHtml += // each treasure hunt item is shown with an individual DIV element
+                            "<li>" + "<b>" +"<a style='opacity: 0.25; pointer-events: none;' id='TH' href='app.html?player=" + playerName + "&app=BrainstormQ&treasure-hunt-id=" + treasureHuntsArray[i].uuid
+                            + '&time='+ treasureHuntsArray[i].maxDuration + '&nameOfGame='+ treasureHuntsArray[i].name+"'>" + (i+1) +". "+" " +treasureHuntsArray[i].name +"</a>" + "</b>" +"</li>"
+                            +"<li style='opacity: 0.25'>" + "<b>" + "Starts on: " + "</b>" + convertMsToDate(treasureHuntsArray[i].startsOn) + "</li>"
+                            +"<li style='opacity: 0.25'>" + "<b>" + "Duration: "+ "</b>" + convertMsToMinutes(treasureHuntsArray[i].maxDuration) + "</li>"
+                    }
+
+
+
                 }
                 listHtml += "</ul>";
                 document.getElementById("displayChallenges").style.display = "inline-block";
                 document.getElementById("treasureHunts").innerHTML = listHtml;
+
             });
 
     }
