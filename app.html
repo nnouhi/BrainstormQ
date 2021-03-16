@@ -16,7 +16,7 @@
 
 
 </head>
-<body onload="updateLocation_Period(); updateUsersLocation();">
+<body onload="updateLocation_Period(); setTimeout(updateUsersLocation,500);"> <!--Add small delay to allow the lng and lat to change after calling updateUsersLocation function-->
 
 
 <div class="topnav" id="topnav">
@@ -76,6 +76,7 @@
         <h4 id="scoreMessage">Score: </h4>
         <h4 id="questionIndexP">Question: </h4>
         <h4 id="hint">Hint: </h4>
+        <h4 id="periodicLoc"></h4>
     </div>
 
     <!--Container that that display the correct/wrong answer message, the questions and the appropriate
@@ -292,9 +293,10 @@
                     }
                     else {
 
-                         requiresLocationBool = jsonObject.requiresLocation;
+                        requiresLocationBool = jsonObject.requiresLocation;
 
-                        confirmLocation=false;
+                        if(requiresLocationBool) document.getElementById("periodicLoc").style.display="block";
+                        else document.getElementById("periodicLoc").style.display="none";
 
                         let questions = jsonObject.questionText;
 
@@ -545,7 +547,6 @@
                                        setTimeout(deleteAllCookies, 50);
                                        setTimeout(function(){window.location.href = "SignIn.html";},500);
                                    }
-
                                }
                                else if (jsonObject.status === "OK" && jsonObject.correct === true) {
                                    document.getElementById("specificMessage").style.display = "inline-block";

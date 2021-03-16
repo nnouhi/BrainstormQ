@@ -211,7 +211,7 @@
                                 "    <td>" + ranking + "</td>" +
                                 "    <td>" + playerName + "</td>" +
                                 "    <td>" + score + " pts"+ "</td>" +
-                                "    <td>" + convertMsToSec(completionTime) + "(s)" + "</td>" +
+                                "    <td>" + convertUnixToSec(completionTime) + "(s)" + "</td>" +
                                 "</tr>";
                             rankingIndex++;
                         }
@@ -269,7 +269,7 @@
                                     "    <td style=\"overflow-wrap: anywhere;\">" + playerName + "</td>" + /*style="overflow-wrap: anywhere;" ->If a user provides
                                            a really big name;avoid overflow of the container on small screen sizes*/
                                     "    <td>" + score + " pts"+ "</td>" +
-                                    "    <td>" + convertMsToSec(completionTime) + "(s)" + "</td>" +
+                                    "    <td>" + convertUnixToSec(completionTime) + "(s)" + "</td>" +
                                     "</tr>";
                                     /*Wait all the information to be fetched and constructed and then display every element at the same time*/
                                 document.getElementById("leaderboardTableEntry").innerHTML += tableEntry;
@@ -348,19 +348,11 @@
             return "";
         }
 
-        function convertMsToSec(startsOnString){
-            let startsOnNum = Number(startsOnString),
-                sec = Math.floor((startsOnNum/1000) % 60);
-            return sec;
+        /*Function that converts unit timestamp to seconds.*/
+        function convertUnixToSec(completionTimeUnix){
+            const completionTimeMs = completionTimeUnix * 1000 /*Ms*/
+            return Math.floor((completionTimeMs/1000) % 60);  /*secs*/
         }
-
-     /*   /!*https://www.w3schools.com/js/js_cookies.asp*!/
-        function saveCookie(cookieName, cookieValue,cookieLifespan) {
-            let date = new Date();
-            date.setTime(date.getTime() + (cookieLifespan * 60 * 1000));
-            let expires = "expires=" + date.toUTCString();
-            document.cookie = cookieName + "=" + cookieValue + ";" + expires;
-        }*/
 
         /*Function that takes user to Landing page*/
         function goToIndex(){
