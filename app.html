@@ -11,11 +11,12 @@
     <meta name="description" content="BrainstormQ Treasure hunt web app">
     <script defer src="instascan.min.js"></script>
     <script defer src="th-api.js"></script>
+    <script defer src="geoLocation.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
 </head>
-<body> <!--onload="setTimeout(getLocation(), 60000);"-->
+<body onload="updateLocation_Period(); updateUsersLocation();">
 
 
 <div class="topnav" id="topnav">
@@ -159,6 +160,8 @@
 
         const params = new URLSearchParams(location.search);
 
+        let confirmLocation=false;
+
         /*Variables used for questions/answers feature*/
         let indexQ=0;
         let indexA=0;
@@ -289,7 +292,9 @@
                     }
                     else {
 
-                        requiresLocationBool = jsonObject.requiresLocation;
+                         requiresLocationBool = jsonObject.requiresLocation;
+
+                        confirmLocation=false;
 
                         let questions = jsonObject.questionText;
 
@@ -470,65 +475,6 @@
             document.cookie = cookieName + "=" + cookieValue + ";" + expires;
         }
 
-        function getLocation(ans, field) {
-            console.log("getLocation...");
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function (position) {
-                    sendLocation(position.coords.latitude, position.coords.longitude, ans, field);
-                });
-            } else {
-                alert("Geolocation is not supported by your browser.");
-            }
-        }
-
-        /*Function that force updates the location of the user when user submits an answer*/
-        function sendLocation(lat, lng, ans, field) {
-            fetch(TH_BASE_URL_LOCATION + getCookie("sessionID") + "&latitude="+lat+"&longitude="+lng)
-                .then(response => response.json())
-                .then(jsonObject => {
-                        if(jsonObject.status === "OK"){
-                            /*function getAnswer()*/
-                            if(document.getElementById(field).value!=="") {
-                                intANS.value = "";
-                                numericANS.value = "";
-                                textANS.value = "";
-                                fetch(TH_BASE_URL_ANSWER + getCookie("sessionID") + "&answer=" + ans)
-                                    .then(response => response.json()) //Parse JSON text to JavaScript object
-                                    .then(jsonObject => {
-                                        if (jsonObject.status === "ERROR") {
-                                            let errorMessage = confirm(jsonObject.errorMessages[0]);
-                                            if (errorMessage){
-                                                setTimeout(deleteAllCookies, 50);
-                                                setTimeout(function(){window.location.href = "SignIn.html";},500);
-                                            }
-
-                                            else {
-                                                setTimeout(deleteAllCookies, 50);
-                                                setTimeout(function(){window.location.href = "SignIn.html";},500);
-                                            }
-
-                                        } else if (jsonObject.status === "OK" && jsonObject.correct === true) {
-                                            document.getElementById("specificMessage").style.display = "inline-block";
-                                            document.getElementById("specificMessage").innerText = jsonObject.message + " You have gained " + jsonObject.scoreAdjustment + " points.";
-                                            updateScore(getCookie("sessionID"));
-                                            loadQuestions(TH_BASE_URL + "question?&session=" + getCookie("sessionID"));
-                                            saveCookie("answer"+ indexQ, ans, cookieLifeSpan);
-                                            indexQ++;
-                                        } else if (jsonObject.status === "OK" && jsonObject.correct === false) {
-                                            document.getElementById("specificMessage").style.display = "inline-block";
-                                            document.getElementById("specificMessage").innerText = jsonObject.message + " You have lost " + jsonObject.scoreAdjustment + " points.";
-                                            updateScore(getCookie("sessionID"));
-                                            saveCookie("answerWrong"+indexQ, ans, cookieLifeSpan);
-                                        }
-                                    })
-                            }
-                            /*Checks if the input is empty so it doesnt sumbit the answer and get an error*/
-                            else{
-                                window.alert("Field is blank");
-                            }
-                        }
-                });
-        }
 
         function checkText(){
             let ans=document.getElementById("textANS").value;
@@ -577,54 +523,54 @@
         }
 
         function checkAnswers(ans,field){
-
-            if(requiresLocationBool){
-                getLocation(ans,field);
+            if(requiresLocationBool) {
+                updateLocation_Force();
             }
-            else{
-                /*Check if the field is not empty;proceed, else display alert*/
-                if(document.getElementById(field).value!=="") {
-                    intANS.value = "";
-                    numericANS.value = "";
-                    textANS.value = "";
-                    fetch(TH_BASE_URL_ANSWER + getCookie("sessionID") + "&answer=" + ans)
-                        .then(response => response.json()) //Parse JSON text to JavaScript object
-                        .then(jsonObject => {
-                            if (jsonObject.status === "ERROR") {
-                                let errorMessage = confirm(jsonObject.errorMessages[0]);
-                                if (errorMessage){
-                                    setTimeout(deleteAllCookies, 50);
-                                    setTimeout(function(){window.location.href = "SignIn.html";},500);
-                                }
+               setTimeout(function(){
+                   if(document.getElementById(field).value!=="") {
+                       intANS.value = "";
+                       numericANS.value = "";
+                       textANS.value = "";
+                       fetch(TH_BASE_URL_ANSWER + getCookie("sessionID") + "&answer=" + ans)
+                           .then(response => response.json()) //Parse JSON text to JavaScript object
+                           .then(jsonObject => {
+                               if (jsonObject.status === "ERROR") {
+                                   let errorMessage = confirm(jsonObject.errorMessages[0]);
+                                   if (errorMessage){
+                                       setTimeout(deleteAllCookies, 50);
+                                       setTimeout(function(){window.location.href = "SignIn.html";},500);
+                                   }
 
-                                else {
-                                    setTimeout(deleteAllCookies, 50);
-                                    setTimeout(function(){window.location.href = "SignIn.html";},500);
-                                }
+                                   else {
+                                       setTimeout(deleteAllCookies, 50);
+                                       setTimeout(function(){window.location.href = "SignIn.html";},500);
+                                   }
 
-                            }
-                            else if (jsonObject.status === "OK" && jsonObject.correct === true) {
-                                document.getElementById("specificMessage").style.display = "inline-block";
-                                document.getElementById("specificMessage").innerText = jsonObject.message + " You have gained " + jsonObject.scoreAdjustment + " points.";
-                                updateScore(getCookie("sessionID"));
-                                /*save all correct answers of the user inside a cookie */
-                                saveCookie("answer"+ indexQ, ans, cookieLifeSpan);
-                                indexQ++;
-                                loadQuestions(TH_BASE_URL + "question?&session=" + getCookie("sessionID"));
-                            }
-                            else if (jsonObject.status === "OK" && jsonObject.correct === false) {
-                                document.getElementById("specificMessage").style.display = "inline-block";
-                                document.getElementById("specificMessage").innerText = jsonObject.message + " You have lost " + jsonObject.scoreAdjustment + " points.";
-                                updateScore(getCookie("sessionID"));
-                                saveCookie("answerWrong"+indexQ, ans, cookieLifeSpan);
-                            }
-                        })
-                }
-                /*Checks if the input is empty so it doesnt sumbit the answer and get an error*/
-                else{
-                    window.alert("Field is blank");
-                }
-            }
+                               }
+                               else if (jsonObject.status === "OK" && jsonObject.correct === true) {
+                                   document.getElementById("specificMessage").style.display = "inline-block";
+                                   document.getElementById("specificMessage").innerText = jsonObject.message + " You have gained " + jsonObject.scoreAdjustment + " points.";
+                                   updateScore(getCookie("sessionID"));
+                                   /*save all correct answers of the user inside a cookie */
+                                   saveCookie("answer"+ indexQ, ans, cookieLifeSpan);
+                                   indexQ++;
+                                   loadQuestions(TH_BASE_URL + "question?&session=" + getCookie("sessionID"));
+                               }
+                               else if (jsonObject.status === "OK" && jsonObject.correct === false) {
+                                   document.getElementById("specificMessage").style.display = "inline-block";
+                                   document.getElementById("specificMessage").innerText = jsonObject.message + " You have lost " + jsonObject.scoreAdjustment + " points.";
+                                   updateScore(getCookie("sessionID"));
+                                   saveCookie("answerWrong"+indexQ, ans, cookieLifeSpan);
+                               }
+                           })
+                   }
+                   /*Checks if the input is empty so it doesnt sumbit the answer and get an error*/
+                   else{
+                       window.alert("Field is blank");
+                   }
+
+               },100)
+
 
         }
 

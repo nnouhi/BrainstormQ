@@ -38,7 +38,7 @@
     </div>
     <h2 style="color:black">The Questions</h2>
     <div class="IndexContainer">
-        <table id="leaderboardTable" class="LB">
+        <table id="leaderboardTable" class="LB" >
             <tr>
                 <th>Question No.</th>
                 <th>Question</th>
@@ -95,7 +95,7 @@
         for (let i = 0; i < indexQ; i++) {
             tableContents += "<tr>\n" +
                 "<td>" + (i+1) + "</td>"
-             + " <td>" + getCookie("question"+i) + "</td>"
+             + " <td style=\" overflow-wrap: anywhere;\">" + getCookie("question"+i) + "</td>"
              + "</tr>";
         }
         document.getElementById("leaderboardTable").innerHTML += tableContents;

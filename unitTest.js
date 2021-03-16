@@ -1,3 +1,5 @@
+/*unitTest.js script
+* Description: Includes all functions used for the test.html page*/
 let hasPrize="&no";
 let sorted="&no";
 let completed="&no";
