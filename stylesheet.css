@@ -81,6 +81,26 @@
         margin-top: auto;
     }
 
+    .twitter-timeline {
+        max-width: 100%;
+        max-height: 550px;
+    }
+    .fa {
+        font-size: 25px;
+        color: #FFFFFF;
+    }
+    .panel-title {
+        font-size: 25px;
+        color: #FFFFFF;
+        font-family: 'Open Sans', sans-serif;
+    }
+    .panel-heading {
+        background-color: #1da1f2 !important;
+        color: #1da1f2 !important;
+    }
+    .panel {
+        margin-top: 25px;
+    }
 
     .IndexContainer3{
         display:none;
