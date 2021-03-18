@@ -107,6 +107,7 @@
             playerName=document.getElementById("Tname").value;
         }
 
+        /*"https://codecyprus.org/th/test-api/list?number-of-ths=2"*/ /*-> for testing*/
         fetch(TH_BASE_URL+"list")
             .then(response => response.json()) //Parse JSON text to JavaScript object
             .then(jsonObject => {

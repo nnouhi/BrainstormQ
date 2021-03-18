@@ -349,6 +349,7 @@
         }
 
         /*Function that converts unit timestamp to seconds.*/
+        /*Wrong->fix later*/
         function convertUnixToSec(completionTimeUnix){
             const completionTimeMs = completionTimeUnix * 1000 /*Ms*/
             return Math.floor((completionTimeMs/1000) % 60);  /*secs*/
