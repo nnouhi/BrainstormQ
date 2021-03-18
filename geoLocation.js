@@ -13,7 +13,7 @@ function updateLocation_Period() {
         alert("Geolocation is not supported by your browser.");
     }
 
-    setTimeout(updateLocation_Period,5000);
+    setTimeout(updateLocation_Period,59000);
 
 }
 /*Updates global variables lat, long*/
