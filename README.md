@@ -116,6 +116,9 @@ that Lev wanted to go with, and we've decided to go with the original design.
 
 -Lev Isaev: Fixed the leaderboard overflow and uploaded the css to our repo
 
+10th Final Meeting(March 23rd):We recorded an app demonstration and uploaded it on Instagram and we finalized all our pages, removed any console logs and added appropriate comments.
+
+
 
 
 
