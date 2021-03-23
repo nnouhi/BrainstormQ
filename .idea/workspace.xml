@@ -19,18 +19,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="880e3f71-b811-409b-98a7-d91394677bc9" name="Default Changelist" comment="Fixed refresh btn (was populating all the table rows when was pressed) also added separate section for the users entry below the leaderboards">
-      <change afterPath="$PROJECT_DIR$/ViewAnswers.html" afterDir="false" />
+    <list default="true" id="880e3f71-b811-409b-98a7-d91394677bc9" name="Default Changelist" comment="twitter section changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SignIn.html" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestingPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/TestingPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ViewAnswers.html" beforeDir="false" afterPath="$PROJECT_DIR$/ViewAnswers.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.html" beforeDir="false" afterPath="$PROJECT_DIR$/app.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extraFeatures.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geoLocation.js" beforeDir="false" afterPath="$PROJECT_DIR$/geoLocation.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/leaderboards.html" beforeDir="false" afterPath="$PROJECT_DIR$/leaderboards.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/stylesheet.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/test.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/th-api.js" beforeDir="false" afterPath="$PROJECT_DIR$/th-api.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unitTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/unitTest.js" afterDir="false" />
     </list>
@@ -43,8 +39,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="JavaScript File" />
+        <option value="tsconfig.json" />
       </list>
     </option>
   </component>
@@ -56,8 +53,8 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/app.html" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/test.html" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/th-api.js" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/test.html" root0="SKIP_INSPECTION" />
   </component>
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
@@ -77,7 +74,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../co" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="MTConfigurable" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -172,104 +169,24 @@
       <workItem from="1615638473123" duration="5151000" />
       <workItem from="1615746018999" duration="6496000" />
       <workItem from="1615806929694" duration="1196000" />
-    </task>
-    <task id="LOCAL-00010" summary="Made changes for tomorrow's presentation">
-      <created>1612292969396</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1612292969396</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Testing something">
-      <created>1612894178086</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1612894178086</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Testing something">
-      <created>1612895356994</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1612895356994</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Addes cookies, geolocation, and some other small stuff">
-      <created>1612991455258</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1612991455258</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Added geolocation,cookies(need to add more) and some small features.">
-      <created>1612991597331</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1612991597331</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Addes some basic btn styling, and some error handlers, was trying to continue session if player restarts with same name">
-      <created>1613160195512</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1613160195512</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Addes some basic btn styling, and some error handlers, was trying to continue session if player restarts with same name">
-      <created>1613160370031</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1613160370031</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Made the code more &quot;elegant&quot; and readable with the use of multiple functions. Need to finish with basic css &amp; make the player continue where he left off if he has same name">
-      <created>1613207433737</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1613207433737</updated>
-    </task>
-    <task id="LOCAL-00018" summary="Made the code more &quot;elegant&quot; and readable with the use of multiple functions. Need to finish with basic css &amp; make the player continue where he left off if he has same name">
-      <created>1613207820177</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1613207820177</updated>
-    </task>
-    <task id="LOCAL-00019" summary="Managed to make continue session work properly">
-      <created>1613213590120</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1613213590120</updated>
-    </task>
-    <task id="LOCAL-00020" summary="Playing with the toggle camera on off and switching cameras not finished at all">
-      <created>1613245736567</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1613245736567</updated>
-    </task>
-    <task id="LOCAL-00021" summary="Playing with the toggle camera on off and switching cameras not finished at all">
-      <created>1613246103045</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1613246103045</updated>
-    </task>
-    <task id="LOCAL-00022" summary="Playing with the toggle camera on off and switching cameras not finished at all">
-      <created>1613246257720</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1613246257720</updated>
-    </task>
-    <task id="LOCAL-00023" summary="Playing with the toggle camera on off and switching cameras not finished at all">
-      <created>1613246371575</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1613246371575</updated>
+      <workItem from="1615812134828" duration="2255000" />
+      <workItem from="1615836701632" duration="905000" />
+      <workItem from="1615837999695" duration="6000" />
+      <workItem from="1615880364567" duration="23105000" />
+      <workItem from="1615912447959" duration="3762000" />
+      <workItem from="1615919129044" duration="596000" />
+      <workItem from="1615965606147" duration="5567000" />
+      <workItem from="1616071899539" duration="3606000" />
+      <workItem from="1616079067850" duration="294000" />
+      <workItem from="1616153972284" duration="69000" />
+      <workItem from="1616154158507" duration="5000" />
+      <workItem from="1616154197073" duration="43000" />
+      <workItem from="1616176680166" duration="2289000" />
+      <workItem from="1616184616623" duration="120000" />
+      <workItem from="1616266910472" duration="934000" />
+      <workItem from="1616335488287" duration="6116000" />
+      <workItem from="1616417922723" duration="601000" />
+      <workItem from="1616486225002" duration="4484000" />
     </task>
     <task id="LOCAL-00024" summary="test">
       <created>1613246423569</created>
@@ -516,7 +433,105 @@
       <option name="project" value="LOCAL" />
       <updated>1615375830914</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="Uploaded again changes to the UAT page that George did because i overwrote it by accident">
+      <created>1615812311400</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1615812311400</updated>
+    </task>
+    <task id="LOCAL-00060" summary="Fixed index problem on treasure hunts, now it starts from 1-&gt;2-&gt;3 instead of 0-&gt;1-&gt;2">
+      <created>1615812417243</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1615812417243</updated>
+    </task>
+    <task id="LOCAL-00061" summary="Fixed leaderboards overflow">
+      <created>1615813198771</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1615813198771</updated>
+    </task>
+    <task id="LOCAL-00062" summary="Fixed a problem that led to an overflow of the decoded message">
+      <created>1615836936449</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1615836936449</updated>
+    </task>
+    <task id="LOCAL-00063" summary="Made some changes for geolocation, created a new js file that contains functions for periodically updating users location and functions for force updating users location">
+      <created>1615892508743</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1615892508743</updated>
+    </task>
+    <task id="LOCAL-00064" summary="changed the opacity of non available THs and made their links unhoverable">
+      <created>1615895012883</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1615895012883</updated>
+    </task>
+    <task id="LOCAL-00065" summary="Fixed the the completion time in Leaderboards (unit timestamp to seconds), added a countdown for periodical location updates">
+      <created>1615914055357</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1615914055358</updated>
+    </task>
+    <task id="LOCAL-00066" summary="commented something">
+      <created>1615914234655</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1615914234655</updated>
+    </task>
+    <task id="LOCAL-00067" summary="twitter section changes">
+      <created>1615966801704</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1615966801704</updated>
+    </task>
+    <task id="LOCAL-00068" summary="twitter section changes">
+      <created>1615968754361</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1615968754361</updated>
+    </task>
+    <task id="LOCAL-00069" summary="Fixed the twitter timeline">
+      <created>1616077067420</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1616077067421</updated>
+    </task>
+    <task id="LOCAL-00070" summary="Leaderboards completion time was fixed..">
+      <created>1616078159337</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1616078159337</updated>
+    </task>
+    <task id="LOCAL-00071" summary="Fixed periodic location updates to occurre every 60 seconds">
+      <created>1616078848673</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1616078848673</updated>
+    </task>
+    <task id="LOCAL-00072" summary="Updated app modal with the correct information about questions">
+      <created>1616079148390</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1616079148390</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -535,19 +550,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Removed refresh btn from score test/leaderboards test" />
-    <MESSAGE value="Added the container for the question's unit test and their function, tomorrow i will finish with the whole unit test page as well as the questions test" />
-    <MESSAGE value="fixed an error that occurred with th-api.js and leaderboards.html" />
-    <MESSAGE value="Fixed an error" />
-    <MESSAGE value="Added question unit test, Lev needs to work on the apps responsiveness because nothing is responsive atm, also George o UAT" />
-    <MESSAGE value="Added to check location on submit only, not sure if it works" />
-    <MESSAGE value="Added cookie deletion after 2 sec of leaderboards load so the player enters the same name again he is not re-directed to leaderboards" />
-    <MESSAGE value="Added-&gt; When a user press skip pop up shows up to ask the user if wants to actually skip (maybe it was a missclick)" />
-    <MESSAGE value="testing something, unit test for completed questions gives me an error on leaderboards.html" />
-    <MESSAGE value="fixed the bug" />
-    <MESSAGE value="Added ranking to lb and changes the row color for the specific entry" />
-    <MESSAGE value="Fixed an error that occurred with the colouring of the specific entry" />
-    <MESSAGE value="Added some features for leaderboards.html (user can now play again with a different name or with the same name but a different session, also updated modal information on leaderboards.html) also for tomorrow will have to get ready for the presantion and fix elements display on leaderboards.html" />
     <MESSAGE value="Fixed cookie deletion, Testing geolocation on my phone" />
     <MESSAGE value="Last geolocation testing failed, trying to test it again on my phone" />
     <MESSAGE value="Added &quot;description&quot; meta tag and breadcrumbs" />
@@ -560,17 +562,30 @@
     <MESSAGE value="Testing cookie deletion" />
     <MESSAGE value="Fixed the problem that occurred with cookies and github" />
     <MESSAGE value="Fixed refresh btn (was populating all the table rows when was pressed) also added separate section for the users entry below the leaderboards" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed refresh btn (was populating all the table rows when was pressed) also added separate section for the users entry below the leaderboards" />
+    <MESSAGE value="Uploaded again changes to the UAT page that George did because i overwrote it by accident" />
+    <MESSAGE value="Fixed index problem on treasure hunts, now it starts from 1-&gt;2-&gt;3 instead of 0-&gt;1-&gt;2" />
+    <MESSAGE value="Fixed leaderboards overflow" />
+    <MESSAGE value="Fixed a problem that led to an overflow of the decoded message" />
+    <MESSAGE value="Made some changes for geolocation, created a new js file that contains functions for periodically updating users location and functions for force updating users location" />
+    <MESSAGE value="changed the opacity of non available THs and made their links unhoverable" />
+    <MESSAGE value="Fixed the the completion time in Leaderboards (unit timestamp to seconds), added a countdown for periodical location updates" />
+    <MESSAGE value="commented something" />
+    <MESSAGE value="twitter section changes" />
+    <MESSAGE value="Fixed the twitter timeline" />
+    <MESSAGE value="Leaderboards completion time was fixed.." />
+    <MESSAGE value="Fixed periodic location updates to occurre every 60 seconds" />
+    <MESSAGE value="Updated app modal with the correct information about questions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated app modal with the correct information about questions" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="636" y="0" width="745" height="946" key="CommitChangelistDialog2" timestamp="1615748889222">
+    <state x="636" y="0" width="745" height="946" key="CommitChangelistDialog2" timestamp="1616079147676">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="636" y="0" width="745" height="946" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615748889222" />
-    <state x="184" y="86" width="1536" height="860" key="DiffContextDialog" timestamp="1615299308816">
+    <state x="636" y="0" width="745" height="946" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1616079147676" />
+    <state x="184" y="86" width="1536" height="860" key="DiffContextDialog" timestamp="1616077049836">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="184" y="86" width="1536" height="860" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615299308816" />
+    <state x="184" y="86" width="1536" height="860" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1616077049836" />
     <state x="740" y="262" key="FileChooserDialogImpl" timestamp="1615750837148">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -587,14 +602,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="757" y="222" key="RollbackChangesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1613244143303" />
-    <state x="626" y="168" key="SettingsEditor" timestamp="1615042862095">
+    <state x="626" y="168" key="SettingsEditor" timestamp="1616154237341">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="626" y="168" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615042862095" />
-    <state x="836" y="288" key="Vcs.Push.Dialog.v2" timestamp="1615375831990">
+    <state x="626" y="168" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1616154237341" />
+    <state x="836" y="288" key="Vcs.Push.Dialog.v2" timestamp="1616079160880">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="836" y="288" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615375831990" />
+    <state x="836" y="288" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1616079160880" />
     <state x="777" y="430" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1615299345899">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -607,9 +622,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1612984988701" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1615465300093">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1616153975301">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1615465300093" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1616153975301" />
   </component>
 </project>

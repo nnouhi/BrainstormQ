@@ -4,9 +4,9 @@ let lng;
 let countdown=60;
 
 /*Functions used for periodically updating the location*/
-/*Periodically update the lat and lng  every 5 seconds*/
+/*Periodically update the lat and lng  every 59 seconds*/
 function updateLocation_Period() {
-    console.log("periodic location");
+
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(updateLatLong);
     } else {
@@ -18,12 +18,11 @@ function updateLocation_Period() {
 }
 /*Updates global variables lat, long*/
 function updateLatLong(position){
-    console.log("lat, long updated");
     lat=position.coords.latitude;
     lng=position.coords.longitude;
 }
 
-/*Updates user location periodically every 30 secs*/
+/*Updates user location periodically every 60 secs*/
 function updateUsersLocation(){
     console.log("Update users location");
     fetch(TH_BASE_URL_LOCATION + getCookie("sessionID") + "&latitude=" + lat + "&longitude=" + lng)
@@ -38,7 +37,7 @@ function updateUsersLocation(){
 
 /*Force update users location*/
 function updateLocation_Force() {
-    console.log("force location update");
+    /*console.log("force location update");*/
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(updateUsersLocation_Force);
     } else {
@@ -47,7 +46,7 @@ function updateLocation_Force() {
 }
 /*Force update users location with the current lng and lat*/
 function updateUsersLocation_Force(position){
-    console.log("force location update2");
+    /*console.log("force location update2");*/ /*-> remove later*/
     lat=position.coords.latitude;
     lng=position.coords.longitude;
     fetch(TH_BASE_URL_LOCATION + getCookie("sessionID") + "&latitude=" + lat + "&longitude=" + lng)
@@ -56,8 +55,9 @@ function updateUsersLocation_Force(position){
 }
 /*Functions used for force updating the Location*/
 
-let timeElm = document.getElementById("periodicLoc");
 
+/*Countdown that is displayed in app UI*/
+let timeElm = document.getElementById("periodicLoc");
 let timer = function(countdown) {
 
     if(countdown === 0) {

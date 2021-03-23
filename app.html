@@ -66,17 +66,19 @@
                <span class="content" id="content" style=" overflow-wrap: anywhere;"><i class="fa fa-qrcode"></i>Scanned Result</span>
            </div>
        </div>
-            <button class="appBtns" onclick="activateCamera()" type="submit"><i class="fa fa-video-camera"></i>Toggle</button>
+            <button class="appBtns" id="toggleCamera" onclick="activateCamera()" type="submit"><i class="fa fa-video-camera"></i>Toggle</button>
             <button class="copyBtn" id="copyClipboard" onclick="copyToClipboard" type="submit"><i class="fa fa-clipboard"></i>Copy</button>
-            <button class="appBtns" onclick="switchCamera()" type="submit"><i class="fa fa-exchange"></i>Switch Camera</button>
+            <button class="appBtns" id="switchCamera" onclick="switchCamera()" type="submit"><i class="fa fa-exchange"></i>Switch Camera</button>
     </div>
 
     <!--Container that displays the score, current question / total questions, and the hints-->
     <div class="scoreContainer" id="scoreContainer">
+
         <h4 id="scoreMessage">Score: </h4>
         <h4 id="questionIndexP">Question: </h4>
         <h4 id="hint">Hint: </h4>
         <h4 id="periodicLoc"></h4>
+
     </div>
 
     <!--Container that that display the correct/wrong answer message, the questions and the appropriate

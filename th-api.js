@@ -61,7 +61,6 @@ let opts = {
     scanPeriod: 1
 };
 
-
 let camerasArray;
 let cameraIndex=0; //0 is from 1 is back
 let scanner = new Instascan.Scanner(opts);
@@ -69,10 +68,9 @@ let scanner = new Instascan.Scanner(opts);
 //show the camera
 function activateCamera(){
 
-
-//the scanned results
+    //the scanned results
     scanner.addListener('scan', function (content) {
-        console.log(content);
+        /* console.log(content);*/
         document.getElementById("content").innerHTML = content;
     });
 
@@ -80,6 +78,7 @@ function activateCamera(){
     Instascan.Camera.getCameras().then(function (cameras) {
         camerasArray=cameras;
         if (cameras.length > 0) {
+
             cameraIndex=0; //cameraIndex = from camera
             scanner.start(cameras[0]); //start with the first camera
 
@@ -92,10 +91,21 @@ function activateCamera(){
         }
         else {
             /*console.error('No cameras found.');*/
-            alert("No cameras found in your device");
+            /*alert("No cameras found in your device");*/
+            document.getElementById("toggleCamera").style.opacity=0.25;
+            document.getElementById("toggleCamera").style.pointerEvents="none";
+            document.getElementById("switchCamera").style.opacity=0.25;
+            document.getElementById("switchCamera").style.pointerEvents="none";
         }
     }).catch(function (e) {
-        alert("No cameras found in your device"); /*Delete later*/
+        /*If user doesn't allow access to camera, display an alert and make the
+        * camera related buttons un-available and change the opacity
+        * */
+        alert("No cameras found in your device");
+        document.getElementById("toggleCamera").style.opacity=0.25;
+        document.getElementById("toggleCamera").style.pointerEvents="none";
+        document.getElementById("switchCamera").style.opacity=0.25;
+        document.getElementById("switchCamera").style.pointerEvents="none";
     });
 
 }
@@ -105,6 +115,7 @@ function switchCamera() {
 
     /*Check if there are available cameras to use to avoid errors */
     if (typeof camerasArray !== "undefined") {
+
         //Cycle through the available cameras:
         if (cameraIndex < camerasArray.length - 1) {
             cameraIndex++;

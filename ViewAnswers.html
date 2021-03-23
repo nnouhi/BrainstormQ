@@ -10,12 +10,8 @@
 </head>
 <body>
     <div class="topnav" id="topnav">
-
-        <!--<button id="homeBtn" class="appBtns" onclick="goToIndex()"> <i class="fa fa-home"></i>Home</button>-->
         <button id="infoBtn" class="infoBtn"><i class="fa fa-question-circle-o"></i>Info</button>
-        <!--<button id="startNewBtn" class="appBtns" onclick="goToSignIn()"><i class="fa fa-rotate-left"></i>Start New</button>-->
         <button id="backToLb" class="appBtns" onclick="backToLb()"><i class="fa fa-arrow-left"></i>Back to Leaderboards</button>
-
     </div>
 
 <!-- The Modal -->
@@ -26,12 +22,7 @@
             <span class="close">&times;</span>
             <p style="color:darksalmon">Button Descriptions</p>
             <ul class="pointsModal">
-
-               <!-- <li style="color:black"> <span style="color: darksalmon">Home Button:</span> Takes you back to the Landing Page. </li>
-                <li style="color:black"> <span style="color: darksalmon">Restart Button:</span> Choose another TH with the same username. </li>
-                <li style="color:black"> <span style="color: darksalmon">Start New Button:</span> Go back to the Sign in page. </li>-->
                 <li style="color:black"> <span style="color: darksalmon">Back to Leaderboards Button:</span>Takes you back to the Leaderboards. </li>
-
             </ul>
         </div>
 
@@ -137,16 +128,6 @@
                 var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
                 document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
             }
-        }
-
-        function goToIndex(){
-            setTimeout(deleteAllCookies, 10);
-            setTimeout(function(){window.location.href="index.html";},500);
-        }
-
-        function goToSignIn(){
-            setTimeout(deleteAllCookies, 10);
-            setTimeout(function(){window.location.href="SignIn.html";},500);
         }
 
         function backToLb(){
